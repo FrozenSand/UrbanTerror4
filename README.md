@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/FrozenSand/UrbanTerror42/master/github_frozensand.jpg" alt="Urban Terror 4.2" title="Urban Terror 4.2" /></p>
+<p align="center"><a href="http://www.urbanterror.info" title="Urban Terror official website" target="_blank"><img src="https://raw.githubusercontent.com/FrozenSand/UrbanTerror42/master/github_frozensand.jpg" alt="Urban Terror 4.2" title="Urban Terror 4.2" /></a></p>
 
 Urban Terror 4.2
 ================
