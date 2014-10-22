@@ -42,7 +42,7 @@ Feature Requests
 ----------------
 
 While we always appreciate new feature requests, please note that we are heavily working on Urban Terror HD and we are probably not going to implement *huge* changes to Urban Terror 4.2 anymore.
-Nevettheless, a section of our forums is dedicated to suggestions, feel free to post [there](http://www.urbanterror.info/forums/forum/57-42-suggestions/).
+Nevertheless, a section of our forums is dedicated to suggestions, feel free to post [there](http://www.urbanterror.info/forums/forum/57-42-suggestions/).
 
 
 **Thanks for your help!**
