@@ -1083,7 +1083,7 @@
 			Action { play "sound/misc/kcaction.wav" }
 			text "Hitting Info:"
 			cvar "cg_showbullethits"
-			cvarfloatlist { "None" 0 "Normal" 1 "Normal + Damage" 2 }
+			cvarfloatlist { "None" 0 "Normal" 1 "Normal + Damage" 2 "Damage" 3}
 			rect 172 60 250 20
 			textalign 0
 			textalignx 10
