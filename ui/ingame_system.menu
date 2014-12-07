@@ -1,0 +1,743 @@
+#include "ui/menudef.h"
+{
+
+	/* INGAME SYSTEM MENU
+	Revised by woekele, for 4.0. Removed some useless crap and added usefull stuff.
+	*/
+
+	//Standard Menu Creation
+
+
+	menuDef {
+		name "ingame_system"
+		visible 0
+		rect 256 50 384 430
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		onOpen { show graphics ; hide sound ; hide network ; hide bumpy}
+
+		itemdef {
+			name backgroundstuff
+			rect 15 15 359 370
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg_options_tr.tga"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 25 25 339 315
+			style 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//Menu Bar (on the right)
+
+		itemDef {
+			name menubar
+			rect 294 25 70 315
+			style 1
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 .5
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name graphics_button
+			type 1
+			style 1
+			rect 296 45 68 24
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			text "Graphics"
+			textalignx 8
+			textaligny 18
+			textscale .25
+			action { play "sound/misc/kcaction.wav" ; hide sound ; hide network ; show graphics ; hide bumpy}
+			mouseEnter { setitemcolor graphics_button backcolor 0 0 .55 1}
+			mouseExit { setitemcolor graphics_button backcolor 0 0 0 0}
+		}
+
+		itemDef {
+			name sound_button
+			type 1
+			style 1
+			rect 296 93 68 24
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			text "Sound"
+			textalignx 8
+			textaligny 18
+			textscale .25
+			action { play "sound/misc/kcaction.wav" ; show sound ; hide network ; hide graphics ; hide bumpy}
+			mouseEnter { setitemcolor sound_button backcolor 0 0 .55 1}
+			mouseExit { setitemcolor sound_button backcolor 0 0 0 0}
+		}
+
+		itemDef {
+			name network_button
+			type 1
+			style 1
+			rect 296 118 68 24
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			text "Network"
+			textalignx 8
+			textaligny 18
+			textscale .25
+			action { play "sound/misc/kcaction.wav" ; hide sound ; show network ; hide graphics ; hide bumpy}
+			mouseEnter { setitemcolor network_button backcolor 0 0 .55 1}
+			mouseExit { setitemcolor network_button backcolor 0 0 0 0}
+		}
+
+
+		//@Barbatos: removed for now
+		/*
+		itemDef {
+			name bumpy_button
+			type 1
+			style 1
+			rect 296 69 68 24
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			text "Special FX"
+			textalignx 8
+			textaligny 18
+			textscale .25
+			action { play "sound/misc/kcaction.wav" ; hide sound ; hide network ; hide graphics ; show bumpy }
+			mouseEnter { setitemcolor bumpy_button backcolor 0 0 .55 1}
+			mouseExit { setitemcolor bumpy_button backcolor 0 0 0 0}
+		}
+		*/
+
+		itemDef {
+			name apply_button
+			type 1
+			style 1
+			rect 296 161 68 24
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			text "Apply"
+			textalignx 8
+			textaligny 18
+			textscale .25
+			action { play "sound/misc/kcaction.wav" ; exec vid_restart }
+			mouseEnter { setitemcolor apply_button backcolor 0 0 .55 1}
+			mouseExit { setitemcolor apply_button backcolor 0 0 0 0}
+		}
+
+		itemDef {
+			name close_button
+			type 1
+			style 1
+			rect 165 352 59 21
+			forecolor 1 1 1 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 .7
+			visible 1
+			text "Close"
+			textalignx 13
+			textaligny 14
+			textscale .25
+			action { play "sound/misc/kcaction.wav" ; close ingame_system }
+			mouseEnter { setitemcolor close_button backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor close_button backcolor 0 0 0 .7 }
+		}
+
+		//GRAPHICS
+
+		itemDef {
+			cvartest r_mode
+			showcvar { "-1" }
+			name graphics
+			group grpSystem
+			type ITEM_TYPE_EDITFIELD
+			text "Custom Width:"
+			cvar "r_customwidth"
+			rect 30 40 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			cvartest r_mode
+			showcvar { "-1" }
+			name graphics
+			group grpSystem
+			type ITEM_TYPE_EDITFIELD
+			text "Custom Height:"
+			cvar "r_customheight"
+			rect 30 60 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name graphics
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Video Mode:"
+			cvar "r_mode"
+			cvarFloatList { "Custom" -1 "640*480" 3 "800*600" 4 "1024*768" 6 "1280*1024" 8 "1600*1200" 9 "2048*1536" 10 "856*480 (wide)" 11 "1280*720 (wide)" 12 "1366x768 (wide)" 13 "1600*900 (wide)" 14 "1680*1050 (wide)" 15 "1920*1080 (wide)" 16 "2560*1440 (wide)" 17 }
+			rect 30 80 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name graphics
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Color Depth:"
+			cvar "r_colorbits"
+			cvarFloatList { "Desktop Default" 0 "16-bit" 16 "32-bit" 32 }
+			rect 30 100 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name graphics
+			group grpSystem
+			type ITEM_TYPE_YESNO
+			text "Fullscreen:"
+			cvar "r_fullscreen"
+			rect 30 120 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+
+		itemDef {
+			name graphics
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Texture Detail:"
+			cvar "r_picmip"
+			cvarFloatList { "Low" 2 "Normal" 1 "High" 0 }
+			rect 30 140 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name graphics
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Texture Quality:"
+			cvar "r_texturebits"
+			cvarFloatList { "Desktop Default" 0 "16 bit" 16 "32 bit" 32 }
+			rect 30 160 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name graphics
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Texture Filter:"
+			cvar "r_texturemode"
+			cvarStrList { "Bilinear (Normal)", "GL_LINEAR_MIPMAP_NEAREST", "Trilinear (Better)", "GL_LINEAR_MIPMAP_LINEAR"  }
+			rect 30 180 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name graphics
+			group grpSystem
+			type ITEM_TYPE_YESNO
+			text "Compress Textures:"
+			cvar "r_ext_compressed_textures"
+			rect 30 200 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name graphics
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Refreshrate:"
+			cvar "r_displayrefresh"
+			cvarFloatList { "Default" 0 "60Hz" 60 "70Hz" 70 "72Hz" 72 "75Hz" 75 "85Hz" 85 "92Hz" 92 "100Hz" 100 "110Hz" 110 "120Hz" 120 "125Hz" 125 }
+			rect 30 220 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name graphics
+			rect 30 240 259 20
+			textscale 0.25
+			textalign 0
+			textalignx 11
+			textaligny 15
+			forecolor 1 0 0 1
+			autowrapped
+			text "Don't set Refresh too high for your display!"
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name graphics
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Max Frames/Second:"
+			cvar "com_maxfps"
+			cvarFloatList { "30" 30 "35" 35 "40" 40 "45" 45 "50" 50 "55" 55 "60" 60 "65" 65 "70" 70 "75" 75 "80" 80 "85" 85 "90" 90 "95" 95 "100" 100 "105" 105 "110" 110 "115" 115 "120" 120 "125" 125 }
+			rect 30 260 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name graphics
+			group grpSystem
+			type ITEM_TYPE_YESNO
+			text "Vertical Sync:"
+			cvar "r_swapinterval"
+			rect 30 280 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name graphics
+			group grpSystem
+			type ITEM_TYPE_SLIDER
+			text "Brightness:"
+			cvarfloat "r_gamma" 2 1 3
+			rect 30 300 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		//27's BUMPY STUFF - Added By NulL @Barbatos: removed for now
+
+		/*
+		itemDef {
+			name bumpy
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Extra Effects:"
+			cvar "r_simpleshaders"
+			cvarFloatList { "On" 0 "Off" 1 }
+			rect 30 45 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			cvartest r_simpleshaders
+			showcvar { "0" }
+			name bumpy
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Bloom:"
+			cvar "r_glslbloom"
+			cvarFloatList { "Off" 0 "Style 1" 1 "Style 2" 2 "Style 3" 3 "Style 4" 4 "Style 5" 5 }
+			rect 30 65 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			cvartest r_simpleshaders
+			showcvar { "0" }
+			name bumpy
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Fancy Water:"
+			cvar "r_fancywater"
+			cvarFloatList { "Off" 0 "On" 1 }
+			rect 30 85 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			cvartest r_simpleshaders
+			showcvar { "0" }
+			name bumpy
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Ambient Occlusion:"
+			cvar "r_ssao"
+			cvarFloatList { "Off" 0 "On" 1 }
+			rect 30 105 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			cvartest r_simpleshaders
+			showcvar { "0" }
+			name bumpy
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Depth of Field:"
+			cvar "r_dof"
+			cvarFloatList { "Off" 0 "On" 1 }
+			rect 30 125 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			cvartest r_simpleshaders
+			showcvar { "0" }
+			name bumpy
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Blur Amount:"
+			cvar "r_dofscale"
+			cvarFloatList { "1" 1 "2" 2 "3" 3 "4" 4 "5" 5 }
+			rect 30 145 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			cvartest r_simpleshaders
+			showcvar { "0" }
+			name bumpy
+			group grpSystem
+			type ITEM_TYPE_SLIDER
+			text "Focus Speed:"
+			//cvar "r_dofscale"
+			//cvarFloatList { "0.05" 0.05 "0.1" 0.1 "0.15" 0.15 "0.2" 0.2 "0.25" 0.25 }
+			cvarfloat "r_dofblend" 0.2 0.05 0.25
+			rect 30 165 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 140
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		*/
+
+		//SOUND
+
+		itemDef {
+			name sound
+			group grpSystem
+			type ITEM_TYPE_SLIDER
+			text "Effects Volume:"
+			cvarfloat "s_volume" 0.8 0 2
+			rect 30 80 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 130
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+
+		itemDef {
+			name sound
+			group grpSystem
+			type ITEM_TYPE_SLIDER
+			text "Music Volume:"
+			cvarfloat "s_musicvolume" 0.25 0 1
+			rect 30 100 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 130
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name sound
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Quality:"
+			cvar "s_khz"
+			cvarfloatlist { "11 (Low)" 11 "22 (High)" 22 }
+			rect 30 120 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 130
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name sound
+			group grpSystem
+			type ITEM_TYPE_YESNO
+			text "Doppler Sound:"
+			cvar s_doppler
+			rect 30 140 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 130
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name sound
+			group grpSystem
+			type ITEM_TYPE_YESNO
+			text "dmaHD Enabled:"
+			cvar "dmaHD_enable"
+			rect 30 160 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 130
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name sound
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Interpolation Quality:"
+			cvar "dmaHD_interpolation"
+			cvarfloatlist { "Very Low" 0 "Low" 1 "Medium" 2 "High" 3 }
+			rect 30 180 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 130
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name sound
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Mixer Type:"
+			cvar "dmaHD_mixer"
+			cvarfloatlist { "Full 3D" 10 "Planar 3D" 11 }
+			rect 30 200 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 130
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name sound
+			rect 24 240 259 20
+			textscale 0.20
+			textalign 0
+			textalignx 11
+			textaligny 15
+			forecolor 1 0 0 1
+			autowrapped
+			text "Warning: Restart game for dmaHD settings to take effect"
+			visible 1
+			decoration
+		}
+
+		//NETWORK
+
+		itemDef {
+			name network
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Max Datarate (KB/s):"
+			cvar rate
+			cvarfloatlist { "8" 8000 "10" 10000 "12.5" 12500 "15" 15000 "17.5" 17500 "20" 20000 "25" 25000 "30" 30000 "32" 32000}
+			rect 30 80 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 165
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name network
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Maxpackets to server:"
+			cvar cl_maxpackets
+			cvarfloatlist { "30/s" 30 "34/s" 34 "38/s" 38 "42/s" 42 "46/s" 46 "50/s" 50 "54/s" 54 "58/s" 58 "62/s" 62 "66/s" 66 "70/s" 70
+			"74/s" 74 "78/s" 78 "82/s" 82 "86/s" 86 "90/s" 90 "94/s" 94 "98/s" 98 "105/s" 105 "110/s" 110 "115/s" 115 "120/s" 120 "125/s" 125 }
+			rect 30 100 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 165
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name network
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Duplicate Packets:"
+			cvar cl_packetdup
+			cvarfloatlist { "Disabled" 0 "Double" 1 "Triple" 2 }
+			rect 30 120 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 165
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name network
+			group grpSystem
+			type ITEM_TYPE_MULTI
+			text "Local Net Buffer (ms):"
+			cvar ut_timenudge
+			cvarfloatlist { "Disabled" 0 "Low" 10 "Medium" 20 "High" 30  }
+			rect 30 140 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 165
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		//END
+
+	}
+}

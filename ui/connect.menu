@@ -1,0 +1,15 @@
+#include "ui/menudef.h"
+{
+
+	//CONNECT MENU
+
+	menuDef {
+		name "connect"
+		background "ui/assets/backscreen.jpg"
+		rect 0 0 640 480
+		fullScreen 0
+		visible 0
+		style WINDOW_STYLE_SHADER
+		onopen { }
+	}
+}

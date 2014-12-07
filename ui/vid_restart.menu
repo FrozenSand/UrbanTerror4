@@ -1,0 +1,167 @@
+#include "ui/menudef.h"
+
+{
+	\\ VID_RESTART POPUP MENU \\
+
+	menuDef {
+		name "vid_restart_popmenu"
+		visible 0
+		fullscreen 0
+		//rect 217 200 210 85
+		rect 204 122 235 235
+		//outOfBoundsClick			// this closes the window if it gets a click out of the rectangle
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		popup
+		onESC { close vid_restart_popmenu ;
+		open setup_menu ;
+		open system_menu }
+
+
+
+		itemDef {
+			name window
+			rect 25 25 185 185
+			style 3
+			background "ui/assets/quit_popup.jpg"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name window
+			rect 35 35 165 126
+			style 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+
+		// VID_RESTART	//
+
+		itemDef {
+			name confirm
+			text "This will apply video"
+			style 0
+			textscale .25
+			textstyle 3
+			rect 0 70 110 20
+			textalign 1
+			textalignx 117
+			textaligny 15
+			decoration
+			forecolor 1 1 1 1
+			visible 1
+		}
+		itemDef {
+			name confirm
+			text "settings and return"
+			style 0
+			textscale .25
+			textstyle 3
+			rect 0 85 110 20
+			textalign 1
+			textalignx 117
+			textaligny 15
+			decoration
+			forecolor 1 1 1 1
+			visible 1
+		}
+		itemDef {
+			name confirm
+			text "to the main menu."
+			style 0
+			textscale .25
+			textstyle 3
+			rect 0 100 110 20
+			textalign 1
+			textalignx 117
+			textaligny 15
+			decoration
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+
+		itemDef {
+			name yes
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 35 172 77 26
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			close vid_restart_popmenu ; exec "vid_restart" }
+			mouseEnter { setitemcolor yes backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor yes backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name yes
+			text "Okay"
+			type 0
+			textscale .25
+			style WINDOW_STYLE_FILLED
+			rect 35 172 77 26
+			textalign 2
+			textalignx 73
+			textaligny 22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name no
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 123 172 77 26
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			close vid_restart_popmenu ; open setup_menu ; open system_menu }
+			mouseEnter { setitemcolor no backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor no backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name no
+			text "Cancel"
+			type 0
+			textscale .25
+			style WINDOW_STYLE_FILLED
+			rect 123 172 77 26
+			textalign 2
+			textalignx 73
+			textaligny 22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+	}
+
+
+}
+
+

@@ -1,0 +1,151 @@
+#include "ui/menudef.h"
+
+{
+	/* @Barbatos 08/01/2012 for 4.2
+	* Auth system - disconnect confirmation popup menu
+	*/
+
+	menuDef {
+		name "disconnect"
+		visible 0
+		fullscreen 0
+		rect 204 122 235 162
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		popup
+		onopen { setfocus no }
+		onESC { close disconnect ; open main }
+
+		itemdef {
+			name background
+			rect 0 0 235 162
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/password_bg.jpg"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name serverinfo
+			rect 0 0 235 25
+			style 1
+			text "Are you sure ?"
+			textalign 2
+			textstyle 0
+			textscale .333
+			textalignx 231
+			textaligny 21
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name window
+			rect 10 40 215 80
+			style 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+
+		itemDef {
+			name disconnectmsg
+			wrapped
+			text "Are you sure that \r"
+			"you want to log out ?\r"
+			style 0
+			decoration
+			textscale .28
+			rect 37 62 110 20
+			textalign 0
+			textalignx 0
+			textaligny 16
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+
+		itemDef {
+			name no
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 175 128 50 26
+			forecolor 1 1 1 1
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			close disconnect ; open main }
+			mouseEnter { setitemcolor no backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor no backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name no
+			text "No"
+			type 0
+			textscale .25
+			style WINDOW_STYLE_FILLED
+			rect 175 128 50 26
+			textalign 2
+			textalignx 46
+			textaligny 22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name yes
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 120 128 50 26
+			forecolor 1 1 1 1
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; uiScript deleteAuthKey ; close disconnect ; open main }
+			mouseEnter { setitemcolor yes backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor yes backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name yes
+			text "Yes"
+			type 0
+			textscale .25
+			style WINDOW_STYLE_FILLED
+			rect 120 128 50 26
+			textalign 2
+			textalignx 46
+			textaligny 22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+	}
+
+
+
+}

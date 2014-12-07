@@ -1,0 +1,286 @@
+#include "ui/menudef.h"
+
+{
+	menuDef
+	{
+		name "ingame_ut_keyboard_interface"
+		visible 0
+		fullscreen 0
+		outOfBoundsClick
+		rect 10 30 204 208
+		focusColor 1 1 1 1
+		style WINDOW_STYLE_FILLED
+		border 1
+		onEsc { ingame_ut_keyboard_interface }
+		onOpen { uiScript gearRead }
+
+		itemDef {
+			name window
+			rect 0 0 204 208
+			style 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemdef {
+			name background
+			rect 0 0 204 30
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg_tr"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 0 0 204 30
+			style 0
+			text "press a number key"
+			textalign 2
+			textstyle 0
+			textscale .33
+			textalignx 200
+			textaligny 26
+			visible 1
+			decoration
+		}
+
+		//	KEYBOARD OPTIONS		//
+
+
+		itemDef {
+			name number
+			rect 10 40 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor 1 1 1 1
+			visible 1
+			ownerdraw UI_KI_INDEX
+			ownerdrawParam KI_OPTION1
+			decoration
+		}
+
+		itemDef {
+			name text_option
+			hotkey "1"
+			type 1
+			rect 30 40 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor .7 .7 .7 1
+			visible 0
+			ownerdrawParam KI_OPTION1
+			action { uiScript "keyboardSelectOption" ; close ingame_ut_keyboard_interface; }
+		}
+
+		itemDef {
+			name text_option
+			rect 30 40 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor .7 .7 .7 1
+			visible 1
+			ownerdraw UI_KI_OPTION
+			ownerdrawParam KI_OPTION1
+			decoration
+		}
+
+		itemDef {
+			name number
+			rect 10 55 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor 1 1 1 1
+			visible 1
+			ownerdraw UI_KI_INDEX
+			ownerdrawParam KI_OPTION2
+			decoration
+		}
+
+		itemDef {
+			name text_option
+			hotkey "2"
+			type 1
+			rect 30 55 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor .7 .7 .7 1
+			visible 0
+			ownerdrawParam KI_OPTION2
+			action { uiScript "keyboardSelectOption" ; close ingame_ut_keyboard_interface; }
+		}
+
+		itemDef {
+			name text_option
+			rect 30 55 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor .7 .7 .7 1
+			visible 1
+			ownerdraw UI_KI_OPTION
+			ownerdrawParam KI_OPTION2
+			decoration
+		}
+
+		itemDef {
+			name number
+			rect 10 70 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor 1 1 1 1
+			visible 1
+			ownerdraw UI_KI_INDEX
+			ownerdrawParam KI_OPTION3
+			decoration
+		}
+
+		itemDef {
+			name text_option
+			hotkey "3"
+			type 1
+			rect 30 70 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor .7 .7 .7 1
+			visible 0
+			ownerdrawParam KI_OPTION3
+			action { uiScript "keyboardSelectOption" ; close ingame_ut_keyboard_interface; }
+		}
+
+		itemDef {
+			name text_option
+			rect 30 70 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor .7 .7 .7 1
+			visible 1
+			ownerdraw UI_KI_OPTION
+			ownerdrawParam KI_OPTION3
+			decoration
+		}
+
+		itemDef {
+			name number
+			rect 10 85 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor 1 1 1 1
+			visible 1
+			ownerdraw UI_KI_INDEX
+			ownerdrawParam KI_OPTION4
+			decoration
+		}
+
+		itemDef {
+			name text_option
+			hotkey "4"
+			type 1
+			rect 30 85 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor .7 .7 .7 1
+			visible 0
+			ownerdrawParam KI_OPTION4
+			action { uiScript "keyboardSelectOption" ; close ingame_ut_keyboard_interface; }
+		}
+
+		itemDef {
+			name text_option
+			rect 30 85 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor .7 .7 .7 1
+			visible 1
+			ownerdraw UI_KI_OPTION
+			ownerdrawParam KI_OPTION4
+			decoration
+		}
+
+		itemDef {
+			name number
+			rect 10 100 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor 1 1 1 1
+			visible 1
+			ownerdraw UI_KI_INDEX
+			ownerdrawParam KI_OPTION5
+			decoration
+		}
+
+		itemDef {
+			name text_option
+			hotkey "5"
+			type 1
+			rect 30 100 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor .7 .7 .7 1
+			visible 0
+			ownerdrawParam KI_OPTION5
+			action { uiScript "keyboardSelectOption" ; close ingame_ut_keyboard_interface; }
+		}
+
+		itemDef {
+			name text_option
+			rect 30 100 204 15
+			style 0
+			textstyle 0
+			textscale .25
+			textalignx 0
+			textaligny 15
+			forecolor .7 .7 .7 1
+			visible 1
+			ownerdraw UI_KI_OPTION
+			ownerdrawParam KI_OPTION5
+			decoration
+		}
+	}
+}

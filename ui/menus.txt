@@ -1,0 +1,28 @@
+// menu defs
+{	
+	loadMenu { "ui/main.menu" }
+	loadMenu { "ui/joinserver.menu" }
+	loadMenu { "ui/setup.menu" }
+	loadMenu { "ui/createserver.menu" }
+	loadMenu { "ui/controls.menu" }
+	loadMenu { "ui/system.menu" }
+	loadMenu { "ui/options.menu" }
+	loadMenu { "ui/connect.menu" }
+	loadMenu { "ui/password.menu" }
+	loadMenu { "ui/vid_restart.menu" }
+	loadMenu { "ui/default.menu" }
+	loadMenu { "ui/error.menu" }
+	loadMenu { "ui/serverinfo.menu" }
+	loadMenu { "ui/findplayer.menu" }
+	loadMenu { "ui/quitcredit.menu" }
+	loadMenu { "ui/createfavorite.menu" }
+	loadMenu { "ui/psetup.menu" }
+    loadMenu { "ui/psetup_readme.menu" }
+	loadMenu { "ui/demo.menu" }
+	loadMenu { "ui/specialcredit.menu" }
+	loadMenu { "ui/betacredit.menu" }
+	loadMenu { "ui/betacredit_back.menu" }
+	loadMenu { "ui/quitcredit_back.menu" }
+    loadMenu { "ui/authkey.menu" }
+    loadMenu { "ui/disconnect.menu" }
+}

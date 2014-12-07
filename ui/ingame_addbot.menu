@@ -1,0 +1,163 @@
+#include "ui/menudef.h"
+
+{
+	\\ ADDBOT MENU \\
+
+	menuDef {
+		name "ingame_addbot"
+		visible 0
+		fullscreen 0
+		outOfBoundsClick			// this closes the window if it gets a click out of the rectangle
+		rect 118 30 192 123
+		disableColor  .5 .5 .5 1
+		focusColor 1 1 1 1
+		style 1
+		border 1
+
+		itemdef {
+			name background
+			rect -1 15 172 113
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg_addbot.jpg"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 9 25 152 66
+			style 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name gametypefield
+			style 0
+			text "name:"
+			ownerdraw UI_BOTNAME
+			rect 0 25 128 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 66
+			textaligny 18
+			textscale .22
+			forecolor 1 1 1 1
+			border 0
+			bordercolor 0 0 0 0
+			visible 1
+		}
+
+		itemDef {
+			name gametypefield
+			style 0
+			text "team:"
+			ownerdraw UI_REDBLUE
+			rect 0 45 128 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 66
+			textaligny 18
+			textscale .22
+			cvarTest "g_gametype"
+			disableCvar { "0" ; "1" }
+			forecolor 1 1 1 1
+			border 0
+			bordercolor 0 0 0 0
+			visible 1
+		}
+
+		itemDef {
+			name gametypefield
+			style 0
+			text "skill:"
+			ownerdraw UI_BOTSKILL
+			rect 0 65 128 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 66
+			textaligny 18
+			textscale .22
+			forecolor 1 1 1 1
+			border 0
+			bordercolor 0 0 0 0
+			visible 1
+		}
+
+
+		itemDef {
+			name ok
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 111 100 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; uiScript addBot ; uiScript closeingame }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name ok
+			text "add bot"
+			type 0
+			textscale .22
+			style WINDOW_STYLE_FILLED
+			rect 111 100 50 20
+			textalign 2
+			textalignx 46
+			textaligny 16
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name ok
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 10 100 90 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; exec "kick allbots" ; uiScript closeingame }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name ok
+			text "remove all bots"
+			type 0
+			textscale .22
+			style WINDOW_STYLE_FILLED
+			rect 10 100 90 20
+			textalign 1
+			textalignx 45
+			textaligny 16
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+
+
+
+	}
+
+
+}

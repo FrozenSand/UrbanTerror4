@@ -1,0 +1,537 @@
+#include "ui/menudef.h"
+
+{
+	menuDef
+	{
+		name "ingame_ut_select_gear_secondary"
+		visible 0
+		fullscreen 0
+		rect -5 -5 650 490
+		focusColor 1 1 1 1
+		backcolor 0 0 0 0
+		style WINDOW_STYLE_FILLED
+		border 0
+		onEsc
+		{ close ingame_ut_select_gear_secondary ;
+		open ingame_ut_select_gear }
+
+		onOpen { }
+
+
+		itemdef {
+			name window
+			rect 73 79 494 321
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg2_tr.tga"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 73 79 494 25
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//  TABS		//
+
+		itemdef {
+			name teamtab
+			type 1
+			rect 74 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_tr.tga"
+			//	border 1
+			//	bordercolor .5 .5 .5 1
+			visible 1
+			action { uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
+			uiScript gearWrite ;
+			close ingame_ut_select_gear ;
+			close ingame_ut_select_gear_item ;
+			close ingame_ut_select_gear_grenade ;
+			close ingame_ut_select_gear_primary ;
+			close ingame_ut_select_gear_secondary ;
+			close ingame_ut_select_gear_sidearm ;
+			open ingame_ut_select_team }
+		}
+
+		itemdef {
+			name teamtab
+			rect 74 81 160 23
+			style 0
+			forecolor .5 .5 .5 1
+			text "team setup"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 1
+			decoration
+		}
+
+
+		itemdef {
+			name geartab
+			rect 224 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_on_tr.tga"
+			//	border 1
+			//	bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemdef {
+			name geartab
+			rect 224 81 160 23
+			style 0
+			forecolor 1 1 1 1
+			text "weapons / items"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 1
+			decoration
+		}
+
+		//	MAIN WINDOW	//
+
+		itemDef {
+			name window
+			rect 73 299 494 101
+			//	text "larger weap pics / info here"
+			//     	textscale .25
+			//     	textalignx 10
+			//	textaligny 21
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//  TOP ROW		//
+
+		itemDef {
+			name window
+			type 1
+			hotkey "1"
+			rect 83 114 111 40
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			ownerdrawParam ITEM_SPAS12
+			action
+			{ uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_gear_secondary;
+			open ingame_ut_select_gear }
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+			onFocus	{show spas12_info }
+			leaveFocus { hide spas12_info }
+		}
+
+		itemDef	{
+			name primary_image
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawParam ITEM_SPAS12
+			rect 103 115 80 40
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			type 1
+			hotkey "2"
+			rect 204 114 111 40
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			ownerdrawParam ITEM_MP5K
+			action
+			{ uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_gear_secondary;
+			open ingame_ut_select_gear }
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+			onFocus	{show mp5k_info }
+			leaveFocus { hide mp5k_info }
+		}
+
+		itemDef	{
+			name primary_image
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawParam ITEM_MP5K
+			rect 224 115 80 40
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			type 1
+			hotkey "3"
+			rect 325 114 111 40
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			ownerdrawParam ITEM_UMP45
+			action
+			{ uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_gear_secondary;
+			open ingame_ut_select_gear }
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+			onFocus	{show ump45_info }
+			leaveFocus { hide ump45_info }
+		}
+
+		itemDef	{
+			name primary_image
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawParam ITEM_UMP45
+			rect 345 115 80 40
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name window
+			type 1
+			hotkey "4"
+			rect 446 114 111 40
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			ownerdrawParam ITEM_MAC11
+			action { uiScript "gearSetItem" ; close ingame_ut_select_gear_secondary ; play "sound/misc/kcaction.wav" ; open ingame_ut_select_gear }
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+			onFocus { show mac11_info }
+			leaveFocus { hide mac11_info }
+		}
+
+		itemDef {
+			name primary_image
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawParam ITEM_MAC11
+			rect 466 115 80 40
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name window
+			type 1
+			hotkey "0"
+			rect 83 174 111 40
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			ownerdrawParam ITEM_NONE
+			action
+			{ uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_gear_secondary;
+			open ingame_ut_select_gear }
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+			onFocus	{show none_info }
+			leaveFocus { hide none_info }
+		}
+
+		itemDef	{
+			name primary_image
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawParam ITEM_NONE
+			rect 103 175 111 40
+			visible 1
+			decoration
+		}
+
+
+
+		//  TEXT 	//
+
+
+		itemDef {
+			name window
+			rect 83 154 111 15
+			style 0
+			forecolor 1 1 1 1
+			text "Franchi Spas-12"
+			textscale .22
+			textalign 2
+			textalignx 112
+			textaligny 13
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 204 154 111 15
+			style 0
+			forecolor 1 1 1 1
+			text "H&K Mp5k"
+			textscale .22
+			textalign 2
+			textalignx 112
+			textaligny 13
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 325 154 111 15
+			style 0
+			forecolor 1 1 1 1
+			text "H&K Ump45"
+			textscale .22
+			textalign 2
+			textalignx 112
+			textaligny 13
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 446 154 111 15
+			style 0
+			forecolor 1 1 1 1
+			text "Ingram MAC-11"
+			textscale .22
+			textalign 2
+			textalignx 112
+			textaligny 13
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 83 214 111 15
+			style 0
+			forecolor 1 1 1 1
+			text "None"
+			textscale .22
+			textalign 2
+			textalignx 112
+			textaligny 13
+			visible 1
+			decoration
+		}
+
+		//  NUMBERS		//
+
+		itemDef {
+			name window
+			rect 83 114 111 40
+			style 0
+			text "1."
+			textalign 0
+			textstyle 0
+			textscale .22
+			textalignx 5
+			textaligny 38
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 204 114 111 40
+			style 0
+			text "2."
+			textalign 0
+			textstyle 0
+			textscale .22
+			textalignx 5
+			textaligny 38
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 325 114 111 40
+			style 0
+			text "3."
+			textalign 0
+			textstyle 0
+			textscale .22
+			textalignx 5
+			textaligny 38
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 446 114 91 40
+			style 0
+			text "4."
+			textalign 0
+			textstyle 0
+			textscale .22
+			textalignx 5
+			textaligny 38
+			visible 1
+			decoration
+		}
+
+		//  INFO STUFF			//
+
+
+
+		itemDef	{
+			name spas12_info
+			rect 76 305 200 80
+			textscale .25
+			textalignx 10
+			textaligny 15
+			forecolor .8 .8 .8 1
+			wrapped
+			text "Name:  Franchi SPAS-12\r"
+			"Description:  Shotgun\r"
+			"Operation Mode:  Semi-Automatic\r"
+			"Capacity:  8 round chamber\r"
+			"Ammunition:  12 Gauge Shotshells\r"
+			visible 0
+			decoration
+		}
+
+		itemDef	{
+			name spas12_info
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawParam ITEM_SPAS12
+			rect 300 284 256 128
+			visible 0
+			decoration
+		}
+
+
+		itemDef	{
+			name mp5k_info
+			rect 76 305 200 80
+			textscale .25
+			textalignx 10
+			textaligny 15
+			forecolor .8 .8 .8 1
+			wrapped
+			text "Name:  H&K MP5k\r"
+			"Description:  Submachine Gun\r"
+			"Operation Mode:  Burst - Auto\r"
+			"Capacity:  30 round mag\r"
+			"Ammunition:  9mm Luger\r"
+			visible 0
+			decoration
+		}
+
+		itemDef	{
+			name mp5k_info
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawParam ITEM_MP5K
+			rect 300 284 256 128
+			visible 0
+			decoration
+		}
+
+		itemDef	{
+			name ump45_info
+			rect 76 305 200 80
+			textscale .25
+			textalignx 10
+			textaligny 15
+			forecolor .8 .8 .8 1
+			wrapped
+			text "Name:  H&K UMP45\r"
+			"Description:  Submachine Gun\r"
+			"Operation Mode:  Spam - Auto\r"
+			"Capacity:  30 round mag\r"
+			"Ammunition:  .45 Auto\r"
+			visible 0
+			decoration
+		}
+
+		itemDef	{
+			name ump45_info
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawParam ITEM_UMP45
+			rect 300 284 256 128
+			visible 0
+			decoration
+		}
+
+
+		itemDef {
+			name mac11_info
+			rect 76 305 200 80
+			textscale .25
+			textalignx 10
+			textaligny 15
+			forecolor .8 .8 .8 1
+			wrapped
+			text "Name:  Ingram MAC-11\r"
+			"Description:  Submachine Gun\r"
+			"Operation Mode: Auto\r"
+			"Capacity:  30 round mag\r"
+			"Ammunition:  .380 ACP round\r"
+			visible 0
+			decoration
+		}
+
+		itemDef {
+			name mac11_info
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawParam ITEM_MAC11
+			rect 310 304 200 100
+			visible 0
+			decoration
+		}
+
+		itemDef	{
+			name none_info
+			rect 76 305 200 80
+			textscale .25
+			textalignx 10
+			textaligny 15
+			forecolor .8 .8 .8 1
+			wrapped
+			text "Name:  No secondary weapon\r"
+			"Description:  Allows you to select an extra item\r"
+			visible 0
+			decoration
+		}
+
+	}
+
+}

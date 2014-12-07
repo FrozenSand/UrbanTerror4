@@ -1,0 +1,390 @@
+#include "ui/menudef.h"
+{
+
+	/*	INGAME_SELECT_TEAM
+	Revised by woekele, for 4.0. Slight adjustments, nothing big.
+	*/
+
+	assetGlobalDef {
+		font "fonts/fontImage_40" 40
+		smallFont "fonts/fontImage_30" 30
+		bigFont "fonts/fontImage_50" 50
+
+		cursor "ui/assets/3_cursor3"			// cursor
+		itemFocusSound "sound/misc/menu2.wav"		// sound for item getting focus (via keyboard or mouse )
+
+		fadeClamp 1.0					// sets the fadeup alpha
+		fadeCycle 1					// how often fade happens in milliseconds
+		fadeAmount 0.1					// amount to adjust alpha per cycle
+
+		shadowColor 0.1 0.1 0.1 0.25			// shadow color
+	}
+
+
+
+	\\ INGAME MENU \\
+
+	menuDef {
+		name "ingame"
+		visible 0
+		fullScreen 0
+		//outOfBoundsClick			// this closes the window if it gets a click out of the rectangle
+		rect 0 0 640 480
+		focusColor 1 1 1 1
+		disableColor .5 .5 .5 1
+
+		itemdef {
+			name background
+			rect -2 -2 644 42
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg_tr.tga"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name ut_logo_graphic
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/utlogo.tga"
+			rect 519 4 118 30
+			visible 1
+			decoration
+		}
+
+
+		//  BUTTONS	//
+
+
+		itemdef {
+			name about
+			rect 16 12 50 20
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_about }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+
+		itemDef {
+			name player
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 72 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_player }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+		itemDef {
+			name stats
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 128 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_stats }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+
+		itemDef {
+			name controls
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 184 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_controls }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+		itemDef {
+			name options
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 240 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_options }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+		itemDef {
+			name system
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 296 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_system }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+		itemDef {
+			name callvote
+			type 1
+			style WINDOW_STYLE_FILLED
+			cvarTest "ui_singleplayeractive"
+			disableCvar { "1" }
+			rect 352 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_callvote }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+		itemDef {
+			name rcon
+			type 1
+			style WINDOW_STYLE_FILLED
+			cvarTest "ui_singleplayeractive"
+			disableCvar { "1" }
+			rect 408 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_rcon }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+		itemDef {
+			name leave
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 464 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_leave }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+		//  TEXT	//
+
+
+		itemdef {
+			name about
+			text "about"
+			rect 16 12 50 20
+			type 0
+			style WINDOW_STYLE_FILLED
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+
+		itemDef {
+			name player
+			text "player"
+			style WINDOW_STYLE_FILLED
+			rect 72 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+
+		itemDef {
+			name stats
+			text "stats"
+			style WINDOW_STYLE_FILLED
+			rect 128 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name controls
+			text "controls"
+			style WINDOW_STYLE_FILLED
+			rect 184 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name options
+			text "options"
+			style WINDOW_STYLE_FILLED
+			rect 240 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name system
+			text "system"
+			style WINDOW_STYLE_FILLED
+			rect 296 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name callvote
+			text "votes"
+			style WINDOW_STYLE_FILLED
+			cvarTest "ui_singleplayeractive"
+			disableCvar { "1" }
+			rect 352 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name vote
+			text "rcon"
+			style WINDOW_STYLE_FILLED
+			cvarTest "ui_singleplayeractive"
+			disableCvar { "1" }
+			rect 408 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name leave
+			text "exit"
+			style WINDOW_STYLE_FILLED
+			rect 464 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+	}
+
+}

@@ -1,0 +1,759 @@
+#include "ui/menudef.h"
+
+// Team Score Menu
+// Last Revised: Fenix 4.2.011
+{
+	menuDef
+	{
+		name            "teamscore_menu"
+		visible         0
+		fullscreen      0
+		rect            0 0 640 480
+		focusColor      1 1 1 1
+		style           0
+		border          1
+
+		//////////////////
+		// GAMETYPE BAR //
+		//////////////////
+
+		itemDef {
+			name            background
+			rect            110 10 420 458
+			style           WINDOW_STYLE_FILLED
+			border          1
+			bordercolor     .5 .5 .5 1
+			forecolor       1 1 1 1
+			backcolor       0 0 0 .8
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            topbar
+			style           WINDOW_STYLE_SHADER
+			background      "ui/assets/ingame_bg_tr.tga"
+			rect            110 10 420 30
+			border          1
+			bordercolor     .5 .5 .5 1
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            bottombar
+			style           WINDOW_STYLE_SHADER
+			background      "ui/assets/ingame_bg3.jpg"
+			rect            110 438 420 30
+			border          1
+			bordercolor     .5 .5 .5 1
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            ut_logo_graphic
+			style           WINDOW_STYLE_SHADER
+			background      "ui/assets/utlogo.tga"
+			rect            416 12 112 28
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            score
+			text            " "
+			ownerdraw       CG_GAME_STATUS
+			textscale       .3
+			style           0
+			rect            110 7 420 30
+			textalign       0
+			textalignx      0
+			textaligny      15
+			backcolor       0 0 0 0
+			forecolor       1 1 1 1
+			visible         1
+			decoration
+		}
+
+
+		itemDef {
+			name            gametype
+			ownerdraw       CG_GAME_TYPE
+			textscale       .3
+			style           0
+			rect            120 433 200 30
+			textalign       0
+			textalignx      8
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 1
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            score2
+			text            " "
+			ownerdraw       CG_GAME_STATUS_OLD
+			textscale       .3
+			style           0
+			rect            240 433 400 30
+			textalign       0
+			textalignx      0
+			textaligny      15
+			backcolor       0 0 0 0
+			forecolor       1 1 1 1
+			visible         1
+			decoration
+		}
+
+		itemDef  {
+			name            timeleft
+			ownerdraw       CG_GAME_TIME
+			textscale       .3
+			style           0
+			rect            315 433 210 30
+			textalign       2
+			textalignx      200
+			textaligny      24
+			backcolor       0 0 0 0
+			forecolor       1 1 1 1
+			visible         1
+			decoration
+		}
+
+		///////////////////
+		// RED TEAM BAR  //
+		///////////////////
+
+		itemDef  {
+			name            red_team_bar
+			rect            120 50 400 20
+			ownerdraw       CG_TEAM_BAR_RED
+			//style         WINDOW_STYLE_FILLED
+			//backcolor     .51 .13 .13 1
+			//border        1
+			//bordercolor   .5 .5 .5 1
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            red_team_line
+			rect            120 85 400 1
+			style           WINDOW_STYLE_FILLED
+			backcolor       0 0 0 0
+			border          1
+			bordercolor     .5 .5 .5 1
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            red_team_name
+			//text          "red team"
+			ownerdraw       CG_TEAM_NAME_RED
+			textscale       .25
+			style           0
+			rect            120 47 400 20
+			textalign       0
+			textalignx      10
+			textaligny      18
+			backcolor       0 0 0 0
+			forecolor       1 1 1 1
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            red_team_players
+			ownerdraw       CG_RED_PLAYER_COUNT
+			textscale       .20
+			style           0
+			rect            -55 47 200 20
+			textalign       0
+			//  textalignx      10
+			//  textaligny      16
+			backcolor       0 0 0 0
+			forecolor       1 1 1 1
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            red_team_score
+			textscale       .32
+			ownerdraw       CG_SCOREBOARD_TEAM_SCORE
+			ownerdrawParam  UI_TEAM_RED
+			style           0
+			rect            480 46 30 20
+			textalign       2
+			textalignx      0
+			textaligny      18
+			backcolor       0 0 0 0
+			forecolor       1 1 1 1
+			visible         1
+			decoration
+		}
+
+		///////////////////////
+		// RED TEAM HEADINGS //
+		///////////////////////
+
+		itemDef {
+			name            teamheadings
+			text            "status"
+			textscale       .2
+			style           0
+			rect            120 70 45 15
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            teamheadings
+			text            "name"
+			textscale       .2
+			style           0
+			rect            155 70 45 15
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            teamheadings
+			cvarTest        "g_gametype"
+			hideCvar        { "7" ; "10" } // CTF
+			text            "kills"
+			textscale       .2
+			style           0
+			rect            400 70 45 15
+			textalign       0
+			textalignx      10
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            teamheadings
+			cvarTest        "g_gametype"
+			showCvar        { "7" ; "10" } // CTF
+			text            "points"
+			textscale       .2
+			style           0
+			rect            390 70 45 15
+			textalign       0
+			textalignx      10
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		//@Fenix
+		itemDef {
+			name            headings
+			text            "auth login"
+			textscale       .2
+			style           0
+			rect            335 70 45 15
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            teamheadings
+			text            "deaths"
+			textscale       .2
+			style           0
+			rect            426 70 55 15
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            teamheadings
+			text            "time"
+			textscale       .2
+			style           0
+			rect            464 70 45 15
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            teamheadings
+			text            "ping"
+			textscale       .2
+			style           0
+			rect            492 70 37 15
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            red_team_name_list
+			rect            165 90 355 10
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_NAME_LIST
+			ownerdrawParam  UI_TEAM_RED
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            red_team_status_list
+			rect            130 90 400 10
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_STATUS_LIST
+			ownerdrawParam  UI_TEAM_RED
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            red_team_ping_list
+			rect            522 90 400 10
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_PING_LIST
+			ownerdrawParam  UI_TEAM_RED
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            red_team_account_list
+			rect            389 90 400 10
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_ACCOUNTS_LIST
+			ownerdrawParam  UI_TEAM_RED
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            red_team_time_list
+			rect            494 90 400 10
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_TIME_LIST
+			ownerdrawParam  UI_TEAM_RED
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            red_team_kills_list
+			rect            428 90 400 10
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_KILL_LIST
+			ownerdrawParam  UI_TEAM_RED
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            red_team_deaths_list
+			rect            466 90 400 10
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_DEATH_LIST
+			ownerdrawParam  UI_TEAM_RED
+			visible         1
+			decoration
+		}
+
+		///////////////////
+		// BLUE TEAM BAR //
+		///////////////////
+
+		itemDef {
+			name            blue_team_bar
+			rect            120 95 400 20
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			ownerdraw       CG_TEAM_BAR_BLUE
+			//style         WINDOW_STYLE_FILLED
+			//backcolor     .13 .11 .52 1
+			//border        1
+			//bordercolor   .5 .5 .5 1
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            blue_team_line
+			rect            120 130 400 1
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			style           WINDOW_STYLE_FILLED
+			backcolor       0 0 0 0
+			border          1
+			bordercolor     .5 .5 .5 1
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            blue_team_name
+			//text          "blue team"
+			ownerdraw       CG_TEAM_NAME_BLUE
+			textscale       .25
+			style           0
+			rect            120 92 400 20
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textalign       0
+			textalignx      10
+			textaligny      18
+			backcolor       0 0 0 0
+			forecolor       1 1 1 1
+			visible         1
+			decoration
+		}
+
+		itemDef  {
+			name            blue_team_players
+			ownerdraw       CG_BLUE_PLAYER_COUNT
+			textscale       .20
+			style           0
+			rect            -55 91 200 20
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textalign       0
+			//  textalignx      10
+			//  textaligny      16
+			backcolor       0 0 0 0
+			forecolor       1 1 1 1
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            blue_team_score
+			ownerdraw       CG_SCOREBOARD_TEAM_SCORE
+			ownerdrawParam  UI_TEAM_BLUE
+			textscale       .32
+			style           0
+			rect            480 91 30 20
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textalign       2
+			textalignx      0
+			textaligny      18
+			backcolor       0 0 0 0
+			forecolor       1 1 1 1
+			visible         1
+			decoration
+		}
+
+		////////////////////////
+		// BLUE TEAM HEADINGS //
+		////////////////////////
+
+		itemDef {
+			name            teamheadings
+			text            "status"
+			textscale       .2
+			style           0
+			rect            120 115 45 15
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            teamheadings
+			text            "name"
+			textscale       .2
+			style           0
+			rect            155 115 45 15
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            teamheadings
+			cvarTest        "g_gametype"
+			hideCvar        { "7" ; "10" }
+			text            "kills"
+			textscale       .2
+			style           0
+			rect            400 115 45 15
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textalign       0
+			textalignx      10
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            teamheadings
+			cvarTest        "g_gametype"
+			showCvar        { "7" ; "10" }
+			text            "points"
+			textscale       .2
+			style           0
+			rect            390 115 45 15
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textalign       0
+			textalignx      10
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+
+		//@Fenix
+		itemDef {
+			name            headings
+			text            "auth login"
+			textscale       .2
+			style           0
+			rect            335 115 90 15
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            teamheadings
+			text            "deaths"
+			textscale       .2
+			style           0
+			rect            426 115 55 15
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            teamheadings
+			text            "time"
+			textscale       .2
+			style           0
+			rect            464 115 45 15
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            teamheadings
+			text            "ping"
+			textscale       .2
+			style           0
+			rect            492 115 37 15
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            blue_team_name_list
+			rect            165 135 355 10
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_NAME_LIST
+			ownerdrawParam  UI_TEAM_BLUE
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            blue_team_status_list
+			rect            130 135 400 10
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_STATUS_LIST
+			ownerdrawParam  UI_TEAM_BLUE
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            blue_team_ping_list
+			rect            522 135 400 10
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_PING_LIST
+			ownerdrawParam  UI_TEAM_BLUE
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            blue_team_account_list
+			rect            389 135 400 10
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_ACCOUNTS_LIST
+			ownerdrawParam  UI_TEAM_BLUE
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            blue_team_time_list
+			rect            494 135 400 10
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_TIME_LIST
+			ownerdrawParam  UI_TEAM_BLUE
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            blue_team_kills_list
+			rect            428 135 400 10
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_KILL_LIST
+			ownerdrawParam  UI_TEAM_BLUE
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            blue_team_deaths_list
+			rect            466 135 400 10
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_DEATH_LIST
+			ownerdrawParam  UI_TEAM_BLUE
+			visible         1
+			decoration
+		}
+
+		///////////////////
+		// SPECTATOR BAR //
+		///////////////////
+
+		itemDef {
+			name            spectator_team_bar
+			rect            120 140 400 20
+			rectoffset      RECT_OFFSET_TEAM_SPEC
+			style           WINDOW_STYLE_FILLED
+			backcolor       .2 .2 .2 1
+			border          1
+			bordercolor     .5 .5 .5 1
+			ownerdrawflag   CG_SHOW_SPECTATORS
+			decoration
+		}
+
+		itemDef {
+			name            spectator_team_players
+			rectoffset      RECT_OFFSET_TEAM_SPEC
+			ownerdrawflag   CG_SHOW_SPECTATORS
+			ownerdraw       CG_SPECTATOR_PLAYER_COUNT
+			textscale       .20
+			style           0
+			rect            -55 137 200 20
+			textalign       0
+			backcolor       0 0 0 0
+			forecolor       1 1 1 1
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            spec_team_name_list
+			rect            175 164 400 10
+			rectoffset      RECT_OFFSET_TEAM_SPEC
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_NAME_LIST
+			ownerdrawParam  UI_TEAM_SPEC
+			ownerdrawflag   CG_SHOW_SPECTATORS
+			decoration
+		}
+	}
+}

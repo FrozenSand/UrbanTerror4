@@ -1,0 +1,152 @@
+#include "ui/menudef.h"
+{
+
+	/* INGAME ABOUT MENU
+	Revised by woekele, for 4.0. Contained a lot of stuff that wasn't showing correct info, removed it.
+	*/
+
+	menuDef {
+		name "ingame_about"
+		visible 0
+		fullscreen 0
+		//outOfBoundsClick
+		rect -15 50 256 295
+		focusColor 1 1 1 1
+		style 1
+		border 1
+
+		itemdef {
+			name background
+			rect 15 15 265 200
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg_options_tr.tga"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 25 25 245 180
+			style 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name okay_button
+			type 1
+			rect 112 170 71 25
+			visible 1
+			border 1
+			bordercolor .5 .5 .5 1
+			style 1
+			backcolor 0 0 0 .7
+			mouseEnter { setitemcolor okay_button backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor okay_button backcolor 0 0 0 .7 }
+			action { play "sound/misc/kcaction.wav" ; close ingame_about }
+			text "Close"
+			textscale .25
+			textalign 1
+			textalignx 35
+			textaligny 17
+			forecolor 1 1 1 1
+		}
+
+		itemDef {
+			name about
+			rect 0 35 256 20
+			name gametypefield
+			type 4
+			style 0
+			text "Server:"
+			cvar "cstate_servername"
+			maxPaintChars 21
+			textalign 0
+			textalignx 40
+			textaligny 12
+			textscale .23
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name about
+			rect 0 50 256 20
+			name gametypefield
+			type 4
+			style 0
+			text "Map Name:"
+			cvar mapname
+			maxPaintChars 12
+			textalign 0
+			textalignx 40
+			textaligny 12
+			textscale .23
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+
+
+		itemDef {
+			name about
+			rect 0 65 256 20
+			style 0
+			//type 4
+			textalign 0
+			text "Gametype:"
+			type ITEM_TYPE_MULTI
+			cvar "G_GAMETYPE"
+			cvarFloatList { "Free For All" 0 "Last Man Standing " 1 "Team Deathmatch" 3 "Team Survivor" 4 "Follow the Leader" 5 "Capture and Hold" 6 "Capture the Flag" 7 "Bomb Mode" 8 "Jump" 9 "Freeze Tag" 10}
+			textalignx 40
+			textaligny 12
+			textscale .23
+			backcolor 0 0 .75 .25
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name about
+			rect 0 95 256 20
+			type 4
+			style 0
+			text "Protocol:"
+			cvar protocol
+			maxPaintChars 12
+			textalign 0
+			textalignx 40
+			textaligny 12
+			textscale .23
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name about
+			rect 0 110 256 20
+			type 4
+			style 0
+			text "Version:"
+			cvar version
+			maxPaintChars 32
+			textalign 0
+			textalignx 40
+			textaligny 12
+			textscale .23
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+	}
+}

@@ -1,0 +1,222 @@
+#include "ui/menudef.h"
+
+{
+	/* @Barbatos 07/28/2012 for 4.2
+	* Auth system - page to enter the auth key
+	*/
+
+	menuDef {
+		name "authkey"
+		visible 1
+		fullscreen 1
+		background "ui/assets/ut_menuback.jpg"
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		onEsc { close authkey; open main }
+		onOpen {  }
+
+		// BLACK TOP BAR    //
+		itemDef {
+			name window
+			rect -5 -6 650 76
+			style 1
+			border 0
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+		// BLACK BOTTOM BAR    //
+		itemDef {
+			name window
+			rect -5 410 650 76
+			style 1
+			border 0
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+
+		itemDef {
+			name ut_logo_graphic
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/utlogo.tga"
+			rect 6 6 256 64
+			visible 1
+			//     	forecolor .25 .25 .25 1
+			decoration
+		}
+
+		// UI ANIMATIONS	//
+
+		itemDef {
+			name ui_lines1
+			style WINDOW_STYLE_SHADER
+			rect 0 90 640 64
+			visible 1
+			background "ui_lines1"
+			decoration
+		}
+
+		itemDef {
+			name ui_lines2
+			style WINDOW_STYLE_SHADER
+			rect 0 262 640 128
+			visible 1
+			background "ui_lines2"
+			decoration
+		}
+
+		itemdef {
+			name Circle01
+			visible 1
+			type 7
+			rect -170 -300 700 700
+			asset_model "models/misc/Circle01.md3"
+			model_skin "models/misc/square_circle.skin"
+			model_fovx 90
+			model_fovy 90
+			model_angle -35 215 0
+			model_rotation 0 0 -500
+			decoration
+		}
+
+
+		itemDef {
+			name copyright
+			text "Urban Terror (tm) (c) 2000-2014 Frozen Sand/0870760 B.C. Ltd,"
+			style 0
+			textscale .2
+			rect 0 400 640 40
+			//     	textalign 1
+			textaligny 31
+			textalignx 9
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name copyright
+			text "Quake 3 Arena (c) 2000-2014 id Software, inc. all rights reserved"
+			style 0
+			textscale .2
+			rect 0 415 640 40
+			//     	textalign 1
+			textaligny 31
+			textalignx 9
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name version
+			text "Urban Terror"
+			style 0
+			textscale .2
+			rect 0 400 640 40
+			//textalign 1
+			textaligny 32
+			textalignx 539
+			visible 1
+			decoration
+		}
+
+		//@Barbatos - 4.2.008 - added current modversion
+		itemDef {
+			name version2
+			rect 0 400 640 40
+			type ITEM_TYPE_TEXT
+			cvar "ui_modversion"
+			textalign 1
+			textaligny 32
+			textalignx 600
+			textscale .2
+			style 0
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name namewindow4
+			rect 30 136 580 25
+			style 1
+			border 0
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 0
+			text "Please set your Authentication Key:"
+			textscale .4
+			textalign 1
+			textalignx 290
+			textaligny 25
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name playername1
+			rect 55 170 530 50
+			style 1
+			type 4
+			maxchars 32
+			text ""
+			cvar "cl_auth_key"
+			textscale .4
+			textalign 1
+			textalignx 265
+			textaligny 32
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordersize 1
+			bordercolor 1 1 1 1
+		}
+
+		itemDef {
+			name playername3
+			rect 270 235 100 25
+			style 1
+			type 1
+			visible 1
+			text "Apply"
+			textscale .25
+			textalign 1
+			textalignx 50
+			textaligny 17
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordersize 1
+			bordercolor .5 .5 .5 1
+			action { play "sound/misc/kcaction.wav"; uiScript updateAuthKey ; close authkey ; open main }
+			mouseEnter { setitemcolor playername3 backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor playername3 backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name namewindow44
+			rect 425 310 580 25
+			style 1
+			border 0
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 0
+			wrapped
+			text
+			"Registering an account is easy !\r"
+			"Go to the website www.urbanterror.info to create it, it's free.\r"
+			textscale .3
+			textalign 1
+			textalignx -35
+			textaligny 25
+			visible 1
+			decoration
+		}
+
+
+	}

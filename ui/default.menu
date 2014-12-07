@@ -1,0 +1,187 @@
+#include "ui/menudef.h"
+{
+
+	/*	DEFAULT MENU
+	Revised by woekele for 4.0. Now loads default.cfg, instead of going back to ugly Q3 defaults.
+	*/
+
+	\\ DEFAULT MENU \\
+
+	menuDef {
+		name "default_menu"
+		visible 0
+		fullscreen 0
+		rect 0 70 490 340
+		//	rect 186 0 443 426
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		onOpen { setitemcolor fadebox backcolor 0 0 0 1 ;
+		//		fadeout fadebox ;
+		show grpdefault ;
+		hide grpfinish }
+		onEsc { close default_menu ; close setup_menu ; open main }
+
+
+
+
+		itemDef {
+			name window
+			group grpControlbutton
+			rect 10 10 436 313
+			style WINDOW_STYLE_FILLED
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			visible 1
+			decoration
+			mouseEnter { show defaultangle_on ; hide defaultangle }
+			mouseExit { show defaultangle ; hide defaultangle_on }
+		}
+
+		itemDef {
+			name areaname
+			group grpControlbutton
+			text "set defaults"
+			textscale .6
+			textalignx 10
+			textaligny 30
+			rect 10 288 150 50
+			style 1
+			//	border 1
+			//	bordercolor .5 .5 .5 1
+			forecolor 1 1 1 .15
+			//	backcolor 0 0 0 .65
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			group grpControlbutton
+			name defaultangle
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle.tga"
+			rect 430 12 16 16
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			group grpControlbutton
+			name defaultangle_on
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle_on.tga"
+			rect 430 12 16 16
+			visible 0
+			decoration
+		}
+
+
+		itemDef {
+			name default
+			group grpdefault
+			style 0
+			text "This will set your controls,"
+			rect 0 80 443 20
+			textalign ITEM_ALIGN_CENTER
+			textalignx 221
+			textaligny 20
+			textscale .3
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+		itemDef {
+			name default
+			group grpdefault
+			style 0
+			text "graphics and game options"
+			rect 0 100 443 20
+			textalign ITEM_ALIGN_CENTER
+			textalignx 221
+			textaligny 20
+			textscale .3
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+		itemDef {
+			name default
+			group grpdefault
+			style 0
+			text "to their original defaults."
+			rect 0 120 443 20
+			textalign ITEM_ALIGN_CENTER
+			textalignx 221
+			textaligny 20
+			textscale .3
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+		itemDef {
+			name default
+			group grpdefault
+			style 0
+			text "Are you sure? All settings will be lost."
+			rect 0 160 443 20
+			textalign ITEM_ALIGN_CENTER
+			textalignx 221
+			textaligny 20
+			textscale .3
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+
+
+
+		itemDef {
+			name yes
+			text "Reset"
+			group grpdefault
+			type 1
+			textscale .3
+			style WINDOW_STYLE_FILLED
+			rect 135 190 70 26
+			textalign 1
+			textalignx 35
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 .5
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			exec "exec default.cfg";
+			exec "vid_restart" }
+			mouseEnter { setitemcolor yes backcolor 0 0 .55 1}
+			mouseExit { setitemcolor yes backcolor 0 0 .55 .5 }
+		}
+
+		itemDef {
+			name no
+			text "Cancel"
+			group grpdefault
+			type 1
+			textscale .3
+			style WINDOW_STYLE_FILLED
+			rect 235 190 70 26
+			textalign 1
+			textalignx 35
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 .5
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			close default_menu ; open control_menu }
+			mouseEnter { setitemcolor no backcolor 0 0 .55 1}
+			mouseExit { setitemcolor no backcolor 0 0 .55 .5 }
+		}
+
+	}
+}

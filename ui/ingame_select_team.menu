@@ -1,0 +1,710 @@
+#include "ui/menudef.h"
+{
+
+	/*	INGAME_SELECT_TEAM
+	Revised by woekele, for 4.0. Little changes
+	*/
+
+	menuDef
+	{
+		name "ingame_ut_select_team"
+		visible 0
+		fullscreen 0
+		rect -5 -5 650 490
+		backcolor 0 0 0 0
+		focusColor 1 1 1 1
+		style 0 //1
+		border 0
+		bordersize 1
+		bordercolor 1 1 1 1
+		onEsc
+		{ close ingame_ut_select_team }
+
+		onOpen { }
+
+		itemdef {
+			name window
+			rect 73 79 494 321
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg2_tr.tga"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 73 79 494 25
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//  TABS		//
+
+		itemdef {
+			name geartab
+			type 1
+			rect 224 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_tr.tga"
+			//	border 1
+			//	bordercolor .5 .5 .5 1
+			visible 1
+			action { close ingame_ut_select_team ; play "sound/misc/kcaction.wav" ;
+			open ingame_ut_select_gear }
+		}
+
+		itemdef {
+			name geartab
+			rect 224 81 160 23
+			style 0
+			forecolor .5 .5 .5 1
+			text "weapons / items"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 1
+			decoration
+		}
+
+		itemdef {
+			name teamtab
+			rect 74 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_on_tr.tga"
+			//	border 1
+			//	bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemdef {
+			name teamtab
+			rect 74 81 160 23
+			style 0
+			forecolor 1 1 1 1
+			text "team setup"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 1
+			decoration
+		}
+
+		//  MAIN WINDOW		//
+
+		itemDef {
+			name window
+			rect 83 114 343 276
+			//	text "buncha stuff here, info on gametype, objectives etc."
+			//     	textscale .25
+			//     	textalignx 10
+			//	textaligny 70
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name type
+			text "Free For All"
+			textscale .33
+			forecolor 1 1 1 1
+			rect 94 144 100 30
+			cvarTest "g_gametype"
+			showCvar { "0" }
+			visible 1
+			decoration
+		}
+
+		//@Barbatos added LMS 05/09/2012
+		itemDef	{
+			name type
+			text "Last Man Standing"
+			textscale .33
+			forecolor 1 1 1 1
+			rect 94 144 100 30
+			cvarTest "g_gametype"
+			showCvar { "1" }
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name type
+			text "Team Deathmatch"
+			textscale .33
+			forecolor 1 1 1 1
+			rect 94 144 100 30
+			cvarTest "g_gametype"
+			showCvar { "3" }
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name type
+			text "Team Survivor"
+			textscale .33
+			forecolor 1 1 1 1
+			rect 94 144 100 30
+			cvarTest "g_gametype"
+			showCvar { "4" }
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name type
+			text "Follow the leader"
+			textscale .33
+			forecolor 1 1 1 1
+			rect 94 144 100 30
+			cvarTest "g_gametype"
+			showCvar { "5" }
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name type
+			text "Capture and Hold"
+			textscale .33
+			forecolor 1 1 1 1
+			rect 94 144 100 30
+			cvarTest "g_gametype"
+			showCvar { "6" }
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name type
+			text "Capture the Flag"
+			textscale .33
+			forecolor 1 1 1 1
+			rect 94 144 100 30
+			cvarTest "g_gametype"
+			showCvar { "7" }
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name type
+			text "Bomb"
+			textscale .33
+			forecolor 1 1 1 1
+			rect 94 144 100 30
+			cvarTest "g_gametype"
+			showCvar { "8" }
+			visible 1
+			decoration
+		}
+
+		//@Fenix - added JUMP mode 05/11/2012
+		itemDef	{
+			name type
+			text "Jump"
+			textscale .33
+			forecolor 1 1 1 1
+			rect 94 144 100 30
+			cvarTest "g_gametype"
+			showCvar { "9" }
+			visible 1
+			decoration
+		}
+
+		//@BladeKiller - added Freeze Tag mode 12/11/2013
+		itemDef	{
+			name type
+			text "Freeze Tag"
+			textscale .33
+			forecolor 1 1 1 1
+			rect 94 144 100 30
+			cvarTest "g_gametype"
+			showCvar { "10" }
+			visible 1
+			decoration
+		}
+
+
+		// GAMETYPE INFO	//
+
+
+		itemDef	{
+			name freeforall
+			wrapped
+			text 	"You are against everybody and everybody is against you.\r"
+			"At the end of the map, the winner is the person with the\r"
+			"greatest number of points. If you are killed, you will\r"
+			"respawn at a random location after a short delay.\r"
+			style 1
+			textscale .24
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			rect 93 154 323 226
+			cvarTest "g_gametype"
+			showCvar { "0" }
+			visible 1
+			decoration
+		}
+
+		//@Barbatos 05/09/2012 added LMS
+		itemDef	{
+			name lastmanstanding
+			wrapped
+			text 	"You are against everybody and everybody is against you.\r"
+			"The round ends when everybody is dead, except one, the \r"
+			"last man standing which is rewarded 5 points. At the end\r"
+			"of the map, the winner is the person with the greatest\r"
+			"number of points. If you are killed, you will not respawn\r"
+			"before the next round.\r"
+			style 1
+			textscale .24
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			rect 93 154 323 226
+			cvarTest "g_gametype"
+			showCvar { "1" }
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name team_deathmatch
+			wrapped
+			text 	"Your goal is to acquire kills for your team. At the end\r"
+			"of the map, the winner is the team with the greatest\r"
+			"number of points. If you are killed, you will respawn\r"
+			"after a short delay.\r\r"
+			"^1Please use auto-join in public servers!\r"
+			style 1
+			textscale .24
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			rect 93 154 323 226
+			cvarTest "g_gametype"
+			showCvar { "3" }
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name team_survivor
+			wrapped
+			text 	"Your goal is to annihilate the opposing team. The round\r"
+			"ends when all the members of one team are killed. The\r"
+			"team left standing is awarded a point. If you are killed,\r"
+			"you will not respawn until the next round.\r\r"
+			"^1Please use auto-join in public servers!\r"
+			style 1
+			textscale .24
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			rect 93 154 323 226
+			cvarTest "g_gametype"
+			showCvar { "4" }
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name team_assassinate
+			wrapped
+			text 	"At the beginning of the round one person on each team\r"
+			"is selected as leader by the server. A flag also spawns\r"
+			"with each team. You must help your leader touch the\r"
+			"enemy flag. Only the leader can win the round by\r"
+			"touching it. The round ends when a leader reaches an\r"
+			"opposing flag, or when all members of one team are dead.\r"
+			"Points are awarded as follows: 5 points for touching the\r"
+			"flag; 3 points for killing the other team with your leader\r"
+			"alive; 1 point for killing the other team, but with your\r"
+			"leader dead.\r"
+			"If you are killed, you will not respawn before the next round.\r\r"
+			"^1Please use auto-join in public servers!\r"
+			style 1
+			textscale .24
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			rect 93 154 323 226
+			cvarTest "g_gametype"
+			showCvar { "5" }
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name capture_and_hold
+			wrapped
+			text 	"Numerous flags are positioned around the map. When\r"
+			"you walk over them, they get changed to your team's\r"
+			"color (red or blue). Every minute your team scores a\r"
+			"point for each flag of your team's color. Your goal\r"
+			"is to have as many flags as possible at each scoring\r"
+			"time. If you get killed, you will respawn after a short delay.\r\r"
+			"^1Please use auto-join in public servers!\r"
+			style 1
+			textscale .24
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			rect 93 154 323 226
+			cvarTest "g_gametype"
+			showCvar { "6" }
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name capture_the_flag
+			wrapped
+			text 	"Each team has a home base which holds a flag. The team's\r"
+			"goal is to get the flag from the enemy base and bring\r"
+			"it back to their base. You must prevent the enemy from\r"
+			"doing the same. If you are killed, you will respawn\r"
+			"after a short delay.\r\r"
+			"^1Please use auto-join in public servers!\r"
+			style 1
+			textscale .24
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			rect 93 154 323 226
+			cvarTest "g_gametype"
+			showCvar { "7" }
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name bomb
+			wrapped
+			text	"Red: Primary goal is to blow up the target. Secondary goal\r"
+			"is to kill all of the opposing team.\r\r"
+			"Blue: Primary goal is to stop Red from planting the bomb.\r"
+			"Secondary goal is to defuse it if Red successfully plants.\r\r"
+			"The scoring is 1 point for killing the other team, exploding\r"
+			"the bomb (Red) or defusing the bomb (Blue).\r\r"
+			"Blue can not pick up the bomb; only Red has control of it.\r"
+			"If all of Red and Blue are dead but the bomb is planted,\r"
+			"Red wins.\r\r"
+			"^1Please use auto-join in public servers!\r"
+			style 1
+			textscale .24
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			rect 93 154 323 226
+			cvarTest "g_gametype"
+			showCvar { "8" }
+			visible 1
+			decoration
+		}
+
+
+		//@Fenix 31/10/2012 added Jump Mode
+		itemDef {
+			name jump
+			wrapped
+			text    "Some say, that humans were not designed to fly.\r"
+			"Time to prove them wrong. Jump, bounce, slide, grab\r"
+			"and reach the end of the level!\r"
+			style 1
+			textscale .24
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			rect 93 154 323 226
+			cvarTest "g_gametype"
+			showCvar { "9" }
+			visible 1
+			decoration
+		}
+
+		//@BladeKiller 12/11/2013 added Freeze Tag
+		itemDef	{
+			name freeze_tag
+			wrapped
+			text  "Your goal is to freeze the opposing team. The round ends\r"
+			"when all the members of one team are frozen or killed.\r"
+			"The team left standing is awarded a point. If you are\r"
+			"killed, you will thaw out slowly or be thawed out quicker\r"
+			"by a team member.\r\r"
+			"^1Please use auto-join in public servers!\r"
+			style 1
+			textscale .24
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			rect 93 154 323 226
+			cvarTest "g_gametype"
+			showCvar { "10" }
+			visible 1
+			decoration
+		}
+
+
+
+		// TEAM BUTTONS 	//
+
+		itemDef {
+			name autojoin
+			rect 446 240 111 30
+			hotkey "1"
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor 1 1 1 1
+			bordersize 1
+			visible 1
+			action
+			{ exec "cmd team free" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_team;
+			open ingame_ut_select_gear }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+		}
+
+		itemDef {
+			//textstyle 1 //flashing
+			name autojointext
+			rect 446 240 111 30
+			type 0
+			text "Auto - join"
+			textscale .30
+			textalign 0     //2
+			textalignx 20
+			textaligny 21
+			style 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordersize 1
+			bordercolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name redteam
+			rect 446 280 111 30
+			hotkey "2"
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action
+			{ exec "cmd team red" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_team;
+			open ingame_ut_select_gear }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+			cvarTest "g_gametype"
+			disableCvar { "0" ; "1" ; "9"} //@Barbatos 05/09/2012 added LMS //@Fenix 30/10/2012 added Jump Mode
+		}
+
+		itemDef {
+			name redteam
+			rect 446 280 111 30
+			type 0
+			text "Red"
+			textscale .25
+			textalign 1
+			textalignx 55
+			textaligny 19
+			style 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name blueteam
+			rect 446 320 111 30
+			hotkey "3"
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action
+			{ exec "cmd team blue" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_team;
+			open ingame_ut_select_gear }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+			cvarTest "g_gametype"
+			disableCvar { "0" ; "1" ; "9"} //@Barbatos 05/09/2012 added LMS	//@Fenix 30/10/2012 added Jump Mode
+		}
+
+		itemDef {
+			name blueteam
+			rect 446 320 111 30
+			type 0
+			text "Blue"
+			textscale .25
+			textalign 1
+			textalignx 55     //107
+			textaligny 19    	//26
+			style 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name spectate
+			rect 446 360 111 30
+			hotkey "4"
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action
+			{ exec "cmd team s" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_team }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+		}
+
+		itemDef {
+			name spectate
+			rect 446 360 111 30
+			type 0
+			text "Spectate"
+			textscale .25
+			textalign 1
+			textalignx 55
+			textaligny 19
+			style 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//  DECORATION TEAM NUMBERS		//
+
+		itemDef {
+			name text
+			rect 446 240 111 30
+			style 1
+			text "1."
+			textalign 0
+			textstyle 0
+			textscale .22
+			textalignx 3
+			textaligny 20 //26
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name text
+			rect 446 280 111 30
+			style 1
+			text "2."
+			textalign 0
+			textstyle 0
+			textscale .22
+			textalignx 3
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name text
+			rect 446 320 111 30
+			style 1
+			text "3."
+			textalign 0
+			textstyle 0
+			textscale .22
+			textalignx 3
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name text
+			rect 446 360 111 30
+			style 1
+			text "4."
+			textalign 0
+			textstyle 0
+			textscale .22
+			textalignx 3
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+	}
+
+}

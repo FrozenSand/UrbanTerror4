@@ -1,0 +1,186 @@
+#include "ui/menudef.h"
+{
+
+	/*	INGAME PLAYER MENU
+	Revised by woekele, for 4.0. Slight adjustments, nothing big.
+	*/
+
+	\\ INGAME_JOIN MENU \\
+
+	menuDef {
+		name "ingame_player"
+		visible 1
+		fullScreen 0
+		rect 62 50 200 256	//x y z t      x=indentl  y=down z=width of box  t=height
+		focusColor 1 1 1 1
+
+		itemdef {
+			name background
+			rect 0 16 148 160
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg_options_tr.tga"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//  BUTTONS	//
+
+		itemDef {
+			name team
+			type 1
+			style 1
+			rect 10 26 128 20
+			forecolor 1 1 1 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 .7
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_ut_select_team ; close ingame ; close ingame_player }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name team
+			type 1
+			style 1
+			rect 10 56 128 20
+			forecolor  1 1 1 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 .7
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_ut_select_gear ; close ingame ; close ingame_player }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7}
+		}
+
+		itemDef {
+			name team
+			type 1
+			style 1
+			rect 10 86 128 20
+			forecolor 1 1 1 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 .7
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_ut_select_player ; close ingame_player }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name team
+			type 1
+			style 1
+			rect 10 116 128 20
+			forecolor 1 1 1 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 .7
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_ut_matchmode ; close ingame_player }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		//  TEXT	//
+
+		itemDef {
+			name team
+			text "team select"
+			type 0
+			style 1
+			rect 10 26 128 20
+			textalign 2
+			textalignx 124
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name team
+			text "weapon / gear select"
+			type 0
+			style 1
+			rect 10 56 128 20
+			textalign 2
+			textalignx 124
+			textaligny 16
+			textscale .22
+			forecolor  1 1 1 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name team
+			text "player setup"
+			type 0
+			style 1
+			rect 10 86 128 20
+			textalign 2
+			textalignx 124
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name team
+			text "matchmode"
+			type 0
+			style 1
+			rect 10 116 128 20
+			textalign 2
+			textalignx 124
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name close_button
+			type 1
+			rect 49 146 50 20
+			visible 1
+			border 1
+			bordercolor .5 .5 .5 1
+			style 1
+			backcolor 0 0 0 .7
+			mouseEnter { setitemcolor close_button backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor close_button backcolor 0 0 0 .7 }
+			action { play "sound/misc/kcaction.wav" ; close ingame_player }
+			text "close"
+			textscale .22
+			textalign 1
+			textalignx 25
+			textaligny 13
+			forecolor 1 1 1 1
+		}
+
+	}
+
+}

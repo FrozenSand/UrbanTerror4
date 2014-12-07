@@ -1,0 +1,131 @@
+#include "ui/menudef.h"
+{
+
+	// INGAME SELECT PLAYER README MENU
+	// Revised by Fenix for 4.2.010 - Changed the whole skin selection behavior
+
+	////////////////////////////
+	// STANDARD MENU CREATION //
+	////////////////////////////
+
+	menuDef {
+
+		name "ingame_ut_select_player_readme"
+		visible 0
+		rect 32 50 486 388
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		//outOfBoundsClick
+		onEsc   { close ingame_ut_select_player_readme; open ingame_ut_select_player }
+
+		itemdef {
+			name backgroundstuff
+			rect 15 15 456 358
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg2_tr.tga"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 25 25 436 313
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//////////////////
+		// INSTRUCTIONS //
+		//////////////////
+
+		itemDef	{
+			name title
+			rect 36 32 400 30
+			text "Client-side skin selection:"
+			style 1
+			textscale .25
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name readme
+			rect 36 59 323 326
+			wrapped
+			text 	"This features allows a player to configure its client to render player models in colours\r"
+			"other than the game defaults. By using the previous panel it's possible to choose the\r"
+			"skin preset to be used to render both ^3ally ^7and ^3enemy ^7team.\r\r"
+			"^3Ally ^7controls the skin preset used to display yourself and your allies in team based\r"
+			"gametypes (TDM, TS, FTL, CAH, CTF, BOMB). You are allowed to select both the skin\r"
+			"preset and the gender to be used for your own character among the available ones.\r\r"
+			"^3Enemy ^7controls the skin preset used to display the enemy team in team based\r"
+			"gametypes (TDM, TS, FTL, CAH, CTF, BOMB) and everyone in non-team based\r"
+			"gametypes (FFA, LMS, JUMP). However, the gender selection, among the enemy skin\r"
+			"preset, kicks in just when you are playing non-team based gametypes and it's used\r"
+			"to display yourself. For all the other game modes just the skin preset selection will\r"
+			"be considered (^1you can't force other players to be displayed using a specific\r"
+			style 1
+			textscale .22
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name readme2
+			rect 36 267 323 326
+			wrapped
+			text 	"^1character: you can only choose the preset used to display their skins^7).\r\r"
+			"Manual: ^5http://manual.urbanterror.info"
+			style 1
+			textscale .22
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		//////////
+		// BACK //
+		//////////
+
+		itemDef {
+			name accept
+			rect 401 343 60 25
+			style WINDOW_STYLE_FILLED
+			type 1
+			text "Back"
+			textscale .25
+			textalign 2
+			textalignx 55
+			textaligny 19
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { close ingame_ut_select_player_readme; open ingame_ut_select_player ; play "sound/misc/kcaction.wav" }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+	}
+
+}

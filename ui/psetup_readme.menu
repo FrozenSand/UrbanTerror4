@@ -1,0 +1,173 @@
+#include "ui/menudef.h"
+{
+
+	// PLAYER MENU README
+	// Revised by Fenix for 4.2.010 - Changed the whole skin selection behavior
+
+	////////////////////////////
+	// STANDARD MENU CREATION //
+	////////////////////////////
+
+	menuDef {
+
+		name "psetup_menu_readme"
+		visible 0
+		fullscreen 0
+		rect 0 70 490 340
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		onEsc { close psetup_menu_readme ; open psetup_menu }
+
+
+		itemDef {
+			name window
+			group grpPsetupbutton
+			rect 10 10 436 321
+			style 1
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			visible 1
+			decoration
+			mouseEnter { show psetupangle_on ; hide psetupangle }
+			mouseExit { show psetupangle ; hide psetupangle_on }
+		}
+
+		itemDef {
+			group grpPsetupbutton
+			name psetupangle
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle.tga"
+			rect 430 12 16 16
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			group grpPsetupbutton
+			name psetupangle_on
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle_on.tga"
+			rect 430 12 16 16
+			visible 0
+			decoration
+		}
+
+		itemDef {
+			name areaname
+			group grpControlbutton
+			text "player setup"
+			textscale .6
+			textalignx 10
+			textaligny 30
+			rect 10 293 150 50
+			style 1
+			forecolor 1 1 1 .15
+			visible 1
+			decoration
+		}
+
+
+		//////////////////
+		// INSTRUCTIONS //
+		//////////////////
+
+		itemDef	{
+			name title
+			rect 20 12 400 30
+			text "Client-side skin selection:"
+			style 1
+			textscale .25
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name readme
+			rect 20 39 323 326
+			wrapped
+			text 	"This features allows a player to configure its client to render player models in colours\r"
+			"other than the game defaults. By using the previous panel it's possible to choose the\r"
+			"skin preset to be used to render both ^3ally ^7and ^3enemy ^7team.\r\r"
+			"^3Ally ^7controls the skin preset used to display yourself and your allies in team based\r"
+			"gametypes (TDM, TS, FTL, CAH, CTF, BOMB). You are allowed to select both the skin\r"
+			"preset and the gender to be used for your own character among the available ones.\r\r"
+			"^3Enemy ^7controls the skin preset used to display the enemy team in team based\r"
+			"gametypes (TDM, TS, FTL, CAH, CTF, BOMB) and everyone in non-team based\r"
+			"gametypes (FFA, LMS, JUMP). However, the gender selection, among the enemy skin\r"
+			"preset, kicks in just when you are playing non-team based gametypes and it's used\r"
+			"to display yourself. For all the other game modes just the skin preset selection will\r"
+			"be considered (^1you can't force other players to be displayed using a specific\r"
+			style 1
+			textscale .22
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef	{
+			name readme2
+			rect 20 247 323 326
+			wrapped
+			text 	"^1character: you can only choose the preset used to display their skins^7).\r\r"
+			"Manual: ^5http://manual.urbanterror.info"
+			style 1
+			textscale .22
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+
+		//////////
+		// BACK //
+		//////////
+
+		itemdef {
+			name back
+			rect 378 298 60 25
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { setcolor backcolor 0 0 0 1; play "sound/misc/kcaction.wav"; close psetup_menu_readme ; open psetup_menu }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 1 }
+		}
+
+		itemdef {
+			name back2
+			rect 378 298 60 25
+			type 0
+			text "Back"
+			textscale .25
+			textalign 2
+			textalignx 57
+			textaligny 21
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+	}
+
+}

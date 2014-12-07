@@ -1,0 +1,1841 @@
+#include "ui/menudef.h"
+{
+
+	// PLAYER MENU
+	// Revised by Fenix for 4.2.010 - Changed the whole skin selection behavior
+
+	////////////////////////////
+	// STANDARD MENU CREATION //
+	////////////////////////////
+
+	menuDef {
+
+		name "psetup_menu"
+		visible 0
+		fullscreen 0
+		rect 0 70 490 340
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		onEsc   { close psetup_menu ; close setup_menu ; open main ; uiScript update "ui_SetName" }
+		onOpen  { uiScript update "ui_GetName" ; setfocus window }
+		onClose { uiScript update "ui_SetName" }
+
+
+		itemDef {
+			name window
+			group grpPsetupbutton
+			rect 10 10 436 321
+			style 1
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			visible 1
+			decoration
+			mouseEnter { show psetupangle_on ; hide psetupangle }
+			mouseExit { show psetupangle ; hide psetupangle_on }
+		}
+
+		itemDef {
+			group grpPsetupbutton
+			name psetupangle
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle.tga"
+			rect 430 12 16 16
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			group grpPsetupbutton
+			name psetupangle_on
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle_on.tga"
+			rect 430 12 16 16
+			visible 0
+			decoration
+		}
+
+		itemDef {
+			name areaname
+			group grpControlbutton
+			text "player setup"
+			textscale .6
+			textalignx 10
+			textaligny 30
+			rect 10 293 150 50
+			style 1
+			forecolor 1 1 1 .15
+			visible 1
+			decoration
+		}
+
+
+		//////////////////
+		// INSTRUCTIONS //
+		//////////////////
+
+		itemdef {
+			name instruction_button
+			rect 363 26 70 25
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { setcolor backcolor 0 0 0 1; play "sound/misc/kcaction.wav"; close psetup_menu ; open psetup_menu_readme }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 1 }
+		}
+
+		itemdef {
+			name instruction_button2
+			rect 363 26 70 25
+			type 0
+			text "README"
+			textscale .25
+			textalign 2
+			textalignx 49
+			textaligny 21
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name fixed_mod
+			rect 363 57 70 25
+			group "playersettinggroup"
+			type ITEM_TYPE_MULTI
+			text ""
+			cvar "cg_skinFixed"
+			cvarStrList { "^7RELATIVE", "0", "^7FIXED", "1" }
+			textalign 1
+			textalignx -4
+			textaligny 21
+			textscale .25
+			visible 1
+			border 1
+			bordercolor .5 .5 .5 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		////////////////
+		// PLAYERMENU //
+		////////////////
+
+		itemDef {
+			name namefield
+			rect 0 20 200 20
+			group "playersettinggroup"
+			type ITEM_TYPE_EDITFIELD
+			text "Nickname:"
+			cvar "ui_Name"
+			maxchars 26
+			textalign 0
+			textalignx 20
+			textaligny 12
+			textscale .25
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name rgbchooser
+			rect 0 40 200 20
+			group "playersettinggroup"
+			type ITEM_TYPE_MULTI
+			text "Armband color:"
+			cvar "cg_rgb"
+			cvarStrList { "^7White", "255 255 255", "^7Grey", "128 128 128", "^7Black", "0 0 0", "^1Red", "255 0 0", "^2Green", "0 255 0", "^4Blue", "0 0 255", "^3Yellow", "255 255 0", "^5Cyan", "0 255 255", "^6Magenta", "255 0 255" }
+			textalign 0
+			textalignx 19
+			textaligny 10
+			textscale .25
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		///////////////////////
+		// ALLY TEAM CHOSING //
+		///////////////////////
+
+		itemDef {
+			name instruction
+			rect 0 60 320 20
+			type ITEM_TYPE_MULTI
+			text "Choose the skin for the ally team:"
+			cvar "cg_skinAlly"
+			cvarStrList { "^3DEFAULT", "0", "^3GRIFFINS", "1", "^3RED DRAGONS", "2", "^3SWAT", "3", "^3PURPLE HAZE", "4", "^3FUGITIVES", "5", "^3OILERS", "6", "^3ICE DRAGONS", "7", "^3BLACK ICE", "8", "^3DESERT", "9", "^3COWBOY", "10", "^3CAVALRY", "11", "^3DROOGS", "12", "^3DrPINK", "13", "DrBLUE", "14" }
+			textalign 0
+			textalignx 20
+			textaligny 20
+			textscale 0.25
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		/////////////////////////////////////
+		// SELECTION BOX FOR FEMALE 0 ALLY //
+		/////////////////////////////////////
+
+		itemDef {
+			name ally_female0
+			cvarTest "cg_skinAlly"
+			showCvar { "0", "2" }
+			rect 20 88 90 90
+			style 3
+			type 1
+			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/red_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female0
+			cvarTest "cg_skinAlly"
+			showCvar { "1" }
+			rect 20 88 90 90
+			style 3
+			type 1
+			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/free_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female0
+			cvarTest "cg_skinAlly"
+			showCvar { "3" }
+			rect 20 88 90 90
+			style 3
+			type 1
+			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/blu_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female0
+			cvarTest "cg_skinAlly"
+			showCvar { "4" }
+			rect 20 88 90 90
+			style 3
+			type 1
+			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/jump_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female0
+			cvarTest "cg_skinAlly"
+			showCvar { "5" }
+			rect 20 88 90 90
+			style 3
+			type 1
+			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/orange_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female0
+			cvarTest "cg_skinAlly"
+			showCvar { "6" }
+			rect 20 88 90 90
+			style 3
+			type 1
+			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/olive_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female0
+			cvarTest "cg_skinAlly"
+			showCvar { "7" }
+			rect 20 88 90 90
+			style 3
+			type 1
+			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/white_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female0
+			cvarTest "cg_skinAlly"
+			showCvar { "8" }
+			rect 20 88 90 90
+			style 3
+			type 1
+			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/black_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female0
+			cvarTest "cg_skinAlly"
+			showCvar { "9" }
+			rect 20 88 90 90
+			style 3
+			type 1
+			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/desert_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female0
+			cvarTest "cg_skinAlly"
+			showCvar { "10" }
+			rect 20 88 90 90
+			style 3
+			type 1
+			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/cowboy_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female0
+			cvarTest "cg_skinAlly"
+			showCvar { "11" }
+			rect 20 88 90 90
+			style 3
+			type 1
+			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/cavalry_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female0
+			cvarTest "cg_skinAlly"
+			showCvar { "12" }
+			rect 20 88 90 90
+			style 3
+			type 1
+			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/droogs_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female0
+			cvarTest "cg_skinAlly"
+			showCvar { "13" }
+			rect 20 88 90 90
+			style 3
+			type 1
+			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/drpink_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female0
+			cvarTest "cg_skinAlly"
+			showCvar { "14" }
+			rect 20 88 90 90
+			style 3
+			type 1
+			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/drblue_f_0.tga"
+			visible 1
+		}
+
+		// This controls both the dark glow
+		// on the unselected race and the
+		// bold border on mouse over
+		itemDef {
+			name ally_female0_br
+			rect 16 84 94 94
+			style 1
+			backcolor 0 0 0 .7
+			type 0
+			visible 1
+			border 1
+			bordersize 2
+			bordercolor 0 0 .55 0
+			mouseEnter { setitemcolor ally_female0_br bordercolor .55 0 0 1 }
+			mouseExit { setitemcolor ally_female0_br bordercolor .55 0 0 0 }
+			decoration
+		}
+
+		/////////////////////////////////////
+		// SELECTION BOX FOR FEMALE 1 ALLY //
+		/////////////////////////////////////
+
+		itemDef {
+			name ally_female1
+			cvarTest "cg_skinAlly"
+			showCvar { "0", "2" }
+			rect 128 88 90 90
+			style 3
+			type 1
+			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/red_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female1
+			cvarTest "cg_skinAlly"
+			showCvar { "1" }
+			rect 128 88 90 90
+			style 3
+			type 1
+			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/free_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female1
+			cvarTest "cg_skinAlly"
+			showCvar { "3" }
+			rect 128 88 90 90
+			style 3
+			type 1
+			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/blu_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female1
+			cvarTest "cg_skinAlly"
+			showCvar { "4" }
+			rect 128 88 90 90
+			style 3
+			type 1
+			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/jump_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female1
+			cvarTest "cg_skinAlly"
+			showCvar { "5" }
+			rect 128 88 90 90
+			style 3
+			type 1
+			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/orange_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female1
+			cvarTest "cg_skinAlly"
+			showCvar { "6" }
+			rect 128 88 90 90
+			style 3
+			type 1
+			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/olive_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female1
+			cvarTest "cg_skinAlly"
+			showCvar { "7" }
+			rect 128 88 90 90
+			style 3
+			type 1
+			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/white_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female1
+			cvarTest "cg_skinAlly"
+			showCvar { "8" }
+			rect 128 88 90 90
+			style 3
+			type 1
+			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/black_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female1
+			cvarTest "cg_skinAlly"
+			showCvar { "9" }
+			rect 128 88 90 90
+			style 3
+			type 1
+			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/desert_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female1
+			cvarTest "cg_skinAlly"
+			showCvar { "10" }
+			rect 128 88 90 90
+			style 3
+			type 1
+			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/cowboy_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female1
+			cvarTest "cg_skinAlly"
+			showCvar { "11" }
+			rect 128 88 90 90
+			style 3
+			type 1
+			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/cavalry_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female1
+			cvarTest "cg_skinAlly"
+			showCvar { "12" }
+			rect 128 88 90 90
+			style 3
+			type 1
+			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/droogs_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female1
+			cvarTest "cg_skinAlly"
+			showCvar { "13" }
+			rect 128 88 90 90
+			style 3
+			type 1
+			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/drpink_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_female1
+			cvarTest "cg_skinAlly"
+			showCvar { "14" }
+			rect 128 88 90 90
+			style 3
+			type 1
+			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/drblue_f_1.tga"
+			visible 1
+		}
+
+		// This controls both the dark glow
+		// on the unselected race and the
+		// bold border on mouse over
+		itemDef {
+			name ally_female1_br
+			rect 124 84 94 94
+			style 1
+			backcolor 0 0 0 .7
+			type 0
+			visible 1
+			border 1
+			bordersize 2
+			bordercolor 0 0 .55 0
+			mouseEnter { setitemcolor ally_female1_br bordercolor .55 0 0 1 }
+			mouseExit { setitemcolor ally_female1_br bordercolor .55 0 0 0 }
+			decoration
+		}
+
+		///////////////////////////////////
+		// SELECTION BOX FOR MALE 2 ALLY //
+		///////////////////////////////////
+
+		itemDef {
+			name ally_male2
+			cvarTest "cg_skinAlly"
+			showCvar { "0", "2" }
+			rect 236 88 90 90
+			style 3
+			type 1
+			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/red_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male2
+			cvarTest "cg_skinAlly"
+			showCvar { "1" }
+			rect 236 88 90 90
+			style 3
+			type 1
+			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/free_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male2
+			cvarTest "cg_skinAlly"
+			showCvar { "3" }
+			rect 236 88 90 90
+			style 3
+			type 1
+			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/blu_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male2
+			cvarTest "cg_skinAlly"
+			showCvar { "4" }
+			rect 236 88 90 90
+			style 3
+			type 1
+			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/jump_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male2
+			cvarTest "cg_skinAlly"
+			showCvar { "5" }
+			rect 236 88 90 90
+			style 3
+			type 1
+			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/orange_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male2
+			cvarTest "cg_skinAlly"
+			showCvar { "6" }
+			rect 236 88 90 90
+			style 3
+			type 1
+			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/olive_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male2
+			cvarTest "cg_skinAlly"
+			showCvar { "7" }
+			rect 236 88 90 90
+			style 3
+			type 1
+			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/white_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male2
+			cvarTest "cg_skinAlly"
+			showCvar { "8" }
+			rect 236 88 90 90
+			style 3
+			type 1
+			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/black_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male2
+			cvarTest "cg_skinAlly"
+			showCvar { "9" }
+			rect 236 88 90 90
+			style 3
+			type 1
+			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/desert_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male2
+			cvarTest "cg_skinAlly"
+			showCvar { "10" }
+			rect 236 88 90 90
+			style 3
+			type 1
+			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/cowboy_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male2
+			cvarTest "cg_skinAlly"
+			showCvar { "11" }
+			rect 236 88 90 90
+			style 3
+			type 1
+			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/cavalry_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male2
+			cvarTest "cg_skinAlly"
+			showCvar { "12" }
+			rect 236 88 90 90
+			style 3
+			type 1
+			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/droogs_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male2
+			cvarTest "cg_skinAlly"
+			showCvar { "13" }
+			rect 236 88 90 90
+			style 3
+			type 1
+			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/drpink_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male2
+			cvarTest "cg_skinAlly"
+			showCvar { "14" }
+			rect 236 88 90 90
+			style 3
+			type 1
+			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/drblue_m_2.tga"
+			visible 1
+		}
+
+		// This controls both the dark glow
+		// on the unselected race and the
+		// bold border on mouse over
+		itemDef {
+			name ally_male2_br
+			rect 232 84 94 94
+			style 1
+			backcolor 0 0 0 .7
+			type 0
+			visible 1
+			border 1
+			bordersize 2
+			bordercolor 0 0 .55 0
+			mouseEnter { setitemcolor ally_male2_br bordercolor .55 0 0 1 }
+			mouseExit { setitemcolor ally_male2_br bordercolor .55 0 0 0 }
+			decoration
+		}
+
+		///////////////////////////////////
+		// SELECTION BOX FOR MALE 3 ALLY //
+		///////////////////////////////////
+
+		itemDef {
+			name ally_male3
+			cvarTest "cg_skinAlly"
+			showCvar { "0", "2" }
+			rect 344 88 90 90
+			style 3
+			type 1
+			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/red_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male3
+			cvarTest "cg_skinAlly"
+			showCvar { "1" }
+			rect 344 88 90 90
+			style 3
+			type 1
+			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/free_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male3
+			cvarTest "cg_skinAlly"
+			showCvar { "3" }
+			rect 344 88 90 90
+			style 3
+			type 1
+			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/blu_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male3
+			cvarTest "cg_skinAlly"
+			showCvar { "4" }
+			rect 344 88 90 90
+			style 3
+			type 1
+			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/jump_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male3
+			cvarTest "cg_skinAlly"
+			showCvar { "5" }
+			rect 344 88 90 90
+			style 3
+			type 1
+			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/orange_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male3
+			cvarTest "cg_skinAlly"
+			showCvar { "6" }
+			rect 344 88 90 90
+			style 3
+			type 1
+			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/olive_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male3
+			cvarTest "cg_skinAlly"
+			showCvar { "7" }
+			rect 344 88 90 90
+			style 3
+			type 1
+			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/white_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male3
+			cvarTest "cg_skinAlly"
+			showCvar { "8" }
+			rect 344 88 90 90
+			style 3
+			type 1
+			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/black_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male3
+			cvarTest "cg_skinAlly"
+			showCvar { "9" }
+			rect 344 88 90 90
+			style 3
+			type 1
+			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/desert_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male3
+			cvarTest "cg_skinAlly"
+			showCvar { "10" }
+			rect 344 88 90 90
+			style 3
+			type 1
+			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/cowboy_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male3
+			cvarTest "cg_skinAlly"
+			showCvar { "11" }
+			rect 344 88 90 90
+			style 3
+			type 1
+			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/cavalry_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male3
+			cvarTest "cg_skinAlly"
+			showCvar { "12" }
+			rect 344 88 90 90
+			style 3
+			type 1
+			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/droogs_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male3
+			cvarTest "cg_skinAlly"
+			showCvar { "13" }
+			rect 344 88 90 90
+			style 3
+			type 1
+			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/drpink_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name ally_male3
+			cvarTest "cg_skinAlly"
+			showCvar { "14" }
+			rect 344 88 90 90
+			style 3
+			type 1
+			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/drblue_m_3.tga"
+			visible 1
+		}
+
+		// This controls both the dark glow
+		// on the unselected race and the
+		// bold border on mouse over
+		itemDef {
+			name ally_male3_br
+			rect 340 84 94 94
+			style 1
+			backcolor 0 0 0 .7
+			type 0
+			visible 1
+			border 1
+			bordersize 2
+			bordercolor 0 0 .55 0
+			mouseEnter { setitemcolor ally_male3_br bordercolor .55 0 0 1 }
+			mouseExit { setitemcolor ally_male3_br bordercolor .55 0 0 0 }
+			decoration
+		}
+
+		// I don't have a clue what the followings are for
+		// but leave it like this or the menu will be fucked up
+		itemDef {
+			name br_ally_female0
+			rect 0 0 640 480
+			type 1
+			cvartest "racered"
+			showCvar { "0" }
+			visible 1
+			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 ; exec "racered 0" ; exec "raceblue 0" ; hide br_ally_female0 ; hide br_ally_male2_2 ; show br_ally_female1 ; show br_ally_male2 ; show br_ally_male3 ; show br_ally_male2_2 }
+			action { }
+		}
+
+		itemDef {
+			name br_ally_female1
+			rect 0 0 640 480
+			type 1
+			cvartest "racered"
+			showCvar { "1" }
+			visible 1
+			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 ; exec "racered 1" ; exec "raceblue 1" ; hide br_ally_female1 ; hide br_ally_male2_2 ; show br_ally_female0 ; show br_ally_male2 ; show br_ally_male3 ; show br_ally_male2_2 }
+			action { }
+		}
+
+		itemDef {
+			name br_ally_male2
+			rect 0 0 640 480
+			type 1
+			cvartest "racered"
+			showCvar { "2", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" }
+			visible 1
+			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 ; exec "racered 2" ; exec "raceblue 2" ; hide br_ally_male2 ; hide br_ally_male2_2 ; show br_ally_male3 ; show br_ally_female0 ; show br_ally_female1 ; show br_ally_male2_2 }
+			action { }
+		}
+
+		itemDef {
+			name br_ally_male3
+			rect 0 0 640 480
+			type 1
+			cvartest "racered"
+			showCvar { "3" }
+			visible 1
+			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 ; exec "racered 3" ; exec "raceblue 3" ; hide br_ally_male3 ; hide br_ally_male2_2 ; show br_ally_female1 ; show br_ally_female0 ; show br_ally_male2 ; show br_ally_male2_2 }
+			action { }
+		}
+
+		itemDef {
+			name br_ally_male2_2
+			rect 0 0 640 480
+			type 1
+			cvartest "racered"
+			hideCvar { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" }
+			visible 1
+			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 ; exec "racered 2" ; exec "raceblue 2" ;}
+			action { }
+		}
+
+		////////////////////////
+		// ENEMY TEAM CHOSING //
+		////////////////////////
+
+		itemDef {
+			name instruction
+			rect 0 180 320 20
+			type ITEM_TYPE_MULTI
+			text "Choose the skin for the enemy team:"
+			cvar "cg_skinEnemy"
+			cvarStrList { "^3DEFAULT", "0", "^3GRIFFINS", "1", "^3RED DRAGONS", "2", "^3SWAT", "3", "^3PURPLE HAZE", "4", "^3FUGITIVES", "5", "^3OILERS", "6", "^3ICE DRAGONS", "7", "^3BLACK ICE", "8", "^3DESERT", "9", "^3COWBOY", "10", "^3CAVALRY", "11", "^3DROOGS", "12", "^3DrPINK", "13", "DrBLUE", "14" }
+			textalign 0
+			textalignx 20
+			textaligny 18
+			textscale 0.25
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		//////////////////////////////////////
+		// SELECTION BOX FOR FEMALE 0 ENEMY //
+		//////////////////////////////////////
+
+		itemDef {
+			name enemy_female0
+			cvarTest "cg_skinEnemy"
+			showCvar { "0", "3" }
+			rect 20 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/blu_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female0
+			cvarTest "cg_skinEnemy"
+			showCvar { "1" }
+			rect 20 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/free_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female0
+			cvarTest "cg_skinEnemy"
+			showCvar { "2" }
+			rect 20 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/red_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female0
+			cvarTest "cg_skinEnemy"
+			showCvar { "4" }
+			rect 20 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/jump_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female0
+			cvarTest "cg_skinEnemy"
+			showCvar { "5" }
+			rect 20 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/orange_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female0
+			cvarTest "cg_skinEnemy"
+			showCvar { "6" }
+			rect 20 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/olive_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female0
+			cvarTest "cg_skinEnemy"
+			showCvar { "7" }
+			rect 20 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/white_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female0
+			cvarTest "cg_skinEnemy"
+			showCvar { "8" }
+			rect 20 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/black_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female0
+			cvarTest "cg_skinEnemy"
+			showCvar { "9" }
+			rect 20 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/desert_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female0
+			cvarTest "cg_skinEnemy"
+			showCvar { "10" }
+			rect 20 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/cowboy_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female0
+			cvarTest "cg_skinEnemy"
+			showCvar { "11" }
+			rect 20 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/cavalry_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female0
+			cvarTest "cg_skinEnemy"
+			showCvar { "12" }
+			rect 20 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/droogs_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female0
+			cvarTest "cg_skinEnemy"
+			showCvar { "13" }
+			rect 20 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/drpink_f_0.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female0
+			cvarTest "cg_skinEnemy"
+			showCvar { "14" }
+			rect 20 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/drblue_f_0.tga"
+			visible 1
+		}
+
+		// This controls both the dark glow
+		// on the unselected race and the
+		// bold border on mouse over
+		itemDef {
+			name enemy_female0_br
+			rect 16 202 94 94
+			style 1
+			backcolor 0 0 0 .7
+			type 0
+			visible 1
+			border 1
+			bordersize 2
+			bordercolor 0 0 .55 0
+			mouseEnter { setitemcolor enemy_female0_br bordercolor .55 0 0 1 }
+			mouseExit { setitemcolor enemy_female0_br bordercolor .55 0 0 0 }
+			decoration
+		}
+
+		//////////////////////////////////////
+		// SELECTION BOX FOR FEMALE 1 ENEMY //
+		//////////////////////////////////////
+
+		itemDef {
+			name enemy_female1
+			cvarTest "cg_skinEnemy"
+			showCvar { "0", "3" }
+			rect 128 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/blu_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female1
+			cvarTest "cg_skinEnemy"
+			showCvar { "1" }
+			rect 128 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/free_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female1
+			cvarTest "cg_skinEnemy"
+			showCvar { "2" }
+			rect 128 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/red_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female1
+			cvarTest "cg_skinEnemy"
+			showCvar { "4" }
+			rect 128 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/jump_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female1
+			cvarTest "cg_skinEnemy"
+			showCvar { "5" }
+			rect 128 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/orange_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female1
+			cvarTest "cg_skinEnemy"
+			showCvar { "6" }
+			rect 128 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/olive_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female1
+			cvarTest "cg_skinEnemy"
+			showCvar { "7" }
+			rect 128 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/white_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female1
+			cvarTest "cg_skinEnemy"
+			showCvar { "8" }
+			rect 128 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/black_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female1
+			cvarTest "cg_skinEnemy"
+			showCvar { "9" }
+			rect 128 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/desert_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female1
+			cvarTest "cg_skinEnemy"
+			showCvar { "10" }
+			rect 128 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/cowboy_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female1
+			cvarTest "cg_skinEnemy"
+			showCvar { "11" }
+			rect 128 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/cavalry_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female1
+			cvarTest "cg_skinEnemy"
+			showCvar { "12" }
+			rect 128 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/droogs_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female1
+			cvarTest "cg_skinEnemy"
+			showCvar { "13" }
+			rect 128 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/drpink_f_1.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_female1
+			cvarTest "cg_skinEnemy"
+			showCvar { "14" }
+			rect 128 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			background "ui/assets/drblue_f_1.tga"
+			visible 1
+		}
+
+		// This controls both the dark glow
+		// on the unselected race and the
+		// bold border on mouse over
+		itemDef {
+			name enemy_female1_br
+			rect 124 202 94 94
+			style 1
+			backcolor 0 0 0 .7
+			type 0
+			visible 1
+			border 1
+			bordersize 2
+			bordercolor 0 0 .55 0
+			mouseEnter { setitemcolor enemy_female1_br bordercolor .55 0 0 1 }
+			mouseExit { setitemcolor enemy_female1_br bordercolor .55 0 0 0 }
+			decoration
+		}
+
+		////////////////////////////////////
+		// SELECTION BOX FOR MALE 2 ENEMY //
+		////////////////////////////////////
+
+		itemDef {
+			name enemy_male2
+			cvarTest "cg_skinEnemy"
+			showCvar { "0", "3" }
+			rect 236 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/blu_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male2
+			cvarTest "cg_skinEnemy"
+			showCvar { "1" }
+			rect 236 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/free_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male2
+			cvarTest "cg_skinEnemy"
+			showCvar { "2" }
+			rect 236 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/red_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male2
+			cvarTest "cg_skinEnemy"
+			showCvar { "4" }
+			rect 236 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/jump_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male2
+			cvarTest "cg_skinEnemy"
+			showCvar { "5" }
+			rect 236 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/orange_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male2
+			cvarTest "cg_skinEnemy"
+			showCvar { "6" }
+			rect 236 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/olive_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male2
+			cvarTest "cg_skinEnemy"
+			showCvar { "7" }
+			rect 236 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/white_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male2
+			cvarTest "cg_skinEnemy"
+			showCvar { "8" }
+			rect 236 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/black_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male2
+			cvarTest "cg_skinEnemy"
+			showCvar { "9" }
+			rect 236 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/desert_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male2
+			cvarTest "cg_skinEnemy"
+			showCvar { "10" }
+			rect 236 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/cowboy_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male2
+			cvarTest "cg_skinEnemy"
+			showCvar { "11" }
+			rect 236 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/cavalry_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male2
+			cvarTest "cg_skinEnemy"
+			showCvar { "12" }
+			rect 236 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/droogs_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male2
+			cvarTest "cg_skinEnemy"
+			showCvar { "13" }
+			rect 236 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/drpink_m_2.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male2
+			cvarTest "cg_skinEnemy"
+			showCvar { "14" }
+			rect 236 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/drblue_m_2.tga"
+			visible 1
+		}
+
+		// This controls both the dark glow
+		// on the unselected race and the
+		// bold border on mouse over
+		itemDef {
+			name enemy_male2_br
+			rect 232 202 94 94
+			style 1
+			backcolor 0 0 0 .7
+			type 0
+			visible 1
+			border 1
+			bordersize 2
+			bordercolor 0 0 .55 0
+			mouseEnter { setitemcolor enemy_male2_br bordercolor .55 0 0 1 }
+			mouseExit { setitemcolor enemy_male2_br bordercolor .55 0 0 0 }
+			decoration
+		}
+
+		////////////////////////////////////
+		// SELECTION BOX FOR MALE 3 ENEMY //
+		////////////////////////////////////
+
+		itemDef {
+			name enemy_male3
+			cvarTest "cg_skinEnemy"
+			showCvar { "0", "3" }
+			rect 344 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/blu_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male3
+			cvarTest "cg_skinEnemy"
+			showCvar { "1" }
+			rect 344 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/free_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male3
+			cvarTest "cg_skinEnemy"
+			showCvar { "2" }
+			rect 344 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/red_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male3
+			cvarTest "cg_skinEnemy"
+			showCvar { "4" }
+			rect 344 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/jump_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male3
+			cvarTest "cg_skinEnemy"
+			showCvar { "5" }
+			rect 344 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/orange_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male3
+			cvarTest "cg_skinEnemy"
+			showCvar { "6" }
+			rect 344 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/olive_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male3
+			cvarTest "cg_skinEnemy"
+			showCvar { "7" }
+			rect 344 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/white_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male3
+			cvarTest "cg_skinEnemy"
+			showCvar { "8" }
+			rect 344 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/black_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male3
+			cvarTest "cg_skinEnemy"
+			showCvar { "9" }
+			rect 344 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/desert_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male3
+			cvarTest "cg_skinEnemy"
+			showCvar { "10" }
+			rect 344 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/cowboy_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male3
+			cvarTest "cg_skinEnemy"
+			showCvar { "11" }
+			rect 344 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/cavalry_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male3
+			cvarTest "cg_skinEnemy"
+			showCvar { "12" }
+			rect 344 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/droogs_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male3
+			cvarTest "cg_skinEnemy"
+			showCvar { "13" }
+			rect 344 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/drpink_m_3.tga"
+			visible 1
+		}
+
+		itemDef {
+			name enemy_male3
+			cvarTest "cg_skinEnemy"
+			showCvar { "14" }
+			rect 344 206 90 90
+			style 3
+			type 1
+			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			background "ui/assets/drblue_m_3.tga"
+			visible 1
+		}
+
+		// This controls both the dark glow
+		// on the unselected race and the
+		// bold border on mouse over
+		itemDef {
+			name enemy_male3_br
+			rect 340 202 94 94
+			style 1
+			backcolor 0 0 0 .7
+			type 0
+			visible 1
+			border 1
+			bordersize 2
+			bordercolor 0 0 .55 0
+			mouseEnter { setitemcolor enemy_male3_br bordercolor .55 0 0 1 }
+			mouseExit { setitemcolor enemy_male3_br bordercolor .55 0 0 0 }
+			decoration
+		}
+
+		// I don't have a clue what the followings are for
+		// but leave it like this or the menu will be fucked up
+		itemDef {
+			name br_enemy_female0
+			rect 0 0 640 480
+			type 1
+			cvartest "racefree"
+			showCvar { "0" }
+			visible 1
+			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 ; exec "racefree 0" ; hide br_enemy_female0 ; hide br_enemy_male2_2 ; show br_enemy_female1 ; show br_enemy_male2 ; show br_enemy_male3 ; show br_enemy_male2_2 }
+			action { }
+		}
+
+		itemDef {
+			name br_enemy_female1
+			rect 0 0 640 480
+			type 1
+			cvartest "racefree"
+			showCvar { "1" }
+			visible 1
+			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 ; exec "racefree 1" ; hide br_enemy_female1 ; hide br_enemy_male2_2 ; show br_enemy_female0 ; show br_enemy_male2 ; show br_enemy_male3 ; show br_enemy_male2_2 }
+			action { }
+		}
+
+		itemDef {
+			name br_enemy_male2
+			rect 0 0 640 480
+			type 1
+			cvartest "racefree"
+			showCvar { "2", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" }
+			visible 1
+			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 ; exec "racefree 2" ; hide br_enemy_male2 ; hide br_enemy_male2_2 ; show br_enemy_male3 ; show br_enemy_female0 ; show br_enemy_female1 ; show br_enemy_male2_2 }
+			action { }
+		}
+
+		itemDef {
+			name br_enemy_male3
+			rect 0 0 640 480
+			type 1
+			cvartest "racefree"
+			showCvar { "3" }
+			visible 1
+			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 ; exec "racefree 3" ; hide br_enemy_male3 ; hide br_enemy_male2_2 ; show br_enemy_female1 ; show br_enemy_female0 ; show br_enemy_male2 ; show br_enemy_male2_2 }
+			action { }
+		}
+
+		itemDef {
+			name br_enemy_male2_2
+			rect 0 0 640 480
+			type 1
+			cvartest "racefree"
+			hideCvar { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" }
+			visible 1
+			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 ; exec "racefree 2" ;}
+			action { }
+		}
+
+	}
+
+}

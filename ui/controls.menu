@@ -1,0 +1,873 @@
+#include "ui/menudef.h"
+{
+
+	/*	CONTROLS MENU
+	Revised by woekele, for 4.0. Slight adjustments, nothing big.
+	*/
+
+	menuDef
+	{
+		name "control_menu"
+		visible 0
+		fullscreen 0
+		rect 0 70 490 340
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		onClose
+		{
+			uiScript saveControls
+		}
+		onOpen
+		{
+			setitemcolor fadebox backcolor 0 0 0 1 ;
+			hide grpControls ;
+			show look ;
+			uiScript loadControls
+		}
+
+		onEsc
+		{
+			close control_menu ;
+			close setup_menu ;
+			open main
+		}
+
+		itemdef {
+			name window
+			group grpControlbutton
+			rect 10 10 436 313
+			style 1
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			visible 1
+			decoration
+			mouseEnter { show controlsangle_on ; hide controlsangle }
+			mouseExit { show controlsangle ; hide controlsangle_on }
+		}
+
+		itemdef {
+			name menubar
+			group grpControlbutton
+			rect 364 10 82 313
+			style 1
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 .5
+			visible 1
+			decoration
+		}
+
+		itemdef {
+			name areaname
+			group grpControlbutton
+			text "controls"
+			textscale .6
+			textalignx 10
+			textaligny 30
+			rect 10 288 150 50
+			style 1
+			forecolor 1 1 1 .15
+			visible 1
+			decoration
+		}
+
+		itemdef {
+			group grpControlbutton
+			name controlsangle
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle.tga"
+			rect 430 12 16 16
+			visible 1
+			decoration
+		}
+
+		itemdef {
+			group grpControlbutton
+			name controlsangle_on
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle_on.tga"
+			rect 430 12 16 16
+			visible 0
+			decoration
+		}
+
+		// LOOK         //
+
+		itemDef {
+			name ctr_look
+			type 1
+			group grpControlbutton
+			style 1
+			rect 366 44 80 24
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			hide grpControls ; show look }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 0}
+		}
+
+		itemDef {
+			name ctr_look
+			text "look"
+			type 0
+			textscale .25
+			group grpControlbutton
+			style 1
+			rect 366 44 80 24
+			textalignx 10
+			textaligny 18
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name look
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "zoom weapon in:"
+			cvar "ut_zoomin"
+			rect 99 20 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name look
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "zoom weapon out:"
+			cvar "ut_zoomout"
+			rect 99 40 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name look
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "zoom reset:"
+			cvar "ut_zoomreset"
+			rect 99 60 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name look
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "minimap toggle:"
+			cvar "maptoggle"
+			rect 99 80 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		// MOVE         //
+
+		itemDef {
+			name ctr_move
+			type 1
+			group grpControlbutton
+			style 1
+			rect 366 68 80 24
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			hide grpControls ; show move }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 0}
+		}
+
+		itemDef {
+			name ctr_move
+			text "move"
+			type 0
+			textscale .25
+			group grpControlbutton
+			style 1
+			rect 366 68 80 24
+			textalignx 10
+			textaligny 18
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name move
+			group grpControls
+			type ITEM_TYPE_YESNO
+			text "always run:"
+			cvar "cl_run"
+			rect 99 20 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show yesno_message }
+			mouseexit { hide yesno_message }
+		}
+		itemDef {
+			name move
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "run / walk:"
+			cvar "+speed"
+			rect 99 40 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+		}
+
+		itemDef {
+			name move
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "forward:"
+			cvar "+forward"
+			rect 99 60 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name move
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "backpedal:"
+			cvar "+back"
+			rect 99 80 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name move
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "move left:"
+			cvar "+moveleft"
+			rect 99 100 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name move
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "move right:"
+			cvar "+moveright"
+			rect 99 120 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name move
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "jump:"
+			cvar "+moveup"
+			rect 99 140 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name move
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "crouch:"
+			cvar "+movedown"
+			rect 99 160 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name move
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "sprint:"
+			cvar "+button8"
+			rect 99 180 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		// SHOOT         //
+
+		itemDef {
+			name ctr_shoot
+			type 1
+			group grpControlbutton
+			style 1
+			rect 366 92 80 24
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			hide grpControls ; show shoot }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 0}
+		}
+
+		itemDef {
+			name ctr_shoot
+			text "shoot"
+			type 0
+			textscale .25
+			group grpControlbutton
+			style 1
+			rect 366 92 80 24
+			textalignx 10
+			textaligny 18
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name shoot
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "attack:"
+			cvar "+attack"
+			rect 99 20 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name shoot
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "reload:"
+			cvar "+button5"
+			rect 99 40 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name shoot
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "weapon fire mode:"
+			cvar "+button3"
+			rect 99 60 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name shoot
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "previous weapon:"
+			cvar "weapprev"
+			rect 99 80 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name shoot
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "next weapon:"
+			cvar "weapnext"
+			rect 99 100 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name shoot
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "drop weapon:"
+			cvar "ut_weapdrop"
+			rect 99 120 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+
+
+		// MISC         //
+
+		itemDef {
+			name ctr_miscellaneous
+			type 1
+			group grpControlbutton
+			style 1
+			rect 366 116 80 24
+			textalignx 10
+			textaligny 18
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			hide grpControls ; show misc }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 0}
+		}
+
+		itemDef {
+			name ctr_miscellaneous
+			text "misc"
+			type 0
+			textscale .25
+			group grpControlbutton
+			style 1
+			rect 366 116 80 24
+			textalignx 10
+			textaligny 18
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name misc
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "show scores:"
+			cvar "+scores"
+			rect 99 20 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+		itemDef {
+			name misc
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "bandage:"
+			cvar "+button6"
+			rect 99 40 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+		itemDef {
+			name misc
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "(def)use / doors:"
+			cvar "+button7"
+			rect 99 60 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name misc
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "team select menu:"
+			cvar "ui_selectteam"
+			rect 99 80 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name misc
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "gear select menu:"
+			cvar "ui_selectgear"
+			rect 99 100 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name misc
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "next item:"
+			cvar "ut_itemnext"
+			rect 99 120 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name misc
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "previous item:"
+			cvar "ut_itemprev"
+			rect 99 140 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name misc
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "drop item:"
+			cvar "ut_itemdrop"
+			rect 99 160 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name misc
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "use item:"
+			cvar "ut_itemuse"
+			rect 99 180 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name misc
+			group grpControls
+			type ITEM_TYPE_SLIDER
+			text "sensitivity:"
+			cvarfloat "sensitivity" 5 1 30
+			rect 99 200 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name misc
+			group grpControls
+			type ITEM_TYPE_YESNO
+			text "invert mouse y axis:"
+			cvar "ui_mousePitch"
+			rect 99 220 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			action { uiScript update ui_mousePitch }
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name misc
+			group grpControls
+			type ITEM_TYPE_YESNO
+			text "smooth mouse:"
+			cvar "m_filter"
+			rect 99 240 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		// CHAT       //
+
+		itemDef {
+			name ctr_chat
+			type 1
+			group grpControlbutton
+			style 1
+			rect 366 140 80 24
+			textalignx 10
+			textaligny 18
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			hide grpControls ; show chat }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 0}
+		}
+
+		itemDef {
+			name ctr_chat
+			text "chat"
+			type 1
+			textscale .25
+			group grpControlbutton
+			style 1
+			rect 366 140 80 24
+			textalignx 10
+			textaligny 18
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef {
+
+			name chat
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "chat:"
+			cvar "messagemode"
+			rect 99 20 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name chat
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "team chat:"
+			cvar "messagemode2"
+			rect 99 40 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name chat
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "target chat:"
+			cvar "messagemode3"
+			rect 99 60 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+		}
+
+		itemDef {
+			name chat
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "radio menu:"
+			cvar "ui_radio"
+			rect 99 80 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name chat
+			rect 99 120 256 60
+			group grpControls
+			type 0
+			autowrapped
+			text "Read the manual on www.urbanterror.info to find info about binding radio-calls."
+			textalign ITEM_ALIGN_CENTER
+			textalignx 80
+			textaligny 20
+			textscale .25
+		}
+
+	}
+

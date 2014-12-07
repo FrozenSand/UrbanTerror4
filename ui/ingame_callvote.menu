@@ -1,0 +1,714 @@
+#include "ui/menudef.h"
+{
+
+	/*	INGAME CALLVOTE MENU
+	Revised by woekele, for 4.0. Slight adjustments, nothing big.
+	*/
+
+	\\ CALL VOTE MENU \\
+
+	menuDef {
+		name "ingame_callvote"
+		visible 0
+		fullscreen 0
+		rect 341 50 289 300
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		//	hehe thnom!
+		onopen { hide grpcallVote ; show misc ; uiScript loadArenas }
+		//	onopen { hide grpcallVote ; show misc }
+
+		itemdef {
+			name background
+			rect 0 15 294 300
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg_options_tr.tga"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		Itemdef {
+			name close
+			rect 122 280 50 20
+			type 1
+			style 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 .7
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+			action { play "sound/misc/kcaction.wav" ; close ingame_callvote }
+			text "Close"
+			textscale .22
+			textaligny 13
+			textalignx 11
+			visible 1
+		}
+
+
+		// 	BUTTONS	//
+
+		itemDef {
+			name ctr_misc
+			group grpbutton
+			style WINDOW_STYLE_FILLED
+			rect 14 25 56 20
+			type 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; hide grpCallVote ; show misc }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name ctr_kickplayer
+			group grpbutton
+			style WINDOW_STYLE_FILLED
+			rect 84 25 56 20
+			type 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; hide grpCallVote ; show kick }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name ctr_changemap
+			group grpbutton
+			style WINDOW_STYLE_FILLED
+			rect 154 25 56 20
+			type 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; hide grpCallVote ; show map }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name ctr_nextmap
+			group grpbutton
+			style WINDOW_STYLE_FILLED
+			rect 224 25 56 20
+			type 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; hide grpCallVote ; show nextmap }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		//  BUTTON TEXT		//
+
+		itemDef {
+			name ctr_misc
+			text "Misc"
+			textscale .22
+			group grpbutton
+			style WINDOW_STYLE_FILLED
+			rect 14 25 56 20
+			type 0
+			textalign 2
+			textalignx 38
+			textaligny 14
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name ctr_kickplayer
+			text "Kick"
+			textscale .22
+			group grpbutton
+			style WINDOW_STYLE_FILLED
+			rect 84 25 56 20
+			type 0
+			textalign 2
+			textalignx 38
+			textaligny 14
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name ctr_changemap
+			text "Map"
+			textscale .22
+			group grpbutton
+			style WINDOW_STYLE_FILLED
+			rect 154 25 56 20
+			type 0
+			textalign 2
+			textalignx 38
+			textaligny 14
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name ctr_nextmap
+			text "Next map"
+			textscale .22
+			group grpbutton
+			style WINDOW_STYLE_FILLED
+			rect 224 25 56 20
+			type 0
+			textalign 2
+			textalignx 50
+			textaligny 14
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		// 	MISC	//
+
+		itemDef {
+			name misc
+			group grpCallVote
+			rect 4 55 286 210
+			style 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name misc
+			text "Reload map"
+			group grpCallVote
+			textscale .22
+			rect 97 60 100 20
+			type 1
+			style 1
+			textalign 1
+			textalignx 50
+			textaligny 13
+			forecolor 1 1 1 1
+			visible 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 .7
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor  backcolor 0 0 0 .7 }
+			action { play "sound/misc/kcaction.wav" ; exec "cmd callvote reload" ; uiScript closeingame }
+		}
+
+		itemDef {
+			name misc
+			text "Restart map"
+			group grpCallVote
+			textscale .22
+			rect 97 85 100 20
+			type 1
+			style 1
+			textalign 1
+			textalignx 50
+			textaligny 13
+			forecolor 1 1 1 1
+			visible 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 .7
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor  backcolor 0 0 0 .7 }
+			action { play "sound/misc/kcaction.wav" ; exec "cmd callvote restart" ; uiScript closeingame }
+		}
+
+
+		itemDef {
+			name misc
+			text "Cycle map"
+			group grpCallVote
+			textscale .22
+			rect 97 110 100 20
+			type 1
+			style 1
+			textalign 1
+			textalignx 50
+			textaligny 13
+			forecolor 1 1 1 1
+			visible 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 .7
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor  backcolor 0 0 0 .7 }
+			action { play "sound/misc/kcaction.wav" ; exec "cmd callvote cyclemap" ; uiScript closeingame }
+		}
+
+		itemDef {
+			name misc
+			group grpCallVote
+			text "Friendly fire:"
+			textscale .22
+			rect 47 135 100 20
+			type 0
+			textalign 1
+			textalignx 50
+			textaligny 14
+			forecolor 1 1 1 1
+			visible 0
+			decoration
+		}
+
+		itemDef {
+			name misc
+			type 1
+			group grpCallVote
+			style WINDOW_STYLE_FILLED
+			rect 147 135 40 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 0
+			text "On"
+			textscale .22
+			textalign 1
+			textalignx 20
+			textaligny 13
+			action { play "sound/misc/kcaction.wav" ; exec "cmd callvote g_friendlyfire 1" ; uiScript closeingame }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name misc
+			type 1
+			group grpCallVote
+			style WINDOW_STYLE_FILLED
+			rect 197 135 40 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 0
+			text "Off"
+			textscale .22
+			textalign 1
+			textalignx 20
+			textaligny 13
+			action { play "sound/misc/kcaction.wav" ; exec "cmd callvote g_friendlyfire 0" ; uiScript closeingame }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name misc
+			group grpCallVote
+			text "Follow strict:"
+			textscale .22
+			rect 47 160 100 20
+			type 0
+			textalign 1
+			textalignx 50
+			textaligny 14
+			forecolor 1 1 1 1
+			visible 0
+			decoration
+		}
+
+		itemDef {
+			name misc
+			type 1
+			group grpCallVote
+			style WINDOW_STYLE_FILLED
+			rect 147 160 40 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 0
+			text "On"
+			textscale .22
+			textalign 1
+			textalignx 20
+			textaligny 13
+			action { play "sound/misc/kcaction.wav" ; exec "cmd callvote g_followstrict 1" ; uiScript closeingame }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name misc
+			type 1
+			group grpCallVote
+			style WINDOW_STYLE_FILLED
+			rect 197 160 40 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 0
+			text "Off"
+			textscale .22
+			textalign 1
+			textalignx 20
+			textaligny 13
+			action { play "sound/misc/kcaction.wav" ; exec "cmd callvote g_followstrict 0" ; uiScript closeingame }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name misc
+			group grpCallVote
+			text "Gametype:"
+			style 0
+			textscale .22
+			ownerdraw UI_NETGAMETYPE
+			rect 40 185 150 20
+			textalign 0
+			textalignx 0
+			textaligny 15
+			forecolor 1 1 1 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		Itemdef {
+			name misc
+			group grpCallVote
+			rect 197 185 40 20
+			type 1
+			style 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 .7
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+			action { play "sound/misc/kcaction.wav" ; uiScript voteGame ; uiScript closeingame }
+			text "OK"
+			textscale .22
+			textaligny 14
+			textalignx 11
+			visible 1
+		}
+
+		// 	KICK PLAYER	//
+
+		itemDef {
+			name kick
+			group grpCallVote
+			text "Kick player:"
+			textscale .22
+			rect 10 50 110 20
+			textalign 0
+			textalignx 2
+			textaligny 18
+			forecolor 1 1 1 1
+			visible 0
+			decoration
+			action { }
+		}
+		itemDef {
+			name kick
+			group grpCallVote
+			rect 10 70 274 200
+			style WINDOW_STYLE_FILLED
+			type ITEM_TYPE_LISTBOX
+			elementwidth 274
+			elementheight 15
+			textscale .22
+			elementtype LISTBOX_TEXT
+			feeder FEEDER_PLAYER_LIST
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			outlinecolor 1 1 1 .15
+			visible 0
+		}
+
+		itemDef {
+			name kick
+			type 1
+			group grpCallVote
+			style WINDOW_STYLE_FILLED
+			rect 182 280 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" ; uiScript voteKick ; uiScript closeingame }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name kick
+			text "OK"
+			type 0
+			textscale .22
+			group grpCallVote
+			style WINDOW_STYLE_FILLED
+			rect 182 280 50 20
+			textalign 2
+			textalignx 32
+			textaligny 13
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 0
+			decoration
+		}
+
+		// 	NEW MAP	//
+
+		itemDef {
+			name map
+			group grpCallVote
+			text "Change map to:"
+			ownerdraw UI_ALLMAPS_SELECTION
+			textscale .22
+			rect 10 50 110 20
+			textalign 0
+			textalignx 2
+			textaligny 18
+			forecolor 1 1 1 1
+			visible 0
+			decoration
+			action { }
+		}
+		itemDef {
+			name map
+			group grpCallVote
+			rect 10 70 274 200
+			style WINDOW_STYLE_FILLED
+			type ITEM_TYPE_LISTBOX
+			elementwidth 274
+			elementheight 15
+			textscale .22
+			elementtype LISTBOX_TEXT
+			feeder FEEDER_ALLMAPS
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			outlinecolor 1 1 1 .15
+			visible 0
+		}
+
+		itemDef {
+			name map
+			type 1
+			group grpCallVote
+			style WINDOW_STYLE_FILLED
+			rect 182 280 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" ; uiScript voteMap ; uiScript closeingame }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name map
+			text "OK"
+			type 0
+			textscale .22
+			group grpCallVote
+			style WINDOW_STYLE_FILLED
+			rect 182 280 50 20
+			textalign 2
+			textalignx 32
+			textaligny 13
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 0
+			decoration
+		}
+
+		// 	NEXT MAP	//
+
+		itemDef {
+			name nextmap
+			group grpCallVote
+			text "Set next map to:"
+			ownerdraw UI_ALLMAPS_SELECTION
+			textscale .22
+			rect 10 50 110 20
+			textalign 0
+			textalignx 2
+			textaligny 18
+			forecolor 1 1 1 1
+			visible 0
+			decoration
+			action { }
+		}
+		itemDef {
+			name nextmap
+			group grpCallVote
+			rect 10 70 274 200
+			style WINDOW_STYLE_FILLED
+			type ITEM_TYPE_LISTBOX
+			elementwidth 274
+			elementheight 15
+			textscale .22
+			elementtype LISTBOX_TEXT
+			feeder FEEDER_ALLMAPS
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			outlinecolor 1 1 1 .15
+			visible 0
+		}
+
+		itemDef {
+			name nextmap
+			type 1
+			group grpCallVote
+			style WINDOW_STYLE_FILLED
+			rect 182 280 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" ; uiScript voteNextMap ; uiScript closeingame }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name nextmap
+			text "OK"
+			type 0
+			textscale .22
+			group grpCallVote
+			style WINDOW_STYLE_FILLED
+			rect 182 280 50 20
+			textalign 2
+			textalignx 32
+			textaligny 13
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 0
+			decoration
+		}
+
+		// 	VOTE YES	//
+
+		itemDef {
+			name misc
+			type 1
+			group grpCallVote
+			style WINDOW_STYLE_FILLED
+			rect 14 235 104 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" ; exec "vote yes" ; uiScript closeingame }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name misc
+			text "vote yes"
+			type 0
+			textscale .22
+			group grpCallVote
+			style WINDOW_STYLE_FILLED
+			rect 14 235 104 20
+			textalign 2
+			textalignx 99
+			textaligny 16
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 0
+			decoration
+		}
+
+		// 	VOTE NO	//
+
+		itemDef {
+			name misc
+			type 1
+			group grpCallVote
+			style WINDOW_STYLE_FILLED
+			rect 176 235 104 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 0
+			action { play "sound/misc/kcaction.wav" ; exec "vote no" ; uiScript closeingame }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name misc
+			text "vote no"
+			type 0
+			textscale .22
+			group grpCallVote
+			style WINDOW_STYLE_FILLED
+			rect 176 235 104 20
+			textalign 2
+			textalignx 99
+			textaligny 16
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 0
+			decoration
+		}
+
+
+	}
+
+
+}
+

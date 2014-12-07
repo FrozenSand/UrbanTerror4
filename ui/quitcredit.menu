@@ -1,0 +1,472 @@
+#include "ui/menudef.h"
+
+{
+	\\ QUIT CREDIT \\
+
+	menuDef {
+		name "quitCredit"
+		visible 0
+		fullscreen 1
+		background "ui/assets/ut_menuback.jpg"
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		onEsc { uiScript "quit" }
+		onOpen { setitemcolor previous backcolor 0 0 0 1; setitemcolor next backcolor 0 0 0 1 }
+		// BLACK TOP BAR    //
+		itemDef {
+			name window
+			rect -5 -6 650 76
+			style 1
+			border 0
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+		// BLACK BOTTOM BAR    //
+		itemDef {
+			name window
+			rect -5 410 650 76
+			style 1
+			border 0
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+
+		itemDef {
+			name ut_logo_graphic
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/utlogo.tga"
+			rect 6 6 256 64
+			visible 1
+			//     	forecolor .25 .25 .25 1
+			decoration
+		}
+
+		// UI ANIMATIONS	//
+
+		itemDef {
+			name ui_lines1
+			style WINDOW_STYLE_SHADER
+			rect 0 90 640 64
+			visible 1
+			background "ui_lines1"
+			decoration
+		}
+
+		itemDef {
+			name ui_lines2
+			style WINDOW_STYLE_SHADER
+			rect 0 262 640 128
+			visible 1
+			background "ui_lines2"
+			decoration
+		}
+
+		itemdef {
+			name Circle01
+			visible 1
+			type 7
+			rect -170 -300 700 700
+			asset_model "models/misc/Circle01.md3"
+			model_skin "models/misc/square_circle.skin"
+			model_fovx 90
+			model_fovy 90
+			model_angle -35 215 0
+			model_rotation 0 0 -500
+			decoration
+		}
+
+
+		itemDef {
+			name copyright
+			text "Urban Terror (tm) (c) 2000-2014 Frozen Sand/0870760 B.C. Ltd,"
+			style 0
+			textscale .2
+			rect 0 400 640 40
+			//     	textalign 1
+			textaligny 31
+			textalignx 9
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name copyright
+			text "Quake 3 Arena (c) 2000-2014 id Software, inc. all rights reserved"
+			style 0
+			textscale .2
+			rect 0 415 640 40
+			//     	textalign 1
+			textaligny 31
+			textalignx 9
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name version
+			text "Urban Terror"
+			style 0
+			textscale .2
+			rect 0 400 640 40
+			//textalign 1
+			textaligny 32
+			textalignx 539
+			visible 1
+			decoration
+		}
+
+		//@Barbatos - 4.2.008 - added current modversion
+		itemDef {
+			name version2
+			rect 0 400 640 40
+			type ITEM_TYPE_TEXT
+			cvar "ui_modversion"
+			textalign 1
+			textaligny 32
+			textalignx 600
+			textscale .2
+			style 0
+			visible 1
+			decoration
+		}
+
+		//  SID CREDITS		//
+
+
+		itemDef {
+			name window
+			rect 20 80 600 320
+			style 1
+			border 0
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name window
+			rect 20 80 600 320
+			style 1
+			border 0
+			backcolor 0 0 .55 .5
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//@Barbatos: the blank bar to seperate the list
+		itemDef {
+			name window
+			rect 324 80 1 320
+			style 1
+			border 0
+			backcolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name credits
+			text "Frozen Sand is:"
+			textscale .28
+			textalignx 10
+			textaligny 38
+			rect 102 80 518 42
+			style 1
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 1
+			//border 1
+			//bordercolor .5 .5 .5 1
+			decoration
+		}
+
+		itemDef {
+			name sid_logo_graphic
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/fs_sid_logo.jpg"
+			rect 22 82 80 40
+			visible 1
+			//     	forecolor .25 .25 .25 1
+			decoration
+		}
+
+		itemDef {
+			name credits
+			text "[ Hit escape to exit ]"
+			textscale .33
+			textalign 2
+			textalignx 595
+			textaligny 38
+			rect 20 80 600 42
+			style 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name credits
+			wrapped
+			text
+			"Asche\r"
+			"Barbatos\r"
+			"BladeKiller\r"
+			"Decoy\r"
+			"evilelf\r"
+			"Fenix\r"
+			"Frankie V\r"
+			"gsigms\r"
+			"H0i\r"
+			"Holblin\r"
+			"Kalish\r"
+			"Kr0m\r"
+			"Levant\r"
+			"MajkiFajki\r"
+			"Mr Bean\r"
+			textscale .22
+			textalignx 0
+			textaligny 18
+			rect 35 130 160 25
+			style 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name credits
+			wrapped
+			text
+			"Level Designer\r"
+			"Codebase & Auth System Developer\r"
+			"Team Manager / Senior Artist / Modeler\r"
+			"Media Manager / Editor\r"
+			"Hosting Platform Manager / Administrator\r"
+			"Engine & Codebase Developer\r"
+			"Lead Animator / Senior Artist\r"
+			"Codebase Developer\r"
+			"Modeler / Texture Artist\r"
+			"Coder / Bugs Reviser\r"
+			"Engine Developer / Webmaster / 2D Artist\r"
+			"Forum Administrator\r"
+			"Level Designer\r"
+			"Level Designer\r"
+			"Modeler / Texture Artist\r"
+			textscale .24
+			textalignx 0
+			textaligny 18
+			rect 96 130 185 25
+			style 1
+			forecolor .5 .5 .5 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+
+
+		//  RIGHT ROW		//
+
+
+		itemDef {
+			name credits
+			wrapped
+			text
+			"Nemesis\r"
+			"Nounou\r"
+			"NulL\r"
+			"PapyRuny\r"
+			"RabidCow\r"
+			"Raedwulf\r"
+			"RaideR\r"
+			"r00t\r"
+			"RobDistorted\r"
+			"s.e.t.i\r"
+			"SevenofNine\r"
+			"Skaz\r"
+			"Smachine\r"
+			"TTimo\r"
+			"TwentySeven\r"
+			"UnifiedTone\r"
+			textscale .24
+			textalignx 0
+			textaligny 18
+			rect 335 130 185 25
+			style 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name credits
+			wrapped
+			text
+			"Lead Tester / QA Team Manager\r"
+			"Concept Artist\r"
+			"Level Designer\r"
+			"Level Designer\r"
+			"Company Manager / Modeler / Texture Artist\r"
+			"Lead Codebase Developer / Engine Dev\r"
+			"Network Manager / Website Developer\r"
+			"Engine and Codebase Developer\r"
+			"Animator\r"
+			"Anticheat Developer\r"
+			"Coverage Coordinator\r"
+			"Level Designer / Texture Artist\r"
+			"Modeler / Texture Artist / Painting Artist\r"
+			"Engine Developer / Codebase Developer\r"
+			"Lead Engine Developer / Codebase Dev\r"
+			"Composer / Audio Engineer\r"
+			textscale .21
+			textalignx 0
+			textaligny 18
+			rect 412 130 185 25
+			style 1
+			forecolor .5 .5 .5 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		/*@Barbatos 4.2.008 - commented out
+		itemDef {
+			name credits
+			wrapped
+			text "Quality Assurance Team:\r"
+			textscale .22
+			textalignx 0
+			textaligny 18
+			rect 340 227 180 20
+			style 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name credits
+			wrapped
+			text "BuD0KaI\r"
+			"Jpoulpoul\r"
+			"M0j0\r"
+			"MajkiFajki\r"
+			"Mess\r"
+			"Pims\r"
+			"Sparkwade\r"
+			"Ssx3max\r"
+			"Tizz\r"
+			textscale .18
+			textalignx 0
+			textaligny 18
+			rect 345 240 185 20
+			style 1
+			forecolor .5 .5 .5 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		*/
+
+		itemdef {
+			name next
+			rect 535 360 75 30
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { setcolor backcolor 0 0 0 1; setfocus blah1; play "sound/misc/kcaction.wav"; close quitcredit; open betacredit }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 1 }
+		}
+
+		itemdef {
+			name next2
+			rect 535 360 75 30
+			type 0
+			text "Next"
+			textscale .25
+			textalign 2
+			textalignx 71
+			textaligny 26
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemdef {
+			name previous
+			rect 30 360 75 30
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { setcolor backcolor 0 0 0 1; setfocus blah1; play "sound/misc/kcaction.wav"; close quitcredit; open main }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 1 }
+		}
+
+		itemdef {
+			name previous2
+			rect 30 360 75 30
+			type 0
+			text "Back"
+			textscale .25
+			textalign 2
+			textalignx 71
+			textaligny 26
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemdef {
+			name blah1
+			rect 0 0 0 0
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 0 0 0 0
+			backcolor 0 0 0 0
+			border 0
+			bordercolor 0 0 0 0
+			visible 0
+		}
+	}
+}

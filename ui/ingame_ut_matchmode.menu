@@ -1,0 +1,149 @@
+#include "ui/menudef.h"
+{
+
+	/*	INGAME MATCHMODE MENU
+	Revised by woekele, for 4.0. Slight adjustments, nothing big.
+	*/
+
+	menuDef {
+		name "ingame_ut_matchmode"
+		visible 0
+		fullscreen 0
+		rect 59 50 140 240
+		//outOfBoundsClick
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		//onOpen { close "ingame_options" ; show match ; uiScript loadArenas }
+		onOpen { close "ingame_options" ; show match }
+
+		itemdef {
+			name background
+			rect 0 15 154 139
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg_options_tr.tga"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//	BUTTONS	//
+
+		itemDef {
+			name window
+			group grpbutton
+			style WINDOW_STYLE_FILLED
+			rect 10 28 134 25
+			type 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; exec "ready" ;uiScript closeingame }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name window
+			group grpbutton
+			style WINDOW_STYLE_FILLED
+			rect 10 61 134 25
+			type 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; exec "captain" ;uiScript closeingame }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name window
+			group grpbutton
+			style WINDOW_STYLE_FILLED
+			rect 10 94 134 25
+			type 1
+			style 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; exec "sub" ;uiScript closeingame }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		// 	BUTTON TEXT	//
+
+		itemDef {
+			name match
+			group grpOptions
+			text "ready"
+			textscale .23
+			rect 10 28 110 20
+			textalign 2
+			textalignx 131
+			textaligny 18
+			forecolor 1 1 1 1
+			visible 0
+			decoration
+		}
+
+		itemDef {
+			name match
+			group grpOptions
+			text "captain"
+			textscale .23
+			rect 10 61 110 20
+			textalign 2
+			textalignx 131
+			textaligny 18
+			forecolor 1 1 1 1
+			visible 0
+			decoration
+		}
+
+		itemDef {
+			name match
+			group grpOptions
+			text "substitute"
+			textscale .23
+			rect 10 94 110 20
+			textalign 2
+			textalignx 131
+			textaligny 18
+			forecolor 1 1 1 1
+			visible 0
+			decoration
+		}
+
+		itemDef {
+			name close_button
+			type 1
+			rect 52 127 50 20
+			visible 1
+			border 1
+			bordercolor .5 .5 .5 1
+			style 1
+			backcolor 0 0 0 .7
+			mouseEnter { setitemcolor close_button backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor close_button backcolor 0 0 0 .7 }
+			action { play "sound/misc/kcaction.wav" ; close ingame_ut_matchmode ; open ingame_player }
+			text "cancel"
+			textscale .23
+			textalign 1
+			textalignx 25
+			textaligny 13
+			forecolor 1 1 1 1
+		}
+
+	}
+}

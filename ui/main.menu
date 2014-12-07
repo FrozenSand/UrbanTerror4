@@ -1,0 +1,619 @@
+#include "ui/menudef.h"
+{
+
+	/*	MAIN MENU
+	Revised by woekele, for 4.0. Slight adjustments, nothing big.
+	*/
+
+	assetGlobalDef {
+		font "fonts/fontImage_40" 40
+		smallFont "fonts/fontImage_30" 30
+		bigFont "fonts/fontImage_50" 50
+
+		cursor "ui/assets/3_cursor3.tga"		// cursor
+		itemFocusSound "sound/misc/menu2.wav"	// sound for item getting focus (via keyboard or mouse )
+
+		fadeClamp 1.0							// sets the fadeup alpha
+		fadeCycle 1								// how often fade happens in milliseconds
+		fadeAmount 0.1							// amount to adjust alpha per cycle
+
+		shadowColor 0.1 0.1 0.1 0.0				// shadow color
+	}
+
+
+	menuDef {
+		name "main"
+		background "ui/assets/ut_menuback.jpg"
+		fullScreen 1
+		visible 1
+		focusColor 1 1 1 1
+		onOpen { uiScript stopRefresh ; uiScript update "ui_GetName"; playlooped "music/mainmenu.wav" }
+		onESC { close main; open quitcredit }
+
+		//	BLACK TOP BAR	//
+
+		itemDef {
+			name window
+			rect -5 -5 650 76
+			style 1
+			border 0
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//	BLACK BOTTOM BAR	//
+
+		itemDef {
+			name window
+			rect -5 411 650 76
+			style 1
+			border 0
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name ut_logo_graphic
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/utlogo.tga"
+			rect 7 7 256 64
+			visible 1
+			//forecolor .25 .25 .25 1
+			decoration
+		}
+
+		//	UI ANIMATIONS	//
+
+		itemDef {
+			name ui_lines1
+			style WINDOW_STYLE_SHADER
+			rect 0 90 640 64
+			visible 1
+			background "ui_lines1"
+			decoration
+		}
+
+		itemDef {
+			name ui_lines2
+			style WINDOW_STYLE_SHADER
+			rect 0 262 640 128
+			visible 1
+			background "ui_lines2"
+			decoration
+		}
+
+		itemDef {
+			name Circle01
+			visible 1
+			type 7
+			rect -170 -300 700 700
+			asset_model "models/misc/Circle01.md3"
+			model_skin "models/misc/square_circle.skin"
+			model_fovx 90
+			model_fovy 90
+			model_angle -35 215 0
+			model_rotation 0 0 -500
+			decoration
+		}
+
+		itemDef {
+			name auth_status
+			type ITEM_TYPE_TEXT
+			cvar "cl_auth_status"
+			style 0
+			textscale .23
+			rect 0 400 640 40
+			textaligny 5
+			textalignx 10
+			visible 1
+			decoration
+		}
+
+		//	COPYRIGHT TEXT	//
+
+		itemDef {
+			name copyright
+			text "Urban Terror (tm) (c) 2000-2014 Frozen Sand/0870760 B.C. Ltd,"
+			style 0
+			textscale .2
+			rect 0 400 640 40
+			//textalign 1
+			textaligny 32
+			textalignx 10
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name copyright
+			text "Quake 3 Arena (c) 2000-2014 id Software, inc. all rights reserved"
+			style 0
+			textscale .2
+			rect 0 415 640 40
+			//textalign 1
+			textaligny 32
+			textalignx 10
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name version
+			text "Urban Terror"
+			style 0
+			textscale .2
+			rect 0 400 640 40
+			//textalign 1
+			textaligny 32
+			textalignx 539
+			visible 1
+			decoration
+		}
+
+		//@Barbatos - 4.2.008 - added current modversion
+		itemDef {
+			name version2
+			rect 0 400 640 40
+			type ITEM_TYPE_TEXT
+			cvar "ui_modversion"
+			textalign 1
+			textaligny 32
+			textalignx 600
+			textscale .2
+			style 0
+			visible 1
+			decoration
+		}
+
+		//	MENU BAR	//
+
+		itemDef {
+			name menubar
+			type 0
+			rect 469 156 162 234
+			style 1
+			border 1
+			bordercolor .5 .5 .5 1
+			bordersize 1
+			backcolor 0 0 0 .8
+			visible 1
+			decoration
+			mouseEnter { show angle_on ; hide angle }
+			mouseExit { show angle ; hide angle_on }
+		}
+
+		itemDef {
+			name angle
+			cvartest "name"
+			hideCvar { "New_UrT_Player", "Unnamed Player" }
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle.tga"
+			rect 615 158 16 16
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name angle_on
+			cvartest "name"
+			hideCvar { "New_UrT_Player", "Unnamed Player" }
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle_on.tga"
+			rect 615 158 16 16
+			visible 0
+			type 1
+			action { play "sound/radio/male/male98.wav" }
+			//decoration
+		}
+
+		//	BUTTONS	//
+
+		//@Barbatos: auth system - 4.2
+		itemDef {
+			name loginoption
+			cvartest "name"
+			hideCvar { "New_UrT_Player", "Unnamed Player" }
+			cvartest "cl_auth"
+			hideCvar { "10" }
+			type 1
+			style 1
+			rect 471 178 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; close main ; open authkey }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 0 }
+		}
+
+		//@Barbatos: same for the logout but no need to open a menu
+		itemDef {
+			name loginoption
+			cvartest "name"
+			hideCvar { "New_UrT_Player", "Unnamed Player" }
+			cvartest "cl_auth"
+			showCvar { "10" }
+			type 1
+			style 1
+			rect 471 178 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open disconnect }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 0 }
+		}
+
+		itemDef {
+			name multiplayeroption
+			cvartest "name"
+			hideCvar { "New_UrT_Player", "Unnamed Player" }
+			type 1
+			style 1
+			rect 471 210 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; setcvar ui_ingameMaster 0 ; close main ; open joinserver }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 0 }
+		}
+
+		itemDef {
+			name setupoption
+			cvartest "name"
+			hideCvar { "New_UrT_Player", "Unnamed Player" }
+			type 1
+			style 1
+			rect 471 260 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			close main ;
+			open setup_menu ; open control_menu}
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 0 }
+		}
+
+
+		itemDef {
+			name startserveroption
+			cvartest "name"
+			hideCvar { "New_UrT_Player", "Unnamed Player" }
+			type 1
+			style 1
+			rect 471 290 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			close main ;
+			open createserver }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 0 }
+		}
+
+
+		itemDef {
+			name demooption
+			cvartest "name"
+			hideCvar { "New_UrT_Player", "Unnamed Player" }
+			type 1
+			style 1
+			rect 471 320 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			close main ;
+			open demo }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 0 }
+		}
+
+		itemDef {
+			name quitoption
+			cvartest "name"
+			hideCvar { "New_UrT_Player", "Unnamed Player" }
+			type 1
+			style 1
+			rect 471 350 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			close main; open quitcredit }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 0 }
+		}
+
+		//	TEXT FOR BUTTONS	//
+
+		//@Barbatos: auth system - 4.2
+		itemDef {
+			name loginoption
+			text "log in"
+			cvartest "cl_auth"
+			hideCvar { "10"}
+			textscale 0.3
+			textalign 0
+			textalignx 10
+			textaligny 21
+			style 1
+			rect 471 178 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+
+		}
+
+		itemDef {
+			name loginoption
+			text "log out"
+			cvartest "cl_auth"
+			showCvar { "10" }
+			textscale 0.3
+			textalign 0
+			textalignx 10
+			textaligny 21
+			style 1
+			rect 471 178 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+
+		}
+
+		itemDef {
+			name multiplayeroption
+			text "play online"
+			textscale 0.3
+			textalign 0				// center
+			textalignx 10			// x alignment point for text
+			textaligny 21
+			style 1
+			rect 471 210 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name setupoption
+			text "setup"
+			textscale 0.3
+			textalign 0
+			textalignx 10
+			textaligny 21
+			style 1
+			rect 471 260 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name startserveroption
+			text "start server"
+			textscale 0.3
+			textalign 0
+			textalignx 10
+			textaligny 21
+			style 1
+			rect 471 290 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name demooption
+			text "demos"
+			textscale 0.3
+			textalign 0
+			textalignx 10
+			textaligny 21
+			style 1
+			rect 471 320 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name quitoption
+			text "quit"
+			textscale 0.3
+			textalign 0
+			textalignx 10
+			textaligny 21
+			style 1
+			rect 471 350 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name namewindow1
+			cvartest "name"
+			showCvar { "New_UrT_Player", "Unnamed Player" }
+			rect 0 0 640 480
+			style 1
+			backcolor 0 0 0 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name namewindow2
+			rect 20 123 600 234
+			cvartest "name"
+			showCvar { "New_UrT_Player", "Unnamed Player" }
+			style 3
+			background "ui/assets/quit_popup.jpg"
+			border 1
+			bordercolor .5 .5 .5 1
+			bordersize 1
+			visible 1
+			decoration
+		}
+
+		//@Barbatos: no tutorial for 4.2
+		/*
+		itemDef {
+			name namewindow3
+			rect 30 133 580 215
+			cvartest "name"
+			showCvar { "New_UrT_Player", "Unnamed Player" }
+			style 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 .7
+			text "First watch the tutorial please:"
+			textscale .3
+			textalign 1
+			textalignx 290
+			textaligny 25
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name playername2
+			rect 270 173 100 25
+			cvartest "name"
+			showCvar { "New_UrT_Player", "Unnamed Player" }
+			style 1
+			type 1
+			visible 1
+			text "Tutorial"
+			textscale .25
+			textalign 1
+			textalignx 50
+			textaligny 17
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordersize 1
+			bordercolor .5 .5 .5 1
+			action { play "sound/misc/kcaction.wav"; setcvar com_cameramode "1"; exec "demo tutorial" }
+			mouseEnter { setitemcolor playername2 backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor playername2 backcolor 0 0 0 .7 }
+		}
+		*/
+		itemDef {
+			name namewindow4
+			rect 30 136 580 25
+			cvartest "name"
+			showCvar { "New_UrT_Player", "Unnamed Player" }
+			style 1
+			border 0
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 0
+			text "Please set your nick name:"
+			textscale .4
+			textalign 1
+			textalignx 290
+			textaligny 25
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name playername1
+			rect 55 170 530 50
+			style 1
+			type 4
+			maxchars 26
+			text ""
+			cvar "ui_Name"
+			textscale .4
+			textalign 1
+			textalignx 265
+			textaligny 32
+			cvartest "name"
+			showCvar { "New_UrT_Player", "Unnamed Player" }
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordersize 1
+			bordercolor 1 1 1 1
+		}
+
+		//@Barbatos: added a message to inform the new players that they can register an account for free
+		itemDef {
+			name namewindow44
+			rect 266 234 580 25
+			cvartest "name"
+			showCvar { "New_UrT_Player", "Unnamed Player" }
+			style 1
+			border 0
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 0
+			wrapped
+			text
+			"Do not forget to register an account on www.urbanterror.info - it's free!\r"
+			"Some servers won't let you connect if you do not have an account.\r"
+			textscale .3
+			textalign 1
+			textalignx 290
+			textaligny 25
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name playername3
+			rect 270 303 100 25
+			cvartest "name"
+			showCvar { "New_UrT_Player", "Unnamed Player" }
+			style 1
+			type 1
+			visible 1
+			text "Continue..."
+			textscale .25
+			textalign 1
+			textalignx 50
+			textaligny 17
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordersize 1
+			bordercolor .5 .5 .5 1
+			action { play "sound/misc/kcaction.wav"; setcvar com_cameramode "0"; uiScript update "ui_SetName" }
+			mouseEnter { setitemcolor playername3 backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor playername3 backcolor 0 0 0 .7 }
+		}
+
+	}
+}

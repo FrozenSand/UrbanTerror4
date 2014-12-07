@@ -1,0 +1,129 @@
+#include "ui/menudef.h"
+
+{
+	\\ ERROR MENU		 \\
+
+	menuDef {
+		name "error_popmenu"
+		visible 0
+		fullscreen 0
+		rect 170 80 300 320
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		popup
+		onClose { uiScript clearError }
+		onOpen { }
+		onESC { close error_popmenu ; open main }
+
+
+
+		itemdef {
+			name background
+			rect 10 15 300 320
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/serverinfo_bg.jpg"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name errorname
+			rect 10 15 300 25
+			style 1
+			text "error"
+			textalign 2
+			textstyle 0
+			textscale .333
+			textalignx 296
+			textaligny 21
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 20 55 280 230
+			style 1
+			forecolor 0 0 0 0
+			backcolor 0 0 0 .8
+			border 1
+			bordersize 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//  ERROR TEXT		//
+
+		itemDef {
+			name errorinfo
+			rect 30 65 260 210
+			type ITEM_TYPE_TEXT
+			style 1
+			textstyle 0
+			autowrapped
+			cvar "com_errorMessage"
+			textalign 0
+			textalignx 0
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+		//  EXIT		//
+
+		itemDef {
+			name exit
+			type 1
+			group grpControlbutton
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			rect 220 295 80 26
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			close error_popmenu ;
+			open main }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name exit
+			text "Okay"
+			type 0
+			textscale .25
+			group grpControlbutton
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			rect 220 295 80 26
+			textalign 2
+			textalignx 76
+			textaligny 22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+
+	}
+
+
+}
+
+

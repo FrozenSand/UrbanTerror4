@@ -1,0 +1,23 @@
+#include "ui/menudef.h"
+
+// team menu
+//
+// defines from ui_shared.h
+
+{
+	assetGlobalDef
+	{
+		cursor "ui/assets/3_cursor3"			// cursor
+		fadeClamp 1.0					// sets the fadeup alpha
+		fadeCycle 1					// how often fade happens in milliseconds
+		fadeAmount 0.1					// amount to adjust alpha per cycle
+
+		shadowX  5					// x amount for shadow offset
+		shadowY  5					// y amount for shadow offset
+		shadowColor 0.1 0.1 0.1 0.25			// shadow color
+
+		font "fonts/fontImage_40" 40
+		smallFont "fonts/fontImage_30" 30
+		bigFont "fonts/fontImage_50" 50
+	}
+}

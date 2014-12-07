@@ -1,0 +1,142 @@
+#include "ui/menudef.h"
+{
+
+	/* INGAME STATS MENU
+	Created by woekele. Twentyseven demanded this from me, so I had no choice :(
+	*/
+
+	menuDef {
+		name "ingame_stats"
+		visible 0
+		rect 0 40 640 440
+		focusColor 1 1 1 1
+		style 1
+		border 0
+		onOpen { uiScript getStats }
+		onEsc { close ingame_stats }
+
+		itemdef {
+			name background
+			rect 0 0 640 300
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg2_tr.tga"
+			border 0
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+
+		}
+
+		itemdef {
+			name playerlist_text
+			rect 5 5 75 20
+			type 0
+			style 0
+			text "Playerlist"
+			textscale 0.22
+			textalignx 5
+			textaligny 8
+			visible 1
+			forecolor 1 1 1 1
+			decoration
+		}
+
+		itemdef {
+			name stats_playerlist
+			rect 5 15 175 120
+			style WINDOW_STYLE_FILLED
+			type ITEM_TYPE_LISTBOX
+			elementwidth 175
+			elementheight 15
+			textscale .22
+			elementtype LISTBOX_TEXT
+			feeder FEEDER_STATS_PLAYER_LIST
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			outlinecolor 1 1 1 .15
+			visible 1
+			//action { uiScript "getStats" }
+		}
+
+		itemdef {
+			name stats_weaponlist
+			rect 5 150 175 120
+			style WINDOW_STYLE_FILLED
+			type ITEM_TYPE_LISTBOX
+			elementwidth 175
+			elementheight 15
+			textscale .22
+			elementtype LISTBOX_TEXT
+			feeder FEEDER_STATS_WEAPONS_LIST
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			outlinecolor 1 1 1 .15
+			visible 1
+			//action { uiScript "getStats" }
+		}
+
+		itemdef {
+			name stats_textbox
+			rect 185 15 450 255
+			style WINDOW_STYLE_FILLED
+			type ITEM_TYPE_LISTBOX
+			elementwidth 147
+			elementheight 15
+			textscale .22
+			elementtype LISTBOX_TEXT
+			feeder FEEDER_STATS_TEXT_LIST
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			outlinecolor 1 1 1 .15
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name close_button
+			type 1
+			rect 300 275 100 20
+			visible 1
+			border 1
+			bordercolor .5 .5 .5 1
+			style 1
+			backcolor 0 0 0 .7
+			mouseEnter { setitemcolor close_button backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor close_button backcolor 0 0 0 .7 }
+			action { play "sound/misc/kcaction.wav" ; close ingame_stats }
+			text "Close"
+			textscale .25
+			textalign 1
+			textalignx 50
+			textaligny 14
+			forecolor 1 1 1 1
+		}
+
+		itemDef {
+			name take_screeny
+			type 1
+			rect 415 275 100 20
+			visible 1
+			border 1
+			bordercolor .5 .5 .5 1
+			style 1
+			backcolor 0 0 0 .7
+			mouseEnter { setitemcolor take_screeny backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor take_screeny backcolor 0 0 0 .7 }
+			action { play "sound/misc/kcaction.wav" ; exec screenshotjpeg }
+			text "Take Screenshot"
+			textscale .25
+			textalign 1
+			textalignx 48
+			textaligny 14
+			forecolor 1 1 1 1
+		}
+
+	}
+}

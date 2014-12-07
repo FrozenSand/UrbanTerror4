@@ -1,0 +1,397 @@
+#include "ui/menudef.h"
+{
+
+	/*	INGAME_SELECT_TEAM
+	Revised by woekele, for 4.0. Slight adjustments, nothing big.
+	*/
+
+	\\ SETUP MENU \\
+
+	menuDef {
+		name "setup_menu"
+		visible 0
+		fullscreen 1
+		rect 0 0 640 480
+		background "ui/assets/ut_menuback.jpg"
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		onEsc { close setup_menu ; open main }
+
+		// BLACK TOP BAR    //
+		itemDef {
+			name window
+			rect -5 -6 650 76
+			style 1
+			border 0
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+		// BLACK BOTTOM BAR    //
+		itemDef {
+			name window
+			rect -5 410 650 76
+			style 1
+			border 0
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name ut_logo_graphic
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/utlogo.tga"
+			rect 6 6 256 64
+			visible 1
+			//     	forecolor .25 .25 .25 1
+			decoration
+		}
+
+		// UI ANIMATIONS	//
+
+		itemDef {
+			name ui_lines1
+			style WINDOW_STYLE_SHADER
+			rect 0 90 640 64
+			visible 1
+			background "ui_lines1"
+			decoration
+		}
+
+		itemDef {
+			name ui_lines2
+			style WINDOW_STYLE_SHADER
+			rect 0 262 640 128
+			visible 1
+			background "ui_lines2"
+			decoration
+		}
+
+		itemdef {
+			name Circle01
+			visible 1
+			type 7
+			rect -170 -300 700 700
+			asset_model "models/misc/Circle01.md3"
+			model_skin "models/misc/square_circle.skin"
+			model_fovx 90
+			model_fovy 90
+			model_angle -35 215 0
+			model_rotation 0 0 -500
+			decoration
+		}
+
+
+		// MENU BAR	//
+		itemDef {
+			name menubar
+			type 0
+			rect 468 159 162 210 //468 215 162 174
+			style 1
+			border 1
+			bordercolor .5 .5 .5 1
+			bordersize 1
+			backcolor 0 0 0 .8
+			visible 1
+			decoration
+			mouseEnter { show angle_on ; hide angle }
+			mouseExit { show angle ; hide angle_on }
+		}
+
+		itemDef {
+			name angle
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle.tga"
+			rect 614 161 16 16 //217
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name angle_on
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle_on.tga"
+			rect 614 161 16 16 //217
+			visible 0
+			decoration
+		}
+
+
+		// Player	//
+		itemDef {
+			name player
+			type 1
+			style 1
+			rect 470 219 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			close psetup_menu ;
+			close control_menu ;
+			close system_menu ;
+			close options_menu ;
+			close default_menu ;
+			open psetup_menu }
+			mouseenter { setcolor backcolor 0 0 .55 1}
+			mouseexit { setcolor backcolor 0 0 0 0 }
+		}
+
+
+		// Control	//
+		itemDef {
+			name controls
+			type 1
+			style 1
+			rect 470 189 160 30
+			//		rect 470 239 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			close psetup_menu ;
+			close control_menu ;
+			close system_menu ;
+			close options_menu ;
+			close default_menu ;
+			open control_menu }
+			mouseenter { setcolor backcolor 0 0 .55 1}
+			mouseexit { setcolor backcolor 0 0 0 0 }
+		}
+
+		// 	System		//
+		itemDef {
+			name system
+			type 1
+			style 1
+			rect 470 279 160 30
+			//		rect 470 269 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			close psetup_menu ;
+			close control_menu ;
+			close system_menu ;
+			close options_menu ;
+			close default_menu ;
+			open system_menu }
+			mouseenter { setcolor backcolor 0 0 .55 1}
+			mouseexit { setcolor backcolor 0 0 0 0 }
+		}
+
+
+		// Game Options	//
+		itemDef {
+			name gameoptions
+			type 1
+			style 1
+			rect 470 249 160 30
+			//		rect 470 299 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			close psetup_menu ;
+			close control_menu ;
+			close system_menu ;
+			close options_menu ;
+			close default_menu ;
+			open options_menu }
+			mouseenter { setcolor backcolor 0 0 .55 1}
+			mouseexit { setcolor backcolor 0 0 0 0 }
+		}
+
+		// Reset Defaults	//
+		itemDef {
+			name defaults
+			type 1
+			style 1
+			rect 470 309 160 30
+			//		rect 470 329 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ;
+			close psetup_menu ;
+			close control_menu ;
+			close system_menu ;
+			close options_menu ;
+			close default_menu ;
+			open default_menu }
+			mouseenter { setcolor backcolor 0 0 .55 1}
+			mouseexit { setcolor backcolor 0 0 0 0 }
+		}
+
+		//  MENU TEXT		//
+
+
+		// Player	//
+
+		itemDef {
+			name player
+			text "Player"
+			textscale 0.3
+			textalign 0		        // center
+			textalignx 10        // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny 21
+			type 0
+			style 1
+			rect 470 219 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+
+		// Control	//
+		itemDef {
+			name controls
+			text "Controls"
+			textscale 0.3
+			textalign 0		        // center
+			textalignx 10        // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny 21
+			type 0
+			style 1
+			rect 470 189 160 30
+			//		rect 470 239 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+		// 	System		//
+		itemDef {
+			name system
+			text "System"
+			textscale 0.3
+			textalign 0		        // center
+			textalignx 10        // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny 21
+			type 0
+			style 1
+			rect 470 279 160 30
+			//		rect 470 269 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+
+		// Game Options	//
+		itemDef {
+			name gameoptions
+			text "Game Options"
+			textscale 0.3
+			textalign 0		        // center
+			textalignx 10        // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny 21
+			type 0
+			style 1
+			rect 470 249 160 30
+			//		rect 470 299 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+		// Reset Defaults	//
+		itemDef {
+			name defaults
+			text "Restore Defaults"
+			textscale 0.3
+			textalign 0		        // center
+			textalignx 10        // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny 21
+			type 0
+			style 1
+			rect 470 309 160 30
+			//		rect 470 329 160 30
+			border 0
+			backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+		//  BACK		//
+
+		itemDef {
+			name back
+			style 3
+			background "ui/assets/backarrow.tga"
+			rect 20 426 32 32
+			visible 1
+			mouseEnter { hide back ; show back_on }
+		}
+
+		itemDef {
+			name back_on
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/backarrow_on.tga"
+			rect 20 426 32 32
+			//     	backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 0
+			type ITEM_TYPE_BUTTON
+			mouseExit { hide back_on ; show back }
+			action { play "sound/misc/kcaction.wav" ;
+			close player_menu ;
+			close control_menu ;
+			close system_menu ;
+			close options_menu ;
+			close default_menu ;
+			close setup_menu ;
+			open main }
+		}
+
+		itemDef {
+			name back_text
+			group grpControlbutton
+			text "back"
+			textscale .25
+			textalignx 11
+			textaligny 12
+			rect 11 462 60 20
+			style 1
+			//	border 1
+			//	bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			//	backcolor 0 0 0 .65
+			visible 1
+			decoration
+		}
+	}
+
+
+}

@@ -1,0 +1,987 @@
+#include "ui/menudef.h"
+{
+
+	/*ROFL, this needed updating... *kisses* woekele. Removed lots of useless crap and added usefull stuff.
+	*/
+
+	// SERVER CREATION MENU //
+	menuDef {
+		name "createserver"
+		visible 0
+		fullscreen 1
+		rect 0 0 640 480
+		background "ui/assets/ut_menuback.jpg"
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		onEsc { close createserver ; open main }
+		onOpen { uiScript loadArenas ; hide accept_alt ; show accept ; hide back_alt ; show back }
+
+
+		// BLACK TOP BAR //
+		itemDef {
+			name window
+			rect -5 -6 650 76
+			style 1
+			border 0
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		// BLACK BOTTOM BAR //
+		itemDef {
+			name window
+			rect -5 410 650 76
+			style 1
+			border 0
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		// UT LOGO //
+		itemDef {
+			name ut_logo_graphic
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/utlogo.tga"
+			rect 6 6 256 64
+			visible 1
+			decoration
+		}
+
+		// UI ANIMATIONS //
+		itemDef {
+			name ui_lines1
+			style WINDOW_STYLE_SHADER
+			rect 0 90 640 64
+			visible 1
+			background "ui_lines1"
+			decoration
+		}
+
+		itemDef {
+			name ui_lines2
+			style WINDOW_STYLE_SHADER
+			rect 0 262 640 128
+			visible 1
+			background "ui_lines2"
+			decoration
+		}
+
+		// ACTUAL MENU //
+		// SERVER SETUP (Left Column) //
+		itemDef {
+			name window
+			rect 10 78 179 322
+			style WINDOW_STYLE_FILLED
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			visible 1
+			decoration
+			mouseEnter { show serversetangle_on ; hide serversetangle }
+			mouseExit { show serversetangle ; hide serversetangle_on }
+		}
+
+		// SERVER SETUP TITLE //
+		itemDef {
+			name window
+			rect 10 78 179 20
+			text "server setup"
+			textscale .25
+			textalignx 4
+			textaligny 16
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 .5
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		// SERVER SETUP //
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_MULTI
+			text "dedicated:"
+			cvar "ui_dedicated"
+			cvarFloatList { "No" 0 "LAN" 1 "Internet" 2 }
+			rect 15 107 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_EDITFIELD
+			text "hostname:"
+			cvar "sv_hostname"
+			rect 15 121 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			maxChars 32
+			maxPaintChars 13
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_EDITFIELD
+			text "motd:"
+			cvar "g_motd"
+			rect 15 135 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			maxChars 40
+			maxPaintChars 13
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_EDITFIELD
+			text "joinmessage:"
+			cvar "sv_joinmessage"
+			rect 15 149 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			maxChars 40
+			maxPaintChars 13
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "max clients:"
+			cvar "sv_maxclients"
+			rect 15 163 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			maxChars 2
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_YESNO
+			text "pure server:"
+			cvar "sv_pure"
+			rect 15 177 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_EDITFIELD
+			text "password:"
+			cvar "g_password"
+			rect 15 191 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			maxChars 15
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_YESNO
+			text "check cd-key:"
+			cvar "sv_strictauth"
+			rect 15 205 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_YESNO
+			text "floodprotect:"
+			cvar "sv_floodprotect"
+			rect 15 219 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_YESNO
+			text "friendlyfire:"
+			cvar "g_friendlyfire"
+			rect 15 234 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_YESNO
+			text "matchmode:"
+			cvar "g_matchmode"
+			rect 15 247 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_YESNO
+			text "balance teams:"
+			cvar "g_teamforcebalance"
+			rect 15 261 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_MULTI
+			text "voting:"
+			cvar "g_allowvote"
+			cvarFloatList { "No" 0 "Yes" 536871039 }
+			rect 15 275 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "warmuptime:"
+			cvar "g_warmup"
+			rect 15 289 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			maxChars 2
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_YESNO
+			text "swap roles:"
+			cvar "g_swaproles"
+			rect 15 303 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_MULTI
+			text "armbands:"
+			cvar "g_armbands"
+			cvarFloatList { "custom" 0 "team" 1 "random" 2 }
+			rect 15 317 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_MULTI
+			text "deadchat:"
+			cvar "g_dedchat"
+			cvarFloatList { "no" 0 "team" 1 "all" 2 }
+			rect 15 331 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_YESNO
+			text "follow enemies:"
+			cvar "g_followstrict"
+			rect 15 345 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_YESNO
+			text "antiwarp:"
+			cvar "g_antiwarp"
+			rect 15 359 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			cvartest g_antiwarp
+			showcvar { "1" }
+			name normal
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "antiwarp tol:"
+			cvar "g_antiwarptol"
+			rect 15 373 169 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 75
+			textaligny 9
+			maxChars 3
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		// Game Type Selector and Options (The middle column)//
+		itemDef {
+			name window
+			rect 202 78 229 322
+			style WINDOW_STYLE_FILLED
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			visible 1
+			decoration
+			mouseEnter { show serveropangle_on ; hide serveropangle }
+			mouseExit { show serveropangle ; hide serveropangle_on }
+		}
+
+		//Gametype title
+		itemDef {
+			name window
+			rect 202 78 229 21
+			text "game type"
+			textscale .25
+			textalignx 4
+			textaligny 16
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 .5
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		// GAMETYPE SETTING
+		itemDef {
+			name gametypefield
+			style 0
+			ownerdraw UI_NETGAMETYPE
+			text "Gametype:"
+			textstyle 0
+			rect 225 101 200 38
+			textalign ITEM_ALIGN_LEFT                                // Gametype selection
+			textalignx 5
+			textaligny 25
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		// SERVER OPTIONS TITLE
+		itemDef {
+			name window
+			rect 202 140 229 20
+			text "server options"
+			textscale .25
+			textalignx 4
+			textaligny 16
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 .5
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		// 	Server Options	//
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "timelimit:"
+			cvar "timelimit"
+			rect 207 170 219 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 115
+			textaligny 9
+			maxChars 3
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "fraglimit:"
+			cvar "fraglimit"
+			rect 207 187 219 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 115
+			textaligny 9
+			maxChars 3
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "capturelimit:"
+			cvar "capturelimit"
+			rect 207 202 219 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 115
+			textaligny 9
+			maxChars 3
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "maxrounds:"
+			cvar "g_maxrounds"
+			rect 207 219 219 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 115
+			textaligny 9
+			maxChars 3
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "round time:"
+			cvar "g_roundtime"
+			rect 207 236 219 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 115
+			textaligny 9
+			maxChars 3
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "bomb defuse time:"
+			cvar "g_bombdefusetime"
+			rect 207 253 219 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 115
+			textaligny 9
+			maxChars 2
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "bomb explode time:"
+			cvar "g_bombexplodetime"
+			rect 207 270 219 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 115
+			textaligny 9
+			maxChars 2
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "flag return time:"
+			cvar "g_flagreturntime"
+			rect 207 287 219 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 115
+			textaligny 9
+			maxChars 2
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "hotpotato time:"
+			cvar "g_hotpotato"
+			rect 207 304 219 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 115
+			textaligny 9
+			maxChars 2
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "respawnprotection:"
+			cvar "g_respawnprotection"
+			rect 207 321 219 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 115
+			textaligny 9
+			maxChars 2
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			group grpsettings
+			type ITEM_TYPE_YESNO
+			text "g_waverespawns:"
+			cvar "g_waverespawns"
+			rect 207 338 219 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 115
+			textaligny 9
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name normal
+			cvartest g_waverespawns
+			showcvar { "1" }
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "red respawndelay:"
+			cvar "g_redwave"
+			rect 207 355 219 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 115
+			textaligny 9
+			maxChars 2
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			cvartest g_waverespawns
+			showcvar { "0" }
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "respawndelay:"
+			cvar "g_respawndelay"
+			rect 207 355 219 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 115
+			textaligny 9
+			maxChars 2
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name normal
+			cvartest g_waverespawns
+			showcvar { "1" }
+			group grpsettings
+			type ITEM_TYPE_NUMERICFIELD
+			text "blue respawndelay:"
+			cvar "g_bluewave"
+			rect 207 372 219 12
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 115
+			textaligny 9
+			maxChars 2
+			textscale .22
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		//MAP PREVIEW/SELECT MAP (Right column)
+		itemDef {
+			name window
+			rect 441 78 184 322
+			style WINDOW_STYLE_FILLED
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			visible 1
+			decoration
+			mouseEnter { show servermapangle_on ; hide servermapangle }
+			mouseExit { show servermapangle ; hide servermapangle_on }
+		}
+
+		// Map Preview Title
+		itemDef {
+			name window
+			rect 441 78 184 20               // Title Bar Placement
+			text "map preview"
+			textscale .25
+			textalignx 4
+			textaligny 16
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 .5
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		// PreviewImage - not working 28/9/2002
+		// Fixed with the release of 2.6
+
+		itemDef {
+			name mappreview
+			style 0
+			ownerdraw UI_MAPPREVIEW
+			rect 470 104 126 94
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name mappreview
+			style WINDOW_STYLE_FILLED
+			rect 470 104 127 95
+			border 1
+			bordercolor .5 .5 .5 .5
+			visible 1
+			decoration
+		}
+
+		// Map Selection Title
+		itemDef {
+			name window
+			rect 441 210 184 20
+			text "select map"
+			textscale .25
+			textalignx 4
+			textaligny 16
+			style WINDOW_STYLE_FILLED
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 .5
+			visible 1
+			decoration
+		}
+
+		// MAPLIST FEEDER BOX //
+		itemDef {
+			name maplist
+			rect 441 236 184 160
+			type ITEM_TYPE_LISTBOX
+			style WINDOW_STYLE_FILLED
+			elementwidth 120
+			elementheight 20
+			textscale .22
+			elementtype LISTBOX_TEXT
+			feeder FEEDER_ALLMAPS
+			textstyle 6
+			textalign 3
+			textaligny 14
+			//	border 1
+			//	bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			//	backcolor 0 0 0 .8
+			outlinecolor 1 1 1 .15
+			visible 1
+			columns 1 2 190 25
+			action { play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name maplist
+			rect 441 229 166 171
+			type 0
+			style WINDOW_STYLE_FILLED
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		// BACK		//
+
+		itemDef {
+			name back
+			style 3
+			background "ui/assets/backarrow.tga"
+			rect 20 426 32 32
+			visible 1
+			mouseEnter { hide back ; show back_on }
+		}
+
+		itemDef {
+			name back_on
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/backarrow_on.tga"
+			rect 20 426 32 32
+			//     	backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 0
+			type ITEM_TYPE_BUTTON
+			mouseExit { hide back_on ; show back }
+			action { close createserver ; play "sound/misc/kcaction.wav" ; open main }
+		}
+
+		itemDef {
+			name back_text
+			group grpControlbutton
+			text "back"
+			textscale .25
+			textalignx 11
+			textaligny 12
+			rect 11 462 60 20
+			style 1
+			//	border 1
+			//	bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			//	backcolor 0 0 0 .65
+			visible 1
+			decoration
+		}
+
+		// ACCEPT	//
+
+		itemDef {
+			name accept
+			style 3
+			background "ui/assets/acceptarrow.tga"
+			rect 584 426 32 32
+			visible 1
+			mouseEnter { hide accept ; show accept_on }
+		}
+
+		itemDef {
+			name accept_on
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/acceptarrow_on.tga"
+			rect 584 426 32 32
+			//     	backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 0
+			type ITEM_TYPE_BUTTON
+			mouseExit { hide accept_on ; show accept }
+			action { uiScript StartServer ; play "sound/misc/kcaction.wav" }
+		}
+
+		itemDef {
+			name accept_text
+			group grpControlbutton
+			text "start server"
+			textscale .25
+			textalignx 11
+			textaligny 12
+			rect 557 462 60 20
+			style 1
+			//	border 1
+			//	bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			//	backcolor 0 0 0 .65
+			visible 1
+			decoration
+		}
+
+		// ANGLES //
+
+		itemDef {
+			name serveropangle
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle.tga"
+			rect 415 80 16 16
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name serveropangle_on
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle_on.tga"
+			rect 415 80 16 16
+			visible 0
+			decoration
+		}
+
+		itemDef {
+			name serversetangle
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle.tga"
+			rect 173 80 16 16
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name serversetangle_on
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle_on.tga"
+			rect 173 80 16 16
+			visible 0
+			decoration
+		}
+
+		itemDef {
+			name servermapangle
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle.tga"
+			rect 609 80 16 16
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name servermapangle_on
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle_on.tga"
+			rect 609 80 16 16
+			visible 0
+			decoration
+		}
+
+	}
+}

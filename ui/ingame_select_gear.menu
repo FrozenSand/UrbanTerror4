@@ -1,0 +1,1156 @@
+#include "ui/menudef.h"
+{
+
+	/*	INGAME GEAR MENU
+	Revised by woekele, for 4.0. Slight adjustments, nothing big. Updated descriptions
+	*/
+
+	menuDef
+	{
+		name "ingame_ut_select_gear"
+		visible 0
+		fullscreen 0
+		rect -5 -5 650 490
+		focusColor 1 1 1 1
+		disablecolor 0 0 0 0
+		backcolor 0 0 0 0
+		style 0
+		border 0
+		onClose { uiScript gearWrite; uiScript gearEnd }
+		onOpen { uiScript gearRead }
+
+
+		itemdef {
+			name window
+			rect 73 79 494 321
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg2_tr.tga"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 73 79 494 25
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//  TABS		//
+
+
+
+		itemdef {
+			name teamtab
+			type 1
+			rect 74 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_tr.tga"
+			//	border 1
+			//	bordercolor .5 .5 .5 1
+			visible 1
+			action { uiScript gearWrite ;
+			play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_gear ;
+			close ingame_ut_select_gear_item ;
+			close ingame_ut_select_gear_grenade ;
+			close ingame_ut_select_gear_primary ;
+			close ingame_ut_select_gear_secondary ;
+			close ingame_ut_select_gear_sidearm ;
+			open ingame_ut_select_team }
+		}
+
+		itemdef {
+			name teamtab
+			rect 74 81 160 23
+			style 0
+			forecolor .5 .5 .5 1
+			text "team setup"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 1
+			decoration
+		}
+
+
+		itemdef {
+			name geartab
+			rect 224 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_on_tr.tga"
+			//	border 1
+			//	bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemdef {
+			name geartab
+			rect 224 81 160 23
+			style 0
+			forecolor 1 1 1 1
+			text "weapons / items"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 1
+			decoration
+		}
+
+		//  MAIN WINDOW AREA		//
+
+		//  TOP ROW	//
+
+		itemDef {
+			name window
+			type 1
+			hotkey "1"
+			rect 83 134 232 75
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			ownerdrawParam GEAR_PRIMARY
+			action
+			{ uiScript "gearSetActive" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_gear;
+			open ingame_ut_select_gear_primary }
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+		}
+
+		itemDef	{
+			name primary_image
+			ownerdraw UI_GEAR_IMAGE
+			ownerdrawParam GEAR_PRIMARY
+			rect 109 124 190 95
+			forecolor 0 0 0 1
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name window
+			type 1
+			hotkey "2"
+			rect 325 134 111 75
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			ownerdrawParam GEAR_SECONDARY
+			action
+			{ uiScript "gearSetActive" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_gear;
+			open ingame_ut_select_gear_secondary }
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+			cvarTest "ui_gearPrimary"
+			disableCvar { "27" }
+		}
+
+		itemDef	{
+			name secondary_image
+			ownerdraw UI_GEAR_IMAGE
+			ownerdrawParam GEAR_SECONDARY
+			rect 316 141 130 65
+			visible 1
+			cvarTest "ui_gearSecondary"
+			hideCvar { "0" }
+			decoration
+		}
+
+		itemdef {
+			name not_available
+			rect 355 143 51 51
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/na.tga"
+			visible 1
+			cvarTest "ui_gearPrimary"
+			showCvar { "27" }
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 325 185 111 24
+			style 0
+			forecolor .8 .8 .8 1
+			text "not available"
+			textscale .18
+			textalign 0
+			textalignx 28
+			textaligny 22
+			visible 1
+			cvarTest "ui_gearPrimary"
+			showCvar { "27" }
+			decoration
+		}
+
+		itemDef {
+			name window
+			type 1
+			hotkey "3"
+			rect 446 134 111 75
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			ownerdrawParam GEAR_SIDEARM
+			action
+			{ uiScript "gearSetActive" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_gear;
+			open ingame_ut_select_gear_sidearm }
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+		}
+
+		itemDef	{
+			name sidearm_image
+			ownerdraw UI_GEAR_IMAGE
+			ownerdrawParam GEAR_SIDEARM
+			rect 425 134 150 75
+			visible 1
+			decoration
+		}
+
+		//  BOTTOM ROW		//
+
+		itemDef {
+			name window
+			type 1
+			hotkey "4"
+			rect 83 259 111 75
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			ownerdrawParam GEAR_GRENADE
+			action
+			{ uiScript "gearSetActive" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_gear;
+			open ingame_ut_select_gear_grenade }
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+		}
+
+		itemDef	{
+			name grenade_image
+			ownerdraw UI_GEAR_IMAGE
+			ownerdrawParam GEAR_GRENADE
+			rect 111 264 68 68
+			visible 1
+			cvarTest "ui_gearGrenade"
+			hideCvar { "0"}
+			decoration
+		}
+
+		/*
+		itemdef {
+			name not_available
+			rect 113 269 51 51
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/na.tga"
+			visible 1
+			cvarTest "ui_gearGrenade"
+			showCvar { "0" }
+			decoration
+		}
+		*/
+
+		itemDef {
+			name window
+			type 1
+			hotkey "5"
+			rect 204 259 111 75
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			ownerdrawParam GEAR_ITEM_1
+			action
+			{ uiScript "gearSetActive" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_gear;
+			open ingame_ut_select_gear_item }
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+		}
+
+		itemDef	{
+			name gear_image
+			ownerdraw UI_GEAR_IMAGE
+			ownerdrawParam GEAR_ITEM_1
+			rect 232 264 68 68
+			visible 1
+			//	cvarTest "ui_gearItemCount"
+			//	hideCvar { "0" }
+			decoration
+		}
+		/*
+		itemdef {
+			name not_available
+			rect 234 264 51 51
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/na.tga"
+			visible 1
+			cvarTest "ui_gearItemCount"
+			showCvar { "1" }
+			decoration
+		}
+		*/
+
+		itemDef {
+			name window
+			type 1
+			hotkey "6"
+			rect 325 259 111 75
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			ownerdrawParam GEAR_ITEM_2
+			action
+			{ uiScript "gearSetActive" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_gear;
+			open ingame_ut_select_gear_item }
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+			cvarTest "ui_gearItemCount"
+			disableCvar { "1" }
+		}
+
+		itemDef	{
+			name gear_image
+			ownerdraw UI_GEAR_IMAGE
+			ownerdrawParam GEAR_ITEM_2
+			rect 353 264 68 68
+			visible 1
+			cvarTest "ui_gearItemCount"
+			hideCvar { "1" }
+			decoration
+		}
+
+		itemdef {
+			name not_available
+			rect 355 266 51 51
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/na.tga"
+			visible 1
+			cvarTest "ui_gearItemCount"
+			showCvar { "1" }
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 325 308 111 24
+			style 0
+			forecolor .8 .8 .8 1
+			text "not available"
+			textscale .18
+			textalign 0
+			textalignx 28
+			textaligny 22
+			visible 1
+			cvarTest "ui_gearItemCount"
+			showCvar { "1" }
+			decoration
+		}
+
+		itemDef {
+			name window
+			type 1
+			hotkey "7"
+			rect 446 259 111 75
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			ownerdrawParam GEAR_ITEM_3
+			action
+			{ uiScript "gearSetActive" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_gear;
+			open ingame_ut_select_gear_item }
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+			cvarTest "ui_gearItemCount"
+			disableCvar { "1" ; "2"}
+		}
+
+		itemDef	{
+			name gear_image
+			ownerdraw UI_GEAR_IMAGE
+			ownerdrawParam GEAR_ITEM_3
+			rect 474 264 68 68
+			visible 1
+			cvarTest "ui_gearItemCount"
+			hideCvar { "1" ; "2" }
+			decoration
+		}
+
+		itemdef {
+			name not_available
+			rect 476 266 51 51
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/na.tga"
+			visible 1
+			cvarTest "ui_gearItemCount"
+			showCvar { "1" ; "2" }
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 446 308 111 24
+			style 0
+			forecolor .8 .8 .8 1
+			text "not available"
+			textscale .18
+			textalign 0
+			textalignx 28
+			textaligny 22
+			visible 1
+			cvarTest "ui_gearItemCount"
+			showCvar { "1" ; "2" }
+			decoration
+		}
+
+		//  TEXT 	//
+
+
+		itemDef {
+			name window
+			rect 83 114 50 20
+			style 0
+			forecolor 1 1 1 1
+			text "weapons"
+			textscale .22
+			textalign 0
+			textalignx 2
+			textaligny 18
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 83 209 232 20
+			style 0
+			forecolor 1 1 1 1
+			text "primary"
+			textscale .22
+			textalign 2
+			textalignx 232
+			textaligny 14
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 325 209 111 20
+			style 0
+			forecolor 1 1 1 1
+			text "secondary"
+			textscale .22
+			textalign 2
+			textalignx 111
+			textaligny 14
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name window
+			rect 446 209 111 20
+			style 0
+			forecolor 1 1 1 1
+			text "sidearm"
+			textscale .22
+			textalign 2
+			textalignx 111
+			textaligny 14
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 83 239 111 20
+			style 0
+			forecolor 1 1 1 1
+			text "grenades"
+			textscale .22
+			textalign 0
+			textalignx 2
+			textaligny 18
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 204 239 111 20
+			style 0
+			forecolor 1 1 1 1
+			text "items"
+			textscale .22
+			textalign 0
+			textalignx 2
+			textaligny 18
+			visible 1
+			decoration
+		}
+
+
+		//  ACCEPT	//
+
+
+		itemDef {
+			name accept
+			rect 446 360 111 30
+			style WINDOW_STYLE_FILLED
+			type 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			hotkey "0"
+			action
+			{ uiScript gearWrite ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_gear }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name accept
+			rect 446 360 111 30
+			style 1
+			type 0
+			text "Close"
+			textscale .25
+			textalign 2
+			textalignx 107
+			textaligny 26
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//  NUMBERS	//
+
+		itemDef {
+			name window
+			rect 83 191 20 20
+			style 0
+			forecolor 1 1 1 1
+			text "1."
+			textscale .22
+			textalign 0
+			textalignx 5
+			textaligny 16
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 325 191 20 20
+			style 0
+			forecolor 1 1 1 1
+			text "2."
+			textscale .22
+			textalign 0
+			textalignx 5
+			textaligny 16
+			visible 1
+			//	cvarTest "ui_gearItemCount"
+			//	showCvar { "1" ; "2"}
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 446 191 20 20
+			style 0
+			forecolor 1 1 1 1
+			text "3."
+			textscale .22
+			textalign 0
+			textalignx 5
+			textaligny 16
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 83 314 20 20
+			style 0
+			forecolor 1 1 1 1
+			text "4."
+			textscale .22
+			textalign 0
+			textalignx 5
+			textaligny 18
+			visible 1
+			//	cvarTest "ui_gearItemCount"
+			//	showCvar { "1" ; "2" }
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 204 314 20 20
+			style 0
+			forecolor 1 1 1 1
+			text "5."
+			textscale .22
+			textalign 0
+			textalignx 5
+			textaligny 18
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 325 314 20 20
+			style 0
+			forecolor 1 1 1 1
+			text "6."
+			textscale .22
+			textalign 0
+			textalignx 5
+			textaligny 18
+			visible 1
+			cvarTest "ui_gearItemCount"
+			showCvar { "2" ; "3"}
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 446 314 20 20
+			style 0
+			forecolor 1 1 1 1
+			text "7."
+			textscale .22
+			textalign 0
+			textalignx 5
+			textaligny 18
+			visible 1
+			cvarTest "ui_gearItemCount"
+			showCvar { "3" }
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 446 360 111 30
+			style 0
+			forecolor 1 1 1 1
+			text ""
+			textscale .22
+			textalign 0
+			textalignx 5
+			textaligny 28
+			visible 1
+			decoration
+		}
+
+
+
+		//  APOXS STUFF			//
+
+		/*
+
+		itemdef {
+			name			window
+			rect			96 62 451 382
+			style			WINDOW_STYLE_FILLED
+			border			1
+			bordercolor		0 0 .55 .5
+			forecolor		1 1 1 1
+			backcolor		.3 .3 .4 .7
+			visible			1
+			decoration
+		}
+
+		itemdef {
+			name			window
+			text			"Select Gear"
+			textscale		.45
+			textalignx		20
+			textaligny		25
+			rect			96 32 200 30
+			style			WINDOW_STYLE_FILLED
+			forecolor		1 1 1 1
+			backcolor		0 0 .55 .5
+			border			1
+			bordercolor		0 0 .55 .5
+			visible			1
+			decoration
+		}
+
+		// Primary weapon
+
+		itemdef {
+			name primary_button
+			type 1
+			hotkey "1"
+			style WINDOW_STYLE_FILLED
+			backcolor .5 .5 .5 .5
+			rect 123 92 182 76
+			border 1
+			bordercolor 0 0 .55 1
+			visible 1
+			ownerdrawParam GEAR_PRIMARY
+			action
+			{ uiScript "gearSetActive" ;
+			close ingame_ut_select_gear;
+			open ingame_ut_select_gear_primary }
+		}
+
+
+		itemdef {
+			name primary_image
+			ownerdraw UI_GEAR_IMAGE
+			ownerdrawParam GEAR_PRIMARY
+			rect 150 92 128 64
+			visible 1
+			decoration
+		}
+
+		itemdef {
+			name			primary_text
+			rect			141 166 100 15
+			textscale		.23
+			textalignx		0
+			textaligny		0
+			forecolor		.8 .8 .8 1
+			text			"1. Primary"
+			visible			1
+			decoration
+		}
+
+		itemdef {
+			name			primary_item_text
+			rect			150 92 100 15
+			textscale		.23
+			textalignx		0
+			textaligny		15
+			forecolor		.8 .8 .8 1
+			visible			1
+			ownerdraw		UI_GEAR_NAME
+			ownerdrawParam	GEAR_PRIMARY
+			decoration
+		}
+
+		// Secondary weapon
+
+		itemdef {
+			name			secondary
+			type			1
+			hotkey			"2"
+			style			WINDOW_STYLE_FILLED
+			backcolor		.5 .5 .5 .5
+			rect			123 187 182 76
+			visible			1
+			border			1
+			bordercolor		0 0 .55 1
+			ownerdrawParam	GEAR_SECONDARY
+			action
+			{
+				uiScript gearSetActive;
+				close ingame_ut_select_gear;
+				open ingame_ut_select_gear_secondary
+			}
+		}
+
+		itemdef {
+			name			secondary_image
+			ownerdraw		UI_GEAR_IMAGE
+			ownerdrawParam	GEAR_SECONDARY
+			rect			150 187 128 64
+			visible			1
+			decoration
+		}
+
+		itemdef {
+			name			secondary_text
+			rect			146 261 100 15
+			textscale		.23
+			textalignx		0
+			textaligny		0
+			text			"2. Secondary"
+			forecolor		.8 8 .8 1
+			visible			1
+			decoration
+		}
+
+		itemdef {
+			name			secondary_item_text
+			rect			150 187 100 15
+			textscale		.23
+			textalignx		0
+			textaligny		15
+			forecolor		.8 .8 .8 1
+			visible			1
+			ownerdraw		UI_GEAR_NAME
+			ownerdrawParam	GEAR_SECONDARY
+			decoration
+		}
+
+
+		// Sidearm weapon
+
+		itemdef {
+			name			sidearm
+			type			1
+			hotkey			"3"
+			style			WINDOW_STYLE_FILLED
+			backcolor		.5 .5 .5 .5
+			rect			123 272 182 76
+			visible			1
+			border			1
+			bordercolor		.8 .8 .8 1
+			ownerdrawParam	GEAR_SIDEARM
+			action
+			{
+				uiScript gearSetActive;
+				close ingame_ut_select_gear;
+				open ingame_ut_select_gear_sidearm
+			}
+		}
+
+		itemdef {
+			name			sidearm
+			ownerdraw		UI_GEAR_IMAGE
+			ownerdrawParam	GEAR_SIDEARM
+			rect			150 272 128 64
+			visible			1
+			decoration
+		}
+
+		itemdef {
+			name			secondary_text
+			rect			146 342 100 15
+			textscale		.23
+			textalignx		0
+			textaligny		0
+			text			"3. Sidearm"
+			forecolor		.8 .8 .8 1
+			visible			1
+			decoration
+		}
+
+		itemdef {
+			name			sidearm_item_text
+			rect			150 272 128 64
+			textscale		.23
+			textalignx		0
+			textaligny		15
+			forecolor		.8 .8 .8 1
+			visible			1
+			ownerdraw		UI_GEAR_NAME
+			ownerdrawParam	GEAR_SIDEARM
+			decoration
+		}
+
+
+		// Grenade weapon
+
+		itemdef {
+			name			GRENADE
+			type			1
+			hotkey			"4"
+			style			WINDOW_STYLE_FILLED
+			backcolor		.5 .5 .5 .5
+			rect			123 357 182 76
+			visible			1
+			border			1
+			bordercolor		.8 .8 8 1
+			ownerdrawParam	GEAR_GRENADE
+			action
+			{
+				uiScript gearSetActive;
+				close ingame_ut_select_gear;
+				open ingame_ut_select_gear_grenade
+			}
+		}
+
+		itemdef {
+			name			GRENADE
+			ownerdraw		UI_GEAR_IMAGE
+			ownerdrawParam	GEAR_GRENADE
+			rect			150 357 128 64
+			visible			1
+			decoration
+		}
+
+		itemdef {
+			name			GRENADE_text
+			rect			146 427 100 15
+			textscale		.23
+			textalignx		0
+			textaligny		0
+			text			"4. Grenade"
+			forecolor		.8 .8 .8 1
+			visible			1
+			decoration
+		}
+
+		itemdef {
+			name			GRENADE_text
+			rect			150 357 128 64
+			textscale		.23
+			textalignx		0
+			textaligny		15
+			forecolor		.8 .8 .8 1
+			visible			1
+			ownerdraw		UI_GEAR_NAME
+			ownerdrawParam	GEAR_GRENADE
+			decoration
+		}
+
+		// Accessory 3 weapon
+
+		itemdef {
+			name			ITEM_3
+			type			1
+			hotkey			"7"
+			style			WINDOW_STYLE_FILLED
+			backcolor		.5 .5 .5 .5
+			rect			323 283 182 76
+			visible			1
+			border			1
+			bordercolor		0 0 .55 1
+			ownerdrawParam	GEAR_ITEM_3
+			cvarTest "ui_gearItemCount"
+			showCvar { "3" }
+			action
+			{
+				uiScript gearSetActive;
+				close ingame_ut_select_gear;
+				open ingame_ut_select_gear_item
+			}
+		}
+
+		itemdef {
+			name			ITEM_3
+			ownerdraw		UI_GEAR_IMAGE
+			ownerdrawParam	GEAR_ITEM_3
+			rect			382 290 50 50
+			visible			1
+			decoration
+			cvarTest "ui_gearItemCount"
+			showCvar { "3" }
+		}
+
+		itemdef {
+			name			ITEM_3_text
+			rect			346 283 100 15
+			textscale		.23
+			textalignx		0
+			textaligny		0
+			text			"7. Accessory 3"
+			forecolor		.8 .8 .8 1
+			visible			1
+			decoration
+			cvarTest "ui_gearItemCount"
+			showCvar { "3" }
+		}
+
+		itemdef {
+			name			ITEM_3_text
+			rect			350 283 128 64
+			textscale		.23
+			textalignx		0
+			textaligny		15
+			forecolor		.8 .8 .8 1
+			visible			1
+			ownerdraw		UI_GEAR_NAME
+			ownerdrawParam	GEAR_ITEM_3
+			decoration
+			cvarTest "ui_gearItemCount"
+			showCvar { "3" }
+		}
+
+		// Item 1
+
+		itemdef {
+			name			ITEM_1_button
+			type			1
+			hotkey			"5"
+			style			WINDOW_STYLE_FILLED
+			backcolor		.5 .5 .5 .5
+			rect			323 92 182 76
+			border			1
+			bordercolor		0 0 .55 1
+			visible			1
+			ownerdrawParam	GEAR_ITEM_1
+			action
+			{
+				uiScript "gearSetActive" ;
+				close ingame_ut_select_gear;
+				open ingame_ut_select_gear_item
+			}
+		}
+
+		itemdef {
+			name			ITEM_1_image
+			ownerdraw		UI_GEAR_IMAGE
+			ownerdrawParam	GEAR_ITEM_1
+			rect			382 99 50 50
+			visible			1
+			decoration
+		}
+
+		itemdef {
+			name			ITEM_1_text
+			rect			341 166 100 15
+			textscale		.23
+			textalignx		0
+			textaligny		0
+			forecolor		.8 .8 .8 1
+			text			"5. Accessory 1"
+			visible			1
+			decoration
+		}
+
+		itemdef {
+			name			ITEM_1_item_text
+			rect			350 92 100 15
+			textscale		.23
+			textalignx		0
+			textaligny		15
+			forecolor		.8 .8 .8 1
+			visible			1
+			ownerdraw		UI_GEAR_NAME
+			ownerdrawParam	GEAR_ITEM_1
+			decoration
+		}
+
+		// Accessory 2
+
+		itemdef {
+			name			ITEM_2
+			type			1
+			hotkey			"6"
+			style			WINDOW_STYLE_FILLED
+			backcolor		.5 .5 .5 .5
+			rect			323 187 182 76
+			visible			1
+			border			1
+			bordercolor		0 0 .55 1
+			ownerdrawParam	GEAR_ITEM_2
+			cvarTest "ui_gearItemCount"
+			showCvar { "2"; "3" }
+			action
+			{
+				uiScript gearSetActive;
+				close ingame_ut_select_gear;
+				open ingame_ut_select_gear_item
+			}
+		}
+
+		itemdef {
+			name			ITEM_2_image
+			ownerdraw		UI_GEAR_IMAGE
+			ownerdrawParam	GEAR_ITEM_2
+			rect			382 194 50 50
+			visible			1
+			decoration
+			cvarTest "ui_gearItemCount"
+			showCvar { "2"; "3" }
+		}
+
+		itemdef {
+			name			ITEM_2_text
+			rect			346 261 100 15
+			textscale		.23
+			textalignx		0
+			textaligny		0
+			text			"6. Accessory 2"
+			forecolor		.8 8 .8 1
+			visible			1
+			decoration
+			cvarTest "ui_gearItemCount"
+			showCvar { "2"; "3" }
+		}
+
+		itemdef {
+			name			ITEM_2_item_text
+			rect			350 187 100 15
+			textscale		.23
+			textalignx		0
+			textaligny		15
+			forecolor		.8 .8 .8 1
+			visible			1
+			ownerdraw		UI_GEAR_NAME
+			ownerdrawParam	GEAR_ITEM_2
+			decoration
+			cvarTest "ui_gearItemCount"
+			showCvar { "2"; "3" }
+		}
+
+		itemdef {
+			name accept
+			text "Accept"
+			hotkey "0"
+			type 1
+			textscale .25
+			style WINDOW_STYLE_FILLED
+			rect 410 412 100 25
+			textalign 1
+			textalignx 45
+			textaligny 18
+			forecolor 1 1 1 1
+			backcolor 1.0 0.55 0.0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action
+			{
+				uiScript gearWrite;
+				close ingame_ut_select_gear
+			}
+			mouseEnter { setitemcolor save backcolor 1.0 0.55 0.0 1 }
+			mouseExit { setitemcolor save backcolor 0 0 0 1}
+		}
+
+		*/
+
+	}
+
+}
