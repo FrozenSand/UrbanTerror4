@@ -585,7 +585,7 @@
 			type ITEM_TYPE_BUTTON
 			style WINDOW_STYLE_FILLED
 			ownerdrawFlag UI_SHOW_NOTFAVORITESERVERS
-			rect 115 344 94 24
+			rect 106 344 100 24
 			backcolor 0 0 0 0
 			visible 1
 			action { play "sound/misc/kcaction.wav" ;
@@ -598,7 +598,7 @@
 			name createFavorite
 			type ITEM_TYPE_BUTTON
 			style WINDOW_STYLE_FILLED
-			rect 115 344 94 24
+			rect 106 344 100 24
 			ownerdrawFlag UI_SHOW_FAVORITESERVERS
 			backcolor 0 0 0 0
 			visible 1
@@ -613,7 +613,7 @@
 			type ITEM_TYPE_BUTTON
 			style WINDOW_STYLE_FILLED
 			ownerdrawFlag UI_SHOW_NOTFAVORITESERVERS
-			rect 115 368 94 24
+			rect 106 368 100 24
 			backcolor 0 0 0 0
 			visible 1
 			action { play "sound/misc/kcaction.wav" ;
@@ -627,7 +627,7 @@
 			type ITEM_TYPE_BUTTON
 			style WINDOW_STYLE_FILLED
 			ownerdrawFlag UI_SHOW_FAVORITESERVERS
-			rect 115 368 94 24
+			rect 106 368 100 24
 			backcolor 0 0 0 0
 			visible 1
 			action { play "sound/misc/kcaction.wav" ;
@@ -640,7 +640,7 @@
 			name serverinfo
 			type ITEM_TYPE_BUTTON
 			style WINDOW_STYLE_FILLED
-			rect 209 344 94 24
+			rect 206 344 94 24
 			backcolor 0 0 0 0
 			visible 1
 			action { play "sound/misc/kcaction.wav" ;
@@ -653,7 +653,7 @@
 			name password
 			type ITEM_TYPE_BUTTON
 			style WINDOW_STYLE_FILLED
-			rect 209 368 94 24
+			rect 206 368 94 24
 			backcolor 0 0 0 0
 			visible 1
 			action { play "sound/misc/kcaction.wav" ;
@@ -702,7 +702,7 @@
 			textscale .25
 			style WINDOW_STYLE_FILLED
 			ownerdrawFlag UI_SHOW_NOTFAVORITESERVERS
-			rect 115 344 94 24
+			rect 106 344 100 24
 			textalign 1
 			textalignx 46 // center
 			textaligny 17
@@ -718,7 +718,7 @@
 			textscale .25
 			style WINDOW_STYLE_FILLED
 			ownerdrawFlag UI_SHOW_FAVORITESERVERS
-			rect 115 344 94 24
+			rect 106 344 100 24
 			textalign 1
 			textalignx 46 // center
 			textaligny 16
@@ -734,9 +734,9 @@
 			textscale .25
 			style WINDOW_STYLE_FILLED
 			ownerdrawFlag UI_SHOW_NOTFAVORITESERVERS
-			rect 115 368 94 24
+			rect 106 368 100 24
 			textalign 1
-			textalignx 46 // center
+			textalignx 50 // center
 			textaligny 16
 			backcolor 0 0 0 0
 			visible 1
@@ -750,7 +750,7 @@
 			textscale .25
 			style 0
 			ownerdrawFlag UI_SHOW_FAVORITESERVERS
-			rect 115 368 94 24
+			rect 106 368 100 24
 			textalign 1
 			textalignx 46 // center
 			textaligny 16
@@ -765,7 +765,7 @@
 			type 0
 			textscale .25
 			style WINDOW_STYLE_FILLED
-			rect 209 344 94 24
+			rect 206 344 94 24
 			textalign 1
 			textalignx 46 // center
 			textaligny 17
@@ -780,7 +780,7 @@
 			type 0
 			textscale .25
 			style WINDOW_STYLE_FILLED
-			rect 209 368 94 24
+			rect 206 368 94 24
 			textalign 1
 			textalignx 46 // center
 			textaligny 16
@@ -792,7 +792,7 @@
 		// VIEW OPTIONS //
 
 		itemDef {
-			name viewAccounts
+			name viewBots
 			type ITEM_TYPE_YESNO
 			text "Bots:"
 			cvar "ui_browserShowBots"
