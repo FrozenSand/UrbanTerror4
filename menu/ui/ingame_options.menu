@@ -1015,10 +1015,25 @@
 			name chat
 			type ITEM_TYPE_MULTI
 			Action { play "sound/misc/kcaction.wav" }
+			text "Chat Size:"
+			cvar "cg_chatSize"
+			cvarFloatList { "8" 8 "9" 9 "10" 10 "11" 11 "12" 12 "13" 13 "14" 14 }
+			rect 185 95 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name chat
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
 			text "Message Time:"
 			cvar "cg_msgtime"
 			cvarFloatList { "1 Second" 1000 "2 Seconds" 2000 "3 Seconds" 3000 "4 Seconds" 4000 "5 Seconds" 5000 "6 Seconds" 6000 "7 Seconds" 7000 "8 Seconds" 8000 }
-			rect 185 95 250 20
+			rect 185 115 250 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -1033,7 +1048,22 @@
 			text "Message Lines:"
 			cvar "cg_msgheight"
 			cvarFloatList { "Disabled Messages" 0 "1" 1 "2" 2 "3" 3 "4" 4 "5" 5 "6" 6 "7" 7 "8" 8 }
-			rect 185 115 250 20
+			rect 185 135 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name chat
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Message Size:"
+			cvar "cg_msgSize"
+			cvarFloatList { "8" 8 "9" 9 "10" 10 "11" 11 "12" 12 "13" 13 "14" 14 }
+			rect 185 155 250 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -1047,7 +1077,7 @@
 			Action { play "sound/misc/kcaction.wav" }
 			text "Disable Radio Sounds:"
 			cvar "cg_NoVoiceChats"
-			rect 185 135 250 20
+			rect 185 175 250 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -1062,7 +1092,7 @@
 			text "Auto Radio:"
 			cvar "cg_autoradio"
 			cvarFloatList { "Disabled" 0 "All enabled" 1 "Enabled, no 'Grenade!'" 2 }
-			rect 185 155 250 20
+			rect 185 195 250 20
 			textalign 0
 			textalignx 10
 			textaligny 15
