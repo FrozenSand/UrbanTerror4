@@ -1014,11 +1014,26 @@
 
 		itemDef {
 			name chat
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Message Lines:"
+			cvar "cg_msgheight"
+			cvarFloatList { "Disabled Messages" 0 "1" 1 "2" 2 "3" 3 "4" 4 "5" 5 "6" 6 "7" 7 "8" 8 }
+			rect 172 100 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name chat
 			type ITEM_TYPE_YESNO
 			Action { play "sound/misc/kcaction.wav" }
 			text "Disable Radio Sounds:"
 			cvar "cg_NoVoiceChats"
-			rect 172 100 250 20
+			rect 172 120 250 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -1033,7 +1048,7 @@
 			text "Auto Radio:"
 			cvar "cg_autoradio"
 			cvarFloatList { "Disabled" 0 "All enabled" 1 "Enabled, no 'Grenade!'" 2 }
-			rect 172 120 250 20
+			rect 172 140 250 20
 			textalign 0
 			textalignx 10
 			textaligny 15
