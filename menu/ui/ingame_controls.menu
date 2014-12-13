@@ -576,7 +576,7 @@
 			name misc
 			group grpControls
 			type ITEM_TYPE_BIND
-			text "(def)use / doors"
+			text "(def)use / doors:"
 			cvar "+button7"
 			rect 0 105 320 15
 			textalign ITEM_ALIGN_RIGHT
@@ -752,6 +752,23 @@
 			visible 0
 			mouseenter { show yesno_message }
 			mouseexit { hide yesno_message }
+		}
+
+		itemDef {
+			name misc
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "drop flag:"
+			cvar "ut_itemdrop flag"
+			rect 0 255 320 15
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 187
+			textaligny 12
+			textscale .22
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
 		}
 
 		itemDef {
