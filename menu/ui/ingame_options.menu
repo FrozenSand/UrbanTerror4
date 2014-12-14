@@ -15,7 +15,7 @@
 		focusColor 1 1 1 1
 		style 1
 		border 1
-		onOpen { show general ; hide crosshair ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun ; hide punkbuster }
+		onOpen { show general ; hide crosshair ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun }
 
 		itemdef {
 			name backgroundstuff
@@ -84,7 +84,7 @@
 			name generalsettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show general ; hide crosshair ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun ; hide punkbuster }
+			action { play "sound/misc/kcaction.wav" ; show general ; hide crosshair ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun }
 			text "General Settings"
 			rect 25 26 150 20
 			textalign 0
@@ -105,7 +105,7 @@
 			name crosshairsettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show crosshair ; hide general ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun ; hide punkbuster }
+			action { play "sound/misc/kcaction.wav" ; show crosshair ; hide general ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun }
 			text "Crosshair Settings"
 			rect 25 46 150 20
 			textalign 0
@@ -126,7 +126,7 @@
 			name minimapsettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show minimap ; hide general ; hide crosshair ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun ; hide punkbuster }
+			action { play "sound/misc/kcaction.wav" ; show minimap ; hide general ; hide crosshair ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun }
 			text "Minimap Settings"
 			rect 25 66 150 20
 			textalign 0
@@ -147,7 +147,7 @@
 			name teaminfosettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show teaminfo ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide chat ; hide gun ; hide punkbuster }
+			action { play "sound/misc/kcaction.wav" ; show teaminfo ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide chat ; hide gun }
 			text "Team Info Settings"
 			rect 25 86 150 20
 			textalign 0
@@ -168,7 +168,7 @@
 			name bloodsettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show blood ; hide general ; hide crosshair ; hide minimap ; hide teaminfo ; hide bullet ; hide chat ; hide gun ; hide punkbuster }
+			action { play "sound/misc/kcaction.wav" ; show blood ; hide general ; hide crosshair ; hide minimap ; hide teaminfo ; hide bullet ; hide chat ; hide gun }
 			text "Blood Settings"
 			rect 25 106 150 20
 			textalign 0
@@ -189,7 +189,7 @@
 			name bulletimpactsettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show bullet ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide teaminfo ; hide chat ; hide gun ; hide punkbuster }
+			action { play "sound/misc/kcaction.wav" ; show bullet ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide teaminfo ; hide chat ; hide gun }
 			text "Bullet Impact Settings"
 			rect 25 126 150 20
 			textalign 0
@@ -210,7 +210,7 @@
 			name chatsettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show chat ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide gun ; hide punkbuster }
+			action { play "sound/misc/kcaction.wav" ; show chat ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide gun }
 			text "Chat Settings"
 			rect 25 146 150 20
 			textalign 0
@@ -231,7 +231,7 @@
 			name gunsettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show gun ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat ; hide punkbuster }
+			action { play "sound/misc/kcaction.wav" ; show gun ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat }
 			text "Gun Settings"
 			rect 25 166 150 20
 			textalign 0
@@ -249,29 +249,8 @@
 
 		itemDef {
 			group gameoptions
-			name punkbustersettings
-			type 1
-			style 1
-			action { play "sound/misc/kcaction.wav" ; show punkbuster ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat ; hide gun }
-			text "Anti Cheat"
-			rect 25 186 150 20
-			textalign 0
-			textalignx 10
-			textaligny 15
-			textscale .25
-			forecolor 1 1 1 1
-			backcolor 0 0 .55 0.6
-			visible 1
-			border 3
-			bordercolor .5 .5 .5 1
-			mouseEnter { setitemcolor punkbustersettings backcolor 0 0 .55 1 }
-			mouseExit { setitemcolor punkbustersettings backcolor 0 0 .55 0.6 }
-		}
-
-		itemDef {
-			group gameoptions
 			name rectangle
-			rect 25 25 150 182
+			rect 25 25 150 162
 			border 1
 			bordercolor .5 .5 .5 1
 			visible 1
@@ -1247,127 +1226,6 @@
 			textscale .25
 			visible 1
 		}
-
-		//PUNKBUSTER
-
-		itemDef {
-			cvartest cl_punkbuster
-			showcvar { "1" }
-			name punkbuster
-			rect 185 35 200 200
-			autowrapped
-			text "Punkbuster appears to be enabled.\r\n"
-			"\r\n"
-			"Check www.evenbalance.com if you need help."
-			textscale 0.25
-			textaligny 15
-			//textalignx 10
-			textalign 0
-			visible 1
-			decoration
-			style 1
-			backcolor 0 0 0 0
-			border 0
-			bordercolor .5 .5 .5 1
-		}
-
-		itemDef {
-			cvartest cl_punkbuster
-			hidecvar { "1" }
-			name punkbuster
-			rect 185 35 200 200
-			autowrapped
-			text "Punkbuster is disabled. If you just disabled it, restart the game to fully disable PB.\r\n"
-			"\r\n"
-			"You can only enable PB if you use the original ID Quake 3 Arena client and have PB installed, otherwise the Enable-button won't do anything."
-			textscale 0.25
-			textaligny 15
-			//textalignx 10
-			textalign 0
-			visible 1
-			decoration
-			style 1
-			backcolor 0 0 0 0
-			border 0
-			bordercolor .5 .5 .5 1
-		}
-
-		itemDef {
-			cvartest cl_punkbuster
-			showcvar { "1" }
-			name punkbustert2
-			group punkbuster
-			type 1
-			style 1
-			backcolor 0 0 0 .7
-			forecolor 1 1 1 1
-			rect 184 170 77 26
-			border 1
-			bordercolor .5 .5 .5 1
-			visible 1
-			action { play "sound/misc/kcaction.wav" ; exec pb_cl_disable ; exec cl_punkbuster 0 }
-			mouseEnter { setitemcolor punkbustert2 backcolor 0 0 .55 1 }
-			mouseExit { setitemcolor punkbustert2 backcolor 0 0 0 .7 }
-		}
-
-		itemDef {
-			cvartest cl_punkbuster
-			showcvar { "1" }
-			name punkbuster
-			type 0
-			style 1
-			rect 184 170 77 26
-			text "Disable PB"
-			textscale .25
-			textalign 2
-			textaligny 17
-			textalignx 65
-			visible 1
-			decoration
-			backcolor 0 0 0 0
-			forecolor 1 1 1 1
-			border 1
-			bordercolor .5 .5 .5 1
-		}
-
-		itemDef {
-			cvartest cl_punkbuster
-			hidecvar { "1" }
-			name punkbustert2
-			group punkbuster
-			type 1
-			style 1
-			backcolor 0 0 0 .7
-			forecolor 1 1 1 1
-			rect 184 170 77 26
-			border 1
-			bordercolor .5 .5 .5 1
-			visible 1
-			action { play "sound/misc/kcaction.wav" ; exec pb_cl_enable }
-			mouseEnter { setitemcolor punkbustert2 backcolor 0 0 .55 1 }
-			mouseExit { setitemcolor punkbustert2 backcolor 0 0 0 .7 }
-		}
-
-		itemDef {
-			cvartest cl_punkbuster
-			hidecvar { "1" }
-			name punkbuster
-			type 0
-			style 1
-			rect 184 170 77 26
-			text "Enable PB"
-			textscale .25
-			textalign 2
-			textaligny 17
-			textalignx 65
-			visible 1
-			decoration
-			backcolor 0 0 0 0
-			forecolor 1 1 1 1
-			border 1
-			bordercolor .5 .5 .5 1
-		}
-
 		//END
 
 	}
