@@ -441,21 +441,6 @@
 			visible 1
 		}
 
-		itemDef {
-			name allowdownload2
-			group general
-			rect 110 255 310 60
-			textscale 0.22
-			textalign 0
-			textalignx 10
-			textaligny 15
-			forecolor 1 1 1 1
-			autowrapped
-			text "Autodl only works in the free stand-alone, not with original Quake 3. Also, the serveradmin has to set it up correctly."
-			visible 1
-			decoration
-		}
-
 		//CROSSHAIR
 
 		itemDef {
