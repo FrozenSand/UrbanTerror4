@@ -106,7 +106,7 @@
 			type 1
 			style 1
 			action { play "sound/misc/kcaction.wav" ; show meters ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat ; hide gun }
-			text "Meters Settings"
+			text "Meter Settings"
 			rect 25 46 150 20
 			textalign 0
 			textalignx 10
