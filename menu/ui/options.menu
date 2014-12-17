@@ -14,7 +14,7 @@
 		focusColor 1 1 1 1
 		style 1
 		border 1
-		onOpen { show general ; hide crosshair ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun }
+		onOpen { show general ; hide crosshair ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun ; hide meters }
 		onEsc { close options_menu ; close setup_menu ; open main }
 
 		itemDef {
@@ -66,14 +66,14 @@
 			decoration
 		}
 
-		//Defining the catagory buttons
+		//Defining the category buttons
 
 		itemDef {
 			group gameoptions
 			name generalsettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show general ; hide crosshair ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun }
+			action { play "sound/misc/kcaction.wav" ; show general ; hide crosshair ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun ; hide meters }
 			text "General Settings"
 			rect 10 11 150 20
 			textalign 0
@@ -88,15 +88,36 @@
 			mouseEnter { setitemcolor generalsettings backcolor 0 0 .55 1 }
 			mouseExit { setitemcolor generalsettings backcolor 0 0 .55 0.6 }
 		}
+		
+		itemDef {
+			group gameoptions
+			name metersettings
+			type 1
+			style 1
+			action { play "sound/misc/kcaction.wav" ; show meters ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat ; hide gun }
+			text "Meter Settings"
+			rect 10 31 150 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 0.6
+			visible 1
+			border 3
+			bordercolor .5 .5 .5 1
+			mouseEnter { setitemcolor metersettings backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor metersettings backcolor 0 0 .55 0.6 }
+		}
 
 		itemDef {
 			group gameoptions
 			name crosshairsettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show crosshair ; hide general ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun }
+			action { play "sound/misc/kcaction.wav" ; show crosshair ; hide general ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun ; hide meters }
 			text "Crosshair Settings"
-			rect 10 31 150 20
+			rect 10 51 150 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -115,9 +136,9 @@
 			name minimapsettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show minimap ; hide general ; hide crosshair ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun }
+			action { play "sound/misc/kcaction.wav" ; show minimap ; hide general ; hide crosshair ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun ; hide meters }
 			text "Minimap Settings"
-			rect 10 51 150 20
+			rect 10 71 150 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -136,9 +157,9 @@
 			name teaminfosettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show teaminfo ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide chat ; hide gun }
+			action { play "sound/misc/kcaction.wav" ; show teaminfo ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide chat ; hide gun ; hide meters }
 			text "Team Info Settings"
-			rect 10 71 150 20
+			rect 10 91 150 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -157,9 +178,9 @@
 			name bloodsettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show blood ; hide general ; hide crosshair ; hide minimap ; hide teaminfo ; hide bullet ; hide chat ; hide gun }
+			action { play "sound/misc/kcaction.wav" ; show blood ; hide general ; hide crosshair ; hide minimap ; hide teaminfo ; hide bullet ; hide chat ; hide gun ; hide meters }
 			text "Blood Settings"
-			rect 10 91 150 20
+			rect 10 111 150 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -178,9 +199,9 @@
 			name bulletimpactsettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show bullet ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide teaminfo ; hide chat ; hide gun }
+			action { play "sound/misc/kcaction.wav" ; show bullet ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide teaminfo ; hide chat ; hide gun ; hide meters }
 			text "Bullet Impact Settings"
-			rect 10 111 150 20
+			rect 10 131 150 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -199,9 +220,9 @@
 			name chatsettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show chat ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide gun }
+			action { play "sound/misc/kcaction.wav" ; show chat ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide gun ; hide meters }
 			text "Chat Settings"
-			rect 10 131 150 20
+			rect 10 151 150 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -220,9 +241,9 @@
 			name gunsettings
 			type 1
 			style 1
-			action { play "sound/misc/kcaction.wav" ; show gun ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat }
+			action { play "sound/misc/kcaction.wav" ; show gun ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat ; hide meters }
 			text "Gun Settings"
-			rect 10 151 150 20
+			rect 10 171 150 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -239,7 +260,7 @@
 		itemDef {
 			group gameoptions
 			name rectangle
-			rect 10 10 150 162
+			rect 10 10 150 182
 			border 1
 			bordercolor .5 .5 .5 1
 			visible 1
@@ -249,88 +270,6 @@
 		//GENERAL
 
 		itemDef {
-			name drawfps
-			group general
-			type ITEM_TYPE_YESNO
-			Action { play "sound/misc/kcaction.wav" }
-			text "Draw FPS:"
-			cvar "cg_drawfps"
-			rect 172 20 250 20
-			textalign 0
-			textalignx 10
-			textaligny 15
-			textscale .25
-			forecolor 1 1 1 1
-			visible 1
-		}
-
-		itemDef {
-			name timer
-			group general
-			type ITEM_TYPE_YESNO
-			Action { play "sound/misc/kcaction.wav" }
-			text "Show Timer:"
-			cvar "cg_drawtimer"
-			rect 172 40 250 20
-			textalign 0
-			textalignx 10
-			textaligny 15
-			textscale .25
-			forecolor 1 1 1 1
-			visible 1
-		}
-
-		itemDef {
-			name lagometer
-			group general
-			type ITEM_TYPE_YESNO
-			Action { play "sound/misc/kcaction.wav" }
-			text "Show Netgraph:"
-			cvar "cg_lagometer"
-			rect 172 60 250 20
-			textalign 0
-			textalignx 10
-			textaligny 15
-			textscale .25
-			forecolor 1 1 1 1
-			visible 1
-		}
-
-		itemDef {
-			name speed
-			group general
-			type ITEM_TYPE_MULTI
-			Action { play "sound/misc/kcaction.wav" }
-			text "Show Speed:"
-			cvar "cg_speedo"
-			cvarStrList { "^7Off", "0", "^7Ups", "1", "^7Kph", "2", "^7Mph", "3" }
-			rect 172 80 250 20
-			textalign 0
-			textalignx 10
-			textaligny 15
-			textscale .25
-			forecolor 1 1 1 1
-			visible 1
-		}
-
-		itemDef {
-			name accel
-			group general
-			type ITEM_TYPE_MULTI
-			Action { play "sound/misc/kcaction.wav" }
-			text "Show Accel:"
-			cvar "cg_accelero"
-			cvarStrList { "^7Off", "0", "^7Minimal", "1", "^7Dedicated", "2" }
-			rect 172 100 250 20
-			textalign 0
-			textalignx 10
-			textaligny 15
-			textscale .25
-			forecolor 1 1 1 1
-			visible 1
-		}
-
-		itemDef {
 			name fov
 			group general
 			type ITEM_TYPE_MULTI
@@ -338,7 +277,7 @@
 			text "Field of View:"
 			cvar "cg_fov"
 			cvarfloatlist { "90 Degrees" 90 "95 Degrees" 95 "100 Degrees" 100 "105 Degrees" 105 "110 Degrees" 110 }
-			rect 172 120 250 20
+			rect 172 20 250 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -355,7 +294,7 @@
 			text "Tac Goggles Color:"
 			cvar "cg_nvg"
 			cvarfloatlist { "Green" 0 "Red" 1 "Blue" 2 "Yellow" 3 "Cyan" 4 "Magenta" 5 "Pink" 6 "Orange" 7 }
-			rect 172 140 250 20
+			rect 172 40 250 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -371,7 +310,7 @@
 			Action { play "sound/misc/kcaction.wav" }
 			text "Breathing Sounds:"
 			cvar "cg_sfxBreathing"
-			rect 172 160 250 20
+			rect 172 60 250 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -381,6 +320,22 @@
 		}
 
 		itemDef {
+			name countdownsound
+			group general
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Countdown Sound:"
+			cvar "cg_countdownSound"
+			rect 172 80 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
 			name autoscreenshot
 			group general
 			type ITEM_TYPE_MULTI
@@ -388,7 +343,7 @@
 			text "Auto Screenshots:"
 			cvar "cg_autoscreenshot"
 			cvarfloatlist { "No" 0 "Always" 1 "Matchmode Only" 2 }
-			rect 172 180 250 20
+			rect 172 100 250 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -404,7 +359,7 @@
 			Action { play "sound/misc/kcaction.wav" }
 			text "Auto Record Matchmode:"
 			cvar "cg_autorecordmatch"
-			rect 172 200 250 20
+			rect 172 120 250 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -421,7 +376,122 @@
 			text "Auto Download:"
 			cvar "cl_autodownload"
 			cvarfloatlist { "Enabled" 1 "Disabled" 0 }
-			rect 172 220 250 20
+			rect 172 140 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		//METERS
+	
+		itemDef {
+			name drawhealth
+			group meters
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Health Percentage:"
+			cvar "cg_drawhealth"
+			rect 172 20 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}	
+		
+	itemDef {
+			name drawclock
+			group meters
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Clock:"
+			cvar "cg_drawclock"
+			rect 172 40 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name timer
+			group meters
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Timer:"
+			cvar "cg_drawtimer"
+			rect 172 60 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name speed
+			group meters
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Speed:"
+			cvar "cg_speedo"
+			cvarStrList { "^7Off", "0", "^7Ups", "1", "^7Kph", "2", "^7Mph", "3" }
+			rect 172 80 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name accel
+			group meters
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Accel:"
+			cvar "cg_accelero"
+			cvarStrList { "^7Off", "0", "^7Minimal", "1", "^7Dedicated", "2" }
+			rect 172 100 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name lagometer
+			group meters
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Netgraph:"
+			cvar "cg_lagometer"
+			rect 172 120 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawfps
+			group meters
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw FPS:"
+			cvar "cg_drawfps"
+			rect 172 140 250 20
 			textalign 0
 			textalignx 10
 			textaligny 15
@@ -823,7 +893,6 @@
 		}
 
 		itemDef {
-			cvartest com_blood
 			showcvar { "1" }
 			name blood
 			type ITEM_TYPE_YESNO
@@ -1092,7 +1161,7 @@
 			Action { play "sound/misc/kcaction.wav" }
 			text "Hitting Info:"
 			cvar "cg_showbullethits"
-			cvarfloatlist { "None" 0 "Normal" 1 "Normal + Damage" 2 "Damage" 3}
+			cvarfloatlist { "None" 0 "Normal" 1 "Normal + Damage" 2 "Damage" 3 }
 			rect 172 60 250 20
 			textalign 0
 			textalignx 10
