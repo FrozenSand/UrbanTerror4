@@ -238,6 +238,19 @@
 			decoration
 		}
 
+		// Gun Game
+		itemDef	{
+			name type
+			text "Gun Game"
+			textscale .33
+			forecolor 1 1 1 1
+			rect 94 144 100 30
+			cvarTest "g_gametype"
+			showCvar { "11" }
+			visible 1
+			decoration
+		}
+
 
 		// GAMETYPE INFO	//
 
@@ -466,6 +479,31 @@
 			rect 93 154 323 226
 			cvarTest "g_gametype"
 			showCvar { "10" }
+			visible 1
+			decoration
+		}
+
+		// Gun Game
+		itemDef	{
+			name gun_game
+			wrapped
+			text  "You are against everybody and everybody is against you.\r"
+			"Everyone starts with the same weapon. Every time you kill an\r"
+			"opponent, you switch to a new weapon and you earn a level.\r"
+			"Your goal is to be the first player to do a kill with the knife\r"
+			"as your only weapon (the highest level).\r\r"
+			"Hardcore mode:\r"
+			"In this mode, the order of weapons is inversed. If a player\r"
+			"with a lower rank kills you, you are demoted a level.\r"
+			style 1
+			textscale .24
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			rect 93 154 323 226
+			cvarTest "g_gametype"
+			showCvar { "11" }
 			visible 1
 			decoration
 		}
