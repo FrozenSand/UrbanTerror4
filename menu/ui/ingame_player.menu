@@ -55,6 +55,8 @@
 			action { play "sound/misc/kcaction.wav" ; open ingame_ut_select_gear ; close ingame ; close ingame_player }
 			mouseEnter { setcolor backcolor 0 0 .55 1 }
 			mouseExit { setcolor backcolor 0 0 0 .7}
+			cvarTest "g_gametype"
+			hideCvar { "11" }
 		}
 
 		itemDef {
@@ -123,6 +125,8 @@
 			backcolor 0 0 0 0
 			visible 1
 			decoration
+			cvarTest "g_gametype"
+			hideCvar { "11" }
 		}
 
 		itemDef {

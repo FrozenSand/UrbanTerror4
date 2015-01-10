@@ -105,7 +105,7 @@
 			text "Gametype:"
 			type ITEM_TYPE_MULTI
 			cvar "G_GAMETYPE"
-			cvarFloatList { "Free For All" 0 "Last Man Standing " 1 "Team Deathmatch" 3 "Team Survivor" 4 "Follow the Leader" 5 "Capture and Hold" 6 "Capture the Flag" 7 "Bomb Mode" 8 "Jump" 9 "Freeze Tag" 10}
+			cvarFloatList { "Free For All" 0 "Last Man Standing " 1 "Team Deathmatch" 3 "Team Survivor" 4 "Follow the Leader" 5 "Capture and Hold" 6 "Capture the Flag" 7 "Bomb Mode" 8 "Jump" 9 "Freeze Tag" 10 "Gun Game" 11 }
 			textalignx 40
 			textaligny 12
 			textscale .23

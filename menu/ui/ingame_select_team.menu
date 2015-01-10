@@ -58,6 +58,8 @@
 			visible 1
 			action { close ingame_ut_select_team ; play "sound/misc/kcaction.wav" ;
 			open ingame_ut_select_gear }
+			cvarTest "g_gametype"
+			hideCvar { "11" }
 		}
 
 		itemdef {
@@ -71,6 +73,8 @@
 			textaligny 19
 			visible 1
 			decoration
+			cvarTest "g_gametype"
+			hideCvar { "11" }
 		}
 
 		itemdef {
@@ -570,7 +574,7 @@
 			mouseEnter { setcolor backcolor 0 0 .55 1 }
 			mouseExit { setcolor backcolor 0 0 0 .6 }
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9"} //@Barbatos 05/09/2012 added LMS //@Fenix 30/10/2012 added Jump Mode
+			disableCvar { "0" ; "1" ; "9" ; "11"}
 		}
 
 		itemDef {
@@ -589,6 +593,8 @@
 			bordercolor .5 .5 .5 1
 			visible 1
 			decoration
+			cvarTest "g_gametype"
+			disableCvar { "11" } 
 		}
 
 		itemDef {
@@ -609,7 +615,7 @@
 			mouseEnter { setcolor backcolor 0 0 .55 1 }
 			mouseExit { setcolor backcolor 0 0 0 .6 }
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9"} //@Barbatos 05/09/2012 added LMS	//@Fenix 30/10/2012 added Jump Mode
+			disableCvar { "0" ; "1" ; "9" ; "11"} 
 		}
 
 		itemDef {
@@ -628,6 +634,8 @@
 			bordercolor .5 .5 .5 1
 			visible 1
 			decoration
+			cvarTest "g_gametype"
+			disableCvar { "11" } 
 		}
 
 		itemDef {
@@ -702,6 +710,8 @@
 			bordercolor .5 .5 .5 1
 			visible 1
 			decoration
+			cvarTest "g_gametype"
+			disableCvar { "11" } 
 		}
 
 
@@ -721,6 +731,8 @@
 			bordercolor .5 .5 .5 1
 			visible 1
 			decoration
+			cvarTest "g_gametype"
+			disableCvar { "11" } 
 		}
 
 
