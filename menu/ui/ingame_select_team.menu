@@ -534,6 +534,29 @@
 			open ingame_ut_select_gear }
 			mouseEnter { setcolor backcolor 0 0 .55 1}
 			mouseExit { setcolor backcolor 0 0 0 .6 }
+			cvarTest "g_gametype"
+			disableCvar { "11" } 
+		}
+
+		itemDef {
+			name autojoin2
+			rect 446 240 111 30
+			hotkey "1"
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor 1 1 1 1
+			bordersize 1
+			visible 1
+			action
+			{ exec "cmd team free" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_team }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+			cvarTest "g_gametype"
+			enableCvar { "11" } 
 		}
 
 		itemDef {
