@@ -375,7 +375,7 @@
 			group grpsettings
 			type ITEM_TYPE_MULTI
 			text "deadchat:"
-			cvar "g_dedchat"
+			cvar "g_deadchat"
 			cvarFloatList { "no" 0 "team" 1 "all" 2 }
 			rect 15 331 169 12
 			textalign ITEM_ALIGN_RIGHT
