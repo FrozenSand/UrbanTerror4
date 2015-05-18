@@ -81,6 +81,14 @@
 #define FEEDER_STATS_WEAPONS_LIST 0x13                                                          // weaponlist for the stats (woek)
 #define FEEDER_STATS_TEXT_LIST    0x14                                                          // weaponlist for the stats (woek)
 
+#define FEEDER_PRIMARY            0x15
+#define FEEDER_SECONDARY          0x16
+#define FEEDER_SIDEARM            0x17
+#define FEEDER_GRENADE            0x18
+#define FEEDER_ITEM_1             0x19
+#define FEEDER_ITEM_2             0x1a
+#define FEEDER_ITEM_3             0x1b
+
 // display flags
 #define CG_SHOW_BLUE_TEAM_HAS_REDFLAG 0x00000001
 #define CG_SHOW_RED_TEAM_HAS_BLUEFLAG 0x00000002
@@ -223,7 +231,7 @@
 
 #define UI_OWNERDRAW_BASE           200
 #define UI_EFFECTS                  201
-#define UI_PLAYERMODEL              202
+#define UI_PLAYER_MODEL             202
 #define UI_GAMETYPE                 205
 #define UI_MAPPREVIEW               206
 #define UI_SKILL                    207
@@ -255,11 +263,12 @@
 #define UI_GEAR_IMAGE               257
 #define UI_GEAR_NAME                258
 
-#define UI_ITEM_IMAGE               259
-#define UI_ITEM_NAME                260
+#define UI_GEAR_INFO                259
 
 #define UI_KI_OPTION                261
 #define UI_KI_INDEX                 262
+
+#define UI_ITEM_MODEL               263
 
 #define KI_OPTION1                  0
 #define KI_OPTION2                  1
@@ -275,6 +284,9 @@
 #define GEAR_ITEM_2                 5
 #define GEAR_ITEM_3                 6
 #define GEAR_MAX                    7
+
+#define UI_SKIN_ALLY                0
+#define UI_SKIN_ENEMY               1
 
 #define ITEM_NONE                   0
 #define ITEM_KNIFE                  1
