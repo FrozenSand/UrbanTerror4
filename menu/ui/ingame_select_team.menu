@@ -60,6 +60,8 @@
 			textaligny 19
 			visible 1
 			action { uiScript gearWrite; play "sound/misc/kcaction.wav"; close ingame_ut_select_team; open ingame_ut_select_gear }
+			cvarTest "g_gametype"
+			hideCvar { "11" }
 		}
 
 
@@ -239,6 +241,18 @@
 			decoration
 		}
 
+		// Gun Game
+		itemDef	{
+			name type
+			text "Gun Game"
+			textscale .33
+			forecolor 1 1 1 1
+			rect 94 144 100 30
+			cvarTest "g_gametype"
+			showCvar { "11" }
+			visible 1
+			decoration
+		}
 
 		// GAMETYPE INFO	//
 
@@ -471,6 +485,30 @@
 			decoration
 		}
 
+		// Gun Game
+		itemDef	{
+			name gun_game
+			wrapped
+			text  "You are against everybody and everybody is against you.\r"
+			"Everyone starts with the same weapon. Every time you kill an\r"
+			"opponent, you switch to a new weapon and you earn a level.\r"
+			"Your goal is to be the first player to do a kill with the knife\r"
+			"as your only weapon (the highest level).\r\r"
+			"Hardcore mode:\r"
+			"In this mode, the order of weapons is inversed. If a player\r"
+			"with a lower rank kills you, you are demoted a level.\r"
+			style 1
+			textscale .24
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			rect 93 154 323 226
+			cvarTest "g_gametype"
+			showCvar { "11" }
+			visible 1
+			decoration
+		}
 
 
 		// TEAM BUTTONS 	//
@@ -493,6 +531,29 @@
 			open ingame_ut_select_gear }
 			mouseEnter { setcolor backcolor 0 0 .55 1}
 			mouseExit { setcolor backcolor 0 0 0 .6 }
+			cvarTest "g_gametype"
+			disableCvar { "11" } 
+		}
+
+		itemDef {
+			name autojoin2
+			rect 446 240 111 30
+			hotkey "1"
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor 1 1 1 1
+			bordersize 1
+			visible 1
+			action
+			{ exec "cmd team free" ; play "sound/misc/kcaction.wav" ;
+			close ingame_ut_select_team }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .6 }
+			cvarTest "g_gametype"
+			enableCvar { "11" } 
 		}
 
 		itemDef {
@@ -533,7 +594,7 @@
 			mouseEnter { setcolor backcolor 0 0 .55 1 }
 			mouseExit { setcolor backcolor 0 0 0 .6 }
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9"} //@Barbatos 05/09/2012 added LMS //@Fenix 30/10/2012 added Jump Mode
+			disableCvar { "0" ; "1" ; "9" ; "11"} //@Barbatos 05/09/2012 added LMS //@Fenix 30/10/2012 added Jump Mode
 		}
 
 		itemDef {
@@ -552,6 +613,8 @@
 			bordercolor .5 .5 .5 1
 			visible 1
 			decoration
+			cvarTest "g_gametype"
+			disableCvar { "11" } 
 		}
 
 		itemDef {
@@ -572,7 +635,7 @@
 			mouseEnter { setcolor backcolor 0 0 .55 1 }
 			mouseExit { setcolor backcolor 0 0 0 .6 }
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9"} //@Barbatos 05/09/2012 added LMS	//@Fenix 30/10/2012 added Jump Mode
+			disableCvar { "0" ; "1" ; "9" ; "11"} //@Barbatos 05/09/2012 added LMS	//@Fenix 30/10/2012 added Jump Mode
 		}
 
 		itemDef {
@@ -591,6 +654,8 @@
 			bordercolor .5 .5 .5 1
 			visible 1
 			decoration
+			cvarTest "g_gametype"
+			disableCvar { "11" } 
 		}
 
 		itemDef {
@@ -665,6 +730,8 @@
 			bordercolor .5 .5 .5 1
 			visible 1
 			decoration
+			cvarTest "g_gametype"
+			disableCvar { "11" } 
 		}
 
 
@@ -684,6 +751,8 @@
 			bordercolor .5 .5 .5 1
 			visible 1
 			decoration
+			cvarTest "g_gametype"
+			disableCvar { "11" } 
 		}
 
 
