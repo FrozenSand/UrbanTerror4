@@ -236,6 +236,23 @@
 		}
 
 		itemDef {
+			name            headings
+			text            "auth login"
+			textscale       .2
+			style           0
+			rect            298 70 45 15
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
 			name            teamheadings
 			cvarTest        "g_gametype"
 			hideCvar        { "7" ; "10" } // CTF
@@ -275,24 +292,6 @@
 			textscale       .2
 			style           0
 			rect            386 70 45 15
-			textalign       0
-			textalignx      10      // x alignment point for text
-			// use it to offset left/right text from the edge
-			// or to center the text on a different point
-			textaligny      13
-			backcolor       0 0 0 0
-			forecolor       1 1 1 .75
-			decoration
-			visible         1
-		}
-
-		//@Fenix
-		itemDef {
-			name            headings
-			text            "auth login"
-			textscale       .2
-			style           0
-			rect            298 70 45 15
 			textalign       0
 			textalignx      10      // x alignment point for text
 			// use it to offset left/right text from the edge
