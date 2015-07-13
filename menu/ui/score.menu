@@ -231,7 +231,7 @@
 			text            "kills"
 			textscale       .2
 			style           0
-			rect            361 70 45 15
+			rect            400 70 45 15
 			textalign       0
 			textalignx      10      // x alignment point for text
 			// use it to offset left/right text from the edge
@@ -250,7 +250,7 @@
 			text            "points"
 			textscale       .2
 			style           0
-			rect            351 70 45 15
+			rect            390 70 45 15
 			textalign       0
 			textalignx      10      // x alignment point for text
 			// use it to offset left/right text from the edge
@@ -428,7 +428,7 @@
 			name            red_team_kills_list
 			cvarTest        "g_gametype"
 			hideCvar        { "9" ; "11" } // Jump & Gun Game
-			rect            389 90 400 10
+			rect            428 90 400 10
 			textscale       .2
 			ownerdraw       CG_SCOREBOARD_KILL_LIST
 			ownerdrawParam  UI_TEAM_FREE
