@@ -98,7 +98,7 @@
 			text "README"
 			textscale .25
 			textalign 2
-			textalignx 49
+			textalignx 54
 			textaligny 21
 			style WINDOW_STYLE_FILLED
 			forecolor 1 1 1 1
