@@ -680,6 +680,21 @@
 			textalign 0
 		}
 
+		itemDef {
+			name crosshair
+			type 12
+			text "FRF1 Scopetype:"
+			cvar "cg_scopefrf1"
+			cvarStrList { "Cross", "0", "Cross2", "1", "T-shape", "2", "Dot", "3", "Cross-Dot", "4" }
+			Action { play "sound/misc/kcaction.wav" }
+			rect 185 255 250 20
+			visible 1
+			textscale .25
+			textaligny 15
+			textalignx 10
+			textalign 0
+		}
+
 		//MINIMAP
 
 		itemDef {
