@@ -89,10 +89,31 @@
 		}
 
 		itemDef {
+			name closeBottom
+			rect 437 355 120 26
+			style WINDOW_STYLE_FILLED
+			type 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			hotkey "0"
+			text "close"
+			textalign ITEM_ALIGN_CENTER
+			textscale 0.26
+			textalignx 60
+			textaligny 15
+			action { play "sound/misc/kcaction.wav" ; close ingame_ut_select_gear }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
 			name pmodel
 			type ITEM_TYPE_OWNERDRAW
 			style WINDOW_STYLE_FILLED
-			rect 437 115 120 266
+			rect 437 115 120 230
 			backcolor 0 0 0 .6
 			border 1
 			bordercolor .5 .5 .5 1
@@ -106,7 +127,7 @@
 			name pmodel1
 			type ITEM_TYPE_OWNERDRAW
 			style WINDOW_STYLE_FILLED
-			rect 437 115 120 266
+			rect 437 115 120 230
 			backcolor 0 0 0 .6
 			border 1
 			bordercolor .5 .5 .5 1
@@ -177,7 +198,7 @@
 		itemDef {
 			name grenade
 			type ITEM_TYPE_OWNERDRAW
-			rect 83 225 135 73
+			rect 293 225 135 73
 			style WINDOW_STYLE_FILLED
 			backcolor 0 0 0 .5
 			border 1
@@ -191,12 +212,12 @@
 		itemDef {
 			name grenadeName
 			type ITEM_TYPE_OWNERDRAW
-			rect 83 225 135 73
+			rect 280 225 135 73
 			ownerDraw UI_GEAR_NAME
 			ownerDrawParam GEAR_GRENADE
 			text "Grenade:"
 			textalign ITEM_ALIGN_LEFT
-			textalignx 6
+			textalignx 18
 			textaligny 12
 			textscale 0.2
 			visible 1
@@ -206,7 +227,7 @@
 		itemDef {
 			name secondary
 			type ITEM_TYPE_OWNERDRAW
-			rect 228 225 200 73
+			rect 83 225 200 73
 			style WINDOW_STYLE_FILLED
 			backcolor 0 0 0 .5
 			border 1
@@ -222,12 +243,12 @@
 		itemDef {
 			name secondaryName
 			type ITEM_TYPE_OWNERDRAW
-			rect 228 225 200 73
+			rect 70 225 200 100
 			ownerDraw UI_GEAR_NAME
 			ownerDrawParam GEAR_SECONDARY
 			text "Secondary:"
 			textalign ITEM_ALIGN_LEFT
-			textalignx 6
+			textalignx 18
 			textaligny 12
 			textscale 0.2
 			visible 1
