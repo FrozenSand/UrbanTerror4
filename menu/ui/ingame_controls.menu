@@ -527,7 +527,7 @@
 			text "Autopickup Guns/Items:"
 			cvar "cg_autopickup"
 			cvarFloatList { "No" 0 "Yes" -1 }
-			0 180 320 15
+			rect 0 180 320 15
 			textalign ITEM_ALIGN_RIGHT
 			textalignx 40
 			textaligny 20
