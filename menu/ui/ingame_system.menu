@@ -621,6 +621,8 @@
 		itemDef {
 			name sound
 			group grpSystem
+			cvartest "dmaHD_enable"
+			hideCvar { "0" }
 			type ITEM_TYPE_MULTI
 			text "Interpolation Quality:"
 			cvar "dmaHD_interpolation"
@@ -638,6 +640,8 @@
 		itemDef {
 			name sound
 			group grpSystem
+			cvartest "dmaHD_enable"
+			hideCvar { "0" }
 			type ITEM_TYPE_MULTI
 			text "Mixer Type:"
 			cvar "dmaHD_mixer"
@@ -651,6 +655,24 @@
 			visible 0
 			action { play "sound/misc/kcaction.wav" }
 		}
+		
+		itemDef {
+			name sound
+			cvartest "dmaHD_enable"
+			hideCvar { "0" }
+			group grpSystem
+			type ITEM_TYPE_EDITFIELD
+			text "Device:"
+			cvar "s_dev"
+			rect 30 220 259 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25      
+			forecolor 1 1 1 1
+			visible 1
+		}
+	
 
 		itemDef {
 			name sound
