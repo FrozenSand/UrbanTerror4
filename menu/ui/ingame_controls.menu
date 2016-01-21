@@ -509,7 +509,7 @@
 			type ITEM_TYPE_MULTI
 			text "Autopickup:"
 			cvar "ut_weapdrop"
-			cvarFloatList { "No" 0 "Yes -1 }
+			cvarFloatList { "No" 0 "Yes" -1 }
 			rect 0 165 320 15
 			textalign ITEM_ALIGN_RIGHT
 			textalignx 187
