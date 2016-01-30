@@ -87,7 +87,7 @@
 
 		itemDef {
 			name copyright
-			text "Urban Terror (tm) (c) 2000-2015 Frozen Sand/0870760 B.C. Ltd,"
+			text "Urban Terror (tm) (c) 2000-2016 Frozen Sand/0870760 B.C. Ltd,"
 			style 0
 			textscale .2
 			rect 0 400 640 40
@@ -100,7 +100,7 @@
 
 		itemDef {
 			name copyright
-			text "Quake 3 Arena (c) 2000-2015 id Software, inc. all rights reserved"
+			text "Quake 3 Arena (c) 2000-2016 id Software, inc. all rights reserved"
 			style 0
 			textscale .2
 			rect 0 415 640 40

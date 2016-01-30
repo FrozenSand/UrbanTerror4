@@ -1,8 +1,8 @@
 /**
- * Filename: $(filename)
+ * Filename: menudef.h
  *
- * Copyright (C) 1999-2015 Id Software, Inc.
- * Copyright (C) 2000-2015 FrozenSand
+ * Copyright (C) 1999-2016 Id Software, Inc.
+ * Copyright (C) 2000-2016 FrozenSand
  *
  * This file is part of Urban Terror source code.
  *
