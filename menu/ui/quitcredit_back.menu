@@ -227,22 +227,23 @@
 		itemDef {
 			name credits
 			wrapped
-			text "Asche\r"
+			text 
 			"Barbatos\r"
+			"Biddle\r"
 			"BladeKiller\r"
+			"Blapecool\r"
+			"Clearskies\r"
 			"Decoy\r"
 			"evilelf\r"
-			"Fenix\r"
 			"Frankie V\r"
+			"Gost0r\r"
 			"H0i\r"
-			"Holblin\r"
+			"HappyDay\r"
 			"Kalish\r"
 			"Kr0m\r"
 			"Levant\r"
-			"MajkiFajki\r"
-			"Mr Bean\r"
-			"Nemesis\r"
-			textscale .23
+			"Nounou\r"
+			textscale .22
 			textalignx 0
 			textaligny 18
 			rect 35 130 160 25
@@ -256,21 +257,22 @@
 		itemDef {
 			name credits
 			wrapped
-			text "Level Designer\r"
-			"Codebase Developer / Auth System Developer\r"
+			text 
+			"Lead Developer / Public Relations Manager\r"
+			"QA Manager\r"
 			"Team Manager / Senior Artist / Modeler\r"
+			"Website Developer\r"
+			"Codebase Developer\r"
 			"Media Manager / Editor\r"
 			"Hosting Platform Manager / Administrator\r"
-			"Engine & Codebase Developer\r"
-			"Lead Animator / Senior Artist\r"
+			"Lead Animator / Assets Manager\r"
+			"Codebase Developer\r"
 			"Modeler / Texture Artist\r"
-			"Coder / Bugs Reviser\r"
+			"Level Designer\r"
 			"Engine Developer / Webmaster / 2D Artist\r"
 			"Forum Administrator\r"
 			"Level Designer\r"
-			"Level Designer\r"
-			"Modeler / Texture Artist\r"
-			"Lead Tester / QA Team Manager\r"
+			"Concept Artist / Level Designer\r"
 			textscale .22
 			textalignx 0
 			textaligny 18
@@ -291,21 +293,16 @@
 			name credits
 			wrapped
 			text
-			"Nounou\r"
 			"NulL\r"
-			"PapyRuny\r"
+			"p5yc0runn3r\r"
 			"RabidCow\r"
-			"Raedwulf\r"
 			"RaideR\r"
-			"r00t\r"
-			"RobDistorted\r"
-			"s.e.t.i\r"
-			"Skaz\r"
-			"Smachine\r"
-			"TTimo\r"
-			"TwentySeven\r"
+			"SevenofNine\r"
 			"UnifiedTone\r"
-			textscale .24
+			"Urbant\r"
+			"Vladocs\r"
+			"Zenity\r"
+			textscale .22
 			textalignx 0
 			textaligny 18
 			rect 335 130 185 25
@@ -320,21 +317,16 @@
 			name credits
 			wrapped
 			text
-			"Concept Artist\r"
 			"Level Designer\r"
-			"Level Designer\r"
-			"Company Manager / Modeler / Texture Artist\r"
-			"Lead Codebase Developer / Engine Dev\r"
-			"Network Manager / Website Developer\r"
-			"Engine and Codebase Developer\r"
-			"Animator\r"
-			"Anticheat Developer\r"
-			"Level Designer / Texture Artist\r"
-			"Modeler / Texture Artist / Painting Artist\r"
-			"Engine Developer / Codebase Developer\r"
-			"Lead Engine Developer / Codebase Dev\r"
+			"Engine & Codebase Developer\r"
+			"CEO / Modeler / Texture Artist\r"
+			"Head Administrator / Website Developer\r"
+			"Coverage Coordinator\r"
 			"Composer / Audio Engineer\r"
-			textscale .21
+			"Modeler\r"
+			"Modeler\r"
+			"Codebase Developer / Gameplay Designer\r"
+			textscale .22
 			textalignx 0
 			textaligny 18
 			rect 412 130 185 25
@@ -344,47 +336,6 @@
 			visible 1
 			decoration
 		}
-
-		/*@Barbatos 4.2.008 - commented out
-		itemDef {
-			name credits
-			wrapped
-			text "Quality Assurance Team:\r"
-			textscale .22
-			textalignx 0
-			textaligny 18
-			rect 340 227 180 20
-			style 1
-			forecolor 1 1 1 1
-			backcolor 0 0 0 0
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name credits
-			wrapped
-			text "BuD0KaI\r"
-			"Jpoulpoul\r"
-			"M0j0\r"
-			"MajkiFajki\r"
-			"Mess\r"
-			"Pims\r"
-			"Sparkwade\r"
-			"Ssx3max\r"
-			"Tizz\r"
-			textscale .18
-			textalignx 0
-			textaligny 18
-			rect 345 240 185 20
-			style 1
-			forecolor .5 .5 .5 1
-			backcolor 0 0 0 0
-			visible 1
-			decoration
-		}
-
-		*/
 
 		itemdef {
 			name next

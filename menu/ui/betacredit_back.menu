@@ -206,7 +206,7 @@
 		//FIRST ROW
 		itemDef {
 			name credits1
-			rect 120 150 200 20
+			rect 40 140 250 50
 			textscale .22
 			textalign 0
 			textalignx 0
@@ -214,6 +214,7 @@
 			wrapped
 			text
 			"Apoxol\r"
+			"Asche\r"
 			"Bar-B-Q\r"
 			"Basilisk\r"
 			"BattleCow\r"
@@ -227,7 +228,6 @@
 			"Density\r"
 			"DickDastardly\r"
 			"Dokta8\r"
-			"Dracostian\r"
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -239,28 +239,28 @@
 
 		itemDef {
 			name credits2
-			rect 240 150 200 20
+			rect 160 140 250 50
 			textscale .22
 			textalign 0
 			textalignx 0
 			textaligny 0
 			wrapped
 			text
+			"Dracostian\r"
 			"Dragonne\r"
 			"EarthQuake\r"
 			"FearMe\r"
+			"Fenix\r"
 			"Flash\r"
 			"Flux\r"
 			"FreakStorm\r"
+			"fruk\r"
 			"Gerbil!\r"
 			"GottaBeKD\r"
+			"Gsigms\r"
+			"HavoK\r"
 			"HighSea\r"
 			"Hobbes\r"
-			"Iain\r"
-			"Jaker\r"
-			"Meaty\r"
-			"Miles\r"
-			"Mr\r"
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -272,23 +272,79 @@
 
 		itemDef {
 			name credits3
-			rect 360 150 200 20
+			rect 280 140 250 50
+			textscale .21
+			textalign 0
+			textalignx 0
+			textaligny 0
+			wrapped
+			text
+			"Holblin\r"
+			"Iain\r"
+			"Jaker\r"
+			"MajkiFajki\r"
+			"Meaty\r"
+			"Miles\r"
+			"Mr\r"
+			"MrBean\r"
+			"Nitro\r"
+			"NrGizer\r"
+			"Odd\r"
+			"Oswald\r"
+			"PapyRuny\r"
+			"Preacher\r"
+			style 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		// FOURTH ROW
+
+		itemDef {
+			name credits4
+			rect 400 140 250 50
 			textscale .22
 			textalign 0
 			textalignx 0
 			textaligny 0
 			wrapped
 			text
-			"NrGizer\r"
-			"Odd\r"
-			"Oswald\r"
-			"Preacher\r"
+			"Raedwulf\r"
 			"Riche\r"
+			"r00t\r"
+			"RobDistorted\r"
+			"seti\r"
+			"Shminkyboy\r"
 			"Sinni\r"
 			"Sir Chumps\r"
+			"skaz\r"
+			"Smachine\r"
 			"SweetNutz\r"
 			"Thaddeus\r"
+			"Timbeaux\r"
+			"TTimo\r"
 			"Tub\r"
+			style 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		// FIFTH ROW
+
+		itemDef {
+			name credits4
+			rect 520 140 250 50
+			textscale .22
+			textalign 0
+			textalignx 0
+			textaligny 0
+			wrapped
+			text
+			"TwentySeven\r"
 			"WetWired\r"
 			"Woekele\r"
 			"Wu\r"
@@ -300,137 +356,6 @@
 			visible 1
 			decoration
 		}
-
-		/*
-
-		//FOURTH ROW
-
-		itemDef {
-			name credits4
-			rect 320 138 200 20
-			textscale .23
-			textalign 0
-			textalignx 0
-			textaligny 0
-			wrapped
-			text
-			"mike hudson\r"
-			"Mushroom\r"
-			"Mutters\r"
-			"Naked Assassin\r"
-			"nemesis\r"
-			"Nixon\r"
-			"No|Leaf|Clover\r"
-			"Nonus\r"
-			"plague\r"
-			"Preat\r"
-			"quentin\r"
-			"rashly\r"
-			"RedMind\r"
-			"-=SATAN=-\r"
-			"sephy\r"
-			"seti\r"
-			"Seven of Nine\r"
-			"SlaminPam\r"
-			style 1
-			forecolor 1 1 1 1
-			backcolor 0 0 0 0
-			visible 1
-			decoration
-		}
-
-		//FIFTH ROW
-
-		itemDef {
-			name credits5
-			rect 415 138 200 20
-			textscale .23
-			textalign 0
-			textalignx 0
-			textaligny 0
-			wrapped
-			text
-			"SilentButcher\r"
-			"Sinni\r"
-			"Snoppis\r"
-			"Special\r"
-			"SPIDER\r"
-			"Stealth\r"
-			"Stone\r"
-			"Tango_ii\r"
-			"tEh-kEEpEr\r"
-			"thaistix\r"
-			"Thumber\r"
-			"Tr1n3nyc3\r"
-			"undead\r"
-			"un shiza\r"
-			"VenDetta\r"
-			"Valdrak\r"
-			"vasser42\r"
-			"Whizperz\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"|\r"
-			style 1
-			forecolor 1 1 1 1
-			backcolor 0 0 0 0
-			visible 1
-			decoration
-		}
-
-		//SIXTH ROW
-
-		itemDef {
-			name credits6
-			rect 510 138 200 20
-			textscale .23
-			textalign 0
-			textalignx 0
-			textaligny 0
-			wrapped
-			text
-			"Xena\r"
-			"XiniX\r"
-			"Zane Darque\r"
-			"Zero\r"
-			"-_-\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"\r"
-			"|\r"
-			style 1
-			forecolor 1 1 1 1
-			backcolor 0 0 0 0
-			visible 1
-			decoration
-		}
-		*/
 
 		itemdef {
 			name next
