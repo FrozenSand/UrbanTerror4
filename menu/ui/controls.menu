@@ -535,6 +535,8 @@
 		itemDef {
 			name shoot
 			group grpControls
+			cvartest cg_autopickup
+			hidecvar { "-1" }
 			type ITEM_TYPE_BIND
 			text "interact/pickup:"
 			cvar "+button7"
