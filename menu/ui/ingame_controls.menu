@@ -508,7 +508,7 @@
 			group grpControls
 			type ITEM_TYPE_MULTI
 			text "Autopickup:"
-			cvar "ut_weapdrop"
+			cvar "cg_autopickup"
 			cvarFloatList { "No" 0 "Yes" -1 }
 			rect 0 165 320 15
 			textalign ITEM_ALIGN_RIGHT
@@ -525,6 +525,8 @@
 		itemDef {
 			name shoot
 			group grpControls
+			cvartest cg_autopickup
+			hidecvar { "-1" }
 			type ITEM_TYPE_BIND
 			text "interact/pickup:"
 			cvar "+button7"
