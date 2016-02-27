@@ -1,0 +1,473 @@
+#include "ui/menudef.h"
+{
+
+	menuDef
+	{
+		name "ingame_ut_select_gear_grenade"
+		visible 0
+		fullscreen 0
+		rect -5 -5 650 490
+		focusColor 1 1 1 1
+		disablecolor 0 0 0 0
+		backcolor 0 0 0 0
+		style 0
+		border 0
+		onClose { uiScript gearWrite; uiScript gearEnd }
+		onOpen { uiScript gearRead^}
+
+		itemDef {
+			name window
+			rect 73 79 494 321
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg2_tr.tga"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 73 79 494 25
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name teamtab
+			type 1
+			rect 74 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_tr.tga"
+			forecolor .5 .5 .5 1
+			text "team setup"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 1
+			action { uiScript gearWrite; 
+			play "sound/misc/kcaction.wav"; 
+			close ingame_ut_select_gear_grenade; 
+			open ingame_ut_select_team }
+		}
+
+		itemDef {
+			name geartab
+			rect 224 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_on_tr.tga"
+			forecolor 1 1 1 1
+			text "weapons / items"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name closeX
+			rect 544 83 20 17
+			style WINDOW_STYLE_FILLED
+			type 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			hotkey "0"
+			text "x"
+			textalign ITEM_ALIGN_CENTER
+			textscale 0.25
+			textalignx 9
+			textaligny 11
+			action { play "sound/misc/kcaction.wav" ; close ingame_ut_select_gear_grenade }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		} 
+
+
+//----------- 
+//HOVER ITEMS 
+//-----------
+
+
+		itemdef {
+			name PH1
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 77  107  90  46
+			hotkey 1
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_GRENADE_HE
+			text "1. HE Grenade" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_grenade; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show he_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide he_info 
+			}
+			onfocus { 
+				show he_info 
+			}
+			leavefocus { 
+				hide he_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH2
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 172  107  90  46
+			hotkey 2
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_GRENADE_SMOKE
+			text "2. Smoke Grenade" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_grenade; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show smoke_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide smoke_info 
+			}
+			onfocus { 
+				show smoke_info 
+			}
+			leavefocus { 
+				hide smoke_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH3
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 77  353  280  42
+			hotkey 9
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_NONE
+			text "9. None" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_grenade; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show none_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide none_info 
+			}
+			onfocus { 
+				show none_info 
+			}
+			leavefocus { 
+				hide none_info 
+			}
+			visible 1
+		}
+
+
+//----------- 
+//NORMAL ITEMS 
+//-----------
+
+
+		itemdef {
+			name P2
+			group PNormal
+			rect 101  119  46   33
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_GRENADE_HE
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P3
+			group PNormal
+			rect 195  119  46   33
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_GRENADE_SMOKE
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P5
+			group PNormal
+			rect 79 358  275   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_NONE
+			visible 1 
+			decoration
+		}
+
+//----------- 
+//INFO IMAGES
+//-----------
+
+
+		itemdef {
+			name he_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_GRENADE_HE
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name smoke_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_GRENADE_SMOKE
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name none_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_NONE
+			visible 0 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO WINDOW
+//-----------
+
+
+		itemdef {
+			name info_outline
+			group info
+			rect 366  107  192  118
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .2 .2 .3 .3 
+			border 1 
+			bordercolor .5 .5 .5 37 
+			textscale .24
+			textalign 0
+			textalignx 2
+			textaligny 115
+			wrapped
+			text "SELECTED" 
+			visible 1 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO TEXT
+//-----------
+
+
+		itemdef {
+			name he_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  HE Grenade\r" 
+			"Description:  High Explosive grenades\r" 
+			"Operation Mode:  Instant Arm\r" 
+			"Capacity:  2 issued\r" 
+		}
+
+		itemdef {
+			name smoke_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  Smoke Grenade\r" 
+			"Description:  Smoke grenade, provides\rcover\r" 
+			"Operation Mode:  Instant Arm\r" 
+			"Capacity:  2 issued\r" 
+		}
+
+		itemdef {
+			name none_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  No Grenade \r" 
+			"Description:  Allows you to select an\rextra item\r" 
+		}
+
+ 
+
+//----------- 
+//INFO CURRENT IMAGE
+//-----------
+
+
+		itemdef {
+			name info_current
+			group info
+			rect 366  231  192  118
+			ownerdraw UI_GEAR_IMAGE
+			ownerdrawparam GEAR_GRENADE
+			visible 1 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO CURRENT WINDOW
+//-----------
+
+
+		itemdef {
+			name info_outline
+			group info
+			rect 366  231  192  118
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .2 .2 .3 .3
+			border 1 
+			bordercolor .5 .5 .5 .7 
+			textscale .24
+			textalign 0
+			textalignx 2
+			textaligny 115
+			wrapped
+			text "CURRENT" 
+			visible 1 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO CURRENT TEXT
+//-----------
+
+		itemDef {
+			rect 366 231 192 118
+			type ITEM_TYPE_OWNERDRAW
+			style WINDOW_STYLE_FILLED
+			backcolor .2 .2 .3 .3 
+			border 1
+			bordercolor .5 .5 .5 1
+			ownerDraw UI_GEAR_INFO
+			ownerDrawParam GEAR_GRENADE
+			textscale 0.2
+			align ITEM_ALIGN_LEFT
+			textalignx 5
+			textaligny 14
+			visible 1
+			decoration
+		}
+ 
+
+//----------- 
+//CANCEL BUTTON 
+//-----------
+
+
+		itemDef { 
+			style WINDOW_STYLE_FILLED 
+			type 1 
+			rect 518 375 40 20 
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6 
+			border 1 
+			bordercolor .5 .5 .5 .7 
+			text "Cancel" 
+			textalign ITEM_ALIGN_CENTER 
+			textalignx 20 
+			textaligny 13 
+			textscale 0.2 
+			visible 1 
+			action { close "ingame_ut_select_gear_grenade"; open "ingame_ut_select_gear" } 
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 } 
+			mouseExit { setcolor backcolor 0 0 0 .6 } 
+		} 
+	} 
+}

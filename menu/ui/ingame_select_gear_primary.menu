@@ -1,0 +1,1532 @@
+#include "ui/menudef.h"
+{
+	menuDef
+	{
+		name "ingame_ut_select_gear_primary"
+		visible 0
+		fullscreen 0
+		rect -5 -5 650 490
+		focusColor 1 1 1 1
+		disablecolor 0 0 0 0
+		backcolor 0 0 0 0
+		style 0
+		border 0
+		onClose { uiScript gearWrite; uiScript gearEnd }
+		onOpen { uiScript gearRead }
+
+		itemDef {
+			name window
+			rect 73 79 494 321
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg2_tr.tga"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 73 79 494 25
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name teamtab
+			type 1
+			rect 74 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_tr.tga"
+			forecolor .5 .5 .5 1
+			text "team setup"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 1
+			action { uiScript gearWrite; 
+			play "sound/misc/kcaction.wav"; 
+			close ingame_ut_select_gear_primary; 
+			open ingame_ut_select_team }
+		}
+
+		itemDef {
+			name geartab
+			rect 224 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_on_tr.tga"
+			forecolor 1 1 1 1
+			text "weapons / items"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name closeX
+			rect 544 83 20 17
+			style WINDOW_STYLE_FILLED
+			type 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			hotkey "0"
+			text "x"
+			textalign ITEM_ALIGN_CENTER
+			textscale 0.25
+			textalignx 9
+			textaligny 11
+			action { play "sound/misc/kcaction.wav" ; close ingame_ut_select_gear_primary }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+ 
+
+//----------- 
+//HOVER ITEMS 
+//-----------
+
+
+		itemdef {
+			name PH1
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 77  107   90   46
+			hotkey 1
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_G36
+			text "1. G36" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show g36_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide g36_info 
+			}
+			onfocus { 
+				show g36_info 
+			}
+			leavefocus { 
+				hide g36_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH2
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 77  156   90   46
+			hotkey 2
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_AK103
+			text "2. AK 103" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show ak103_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide ak103_info 
+			}
+			onfocus { 
+				show ak103_info 
+			}
+			leavefocus { 
+				hide ak103_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH3
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 77  205   90   46
+			hotkey 3
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_LR
+			text "3. ZM LR300" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show LR_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide LR_info 
+			}
+			onfocus { 
+				show LR_info 
+			}
+			leavefocus { 
+				hide LR_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH4
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 77  255   90   46
+			hotkey 4
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_M4
+			text "4. M4A1" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show M4_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide M4_info 
+			}
+			onfocus { 
+				show M4_info 
+			}
+			leavefocus { 
+				hide M4_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH5
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 77  304   90   46
+			hotkey 5
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_HK69
+			text "5. H&K 69" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show hk69_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide hk69_info 
+			}
+			onfocus { 
+				show hk69_info 
+			}
+			leavefocus { 
+				hide hk69_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH7
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 172  107   90  46
+			hotkey 6
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_PSG1
+			text "6. PSG-1" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show psg1_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide psg1_info 
+			}
+			onfocus { 
+				show psg1_info 
+			}
+			leavefocus { 
+				hide psg1_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH8
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 172  156   90   46
+			hotkey 7
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_SR8
+			text "7. SR-8" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show sr8_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide sr8_info 
+			}
+			onfocus { 
+				show sr8_info 
+			}
+			leavefocus { 
+				hide sr8_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH9
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 172  205   90   46
+			hotkey 8
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_NEGEV
+			text "8. IMI NEGEV" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show negev_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide negev_info 
+			}
+			onfocus { 
+				show negev_info 
+			}
+			leavefocus { 
+				hide negev_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH10
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 172  255   90   46
+			hotkey a
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_SPAS12
+			text "a. SPAS-12" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show spas12_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide spas12_info 
+			}
+			onfocus { 
+				show spas12_info 
+			}
+			leavefocus { 
+				hide spas12_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH11
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 172  304   90   46
+			hotkey b
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_MP5K
+			text "b. MP5K" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show mp5k_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide mp5k_info 
+			}
+			onfocus { 
+				show mp5k_info 
+			}
+			leavefocus { 
+				hide mp5k_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH13
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 267  107   90   46
+			hotkey c
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_UMP45
+			text "c. UMP 45" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show ump45_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide ump45_info 
+			}
+			onfocus { 
+				show ump45_info 
+			}
+			leavefocus { 
+				hide ump45_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH14
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 267  156   90   46
+			hotkey d
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_MAC11
+			text "d. MAC 11" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show mac11_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide mac11_info 
+			}
+			onfocus { 
+				show mac11_info 
+			}
+			leavefocus { 
+				hide mac11_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH15
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 267  205   90   46
+			hotkey e
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_FRF1
+			text "e. FR-F1" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show frf1_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide frf1_info 
+			}
+			onfocus { 
+				show frf1_info 
+			}
+			leavefocus { 
+				hide frf1_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH16
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 267  255   90   46
+			hotkey f
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_P90
+			text "f. FN P90" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show p90_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide p90_info 
+			}
+			onfocus { 
+				show p90_info 
+			}
+			leavefocus { 
+				hide p90_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH17
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 267  304   90   46
+			hotkey g
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_BENELLI
+			text "g. Benelli M4" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show benelli_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide benelli_info 
+			}
+			onfocus { 
+				show benelli_info 
+			}
+			leavefocus { 
+				hide benelli_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH18
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 77  353  280  42
+			hotkey 9
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_NONE
+			text "9. None" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_primary; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show none_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide none_info 
+			}
+			onfocus { 
+				show none_info 
+			}
+			leavefocus { 
+				hide none_info 
+			}
+			visible 1
+		}
+
+ 
+
+//----------- 
+//NORMAL ITEMS 
+//-----------
+
+
+		itemdef {
+			name P1
+			group PNormal
+			rect 78  109  90  50
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_G36
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P2
+			group PNormal
+			rect 81  161   85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_AK103
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P3
+			group PNormal
+			rect 79  210   85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_LR
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P4
+			group PNormal
+			rect 79  260   85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_M4
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P5
+			group PNormal
+			rect 79  309   85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_HK69
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P7
+			group PNormal
+			rect 174  112   85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_PSG1
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P8
+			group PNormal
+			rect 176  161   85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_SR8
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P9
+			group PNormal
+			rect 174  210   85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_NEGEV
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P10
+			group PNormal
+			rect 174  260   85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_SPAS12
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P11
+			group PNormal
+			rect 174  309   85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_MP5K
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P13
+			group PNormal
+			rect 269  110   85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_UMP45
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P14
+			group PNormal
+			rect 269  161   85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_MAC11
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P15
+			group PNormal
+			rect 269  210   85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_FRF1
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P16
+			group PNormal
+			rect 269  260   85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_P90
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P17
+			group PNormal
+			rect 269  309   85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_BENELLI
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P18
+			group PNormal
+			rect 79 358  275   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_NONE
+			visible 1 
+			decoration
+		}
+
+ 
+//----------- 
+//INFO IMAGES
+//-----------
+
+
+		itemdef {
+			name g36_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_G36
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name ak103_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_AK103
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name LR_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_LR
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name M4_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_M4
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name hk69_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_HK69
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name psg1_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_PSG1
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name sr8_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_SR8
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name negev_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_NEGEV
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name spas12_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_SPAS12
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name mp5k_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_MP5K
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name ump45_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_UMP45
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name mac11_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_MAC11
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name frf1_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_FRF1
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name p90_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_P90
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name benelli_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_BENELLI
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name none_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_NONE
+			visible 0 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO WINDOW
+//-----------
+
+
+		itemdef {
+			name info_outline
+			group info
+			rect 366  107  192  118
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .2 .2 .3 .3 
+			border 1 
+			bordercolor .5 .5 .5 .7
+			textscale .24
+			textalign 0
+			textalignx 2
+			textaligny 115
+			wrapped
+			text "SELECTED" 
+			visible 1 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO TEXT
+//-----------
+
+
+		itemdef {
+			name g36_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  H&K G36\r" 
+			"Description:  Assault Rifle\r" 
+			"Operation Mode:  Semi - Burst - Auto\r" 
+			"Capacity:  30 round mag\r" 
+			"Ammunition:  5.56mm Nato\r" 
+		}
+
+		itemdef {
+			name ak103_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  Kalashnikov AK103\r" 
+			"Description:  Assault Rifle\r" 
+			"Operation Mode:  Semi - Burst - Auto\r" 
+			"Capacity:  30 round mag\r" 
+			"Ammunition:  7.62mm Nato\r" 
+		}
+
+		itemdef {
+			name LR_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  ZM LR300 ML\r" 
+			"Description:  Assault Rifle\r" 
+			"Operation Mode:  Semi - Burst - Auto\r" 
+			"Capacity:  30 round mag\r" 
+			"Ammunition:  5.56mm Nato \r" 
+		}
+
+		itemdef {
+			name M4_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  Colt M4A1\r" 
+			"Description:  Assault Rifle\r" 
+			"Operation Mode:  Semi - Burst - Auto\r" 
+			"Capacity:  30 round mag\r" 
+			"Ammunition:  5.56mm Nato \r" 
+		}
+
+		itemdef {
+			name hk69_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  H&K 69\r" 
+			"Description:  Grenade Launcher\r" 
+			"Operation Mode:  Single Shot\r" 
+			"Capacity:  1 round chamber\r" 
+			"Ammunition:  40mm Grenades\r" 
+		}
+
+		itemdef {
+			name psg1_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  H&K PSG-1\r" 
+			"Description:  Sniper Rifle\r" 
+			"Operation Mode:  Semi-Auto\r" 
+			"Capacity:  5 round mag\r" 
+			"Ammunition:  7.62mm Nato\r" 
+			"Scope: 2x - 4x - 6x\r" 
+		}
+
+		itemdef {
+			name sr8_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  Remington SR8\r" 
+			"Description:  Sniper Rifle\r" 
+			"Operation Mode:  Bolt-Action\r" 
+			"Capacity:  3 round mag\r" 
+			"Ammunition:  .338 Lapua\r" 
+			"Scope: 4x - 6x - 8x\r" 
+		}
+
+		itemdef {
+			name negev_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  IMI Negev\r" 
+			"Description:  Machine Gun\r" 
+			"Operation Mode:  Automatic\r" 
+			"Capacity:  90 round belt\r" 
+			"Ammunition:  5.56mm Nato\r" 
+			"Too heavy to allow secondary gun\r" 
+		}
+
+		itemdef {
+			name spas12_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  Franchi SPAS-12\r" 
+			"Description:  Shotgun\r" 
+			"Operation Mode:  Semi-Automatic\r" 
+			"Capacity:  8 round chamber\r" 
+			"Ammunition:  12 Gauge Shotshells\r" 
+		}
+
+		itemdef {
+			name mp5k_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  H&K MP5k\r" 
+			"Description:  Submachine Gun\r" 
+			"Operation Mode:  Burst - Auto\r" 
+			"Capacity:  30 round mag\r" 
+			"Ammunition:  9mm Luger\r" 
+		}
+
+		itemdef {
+			name ump45_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  H&K UMP45\r" 
+			"Description:  Submachine Gun\r" 
+			"Operation Mode:  Spam - Auto\r" 
+			"Capacity:  30 round mag\r" 
+			"Ammunition:  .45 Auto\r" 
+		}
+
+		itemdef {
+			name mac11_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  Ingram MAC-11\r" 
+			"Description:  Submachine Gun\r" 
+			"Operation Mode: Auto\r" 
+			"Capacity:  30 round mag\r" 
+			"Ammunition:  .380 ACP round\r" 
+		}
+
+		itemdef {
+			name frf1_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  FR-F1\r"
+			"Description:  Sniper Rifle\r"
+			"Operation Mode: Bolt-Action\r"
+			"Capacity: 5 round mag\r"
+			"Ammunition: 7.5x54mm French\r"
+		}
+
+		itemdef {
+			name p90_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name: FN Herstal P90\r"
+			"Description: Submachine Gun\r"
+			"Operation Mode: Semi - Burst - Auto\r"
+			"Capacity: 50 round mag\r"
+			"Ammunition: FN 5.7mm"
+		}
+
+		itemdef {
+			name benelli_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name: Benelli M4 Super 90\r"
+			"Description: Shotgun\r"
+			"Operation Mode: Semi-Automatic\r"
+			"Capacity:  8 round chamber\r"
+			"Ammunition:  12 Gauge Shotshells\r"
+		}
+
+		itemdef {
+			name none_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  No primary weapon\r" 
+			"Description:  Allows you to select an\rextra item\r" 
+		}
+
+ 
+
+//----------- 
+//INFO CURRENT IMAGE
+//-----------
+
+
+		itemdef {
+			name info_current
+			group info
+			rect 366  231  192  118
+			ownerdraw UI_GEAR_IMAGE
+			ownerdrawparam GEAR_PRIMARY
+			visible 1 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO CURRENT WINDOW
+//-----------
+
+
+		itemdef {
+			name info_outline
+			group info
+			rect 366  231  192  118
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .2 .2 .3 .3 
+			border 1 
+			bordercolor .5 .5 .5 .7
+			textscale .24
+			textalign 0
+			textalignx 2
+			textaligny 115
+			wrapped
+			text "CURRENT" 
+			visible 1 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO CURRENT TEXT
+//-----------
+
+		itemDef {
+			rect 366 231 192 118
+			type ITEM_TYPE_OWNERDRAW
+			style WINDOW_STYLE_FILLED
+			backcolor .2 .2 .3 .3 
+			border 1
+			bordercolor .5 .5 .5 1
+			ownerDraw UI_GEAR_INFO
+			ownerDrawParam GEAR_PRIMARY
+			textscale 0.2
+			align ITEM_ALIGN_LEFT
+			textalignx 5
+			textaligny 14
+			visible 1
+			decoration
+		}
+ 
+
+//----------- 
+//CANCEL BUTTON 
+//-----------
+
+
+		itemDef { 
+			style WINDOW_STYLE_FILLED 
+			type 1 
+			rect 518 375 40 20 
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			text "Cancel" 
+			textalign ITEM_ALIGN_CENTER 
+			textalignx 20 
+			textaligny 13 
+			textscale 0.2 
+			visible 1 
+			action { close "ingame_ut_select_gear_primary"; open "ingame_ut_select_gear" } 
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 } 
+			mouseExit { setcolor backcolor 0 0 0 .6 } 
+		} 
+	} 
+}

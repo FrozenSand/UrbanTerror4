@@ -1,0 +1,641 @@
+#include "ui/menudef.h"
+{
+
+	/*	INGAME GEAR MENU
+	Revised by woekele, for 4.0. Slight adjustments, nothing big. Updated descriptions
+	*/
+
+	menuDef
+	{
+		name "ingame_ut_select_gear_sidearm"
+		visible 0
+		fullscreen 0
+		rect -5 -5 650 490
+		focusColor 1 1 1 1
+		disablecolor 0 0 0 0
+		backcolor 0 0 0 0
+		style 0
+		border 0
+		onClose { uiScript gearWrite; uiScript gearEnd }
+		onOpen { uiScript gearRead }
+
+		itemDef {
+			name window
+			rect 73 79 494 321
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg2_tr.tga"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 73 79 494 25
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name teamtab
+			type 1
+			rect 74 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_tr.tga"
+			forecolor .5 .5 .5 1
+			text "team setup"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 1
+			action { uiScript gearWrite; play "sound/misc/kcaction.wav"; close ingame_ut_select_gear_sidearm; open ingame_ut_select_team }
+		}
+
+		itemDef {
+			name geartab
+			rect 224 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_on_tr.tga"
+			forecolor 1 1 1 1
+			text "weapons / items"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name closeX
+			rect 544 83 20 17
+			style WINDOW_STYLE_FILLED
+			type 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			hotkey "0"
+			text "x"
+			textalign ITEM_ALIGN_CENTER
+			textscale 0.25
+			textalignx 9
+			textaligny 11
+			action { play "sound/misc/kcaction.wav" ; close ingame_ut_select_gear }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+ 
+
+//----------- 
+//HOVER ITEMS 
+//-----------
+
+
+		itemdef {
+			name PH2
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 77  107  90   46
+			hotkey 1
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_BERETTA
+			text "1. Beretta 92G" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_sidearm; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show beretta_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide beretta_info  
+			}
+			onfocus { 
+				show beretta_info 
+			}
+			leavefocus { 
+				hide beretta_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH3
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 77  156  90  46
+			hotkey 2
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6 
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_DEAGLE
+			text "2. .50 Desert Eagle" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_sidearm; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show deagle_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide deagle_info 
+			}
+			onfocus { 
+				show deagle_info 
+			}
+			leavefocus { 
+				hide deagle_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH5
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 172  107  90  46
+			hotkey 3
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_GLOCK
+			text "3. Glock 18" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_sidearm; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show glock_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide glock_info 
+			}
+			onfocus { 
+				show glock_info 
+			}
+			leavefocus { 
+				hide glock_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH6
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 172  156  90  46
+			hotkey 4
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_COLT1911
+			text "4. Colt 1911" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_sidearm; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show colt1911_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide colt1911_info 
+			}
+			onfocus { 
+				show colt1911_info 
+			}
+			leavefocus { 
+				hide colt1911_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH7
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 267  107  90   46
+			hotkey 5
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_MAGNUM
+			text "5. .44 Magnum" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_sidearm; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show magnum_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide magnum_info 
+			}
+			onfocus { 
+				show magnum_info 
+			}
+			leavefocus { 
+				hide magnum_info 
+			}
+			visible 1
+		}
+
+
+//----------- 
+//NORMAL ITEMS 
+//-----------
+
+
+		itemdef {
+			name P2
+			group PNormal
+			rect 79  109  85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_BERETTA
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P3
+			group PNormal
+			rect 79  161  85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_DEAGLE
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P5
+			group PNormal
+			rect 174  112  85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_GLOCK
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P6
+			group PNormal
+			rect 174  161  85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_COLT1911
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P7
+			group PNormal
+			rect 269  110  85   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_MAGNUM
+			visible 1 
+			decoration
+		}
+
+//----------- 
+//INFO IMAGES
+//-----------
+
+
+		itemdef {
+			name beretta_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_BERETTA
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name deagle_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_DEAGLE
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name glock_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_GLOCK
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name colt1911_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_COLT1911
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name magnum_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_MAGNUM
+			visible 0 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO WINDOW
+//-----------
+
+
+		itemdef {
+			name info_outline
+			group info
+			rect 366  107  192  118
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .2 .2 .3 .3 
+			border 1 
+			bordercolor .5 .5 .5 37 
+			textscale .24
+			textalign 0
+			textalignx 2
+			textaligny 115
+			wrapped
+			text "SELECTED" 
+			visible 1 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO TEXT
+//-----------
+
+
+		itemdef {
+			name beretta_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text 	"Name:  Beretta 92G\r" 
+			"Description:  Handgun\r" 
+			"Operation Mode:  Semi-Automatic\r" 
+			"Capacity:  15 round mag\r" 
+			"Ammunition:  9mm Luger\r" 
+		}
+
+		itemdef {
+			name deagle_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text 	"Name:  .50 Desert Eagle\r" 
+			"Description:  Handgun\r" 
+			"Operation Mode:  Semi-Automatic\r" 
+			"Capacity:  7 round mag\r" 
+			"Ammunition:  .50 AE\r" 
+		}
+
+		itemdef {
+			name glock_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text 	"Name:  Glock 18\r" 
+			"Description:  Handgun\r" 
+			"Operation Mode:  Burst - Semi-Automatic\r" 
+			"Capacity:  12 round mag\r" 
+			"Ammunition:  9mm Luger\r" 
+		}
+
+		itemdef {
+			name colt1911_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text 	"Name:  Colt 1911\r" 
+			"Description:  Handgun\r" 
+			"Operation Mode:  Semi-Automatic\r" 
+			"Capacity:  10 round mag\r" 
+			"Ammunition:  .45 ACP (11.43 mm)\r" 
+		}
+
+		itemdef {
+			name magnum_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name: .44 Magnum Revolver\r"
+			"Description: Handgun\r"
+			"Operation Mode: Manual\r"
+			"Capacity: 6 round chamber\r"
+			"Ammunition: 10.9mm"
+		}
+
+ 
+
+//----------- 
+//INFO CURRENT IMAGE
+//-----------
+
+
+		itemdef {
+			name info_current
+			group info
+			rect 366  231  192  118
+			ownerdraw UI_GEAR_IMAGE
+			ownerdrawparam GEAR_SIDEARM
+			visible 1 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO CURRENT WINDOW
+//-----------
+
+
+		itemdef {
+			name info_outline
+			group info
+			rect 366  231  192  118
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .2 .2 .3 .3
+			border 1 
+			bordercolor .5 .5 .5 .7 
+			textscale .24
+			textalign 0
+			textalignx 2
+			textaligny 115
+			wrapped
+			text "CURRENT" 
+			visible 1 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO CURRENT TEXT
+//-----------
+
+		itemDef {
+			rect 366 231 192 118
+			type ITEM_TYPE_OWNERDRAW
+			style WINDOW_STYLE_FILLED
+			backcolor .2 .2 .3 .3 
+			border 1
+			bordercolor .5 .5 .5 1
+			ownerDraw UI_GEAR_INFO
+			ownerDrawParam GEAR_SIDEARM
+			textscale 0.2
+			align ITEM_ALIGN_LEFT
+			textalignx 5
+			textaligny 14
+			visible 1
+			decoration
+		}
+ 
+
+//----------- 
+//CANCEL BUTTON 
+//-----------
+
+
+		itemDef { 
+			style WINDOW_STYLE_FILLED 
+			type 1 
+			rect 518 375 40 20 
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6 
+			border 1 
+			bordercolor .5 .5 .5 .7 
+			text "Cancel" 
+			textalign ITEM_ALIGN_CENTER 
+			textalignx 20 
+			textaligny 13 
+			textscale 0.2 
+			visible 1 
+			action { close "ingame_ut_select_gear_sidearm"; open "ingame_ut_select_gear" } 
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 } 
+			mouseExit { setcolor backcolor 0 0 0 .6 } 
+		} 
+	} 
+}

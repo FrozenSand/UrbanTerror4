@@ -1,7 +1,7 @@
 /**
- * Filename: menudef.h
+ * Filename: $(filename)
  *
- * Copyright (C) 1999-2016 Id Software, Inc.
+ * Copyright (C) 1999-2005 Id Software, Inc.
  * Copyright (C) 2000-2016 FrozenSand
  *
  * This file is part of Urban Terror source code.
@@ -81,13 +81,6 @@
 #define FEEDER_STATS_WEAPONS_LIST 0x13                                                          // weaponlist for the stats (woek)
 #define FEEDER_STATS_TEXT_LIST    0x14                                                          // weaponlist for the stats (woek)
 
-#define FEEDER_PRIMARY            0x15
-#define FEEDER_SECONDARY          0x16
-#define FEEDER_SIDEARM            0x17
-#define FEEDER_GRENADE            0x18
-#define FEEDER_ITEM_1             0x19
-#define FEEDER_ITEM_2             0x1a
-#define FEEDER_ITEM_3             0x1b
 
 // display flags
 #define CG_SHOW_BLUE_TEAM_HAS_REDFLAG 0x00000001
@@ -260,12 +253,13 @@
 #define UI_GEAR_IMAGE               257
 #define UI_GEAR_NAME                258
 
-#define UI_GEAR_INFO                259
+#define UI_ITEM_IMAGE               259
+#define UI_ITEM_NAME                260
 
 #define UI_KI_OPTION                261
 #define UI_KI_INDEX                 262
 
-#define UI_ITEM_MODEL               263
+#define UI_GEAR_INFO                263
 
 #define KI_OPTION1                  0
 #define KI_OPTION2                  1
@@ -315,7 +309,11 @@
 #define ITEM_GLOCK					27
 #define ITEM_COLT1911               28
 #define ITEM_MAC11                  29
-#define ITEM_MAX                    30
+#define ITEM_FRF1					30
+#define ITEM_P90					31
+#define ITEM_BENELLI 				32
+#define ITEM_MAGNUM 				33
+#define ITEM_MAX                    34
 
 #define UI_TEAM_FREE                0
 #define UI_TEAM_RED                 1
