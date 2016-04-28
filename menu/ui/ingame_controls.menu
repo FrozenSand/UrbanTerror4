@@ -656,7 +656,7 @@
 			group grpControls
 			type ITEM_TYPE_BIND
 			text "drop flag:"
-			cvar "ut_itedrop flag"
+			cvar "ut_itemdrop flag"
 			rect 0 165 320 15
 			textalign ITEM_ALIGN_RIGHT
 			textalignx 187
