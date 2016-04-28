@@ -57,12 +57,14 @@
 		}
 		*/
 
+// LOOK 	//
+
 		itemDef {
 			name ctr_look
 			type 1
 			group grpControlbutton
 			style WINDOW_STYLE_FILLED
-			rect 20 25 59 20
+			rect 20 25 50 20
 			forecolor 1 1 1 1
 			backcolor 0 0 0 .7
 			border 1
@@ -80,10 +82,10 @@
 			textscale .22
 			group grpControlbutton
 			style WINDOW_STYLE_FILLED
-			rect 20 25 59 20
-			textalign 2
-			textalignx 55
-			textaligny 16
+			rect 20 25 50 20
+			textalign 1
+			textalignx 25			
+			textaligny 13
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
 			border 1
@@ -164,13 +166,14 @@
 			mouseexit { hide keyBindStatus }
 		}
 
+		// MOVE 	//
 
 		itemDef {
 			name ctr_move
 			type 1
 			group grpControlbutton
 			style WINDOW_STYLE_FILLED
-			rect 89 25 59 20
+			rect 77 25 50 20
 			forecolor 1 1 1 1
 			backcolor 0 0 0 .7
 			border 1
@@ -188,10 +191,10 @@
 			textscale .22
 			group grpControlbutton
 			style WINDOW_STYLE_FILLED
-			rect 89 25 59 20
-			textalign 2
-			textalignx 55
-			textaligny 16
+			rect 77 25 50 20
+			textalign 1
+			textalignx 25			
+			textaligny 13
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
 			border 1
@@ -359,13 +362,14 @@
 			mouseexit { hide keyBindStatus }
 		}
 
+		// SHOOT 	//
 
 		itemDef {
 			name ctr_shoot
 			type 1
 			group grpControlbutton
 			style WINDOW_STYLE_FILLED
-			rect 158 25 59 20
+			rect 134 25 50 20
 			forecolor 1 1 1 1
 			backcolor 0 0 0 .7
 			border 1
@@ -378,15 +382,15 @@
 
 		itemDef {
 			name ctr_shoot
-			text "shoot"
+			text "weapon"
 			type 0
 			textscale .22
 			group grpControlbutton
 			style WINDOW_STYLE_FILLED
-			rect 158 25 59 20
-			textalign 2
-			textalignx 55
-			textaligny 16
+			rect 134 25 50 20
+			textalign 1
+			textalignx 25			
+			textaligny 13
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
 			border 1
@@ -503,12 +507,225 @@
 			mouseexit { hide keyBindStatus }
 		}
 
+		// ITEMS 	//
+
+
+		itemDef {
+			name ctr_items
+			type 1
+			group grpControlbutton
+			style WINDOW_STYLE_FILLED
+			rect 191 25 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; hide grpControls ; show items }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		}
+
+		itemDef {
+			name ctr_items
+			text "items"
+			type 0
+			textscale .22
+			group grpControlbutton
+			style WINDOW_STYLE_FILLED
+			rect 191 25 50 20
+			textalign 1
+			textalignx 25			
+			textaligny 13
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name items
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "next item:"
+			cvar "ut_itemnext"
+			rect 0 75 320 15
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 187
+			maxPaintChars 20
+			textaligny 12
+			textscale .22
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+		itemDef {
+			name items
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "prev item:"
+			cvar "ut_itemprev"
+			rect 0 90 320 15
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 187
+			maxPaintChars 20
+			textaligny 12
+			textscale .22
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+		itemDef {
+			name items
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "toggle current:"
+			cvar "ut_itemuse"
+			rect 0 105 320 15
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 187
+			maxPaintChars 20
+			textaligny 12
+			textscale .22
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name items
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "drop current:"
+			cvar "ut_itemdrop"
+			rect 0 120 320 15
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 187
+			maxPaintChars 20
+			textaligny 12
+			textscale .22
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name items
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "drop medkit:"
+			cvar "ut_itemdrop medkit"
+			rect 0 135 320 15
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 187
+			maxPaintChars 20
+			textaligny 12
+			textscale .22
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name items
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "drop kevlar:"
+			cvar "ut_itemdrop kevlar"
+			rect 0 150 320 15
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 187
+			maxPaintChars 20
+			textaligny 12
+			textscale .22
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name items
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "drop flag:"
+			cvar "ut_itedrop flag"
+			rect 0 165 320 15
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 187
+			maxPaintChars 20
+			textaligny 12
+			textscale .22
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name items
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "toggle laser:"
+			cvar "ut_itemuse laser"
+			rect 0 180 320 15
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 187
+			maxPaintChars 20
+			textaligny 12
+			textscale .22
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name items
+			group grpControls
+			type ITEM_TYPE_BIND
+			text "toggle NVGs:"
+			cvar "ut_itemuse nvg"
+			rect 0 195 320 15
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 187
+			maxPaintChars 20
+			textaligny 12
+			textscale .22
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
+
+		itemDef {
+			name items
+			rect 0 215 320 15
+			group grpControls
+			type 0
+			autowrapped
+			text "Dropping or toggling items can have various effects."
+			textalign ITEM_ALIGN_CENTER
+			textalignx 180
+			textaligny 20
+			textscale .25
+		}
+
+		// MISC 	//
+
 		itemDef {
 			name ctr_miscellaneous
 			type 1
 			group grpControlbutton
 			style WINDOW_STYLE_FILLED
-			rect 227 25 59 20
+			rect 248 25 50 20
 			forecolor 1 1 1 1
 			backcolor 0 0 0 .7
 			border 1
@@ -526,10 +743,10 @@
 			textscale .22
 			group grpControlbutton
 			style WINDOW_STYLE_FILLED
-			rect 227 25 59 20
-			textalign 2
-			textalignx 55
-			textaligny 16
+			rect 248 25 50 20
+			textalign 1
+			textalignx 25			
+			textaligny 13
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
 			border 1
@@ -629,9 +846,9 @@
 		itemDef {
 			name misc
 			group grpControls
-			type ITEM_TYPE_BIND
-			text "next item:"
-			cvar "ut_itemnext"
+			type ITEM_TYPE_SLIDER
+			text "sensitivity:"
+			cvarfloat "sensitivity" 5 1 30
 			rect 0 150 320 15
 			textalign ITEM_ALIGN_RIGHT
 			textalignx 187
@@ -647,9 +864,9 @@
 		itemDef {
 			name misc
 			group grpControls
-			type ITEM_TYPE_BIND
-			text "previous item:"
-			cvar "ut_itemprev"
+			type ITEM_TYPE_YESNO
+			text "invert mouse:"
+			cvar "ui_mousePitch"
 			rect 0 165 320 15
 			textalign ITEM_ALIGN_RIGHT
 			textalignx 187
@@ -658,6 +875,7 @@
 			textscale .22
 			forecolor 1 1 1 1
 			visible 0
+			action { uiScript update ui_mousePitch }
 			mouseenter { show keyBindStatus }
 			mouseexit { hide keyBindStatus }
 		}
@@ -665,9 +883,9 @@
 		itemDef {
 			name misc
 			group grpControls
-			type ITEM_TYPE_BIND
-			text "drop item:"
-			cvar "ut_itemdrop"
+			type ITEM_TYPE_YESNO
+			text "smooth mouse:"
+			cvar "m_filter"
 			rect 0 180 320 15
 			textalign ITEM_ALIGN_RIGHT
 			textalignx 187
@@ -680,103 +898,14 @@
 			mouseexit { hide keyBindStatus }
 		}
 
-		itemDef {
-			name misc
-			group grpControls
-			type ITEM_TYPE_BIND
-			text "use item:"
-			cvar "ut_itemuse"
-			rect 0 195 320 15
-			textalign ITEM_ALIGN_RIGHT
-			textalignx 187
-			maxPaintChars 20
-			textaligny 12
-			textscale .22
-			forecolor 1 1 1 1
-			visible 0
-			mouseenter { show keyBindStatus }
-			mouseexit { hide keyBindStatus }
-		}
-
-
-		itemDef {
-			name misc
-			group grpControls
-			type ITEM_TYPE_SLIDER
-			text "sensitivity:"
-			cvarfloat "sensitivity" 5 1 30
-			rect 0 210 320 15
-			textalign ITEM_ALIGN_RIGHT
-			textalignx 187
-			maxPaintChars 20
-			textaligny 12
-			textscale .22
-			forecolor 1 1 1 1
-			visible 0
-			mouseenter { show slider_message }
-			mouseexit { hide slider_message }
-		}
-
-		itemDef {
-			name misc
-			group grpControls
-			type ITEM_TYPE_YESNO
-			text "invert mouse:"
-			cvar "ui_mousePitch"
-			rect 0 225 320 15
-			textalign ITEM_ALIGN_RIGHT
-			textalignx 187
-			maxPaintChars 20
-			textaligny 12
-			textscale .22
-			forecolor 1 1 1 1
-			visible 0
-			action { uiScript update ui_mousePitch }
-			mouseenter { show yesno_message }
-			mouseexit { hide yesno_message }
-		}
-
-		itemDef {
-			name misc
-			group grpControls
-			type ITEM_TYPE_YESNO
-			text "smooth mouse:"
-			cvar "m_filter"
-			rect 0 240 320 15
-			textalign ITEM_ALIGN_RIGHT
-			textalignx 187
-			maxPaintChars 20
-			textaligny 12
-			textscale .22
-			forecolor 1 1 1 1
-			visible 0
-			mouseenter { show yesno_message }
-			mouseexit { hide yesno_message }
-		}
-
-		itemDef {
-			name misc
-			group grpControls
-			type ITEM_TYPE_BIND
-			text "drop flag:"
-			cvar "ut_itemdrop flag"
-			rect 0 255 320 15
-			textalign ITEM_ALIGN_RIGHT
-			textalignx 187
-			textaligny 12
-			textscale .22
-			forecolor 1 1 1 1
-			visible 0
-			mouseenter { show keyBindStatus }
-			mouseexit { hide keyBindStatus }
-		}
+		// CHAT 	//
 
 		itemDef {
 			name ctr_chat
 			type 1
 			group grpControlbutton
 			style WINDOW_STYLE_FILLED
-			rect 296 25 59 20
+			rect 305 25 50 20
 			forecolor 1 1 1 1
 			backcolor 0 0 0 .7
 			border 1
@@ -794,10 +923,10 @@
 			textscale .22
 			group grpControlbutton
 			style WINDOW_STYLE_FILLED
-			rect 296 25 59 20
-			textalign 2
-			textalignx 55
-			textaligny 16
+			rect 305 25 50 20
+			textalign 1
+			textalignx 25			
+			textaligny 13
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
 			border 1
