@@ -58,7 +58,7 @@
 			text "README"
 			textscale .25
 			textalign 2
-			textalignx 49
+			textalignx 54
 			textaligny 20
 			forecolor 1 1 1 1
 			backcolor 0 0 0 .7
