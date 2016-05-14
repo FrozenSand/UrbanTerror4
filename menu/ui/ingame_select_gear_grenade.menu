@@ -13,7 +13,7 @@
 		style 0
 		border 0
 		onClose { uiScript gearWrite; uiScript gearEnd }
-		onOpen { uiScript gearRead^}
+		onOpen { uiScript gearRead }
 
 		itemDef {
 			name window

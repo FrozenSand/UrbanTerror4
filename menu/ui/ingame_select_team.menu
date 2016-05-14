@@ -59,7 +59,7 @@
 			textalignx 10
 			textaligny 19
 			visible 1
-			action { uiScript gearWrite; play "sound/misc/kcaction.wav"; close ingame_ut_select_team; open ingame_ut_select_gear }
+			action { play "sound/misc/kcaction.wav"; close ingame_ut_select_team; open ingame_ut_select_gear }
 			cvarTest "g_gametype"
 			hideCvar { "11" }
 		}
