@@ -255,7 +255,7 @@
 			name grenade_image
 			ownerdraw UI_GEAR_IMAGE
 			ownerdrawParam GEAR_GRENADE
-			rect 111 264 68 68
+			rect 81 264 120 68
 			visible 1
 			cvarTest "ui_gearGrenade"
 			hideCvar { "0"}
@@ -299,7 +299,7 @@
 			name gear_image
 			ownerdraw UI_GEAR_IMAGE
 			ownerdrawParam GEAR_ITEM_1
-			rect 232 264 68 68
+			rect 202 264 120 68
 			visible 1
 			//	cvarTest "ui_gearItemCount"
 			//	hideCvar { "0" }
@@ -344,7 +344,7 @@
 			name gear_image
 			ownerdraw UI_GEAR_IMAGE
 			ownerdrawParam GEAR_ITEM_2
-			rect 353 264 68 68
+			rect 323 264 120 68
 			visible 1
 			cvarTest "ui_gearItemCount"
 			hideCvar { "1" }
@@ -404,7 +404,7 @@
 			name gear_image
 			ownerdraw UI_GEAR_IMAGE
 			ownerdrawParam GEAR_ITEM_3
-			rect 474 264 68 68
+			rect 444 264 120 68
 			visible 1
 			cvarTest "ui_gearItemCount"
 			hideCvar { "1" ; "2" }
