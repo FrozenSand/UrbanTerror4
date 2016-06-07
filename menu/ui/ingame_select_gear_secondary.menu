@@ -82,7 +82,7 @@
 			textscale 0.25
 			textalignx 9
 			textaligny 11
-			action { play "sound/misc/kcaction.wav" ; close ingame_ut_select_gear }
+			action { play "sound/misc/kcaction.wav" ; close ingame_ut_select_gear_secondary }
 			mouseEnter { setcolor backcolor 0 0 .55 1 }
 			mouseExit { setcolor backcolor 0 0 0 .7 }
 		}
