@@ -1224,7 +1224,7 @@
 			text "Name:  H&K PSG-1\r" 
 			"Description:  Sniper Rifle\r" 
 			"Operation Mode:  Semi-Auto\r" 
-			"Capacity:  5 round mag\r" 
+			"Capacity:  8 round mag\r" 
 			"Ammunition:  7.62mm Nato\r" 
 			"Scope: 2x - 4x - 6x\r" 
 		}
@@ -1246,7 +1246,7 @@
 			text "Name:  Remington SR8\r" 
 			"Description:  Sniper Rifle\r" 
 			"Operation Mode:  Bolt-Action\r" 
-			"Capacity:  3 round mag\r" 
+			"Capacity:  5 round mag\r" 
 			"Ammunition:  .338 Lapua\r" 
 			"Scope: 4x - 6x - 8x\r" 
 		}
@@ -1353,7 +1353,7 @@
 			text "Name:  Ingram MAC-11\r" 
 			"Description:  Submachine Gun\r" 
 			"Operation Mode: Auto\r" 
-			"Capacity:  30 round mag\r" 
+			"Capacity:  32 round mag\r" 
 			"Ammunition:  .380 ACP round\r" 
 		}
 
@@ -1374,8 +1374,9 @@
 			text "Name:  FR-F1\r"
 			"Description:  Sniper Rifle\r"
 			"Operation Mode: Bolt-Action\r"
-			"Capacity: 5 round mag\r"
+			"Capacity: 6 round mag\r"
 			"Ammunition: 7.5x54mm French\r"
+			"Scope: 2x - 4x - 6x\r" 
 		}
 
 		itemdef {
@@ -1416,7 +1417,7 @@
 			text "Name: Benelli M4 Super 90\r"
 			"Description: Shotgun\r"
 			"Operation Mode: Semi-Automatic\r"
-			"Capacity:  8 round chamber\r"
+			"Capacity:  5 round chamber\r"
 			"Ammunition:  12 Gauge Shotshells\r"
 		}
 
