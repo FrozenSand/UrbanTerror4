@@ -5,7 +5,7 @@ Urban Terror 4.x
 
 This is the official repository gathering issues about the game Urban Terror.
 
-If you encounter a bug while using the official **UrTUpdater**, please report it [here](https://github.com/Barbatos/UrTUpdater) instead.
+If you encounter a bug while using the official **UrT-Updater**, please report it [here](https://github.com/Barbatos/UrTUpdater) instead.
 
 If you want to discuss about the future version of the game called **Urban Terror HD**, go [here](http://www.urbanterror.info/forums/forum/73-ue4-urban-terror-discussion/).
 

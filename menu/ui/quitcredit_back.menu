@@ -258,19 +258,19 @@
 			name credits
 			wrapped
 			text 
-			"Lead Developer / Public Relations Manager\r"
-			"QA Manager\r"
-			"Team Manager / Senior Artist / Modeler\r"
+			"PR Manager / Updater & Codebase Dev\r"
+			"QA Manager / Community & E-Sports Relations\r"
+			"Team Manager / Senior Artist / Modeler \r"
 			"Website Developer\r"
 			"Codebase Developer\r"
-			"Media Manager / Editor\r"
-			"Hosting Platform Manager / Administrator\r"
-			"Lead Animator / Assets Manager\r"
+			"Media & Promotion Manager / Editor\r"
+			"Hosting Platform Manager\r"
+			"Assets Manager / Senior Artist\r"
 			"Codebase Developer\r"
 			"Modeler / Texture Artist\r"
 			"Level Designer\r"
-			"Engine Developer / Webmaster / 2D Artist\r"
-			"Forum Administrator\r"
+			"Graphic Designer / Webmaster / Engine Developer\r"
+			"Forum Manager\r"
 			"Level Designer\r"
 			"Concept Artist / Level Designer\r"
 			textscale .22
@@ -318,9 +318,9 @@
 			wrapped
 			text
 			"Level Designer\r"
-			"Engine & Codebase Developer\r"
-			"CEO / Modeler / Texture Artist\r"
-			"Head Administrator / Website Developer\r"
+			"Codebase Developer\r"
+			"Company Manager / Modeler & Texture Artist\r"
+			"Network Manager / Website Dev\r"
 			"Coverage Coordinator\r"
 			"Composer / Audio Engineer\r"
 			"Modeler\r"
