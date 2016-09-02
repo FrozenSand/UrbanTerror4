@@ -2,7 +2,7 @@
  * Filename: $(filename)
  *
  * Copyright (C) 1999-2005 Id Software, Inc.
- * Copyright (C) 2000-2009 FrozenSand
+ * Copyright (C) 2000-2016 FrozenSand
  *
  * This file is part of Urban Terror source code.
  *
@@ -81,6 +81,7 @@
 #define FEEDER_STATS_WEAPONS_LIST 0x13                                                          // weaponlist for the stats (woek)
 #define FEEDER_STATS_TEXT_LIST    0x14                                                          // weaponlist for the stats (woek)
 
+
 // display flags
 #define CG_SHOW_BLUE_TEAM_HAS_REDFLAG 0x00000001
 #define CG_SHOW_RED_TEAM_HAS_BLUEFLAG 0x00000002
@@ -150,41 +151,41 @@
 #define CG_RED_SCORE             28
 #define CG_RED_NAME              29
 #define CG_BLUE_NAME             30
-#define CG_RED_PLAYER_COUNT      81
-#define CG_BLUE_PLAYER_COUNT     82
-#define CG_FREE_PLAYER_COUNT     83
-#define CG_HARVESTER_SKULLS      31                                     // only shows in harvester
-#define CG_ONEFLAG_STATUS        32                                     // only shows in one flag
-#define CG_PLAYER_LOCATION       33
-#define CG_TEAM_COLOR            34
-#define CG_CTF_POWERUP           35
+#define CG_RED_PLAYER_COUNT      31
+#define CG_BLUE_PLAYER_COUNT     32
+#define CG_FREE_PLAYER_COUNT     33
+#define CG_HARVESTER_SKULLS      34                                     // only shows in harvester
+#define CG_ONEFLAG_STATUS        35                                     // only shows in one flag
+#define CG_PLAYER_LOCATION       36
+#define CG_TEAM_COLOR            37
+#define CG_CTF_POWERUP           38
 
-#define CG_AREA_POWERUP          36
-#define CG_AREA_LAGOMETER        37           // painted with old system
-#define CG_PLAYER_HASFLAG        38
-#define CG_GAME_TYPE             39     // not done
+#define CG_AREA_POWERUP          39
+#define CG_AREA_LAGOMETER        40           // painted with old system
+#define CG_PLAYER_HASFLAG        41
+#define CG_GAME_TYPE             42     // not done
 
-#define CG_SELECTEDPLAYER_ARMOR  40
-#define CG_SELECTEDPLAYER_HEALTH 41
-#define CG_PLAYER_STATUS         42
-#define CG_FRAGGED_MSG           43     // painted with old system
-#define CG_PROXMINED_MSG         44     // painted with old system
-#define CG_AREA_FPSINFO          45     // painted with old system
-#define CG_AREA_SYSTEMCHAT       46     // painted with old system
-#define CG_AREA_TEAMCHAT         47     // painted with old system
-#define CG_AREA_CHAT             48     // painted with old system
-#define CG_GAME_STATUS           49
-#define CG_KILLER                50
-#define CG_SPECTATORS            60
-#define CG_TEAMINFO              61
-#define CG_VOICE_HEAD            62
-#define CG_VOICE_NAME            63
-#define CG_PLAYER_HASFLAG2D      64
-#define CG_HARVESTER_SKULLS2D    65                                     // only shows in harvester
-#define CG_CAPFRAGLIMIT          66
-#define CG_1STPLACE              67
-#define CG_2NDPLACE              68
-#define CG_CAPTURES              69
+#define CG_SELECTEDPLAYER_ARMOR  43
+#define CG_SELECTEDPLAYER_HEALTH 44
+#define CG_PLAYER_STATUS         45
+#define CG_FRAGGED_MSG           46     // painted with old system
+#define CG_PROXMINED_MSG         47     // painted with old system
+#define CG_AREA_FPSINFO          48     // painted with old system
+#define CG_AREA_SYSTEMCHAT       49     // painted with old system
+#define CG_AREA_TEAMCHAT         50     // painted with old system
+#define CG_AREA_CHAT             51     // painted with old system
+#define CG_GAME_STATUS           52
+#define CG_KILLER                53
+#define CG_SPECTATORS            54
+#define CG_TEAMINFO              55
+#define CG_VOICE_HEAD            56
+#define CG_VOICE_NAME            57
+#define CG_PLAYER_HASFLAG2D      58
+#define CG_HARVESTER_SKULLS2D    59                                     // only shows in harvester
+#define CG_CAPFRAGLIMIT          60
+#define CG_1STPLACE              61
+#define CG_2NDPLACE              62
+#define CG_CAPTURES              63
 
 // Urban terror
 #define CG_PLAYER_WEAPONMODE        70
@@ -198,32 +199,29 @@
 #define CG_SCOREBOARD_DEATH_LIST    77
 #define CG_SCOREBOARD_TIME_LIST     78
 #define CG_SCOREBOARD_TEAM_SCORE    79
+#define CG_SCOREBOARD_ACCOUNTS_LIST 80
+#define CG_SCOREBOARD_BESTTIME_LIST 81
+#define CG_SCOREBOARD_ASSISTS_LIST  82
+#define CG_SCOREBOARD_LEVEL_LIST    83
 
-#define CG_GAME_TIME                80
+#define CG_GAME_TIME                85
 
-#define CG_TEAM_NAME_RED            84
-#define CG_TEAM_NAME_BLUE           85
-#define CG_GAME_STATUS_OLD          86
+#define CG_TEAM_NAME_RED            87
+#define CG_TEAM_NAME_BLUE           88
+#define CG_GAME_STATUS_OLD          89
 
-//@Barbatos
-#define CG_SCOREBOARD_ACCOUNTS_LIST 87
+#define CG_TEAM_BAR_RED             90
+#define CG_TEAM_BAR_BLUE            91
+#define CG_SOLO_BAR                 92
 
-//@Fenix
-#define CG_SCOREBOARD_BESTTIME_LIST 88
-
-#define CG_TEAM_BAR_RED             89
-#define CG_TEAM_BAR_BLUE            90
-#define CG_SOLO_BAR                 91
-
-//@Fenix
-#define CG_SPECTATOR_PLAYER_COUNT   92
+#define CG_SPECTATOR_PLAYER_COUNT   93
 
 #define RECT_OFFSET_TEAM_BLUE       1
 #define RECT_OFFSET_TEAM_SPEC       2
 
 #define UI_OWNERDRAW_BASE           200
 #define UI_EFFECTS                  201
-#define UI_PLAYERMODEL              202
+#define UI_PLAYER_MODEL             202
 #define UI_GAMETYPE                 205
 #define UI_MAPPREVIEW               206
 #define UI_SKILL                    207
@@ -261,6 +259,8 @@
 #define UI_KI_OPTION                261
 #define UI_KI_INDEX                 262
 
+#define UI_GEAR_INFO                263
+
 #define KI_OPTION1                  0
 #define KI_OPTION2                  1
 #define KI_OPTION3                  2
@@ -275,6 +275,9 @@
 #define GEAR_ITEM_2                 5
 #define GEAR_ITEM_3                 6
 #define GEAR_MAX                    7
+
+#define UI_SKIN_ALLY                0
+#define UI_SKIN_ENEMY               1
 
 #define ITEM_NONE                   0
 #define ITEM_KNIFE                  1
@@ -306,7 +309,11 @@
 #define ITEM_GLOCK					27
 #define ITEM_COLT1911               28
 #define ITEM_MAC11                  29
-#define ITEM_MAX                    30
+#define ITEM_FRF1					30
+#define ITEM_P90					31
+#define ITEM_BENELLI 				32
+#define ITEM_MAGNUM 				33
+#define ITEM_MAX                    34
 
 #define UI_TEAM_FREE                0
 #define UI_TEAM_RED                 1

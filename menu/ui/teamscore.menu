@@ -236,13 +236,30 @@
 		}
 
 		itemDef {
+			name            headings
+			text            "auth login"
+			textscale       .2
+			style           0
+			rect            298 70 45 15
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
 			name            teamheadings
 			cvarTest        "g_gametype"
 			hideCvar        { "7" ; "10" } // CTF
 			text            "kills"
 			textscale       .2
 			style           0
-			rect            400 70 45 15
+			rect            361 70 45 15
 			textalign       0
 			textalignx      10
 			textaligny      13
@@ -259,7 +276,7 @@
 			text            "points"
 			textscale       .2
 			style           0
-			rect            390 70 45 15
+			rect            351 70 45 15
 			textalign       0
 			textalignx      10
 			textaligny      13
@@ -269,13 +286,12 @@
 			visible         1
 		}
 
-		//@Fenix
 		itemDef {
 			name            headings
-			text            "auth login"
+			text            "assists"
 			textscale       .2
 			style           0
-			rect            335 70 45 15
+			rect            386 70 45 15
 			textalign       0
 			textalignx      10      // x alignment point for text
 			// use it to offset left/right text from the edge
@@ -370,9 +386,19 @@
 
 		itemDef {
 			name            red_team_account_list
-			rect            389 90 400 10
+			rect            350 90 400 10
 			textscale       .2
 			ownerdraw       CG_SCOREBOARD_ACCOUNTS_LIST
+			ownerdrawParam  UI_TEAM_RED
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            red_team_assists_list
+			rect            428 90 400 10
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_ASSISTS_LIST
 			ownerdrawParam  UI_TEAM_RED
 			visible         1
 			decoration
@@ -390,7 +416,7 @@
 
 		itemDef {
 			name            red_team_kills_list
-			rect            428 90 400 10
+			rect            389 90 400 10
 			textscale       .2
 			ownerdraw       CG_SCOREBOARD_KILL_LIST
 			ownerdrawParam  UI_TEAM_RED
@@ -534,7 +560,7 @@
 			text            "kills"
 			textscale       .2
 			style           0
-			rect            400 115 45 15
+			rect            361 115 45 15
 			rectoffset      RECT_OFFSET_TEAM_BLUE
 			textalign       0
 			textalignx      10
@@ -552,7 +578,7 @@
 			text            "points"
 			textscale       .2
 			style           0
-			rect            390 115 45 15
+			rect            351 115 45 15
 			rectoffset      RECT_OFFSET_TEAM_BLUE
 			textalign       0
 			textalignx      10
@@ -563,6 +589,23 @@
 			visible         1
 		}
 
+		itemDef {
+			name            headings
+			text            "assists"
+			textscale       .2
+			style           0
+			rect            386 115 45 15
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
 
 		//@Fenix
 		itemDef {
@@ -570,7 +613,7 @@
 			text            "auth login"
 			textscale       .2
 			style           0
-			rect            335 115 90 15
+			rect            298 115 90 15
 			rectoffset      RECT_OFFSET_TEAM_BLUE
 			textalign       0
 			textalignx      10      // x alignment point for text
@@ -672,10 +715,21 @@
 
 		itemDef {
 			name            blue_team_account_list
-			rect            389 135 400 10
+			rect            350 135 400 10
 			rectoffset      RECT_OFFSET_TEAM_BLUE
 			textscale       .2
 			ownerdraw       CG_SCOREBOARD_ACCOUNTS_LIST
+			ownerdrawParam  UI_TEAM_BLUE
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            blue_team_assists_list
+			rect            428 135 400 10
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_ASSISTS_LIST
 			ownerdrawParam  UI_TEAM_BLUE
 			visible         1
 			decoration
@@ -694,7 +748,7 @@
 
 		itemDef {
 			name            blue_team_kills_list
-			rect            428 135 400 10
+			rect            389 135 400 10
 			rectoffset      RECT_OFFSET_TEAM_BLUE
 			textscale       .2
 			ownerdraw       CG_SCOREBOARD_KILL_LIST

@@ -101,6 +101,8 @@
 			decoration
 		}
 
+		// AUTH LOGIN STATUS //
+
 		itemDef {
 			name auth_status
 			type ITEM_TYPE_TEXT
@@ -114,11 +116,79 @@
 			decoration
 		}
 
+		// AUTH ANNOUNCEMENTS //
+
+		itemDef {
+			name menubar_ann_title
+			type ITEM_TYPE_TEXT
+			cvartest "cl_auth_ann_title"
+			hideCvar { "none" }
+			cvar "cl_auth_ann_title"
+			textscale .24
+			textalignx 7
+			textaligny 16
+			rect 10 126 200 24
+			style 1
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 .5
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name menubar_ann_box
+			type 0
+			cvartest "cl_auth_ann_title"
+			hideCvar { "none" }
+			rect 10 150 200 211
+			style 1
+			border 1
+			bordercolor .5 .5 .5 1
+			bordersize 1
+			backcolor 0 0 0 .8
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name auth_ann_datetime
+			type ITEM_TYPE_TEXT
+			cvartest "cl_auth_ann_title"
+			hideCvar { "none" }
+			cvar "cl_auth_ann_datetime"
+			style 0
+			textscale .16
+			rect 119 160 200 211
+			textalign ITEM_ALIGN_RIGHT
+			textaligny 5
+			textalignx 5
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name auth_ann_msg
+			wrapped
+			type ITEM_TYPE_TEXT
+			cvartest "cl_auth_ann_title"
+			hideCvar { "none" }
+			cvar "cl_auth_ann_msg"
+			style 0
+			textscale .22
+			rect 0 182 180 180
+			textaligny 5
+			textalignx 20
+			visible 1
+			decoration
+		}
+
 		//	COPYRIGHT TEXT	//
 
 		itemDef {
 			name copyright
-			text "Urban Terror (tm) (c) 2000-2014 Frozen Sand/0870760 B.C. Ltd,"
+			text "Urban Terror (tm) (c) 2000-2016 Frozen Sand/0870760 B.C. Ltd,"
 			style 0
 			textscale .2
 			rect 0 400 640 40
@@ -131,7 +201,7 @@
 
 		itemDef {
 			name copyright
-			text "Quake 3 Arena (c) 2000-2014 id Software, inc. all rights reserved"
+			text "Quake 3 Arena (c) 2000-2016 id Software, inc. all rights reserved"
 			style 0
 			textscale .2
 			rect 0 415 640 40
@@ -175,7 +245,7 @@
 		itemDef {
 			name menubar
 			type 0
-			rect 469 156 162 234
+			rect 469 126 162 234
 			style 1
 			border 1
 			bordercolor .5 .5 .5 1
@@ -193,7 +263,7 @@
 			hideCvar { "New_UrT_Player", "Unnamed Player" }
 			style WINDOW_STYLE_SHADER
 			background "ui/assets/angle.tga"
-			rect 615 158 16 16
+			rect 615 128 16 16
 			visible 1
 			decoration
 		}
@@ -204,7 +274,7 @@
 			hideCvar { "New_UrT_Player", "Unnamed Player" }
 			style WINDOW_STYLE_SHADER
 			background "ui/assets/angle_on.tga"
-			rect 615 158 16 16
+			rect 615 128 16 16
 			visible 0
 			type 1
 			action { play "sound/radio/male/male98.wav" }
@@ -222,7 +292,7 @@
 			hideCvar { "10" }
 			type 1
 			style 1
-			rect 471 178 160 30
+			rect 471 148 160 30
 			border 0
 			backcolor 0 0 0 0
 			forecolor 1 1 1 1
@@ -241,7 +311,7 @@
 			showCvar { "10" }
 			type 1
 			style 1
-			rect 471 178 160 30
+			rect 471 148 160 30
 			border 0
 			backcolor 0 0 0 0
 			forecolor 1 1 1 1
@@ -257,7 +327,7 @@
 			hideCvar { "New_UrT_Player", "Unnamed Player" }
 			type 1
 			style 1
-			rect 471 210 160 30
+			rect 471 180 160 30
 			border 0
 			backcolor 0 0 0 0
 			forecolor 1 1 1 1
@@ -273,7 +343,7 @@
 			hideCvar { "New_UrT_Player", "Unnamed Player" }
 			type 1
 			style 1
-			rect 471 260 160 30
+			rect 471 230 160 30
 			border 0
 			backcolor 0 0 0 0
 			forecolor 1 1 1 1
@@ -292,7 +362,7 @@
 			hideCvar { "New_UrT_Player", "Unnamed Player" }
 			type 1
 			style 1
-			rect 471 290 160 30
+			rect 471 260 160 30
 			border 0
 			backcolor 0 0 0 0
 			forecolor 1 1 1 1
@@ -311,7 +381,7 @@
 			hideCvar { "New_UrT_Player", "Unnamed Player" }
 			type 1
 			style 1
-			rect 471 320 160 30
+			rect 471 290 160 30
 			border 0
 			backcolor 0 0 0 0
 			forecolor 1 1 1 1
@@ -329,7 +399,7 @@
 			hideCvar { "New_UrT_Player", "Unnamed Player" }
 			type 1
 			style 1
-			rect 471 350 160 30
+			rect 471 320 160 30
 			border 0
 			backcolor 0 0 0 0
 			forecolor 1 1 1 1
@@ -353,7 +423,7 @@
 			textalignx 10
 			textaligny 21
 			style 1
-			rect 471 178 160 30
+			rect 471 148 160 30
 			border 0
 			backcolor 0 0 0 0
 			forecolor 1 1 1 1
@@ -372,7 +442,7 @@
 			textalignx 10
 			textaligny 21
 			style 1
-			rect 471 178 160 30
+			rect 471 148 160 30
 			border 0
 			backcolor 0 0 0 0
 			forecolor 1 1 1 1
@@ -389,7 +459,7 @@
 			textalignx 10			// x alignment point for text
 			textaligny 21
 			style 1
-			rect 471 210 160 30
+			rect 471 180 160 30
 			border 0
 			backcolor 0 0 0 0
 			forecolor 1 1 1 1
@@ -405,7 +475,7 @@
 			textalignx 10
 			textaligny 21
 			style 1
-			rect 471 260 160 30
+			rect 471 230 160 30
 			border 0
 			backcolor 0 0 0 0
 			forecolor 1 1 1 1
@@ -421,7 +491,7 @@
 			textalignx 10
 			textaligny 21
 			style 1
-			rect 471 290 160 30
+			rect 471 260 160 30
 			border 0
 			backcolor 0 0 0 0
 			forecolor 1 1 1 1
@@ -437,7 +507,7 @@
 			textalignx 10
 			textaligny 21
 			style 1
-			rect 471 320 160 30
+			rect 471 290 160 30
 			border 0
 			backcolor 0 0 0 0
 			forecolor 1 1 1 1
@@ -453,7 +523,7 @@
 			textalignx 10
 			textaligny 21
 			style 1
-			rect 471 350 160 30
+			rect 471 320 160 30
 			border 0
 			backcolor 0 0 0 0
 			forecolor 1 1 1 1

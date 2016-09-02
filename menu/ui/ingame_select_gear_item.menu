@@ -11,11 +11,8 @@
 		backcolor 0 0 0 0
 		style WINDOW_STYLE_FILLED
 		border 0
-		onEsc
-		{ close ingame_ut_select_gear_item ;
-		open ingame_ut_select_gear }
-
-		onOpen { }
+		onEsc { close ingame_ut_select_gear_item ; open ingame_ut_select_gear }
+		onOpen { uiScript gearRead }
 
 		itemdef {
 			name window
@@ -51,14 +48,10 @@
 			//	border 1
 			//	bordercolor .5 .5 .5 1
 			visible 1
-			action { uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
+			action { uiScript "gearSetItem" ; 
+			play "sound/misc/kcaction.wav" ;
 			uiScript gearWrite ;
-			close ingame_ut_select_gear ;
 			close ingame_ut_select_gear_item ;
-			close ingame_ut_select_gear_grenade ;
-			close ingame_ut_select_gear_primary ;
-			close ingame_ut_select_gear_secondary ;
-			close ingame_ut_select_gear_sidearm ;
 			open ingame_ut_select_team }
 		}
 
@@ -100,792 +93,790 @@
 			decoration
 		}
 
-		//  MAIN WINDOW		//
-
 		itemDef {
-			name window
-			rect 73 239 494 161
-			//	text "larger weap pics / info here"
-			//     	textscale .25
-			//     	textalignx 10
-			//	textaligny 21
+			name closeX
+			rect 544 83 20 17
 			style WINDOW_STYLE_FILLED
+			type 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 .6
 			border 1
 			bordercolor .5 .5 .5 1
 			visible 1
-			decoration
-		}
-
-		//  TOP ROW		//
-
-		itemDef {
-			name window
-			type 1
-			hotkey "1"
-			rect 83 114 87 40
-			style WINDOW_STYLE_FILLED
-			forecolor 1 1 1 1
-			backcolor 0 0 0 .6
-			border 1
-			bordercolor .5 .5 .5 1
-			visible 1
-			ownerdrawParam ITEM_VEST
-			action
-			{ uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
-			close ingame_ut_select_gear_item;
-			open ingame_ut_select_gear }
-			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
-			mouseExit { setcolor backcolor 0 0 0 .6 }
-			onFocus	{show vest_info }
-			leaveFocus { hide vest_info }
-		}
-
-		itemDef	{
-			name primary_image
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_VEST
-			rect 123 117 35 35
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			type 1
-			hotkey "2"
-			rect 180 114 87 40
-			style WINDOW_STYLE_FILLED
-			forecolor 1 1 1 1
-			backcolor 0 0 0 .6
-			border 1
-			bordercolor .5 .5 .5 1
-			visible 1
-			ownerdrawParam ITEM_HELMET
-			action
-			{ uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
-			close ingame_ut_select_gear_item;
-			open ingame_ut_select_gear }
-			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
-			mouseExit { setcolor backcolor 0 0 0 .6 }
-			onFocus	{show helmet_info }
-			leaveFocus { hide helmet_info }
-		}
-
-		itemDef	{
-			name primary_image
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_HELMET
-			rect 220 118 33 33
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			type 1
-			hotkey "3"
-			rect 277 114 87 40
-			style WINDOW_STYLE_FILLED
-			forecolor 1 1 1 1
-			backcolor 0 0 0 .6
-			border 1
-			bordercolor .5 .5 .5 1
-			visible 1
-			ownerdrawParam ITEM_SILENCER
-			action
-			{ uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
-			close ingame_ut_select_gear_item;
-			open ingame_ut_select_gear }
-			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
-			mouseExit { setcolor backcolor 0 0 0 .6 }
-			onFocus	{show silencer_info }
-			leaveFocus { hide silencer_info }
-		}
-
-		itemDef	{
-			name primary_image
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_SILENCER
-			rect 310 115 40 40
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			type 1
-			hotkey "4"
-			rect 374 114 87 40
-			style WINDOW_STYLE_FILLED
-			forecolor 1 1 1 1
-			backcolor 0 0 0 .6
-			border 1
-			bordercolor .5 .5 .5 1
-			visible 1
-			ownerdrawParam ITEM_LASER
-			action
-			{ uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
-			close ingame_ut_select_gear_item;
-			open ingame_ut_select_gear }
-			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
-			mouseExit { setcolor backcolor 0 0 0 .6 }
-			onFocus	{show laser_info }
-			leaveFocus { hide laser_info }
-		}
-
-		itemDef	{
-			name primary_image
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_LASER
-			rect 409 117 35 35
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			type 1
-			hotkey "5"
-			rect 471 114 87 40
-			style WINDOW_STYLE_FILLED
-			forecolor 1 1 1 1
-			backcolor 0 0 0 .6
-			border 1
-			bordercolor .5 .5 .5 1
-			visible 1
-			ownerdrawParam ITEM_MEDKIT
-			action
-			{ uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
-			close ingame_ut_select_gear_item;
-			open ingame_ut_select_gear }
-			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
-			mouseExit { setcolor backcolor 0 0 0 .6 }
-			onFocus	{show medkit_info }
-			leaveFocus { hide medkit_info }
-		}
-
-
-		itemDef	{
-			name primary_image
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_MEDKIT
-			rect 511 117 35 35
-			visible 1
-			decoration
-		}
-
-		//  BOTTOM ROW		//
-
-		itemDef {
-			name window
-			type 1
-			hotkey "6"
-			rect 83 174 87 40
-			style WINDOW_STYLE_FILLED
-			forecolor 1 1 1 1
-			backcolor 0 0 0 .6
-			border 1
-			bordercolor .5 .5 .5 1
-			visible 1
-			ownerdrawParam ITEM_NVG
-			action
-			{ uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
-			close ingame_ut_select_gear_item;
-			open ingame_ut_select_gear }
-			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
-			mouseExit { setcolor backcolor 0 0 0 .6 }
-			onFocus	{show nvg_info }
-			leaveFocus { hide nvg_info }
-		}
-
-		itemDef	{
-			name primary_image
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_NVG
-			rect 120 175 40 40
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			type 1
-			hotkey "7"
-			rect 180 174 87 40
-			style WINDOW_STYLE_FILLED
-			forecolor 1 1 1 1
-			backcolor 0 0 0 .6
-			border 1
-			bordercolor .5 .5 .5 1
-			visible 1
-			ownerdrawParam ITEM_AMMO
-			action
-			{ uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
-			close ingame_ut_select_gear_item;
-			open ingame_ut_select_gear }
-			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
-			mouseExit { setcolor backcolor 0 0 0 .6 }
-			onFocus	{show ammo_info }
-			leaveFocus { hide ammo_info }
-		}
-
-		itemDef	{
-			name primary_image
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_AMMO
-			rect 220 175 40 40
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			type 1
 			hotkey "0"
-			rect 277 174 87 40
-			style WINDOW_STYLE_FILLED
-			forecolor 1 1 1 1
-			backcolor 0 0 0 .6
-			border 1
-			bordercolor .5 .5 .5 1
-			visible 1
-			ownerdrawParam ITEM_NONE
-			action
-			{ uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
-			close ingame_ut_select_gear_item;
-			open ingame_ut_select_gear }
-			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
-			mouseExit { setcolor backcolor 0 0 0 .6 }
-		}
+			text "x"
+			textalign ITEM_ALIGN_CENTER
+			textscale 0.25
+			textalignx 9
+			textaligny 11
+			action { play "sound/misc/kcaction.wav" ; close ingame_ut_select_gear_item }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		} 
 
-		itemDef	{
-			name primary_image
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_NONE
-			rect 317 175 40 40
-			visible 1
-			decoration
-		}
-		/*
-		itemDef {
-			name window
+//----------- 
+//HOVER ITEMS 
+//-----------
+
+
+		itemdef {
+			name PH1
+			group PHovers
 			type 1
-			hotkey "9"
-			rect 374 174 87 40
 			style WINDOW_STYLE_FILLED
-			forecolor 1 1 1 1
+			rect 77  107  90  46
+			hotkey 1
+			forecolor 1 1 1 1 
 			backcolor 0 0 0 .6
-			border 1
-			bordercolor .5 .5 .5 1
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_VEST
+			text "1. Kevlar Vest" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_item; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show vest_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide vest_info 
+			}
+			onfocus { 
+				show vest_info 
+			}
+			leavefocus { 
+				hide vest_info 
+			}
 			visible 1
-			ownerdrawParam ITEM_NONE
-			action
-			{ uiScript "gearSetItem" ; play "sound/misc/kcaction.wav" ;
-			close ingame_ut_select_gear_item;
-			open ingame_ut_select_gear }
-			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
-			mouseExit { setcolor backcolor 0 0 0 .6 }
 		}
 
-		itemDef	{
-			name primary_image
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_NONE
-			rect 414 175 40 40
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
+		itemdef {
+			name PH2
+			group PHovers
 			type 1
-			hotkey "0"
-			rect 471 174 87 40
 			style WINDOW_STYLE_FILLED
-			forecolor 1 1 1 1
+			rect 77  156  90  46
+			hotkey 2
+			forecolor 1 1 1 1 
 			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_HELMET
+			text "2. Kevlar Helmet" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_item; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show helmet_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide helmet_info 
+			}
+			onfocus { 
+				show helmet_info 
+			}
+			leavefocus { 
+				hide helmet_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH3
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 77  205  90  46
+			hotkey 3
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_SILENCER
+			text "3. Silencer" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_item; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show silencer_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide silencer_info 
+			}
+			onfocus { 
+				show silencer_info 
+			}
+			leavefocus { 
+				hide silencer_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH4
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 172  107  90  46
+			hotkey 4
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_LASER
+			text "4. Laser Sight" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_item; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show laser_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide laser_info 
+			}
+			onfocus { 
+				show laser_info 
+			}
+			leavefocus { 
+				hide laser_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH5
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 172  156  90  46
+			hotkey 5
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_MEDKIT
+			text "5. Medkit" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_item; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show medkit_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide medkit_info 
+			}
+			onfocus { 
+				show medkit_info 
+			}
+			leavefocus { 
+				hide medkit_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH6
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 172  205  90  46
+			hotkey 6
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_NVG
+			text "6. Tactical Goggles" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_item; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show nvg_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide nvg_info 
+			}
+			onfocus { 
+				show nvg_info 
+			}
+			leavefocus { 
+				hide nvg_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH7
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 267  107  90  46
+			hotkey 7
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_AMMO
+			text "7. Extra Ammo" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_item; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show ammo_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide ammo_info 
+			}
+			onfocus { 
+				show ammo_info 
+			}
+			leavefocus { 
+				hide ammo_info 
+			}
+			visible 1
+		}
+
+		itemdef {
+			name PH9
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 77  353  280  42
+			hotkey 9
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_NONE
+			text "9. None" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				close ingame_ut_select_gear_item; 
+				play "sound/misc/kcaction.wav"; 
+				open ingame_ut_select_gear 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show none_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide none_info 
+			}
+			onfocus { 
+				show none_info 
+			}
+			leavefocus { 
+				hide none_info 
+			}
+			visible 1
+		}
+
+
+//----------- 
+//NORMAL ITEMS 
+//-----------
+		
+		itemdef {
+			name P2
+			group PNormal
+			rect 88  120  67   34
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_VEST
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P3
+			group PNormal
+			rect 88  168  67   34
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_HELMET
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P4
+			group PNormal
+			rect 88  218  67   34
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_SILENCER
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P5
+			group PNormal
+			rect 183  116  67   34
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_LASER
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P6
+			group PNormal
+			rect 183  168  67   34
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_MEDKIT
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P7
+			group PNormal
+			rect 183  218  67   34
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_NVG
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P8
+			group PNormal
+			rect 280  121  65   32
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_AMMO
+			visible 1 
+			decoration
+		}
+
+		itemdef {
+			name P9
+			group PNormal
+			rect 269 110  275   45
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_NONE
+			visible 1 
+			decoration
+		}
+
+//----------- 
+//INFO IMAGES
+//-----------
+		
+		itemdef {
+			name vest_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_VEST
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name helmet_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_HELMET
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name silencer_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_SILENCER
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name laser_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_LASER
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name medkit_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_MEDKIT
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name nvg_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_NVG
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name ammo_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_AMMO
+			visible 0 
+			decoration
+		}
+
+		itemdef {
+			name none_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_NONE
+			visible 0 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO WINDOW
+//-----------
+
+
+		itemdef {
+			name info_outline
+			group info
+			rect 366  107  192  118
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .2 .2 .3 .3 
+			border 1 
+			bordercolor .5 .5 .5 37 
+			textscale .24
+			textalign 0
+			textalignx 2
+			textaligny 115
+			wrapped
+			text "SELECTED" 
+			visible 1 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO TEXT
+//-----------
+
+		
+		itemdef {
+			name vest_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  Kevlar Vest\r" 
+			"Description:  Protects your torso\r" 
+			"Reduces your stamina\r" 
+		}
+
+		itemdef {
+			name helmet_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  Kevlar Helmet\r" 
+			"Description:  Protects your head\r" 
+		}
+
+		itemdef {
+			name silencer_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  Silencer\r" 
+			"Description:  Silences your weapon\r" 
+			"Reduces spread a little\r" 
+		}
+
+		itemdef {
+			name laser_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  Laser Sight\r" 
+			"Description:  Improves aim by reducing\rspread a lot\r" 
+		}
+
+		itemdef {
+			name medkit_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  Medkit\r" 
+			"Description:  Improves bandaging ability\r" 
+		}
+
+		itemdef {
+			name nvg_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  Tactical Goggles\r" 
+			"Description:  Improves battlefield\rawareness\r" 
+			"Highlights players and grenades\r" 
+		}
+
+		itemdef {
+			name ammo_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  Extra Ammunition\r" 
+			"Description:  Doubles the number of mags\r" 
+		}
+
+		itemdef {
+			name none_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  No Item\r" 
+			"Description:  Allows you to select\rmore weapons/grenades\r" 
+		}
+
+ 
+
+//----------- 
+//INFO CURRENT IMAGE
+//-----------
+
+
+		itemdef {
+			name info_current
+			group info
+			rect 366  231  192  118
+			ownerdraw UI_GEAR_IMAGE
+			ownerdrawparam GEAR_ITEM_1
+			visible 1 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO CURRENT WINDOW
+//-----------
+
+
+		itemdef {
+			name info_outline
+			group info
+			rect 366  231  192  118
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .2 .2 .3 .3
+			border 1 
+			bordercolor .5 .5 .5 .7 
+			textscale .24
+			textalign 0
+			textalignx 2
+			textaligny 115
+			wrapped
+			text "CURRENT" 
+			visible 1 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO CURRENT TEXT
+//-----------
+
+		itemDef {
+			rect 366 231 192 118
+			type ITEM_TYPE_OWNERDRAW
+			style WINDOW_STYLE_FILLED
+			backcolor .2 .2 .3 .3 
 			border 1
 			bordercolor .5 .5 .5 1
-			visible 1
-			ownerdrawParam ITEM_NONE
-			action
-			{ close ingame_ut_select_gear_item; play "sound/misc/kcaction.wav" ;
-			open ingame_ut_select_gear }
-			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
-			mouseExit { setcolor backcolor 0 0 0 .6 }
-		}
-
-		itemDef	{
-			name primary_image
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_NONE
-			rect 511 175 40 40
-			visible 1
-			decoration
-		}
-		*/
-
-
-		//  TEXT 	//
-
-
-		itemDef {
-			name window
-			rect 83 154 87 15
-			style 0
-			forecolor 1 1 1 1
-			text "Kevlar Vest"
-			textscale .22
-			textalign 2
-			textalignx 88
-			textaligny 13
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			rect 180 154 87 15
-			style 0
-			forecolor 1 1 1 1
-			text "Kevlar Helmet"
-			textscale .22
-			textalign 2
-			textalignx 88
-			textaligny 13
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			rect 277 154 87 15
-			style 0
-			forecolor 1 1 1 1
-			text "Silencer"
-			textscale .22
-			textalign 2
-			textalignx 88
-			textaligny 13
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			rect 374 154 87 15
-			style 0
-			forecolor 1 1 1 1
-			text "Laser Sight"
-			textscale .22
-			textalign 2
-			textalignx 88
-			textaligny 13
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			rect 471 154 87 15
-			style 0
-			forecolor 1 1 1 1
-			text "Medkit"
-			textscale .22
-			textalign 2
-			textalignx 88
-			textaligny 13
-			visible 1
-			decoration
-		}
-
-
-
-		itemDef {
-			name window
-			rect 83 214 87 15
-			style 0
-			forecolor 1 1 1 1
-			text "TacGoggles"
-			textscale .22
-			textalign 2
-			textalignx 88
-			textaligny 13
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			rect 180 214 87 15
-			style 0
-			forecolor 1 1 1 1
-			text "Extra Ammo"
-			textscale .22
-			textalign 2
-			textalignx 88
-			textaligny 13
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			rect 277 214 87 15
-			style 0
-			forecolor 1 1 1 1
-			text "None"
-			textscale .22
-			textalign 2
-			textalignx 88
-			textaligny 13
-			visible 1
-			decoration
-		}
-
-		/*
-		itemDef {
-			name window
-			rect 374 214 87 15
-			style 0
-			forecolor 1 1 1 1
-			text "None"
-			textscale .22
-			textalign 2
-			textalignx 88
-			textaligny 13
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			rect 471 214 87 15
-			style 0
-			forecolor 1 1 1 1
-			text "Cancel"
-			textscale .22
-			textalign 2
-			textalignx 88
-			textaligny 13
-			visible 1
-			decoration
-		}
-		*/
-
-		//  NUMBERS		//
-
-		itemDef {
-			name window
-			rect 83 114 87 40
-			style 0
-			text "1."
-			textalign 0
-			textstyle 0
-			textscale .22
+			ownerDraw UI_GEAR_INFO
+			ownerDrawParam GEAR_ITEM_1
+			textscale 0.2
+			align ITEM_ALIGN_LEFT
 			textalignx 5
-			textaligny 38
+			textaligny 14
 			visible 1
 			decoration
 		}
+ 
 
-		itemDef {
-			name window
-			rect 180 114 87 40
-			style 0
-			text "2."
-			textalign 0
-			textstyle 0
-			textscale .22
-			textalignx 5
-			textaligny 38
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			rect 277 114 87 40
-			style 0
-			text "3."
-			textalign 0
-			textstyle 0
-			textscale .22
-			textalignx 5
-			textaligny 38
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			rect 374 114 87 40
-			style 0
-			text "4."
-			textalign 0
-			textstyle 0
-			textscale .22
-			textalignx 5
-			textaligny 38
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			rect 471 114 87 40
-			style 0
-			text "5."
-			textalign 0
-			textstyle 0
-			textscale .22
-			textalignx 5
-			textaligny 38
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			rect 83 174 87 40
-			style 0
-			text "6."
-			textalign 0
-			textstyle 0
-			textscale .22
-			textalignx 5
-			textaligny 38
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			rect 180 174 87 40
-			style 0
-			text "7."
-			textalign 0
-			textstyle 0
-			textscale .22
-			textalignx 5
-			textaligny 38
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			rect 277 174 87 40
-			style 0
-			text "0."
-			textalign 0
-			textstyle 0
-			textscale .22
-			textalignx 5
-			textaligny 38
-			visible 1
-			decoration
-		}
-
-		/*
-		itemDef {
-			name window
-			rect 374 174 87 40
-			style 0
-			text "9."
-			textalign 0
-			textstyle 0
-			textscale .22
-			textalignx 5
-			textaligny 38
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name window
-			rect 471 174 87 40
-			style 0
-			text "0."
-			textalign 0
-			textstyle 0
-			textscale .22
-			textalignx 5
-			textaligny 38
-			visible 1
-			decoration
-		}
-		*/
-
-		//  INFO STUFF			//
+//----------- 
+//CANCEL BUTTON 
+//-----------
 
 
-
-		itemDef	{
-			name vest_info
-			rect 83 290 200 80
-			textscale .25
-			textalignx 10
-			textaligny 15
-			forecolor .8 .8 .8 1
-			wrapped
-			text "Name:  Kevlar Vest\r"
-			"Description:  Protects your torso\r"
-			"                    Reduces your stamina\r"
-			visible 0
-			decoration
-		}
-
-		itemDef	{
-			name vest_info
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_VEST
-			rect 400 249 128 128
-			visible 0
-			decoration
-		}
-
-		itemDef	{
-			name helmet_info
-			rect 83 290 200 80
-			textscale .25
-			textalignx 10
-			textaligny 15
-			forecolor .8 .8 .8 1
-			wrapped
-			text "Name:  Kevlar Helmet\r"
-			"Description:  Protects your head\r"
-			visible 0
-			decoration
-		}
-
-		itemDef	{
-			name helmet_info
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_HELMET
-			rect 400 249 128 128
-			visible 0
-			decoration
-		}
-
-		itemDef	{
-			name silencer_info
-			rect 83 290 200 80
-			textscale .25
-			textalignx 10
-			textaligny 15
-			forecolor .8 .8 .8 1
-			wrapped
-			text "Name:  Silencer\r"
-			"Description:  Silences your weapon\r"
-			"                    Reduces spread a little\r"
-			visible 0
-			decoration
-		}
-
-		itemDef	{
-			name silencer_info
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_SILENCER
-			rect 400 249 128 128
-			visible 0
-			decoration
-		}
-
-		itemDef	{
-			name laser_info
-			rect 83 290 200 80
-			textscale .25
-			textalignx 10
-			textaligny 15
-			forecolor .8 .8 .8 1
-			wrapped
-			text "Name:  Laser Sight\r"
-			"Description:  Improves aim by reducing spread a lot\r"
-			visible 0
-			decoration
-		}
-
-		itemDef	{
-			name laser_info
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_LASER
-			rect 400 249 128 128
-			visible 0
-			decoration
-		}
-
-		itemDef	{
-			name medkit_info
-			rect 83 290 200 80
-			textscale .25
-			textalignx 10
-			textaligny 15
-			forecolor .8 .8 .8 1
-			wrapped
-			text "Name:  Medkit\r"
-			"Description:  Improves bandaging ability\r"
-			visible 0
-			decoration
-		}
-
-		itemDef	{
-			name medkit_info
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_MEDKIT
-			rect 400 249 128 128
-			visible 0
-			decoration
-		}
-
-		itemDef	{
-			name nvg_info
-			rect 83 290 200 80
-			textscale .25
-			textalignx 10
-			textaligny 15
-			forecolor .8 .8 .8 1
-			wrapped
-			text "Name:  Tactical Goggles\r"
-			"Description:  Improves battlefield awareness\r"
-			visible 0
-			decoration
-		}
-
-		itemDef	{
-			name nvg_info
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_NVG
-			rect 400 249 128 128
-			visible 0
-			decoration
-		}
-		itemDef	{
-			name ammo_info
-			rect 83 290 200 80
-			textscale .25
-			textalignx 10
-			textaligny 15
-			forecolor .8 .8 .8 1
-			wrapped
-			text "Name:  Extra Ammunition\r"
-			"Description:  Doubles number of mags\r"
-			visible 0
-			decoration
-		}
-
-		itemDef	{
-			name ammo_info
-			ownerdraw UI_ITEM_IMAGE
-			ownerdrawParam ITEM_AMMO
-			rect 400 249 128 128
-			visible 0
-			decoration
-		}
-
-
-	}
-
+		itemDef { 
+			style WINDOW_STYLE_FILLED 
+			type 1 
+			rect 518 375 40 20 
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6 
+			border 1 
+			bordercolor .5 .5 .5 .7 
+			text "Cancel" 
+			textalign ITEM_ALIGN_CENTER 
+			textalignx 20 
+			textaligny 13 
+			textscale 0.2 
+			visible 1 
+			action { close "ingame_ut_select_gear_item"; open "ingame_ut_select_gear" } 
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 } 
+			mouseExit { setcolor backcolor 0 0 0 .6 } 
+		} 
+	} 
 }

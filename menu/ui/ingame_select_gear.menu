@@ -159,7 +159,7 @@
 			mouseEnter { setcolor backcolor .5 .5 .5 .5 }
 			mouseExit { setcolor backcolor 0 0 0 .6 }
 			cvarTest "ui_gearPrimary"
-			disableCvar { "27" }
+			disableCvar { "28" }
 		}
 
 		itemDef	{
@@ -180,7 +180,7 @@
 			background "ui/assets/na.tga"
 			visible 1
 			cvarTest "ui_gearPrimary"
-			showCvar { "27" }
+			showCvar { "28" }
 			decoration
 		}
 
@@ -196,7 +196,7 @@
 			textaligny 22
 			visible 1
 			cvarTest "ui_gearPrimary"
-			showCvar { "27" }
+			showCvar { "28" }
 			decoration
 		}
 
@@ -255,7 +255,7 @@
 			name grenade_image
 			ownerdraw UI_GEAR_IMAGE
 			ownerdrawParam GEAR_GRENADE
-			rect 111 264 68 68
+			rect 81 264 120 68
 			visible 1
 			cvarTest "ui_gearGrenade"
 			hideCvar { "0"}
@@ -299,7 +299,7 @@
 			name gear_image
 			ownerdraw UI_GEAR_IMAGE
 			ownerdrawParam GEAR_ITEM_1
-			rect 232 264 68 68
+			rect 202 264 120 68
 			visible 1
 			//	cvarTest "ui_gearItemCount"
 			//	hideCvar { "0" }
@@ -344,7 +344,7 @@
 			name gear_image
 			ownerdraw UI_GEAR_IMAGE
 			ownerdrawParam GEAR_ITEM_2
-			rect 353 264 68 68
+			rect 323 264 120 68
 			visible 1
 			cvarTest "ui_gearItemCount"
 			hideCvar { "1" }
@@ -404,7 +404,7 @@
 			name gear_image
 			ownerdraw UI_GEAR_IMAGE
 			ownerdrawParam GEAR_ITEM_3
-			rect 474 264 68 68
+			rect 444 264 120 68
 			visible 1
 			cvarTest "ui_gearItemCount"
 			hideCvar { "1" ; "2" }
@@ -801,7 +801,7 @@
 			name			secondary_image
 			ownerdraw		UI_GEAR_IMAGE
 			ownerdrawParam	GEAR_SECONDARY
-			rect			150 187 128 64
+			rect			152 187 122 64
 			visible			1
 			decoration
 		}
