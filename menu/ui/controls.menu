@@ -514,7 +514,23 @@
 			mouseexit { hide keyBindStatus }
 		}
 
-
+		itemDef {
+			name shoot
+			group grpControls
+			type ITEM_TYPE_MULTI
+			text "auto pickup:"
+			cvar "cg_autopickup"
+			cvarFloatList { "No" 0 "Yes" -1 }
+			rect 99 140 256 20
+			textalign ITEM_ALIGN_RIGHT
+			textalignx 40
+			textaligny 20
+			textscale .25
+			forecolor 1 1 1 1
+			visible 0
+			mouseenter { show keyBindStatus }
+			mouseexit { hide keyBindStatus }
+		}
 
 		// ITEM 	//
 
@@ -788,7 +804,7 @@
 			name misc
 			group grpControls
 			type ITEM_TYPE_BIND
-			text "(def)use / doors:"
+			text "interact / pickup:"
 			cvar "+button7"
 			rect 99 60 256 20
 			textalign ITEM_ALIGN_RIGHT
