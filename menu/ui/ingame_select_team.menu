@@ -64,6 +64,22 @@
 			hideCvar { "11" }
 		}
 
+		// INSTAGIB CATCHER
+		itemDef {
+			name geartab
+			rect -2 -2 644 484
+			style WINDOW_STYLE_FILLED
+			type 1
+			forecolor 1 1 1 0
+			backcolor 0 0 0 0
+			border 0
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { hide geartab }
+			mouseEnter { hide geartab }
+			cvarTest "g_instagib"
+			hideCvar { "0" }
+		}
 
 		itemDef {
 			name teamtab
@@ -509,8 +525,97 @@
 			visible 1
 			decoration
 		}
-
-
+		
+		// INSTAGIB INFO // 
+		
+		//box
+		itemDef {
+			name instagib
+			rect 446 114 111 116
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .6 .1 .1 1
+			bordersize 1
+			visible 1
+			mouseEnter { show instagibinfo}
+			mouseExit { hide instagibinfo }
+			cvarTest "g_instagib"
+			showCvar { "1" } 
+		}
+		
+		//text
+		itemDef {
+			textstyle 1 
+			name instagib
+			rect 446 114 111 116
+			type 0
+			wrapped
+			text "INSTAGIB\r"
+			textscale .30
+			textalign 0
+			textalignx 23
+			textaligny 63
+			style 1
+			forecolor 1 0 0 1
+			backcolor 0 0 0 0
+			border 0
+			bordersize 1
+			bordercolor 1 1 1 1
+			visible 1
+			decoration
+			cvarTest "g_instagib"
+			showCvar { "1" }
+		}
+		
+		//instagibinfo box
+		itemDef {
+			name instagibinfo
+			rect 83 114 343 276
+			type 0
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .99
+			border 1
+			bordercolor 1 1 1 1
+			bordersize 1
+			visible 0
+			mouseEnter { show instagibinfo}
+			mouseExit { hide instagibinfo }
+		}
+		
+		//instagibinfo text
+		itemDef	{
+			name instagibinfo
+			text "^1INSTAGIB"
+			textscale .33
+			forecolor 1 1 1 1
+			rect 94 144 100 30
+			visible 0
+			decoration
+		}
+		
+		itemDef	{
+			name instagibinfo
+			wrapped
+			text "Everyone is equipped with a deadly FS-Tod50. Every shot \r"
+			"kills. Every slice kills. The FS-Tod50 can penetrate targets\r"
+			"and ricochet off walls, if fired in a flat angle.\r\r"
+			"Every other aspect of the gamemode stays unchanged"
+			style 1
+			textscale .24
+			textalignx 0
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			rect 93 154 323 226
+			visible 0
+			decoration
+		}
+		
+		
 		// TEAM BUTTONS 	//
 
 		itemDef {
@@ -594,7 +699,7 @@
 			mouseEnter { setcolor backcolor 0 0 .55 1 }
 			mouseExit { setcolor backcolor 0 0 0 .6 }
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9" ; "11"} //@Barbatos 05/09/2012 added LMS //@Fenix 30/10/2012 added Jump Mode
+			hideCvar { "0" ; "1" ; "9" ; "11"} //@Barbatos 05/09/2012 added LMS //@Fenix 30/10/2012 added Jump Mode
 		}
 
 		itemDef {
@@ -614,7 +719,7 @@
 			visible 1
 			decoration
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9" ; "11"}
+			hideCvar { "0" ; "1" ; "9" ; "11"}
 		}
 
 		itemDef {
@@ -635,7 +740,7 @@
 			mouseEnter { setcolor backcolor 0 0 .55 1 }
 			mouseExit { setcolor backcolor 0 0 0 .6 }
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9" ; "11"} //@Barbatos 05/09/2012 added LMS	//@Fenix 30/10/2012 added Jump Mode
+			hideCvar { "0" ; "1" ; "9" ; "11"} //@Barbatos 05/09/2012 added LMS	//@Fenix 30/10/2012 added Jump Mode
 		}
 
 		itemDef {
@@ -655,7 +760,7 @@
 			visible 1
 			decoration
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9" ; "11"}
+			hideCvar { "0" ; "1" ; "9" ; "11"}
 		}
 
 		itemDef {
@@ -731,7 +836,7 @@
 			visible 1
 			decoration
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9" ; "11"}
+			hideCvar { "0" ; "1" ; "9" ; "11"}
 		}
 
 
@@ -752,7 +857,7 @@
 			visible 1
 			decoration
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9" ; "11"} 
+			hideCvar { "0" ; "1" ; "9" ; "11"} 
 		}
 
 
