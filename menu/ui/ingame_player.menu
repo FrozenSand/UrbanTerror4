@@ -24,6 +24,24 @@
 			visible 1
 			decoration
 		}
+		
+		// INSTAGIB CATCHER
+		itemDef {
+			name gear
+			rect -2 -2 644 484
+			style WINDOW_STYLE_FILLED
+			type 1
+			forecolor 1 1 1 0
+			backcolor 0 0 0 0
+			border 0
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { hide gear }
+			mouseEnter { hide gear }
+			cvarTest "g_instagib"
+			hideCvar { "0" }
+		}
+		
 
 		//  BUTTONS	//
 
@@ -43,7 +61,7 @@
 		}
 
 		itemDef {
-			name team
+			name gear
 			type 1
 			style 1
 			rect 10 56 128 20
@@ -60,7 +78,7 @@
 		}
 
 		itemDef {
-			name team
+			name player
 			type 1
 			style 1
 			rect 10 86 128 20
@@ -75,7 +93,7 @@
 		}
 
 		itemDef {
-			name team
+			name matchmode
 			type 1
 			style 1
 			rect 10 116 128 20
@@ -110,7 +128,7 @@
 		}
 
 		itemDef {
-			name team
+			name gear
 			text "weapon / gear select"
 			type 0
 			style 1
@@ -130,7 +148,7 @@
 		}
 
 		itemDef {
-			name team
+			name player
 			text "player setup"
 			type 0
 			style 1
@@ -148,7 +166,7 @@
 		}
 
 		itemDef {
-			name team
+			name matchmode
 			text "matchmode"
 			type 0
 			style 1
