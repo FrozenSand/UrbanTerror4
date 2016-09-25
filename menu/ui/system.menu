@@ -317,7 +317,7 @@
 				type ITEM_TYPE_YESNO
 				text "Fullscreen:"
 				cvar "r_fullscreen"
-				rect 150 100 200 20
+				rect 150 100 100 20
 				textalign ITEM_ALIGN_RIGHT
 				textalignx 40
 				textaligny 20
@@ -326,7 +326,24 @@
 				visible 0
 				action { play "sound/misc/kcaction.wav" }
 			}
-
+			
+			itemDef {
+				name graphics
+				group grpSystem
+				type ITEM_TYPE_YESNO
+				text "Noborder:"
+				cvar "r_noborder"
+				cvarTest "r_fullscreen"
+				showCvar { "0" }
+				rect 250 100 100 20
+				textalign ITEM_ALIGN_RIGHT
+				textalignx 40
+				textaligny 20
+				textscale .25
+				forecolor 1 1 1 1
+				visible 0
+				action { play "sound/misc/kcaction.wav" }
+			}
 
 			itemDef {
 				name graphics
