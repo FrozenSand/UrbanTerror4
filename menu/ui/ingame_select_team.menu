@@ -594,7 +594,7 @@
 			mouseEnter { setcolor backcolor 0 0 .55 1 }
 			mouseExit { setcolor backcolor 0 0 0 .6 }
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9" ; "11"} //@Barbatos 05/09/2012 added LMS //@Fenix 30/10/2012 added Jump Mode
+			hideCvar { "0" ; "1" ; "9" ; "11"} //@Barbatos 05/09/2012 added LMS //@Fenix 30/10/2012 added Jump Mode
 		}
 
 		itemDef {
@@ -614,7 +614,7 @@
 			visible 1
 			decoration
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9" ; "11"}
+			hideCvar { "0" ; "1" ; "9" ; "11"}
 		}
 
 		itemDef {
@@ -635,7 +635,7 @@
 			mouseEnter { setcolor backcolor 0 0 .55 1 }
 			mouseExit { setcolor backcolor 0 0 0 .6 }
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9" ; "11"} //@Barbatos 05/09/2012 added LMS	//@Fenix 30/10/2012 added Jump Mode
+			hideCvar { "0" ; "1" ; "9" ; "11"} //@Barbatos 05/09/2012 added LMS	//@Fenix 30/10/2012 added Jump Mode
 		}
 
 		itemDef {
@@ -655,7 +655,7 @@
 			visible 1
 			decoration
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9" ; "11"}
+			hideCvar { "0" ; "1" ; "9" ; "11"}
 		}
 
 		itemDef {
@@ -731,7 +731,7 @@
 			visible 1
 			decoration
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9" ; "11"}
+			hideCvar { "0" ; "1" ; "9" ; "11"}
 		}
 
 
@@ -752,7 +752,7 @@
 			visible 1
 			decoration
 			cvarTest "g_gametype"
-			disableCvar { "0" ; "1" ; "9" ; "11"} 
+			hideCvar { "0" ; "1" ; "9" ; "11"} 
 		}
 
 
