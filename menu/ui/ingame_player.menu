@@ -36,8 +36,8 @@
 			border 0
 			bordercolor .5 .5 .5 1
 			visible 1
-			action { hide gear }
-			mouseEnter { hide gear }
+			action { hide gear; show gear_instagib }
+			OnFocus { hide gear; show gear_instagib }
 			cvarTest "g_instagib"
 			hideCvar { "0" }
 		}
@@ -76,6 +76,23 @@
 			cvarTest "g_gametype"
 			hideCvar { "11" }
 		}
+		
+		itemDef {
+			name gear_instagib
+			type 1
+			style 1
+			rect 10 56 128 20
+			forecolor  1 1 1 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 .7
+			visible 0
+			ownerdrawParam	GEAR_ITEM_1
+			action { uiScript gearSetActive; open ingame_ut_select_gear_instagib ; close ingame ; close ingame_player ; play "sound/misc/kcaction.wav" }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7}
+		}
+		
 
 		itemDef {
 			name player
@@ -146,6 +163,28 @@
 			cvarTest "g_gametype"
 			hideCvar { "11" }
 		}
+		
+		itemDef {
+			name gear_instagib
+			text "weapon / gear select"
+			type 0
+			style 1
+			rect 10 56 128 20
+			textalign 2
+			textalignx 124
+			textaligny 16
+			textscale .22
+			forecolor  1 1 1 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 0
+			visible 0
+			cvarTest "g_instagib"
+			showCvar { "1" }
+			decoration
+		}
+
+		
 
 		itemDef {
 			name player
