@@ -46,6 +46,25 @@
 		}
 
 		//  TABS		//
+		
+		
+		// INSTAGIB CATCHER
+		itemDef {
+			name geartab
+			rect -2 -2 644 484
+			style WINDOW_STYLE_FILLED
+			type 1
+			forecolor 1 1 1 0
+			backcolor 0 0 0 0
+			border 0
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { hide geartab; show geartab_instagib }
+			mouseEnter { hide geartab; show geartab_instagib }
+			cvarTest "g_instagib"
+			hideCvar { "0" }
+		}
+
 
 		itemDef {
 			name geartab
@@ -63,24 +82,25 @@
 			cvarTest "g_gametype"
 			hideCvar { "11" }
 		}
-
-		// INSTAGIB CATCHER
+		
 		itemDef {
-			name geartab
-			rect -2 -2 644 484
-			style WINDOW_STYLE_FILLED
+			name geartab_instagib
 			type 1
-			forecolor 1 1 1 0
-			backcolor 0 0 0 0
-			border 0
-			bordercolor .5 .5 .5 1
-			visible 1
-			action { hide geartab }
-			mouseEnter { hide geartab }
+			rect 224 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_tr.tga"
+			forecolor .5 .5 .5 1
+			text "weapons / items"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 0
+			ownerdrawParam	GEAR_ITEM_1
+			action { play "sound/misc/kcaction.wav"; uiScript gearSetActive; close ingame_ut_select_team; open ingame_ut_select_gear_instagib }
 			cvarTest "g_instagib"
-			hideCvar { "0" }
+			showCvar { "1" }
 		}
-
+		
 		itemDef {
 			name teamtab
 			rect 74 81 160 23
