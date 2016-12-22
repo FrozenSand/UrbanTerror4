@@ -19,6 +19,7 @@
 	loadMenu { "ui/ingame_select_gear_item.menu" }
 	loadMenu { "ui/ingame_select_gear_grenade.menu" }
 	loadMenu { "ui/ingame_select_player.menu" }
-    loadMenu { "ui/ingame_select_player_readme.menu" }
+	loadMenu { "ui/ingame_select_player_readme.menu" }
 	loadMenu { "ui/ingame_ut_matchmode.menu" }
+	loadMenu { "ui/ingame_select_gear_instagib.menu" }
 }
