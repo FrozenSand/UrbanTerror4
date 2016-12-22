@@ -1,0 +1,431 @@
+#include "ui/menudef.h"
+
+{
+	menuDef
+	{
+		name "ingame_ut_select_gear_instagib"
+		visible 0
+		fullscreen 0
+		rect -5 -5 650 490
+		focusColor 1 1 1 1
+		backcolor 0 0 0 0
+		style WINDOW_STYLE_FILLED
+		border 0
+		onEsc { close ingame_ut_select_gear_instagib ; open ingame_ut_select_team }
+		onOpen { uiScript gearRead }
+
+		itemdef {
+			name window
+			rect 73 79 494 321
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/ingame_bg2_tr.tga"
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name window
+			rect 73 79 494 25
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//  TABS		//
+
+		itemdef {
+			name teamtab
+			type 1
+			rect 74 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_tr.tga"
+			//	border 1
+			//	bordercolor .5 .5 .5 1
+			visible 1
+			action { uiScript "gearSetItem" ; 
+			play "sound/misc/kcaction.wav" ;
+			uiScript gearWrite ;
+			close ingame_ut_select_gear_instagib ;
+			open ingame_ut_select_team }
+		}
+
+		itemdef {
+			name teamtab
+			rect 74 81 160 23
+			style 0
+			forecolor .5 .5 .5 1
+			text "team setup"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 1
+			decoration
+		}
+
+
+		itemdef {
+			name geartab
+			rect 224 81 160 23
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/tab_on_tr.tga"
+			//	border 1
+			//	bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+		
+
+		itemdef {
+			name geartab
+			rect 224 81 160 23
+			style 0
+			forecolor 1 1 1 1
+			text "weapons / items"
+			textscale .3
+			textalignx 10
+			textaligny 19
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name closeX
+			rect 544 83 20 17
+			style WINDOW_STYLE_FILLED
+			type 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			hotkey "0"
+			text "x"
+			textalign ITEM_ALIGN_CENTER
+			textscale 0.25
+			textalignx 9
+			textaligny 11
+			action { play "sound/misc/kcaction.wav" ; close ingame_ut_select_gear_instagib }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
+		} 
+
+//----------- 
+//HOVER ITEMS 
+//-----------
+
+
+		itemdef {
+			name PH6
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 77  107  140  118
+			hotkey 6
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_NVG
+			text "6. Tactical Goggles" 
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				uiScript gearWrite; 
+				uiScript gearEnd;
+				close ingame_ut_select_gear_instagib; 
+
+				play "sound/misc/kcaction.wav";  
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show nvg_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide nvg_info 
+			}
+			onfocus { 
+				show nvg_info 
+			}
+			leavefocus { 
+				hide nvg_info 
+			}
+			visible 1
+		}
+		
+		
+
+
+		itemdef {
+			name PH9
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 217  107  140  118
+			hotkey 9
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_LASER
+			text "9. No Tactical Goggles" 	
+			textscale 0.18
+			textalign 0
+			textalignx 2
+			textaligny 10
+			action { 
+				uiScript gearSetItem; 
+				uiScript gearWrite; 
+				uiScript gearEnd;
+				close ingame_ut_select_gear_instagib; 
+				
+				play "sound/misc/kcaction.wav"; 
+			}
+			mouseEnter { 
+				setcolor backcolor .5 .5 .5 .5
+				show none_info 
+			}
+			mouseExit { 
+				setcolor backcolor 0 0 0 .6
+				hide none_info 
+			}
+			onfocus { 
+				show none_info 
+			}
+			leavefocus { 
+				hide none_info 
+			}
+			visible 1
+		}
+		
+		itemdef {
+			name medkitstuff
+			group PHovers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 77  226  280  118
+			hotkey 6
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6
+			border 1 
+			bordercolor .5 .5 .5 .7
+			ownerdrawparam ITEM_NVG
+			text "Never Go out without your kit!" 
+			textscale .3
+			textalign 0
+			textalignx 15
+			textaligny 59
+			visible 1
+		}
+
+
+//----------- 
+//NORMAL ITEMS 
+//-----------
+		
+
+		itemdef {
+			name P5
+			group PNormal
+			rect 77  107  140  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_NVG
+			visible 1 
+			decoration
+		}
+
+
+
+		itemdef {
+			name P9
+			group PNormal
+			rect 217  107  140  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_NONE
+			visible 1 
+			decoration
+		}
+
+//----------- 
+//INFO IMAGES
+//-----------
+		
+
+		itemdef {
+			name nvg_info
+			group info
+			rect 366  107  140  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_NVG
+			visible 0 
+			decoration
+		}
+
+
+		itemdef {
+			name none_info
+			group info
+			rect 366  107  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_NONE
+			visible 0 
+			decoration
+		}
+		
+		itemdef { //item 2 is medkit. always.
+			name medkit_info
+			group info
+			rect 366  226  192  118
+			ownerdraw UI_ITEM_IMAGE
+			ownerdrawparam ITEM_MEDKIT
+			visible 1
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO WINDOW
+//-----------
+
+
+		itemdef {
+			name info_outline
+			group info
+			rect 366  107  192  118
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .2 .2 .3 .3 
+			border 1 
+			bordercolor .5 .5 .5 37 
+			textscale .24
+			textalign 0
+			textalignx 2
+			textaligny 115
+			wrapped
+			text "ITEM #1" 
+			visible 1 
+			decoration
+		}
+		
+		itemdef {
+			name info_outline
+			group info
+			rect 366  226  192  118
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .2 .2 .3 .3 
+			border 1 
+			bordercolor .5 .5 .5 37 
+			textscale .24
+			textalign 0
+			textalignx 2
+			textaligny 115
+			wrapped
+			text "ITEM #2" 
+			visible 1 
+			decoration
+		}
+
+ 
+
+//----------- 
+//INFO TEXT
+//-----------
+
+
+
+		itemdef {
+			name nvg_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  Tactical Goggles\r" 
+			"Description:  Improves battlefield\rawareness\r" 
+			"Highlights players and grenades\r" 
+		}
+
+
+		itemdef {
+			name none_info
+			group info
+			rect 366  107  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			text "Name:  No Item\r" 
+			"Has no value, except for not\r"
+			"having tactical goggles"
+		}
+		
+		
+		itemdef {
+			name medkit_info
+			group info
+			rect 366  226  192  118
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1 
+			backcolor .5 .5 .5 0 
+			border 0 
+			textscale 0.2
+			textalign 0
+			textalignx 5
+			textaligny 14
+			wrapped
+			visible 1
+			text "Name:  Medkit\r" 
+			"Improves bandaging ability"
+		}
+ 
+
+//----------- 
+//CANCEL BUTTON 
+//-----------
+
+
+		itemDef { 
+			style WINDOW_STYLE_FILLED 
+			type 1 
+			rect 518 375 40 20 
+			forecolor 1 1 1 1 
+			backcolor 0 0 0 .6 
+			border 1 
+			bordercolor .5 .5 .5 .7 
+			text "Cancel" 
+			textalign ITEM_ALIGN_CENTER 
+			textalignx 20 
+			textaligny 13 
+			textscale 0.2 
+			visible 1 
+			action { close "ingame_ut_select_gear_instagib"; open "ingame_ut_select_gear" } 
+			mouseEnter { setcolor backcolor .5 .5 .5 .5 } 
+			mouseExit { setcolor backcolor 0 0 0 .6 } 
+		} 
+	} 
+}
