@@ -88,7 +88,7 @@
 
 		itemDef {
 			name copyright
-			text "Urban Terror (tm) (c) 2000-2017 Frozensand Games Ltd,"
+			text "Urban Terror (R) (c) 2000-2017 FrozenSand/0870760 B.C. Ltd,"
 			style 0
 			textscale .2
 			rect 0 400 640 40
