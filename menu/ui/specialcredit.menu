@@ -88,7 +88,7 @@
 		}
 		itemDef {
 			name copyright
-			text "Quake 3 Arena (c) 2000-2017 id Software, inc. all rights reserved"
+			text "Quake 3 Arena (c) 1999-2005 id Software, inc. all rights reserved"
 			style 0
 			textscale .2
 			rect 0 415 640 40
