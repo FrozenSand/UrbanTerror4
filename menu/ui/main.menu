@@ -188,7 +188,7 @@
 
 		itemDef {
 			name copyright
-			text "Urban Terror (tm) (c) 2000-2016 Frozen Sand/0870760 B.C. Ltd,"
+			text "Urban Terror (r) (c) 2000-2017 Frozensand Games Ltd,"
 			style 0
 			textscale .2
 			rect 0 400 640 40
@@ -201,7 +201,7 @@
 
 		itemDef {
 			name copyright
-			text "Quake 3 Arena (c) 2000-2016 id Software, inc. all rights reserved"
+			text "Quake 3 Arena (c) 2000-2017 id Software, inc. all rights reserved"
 			style 0
 			textscale .2
 			rect 0 415 640 40
@@ -608,7 +608,7 @@
 			border 0
 			bordercolor .5 .5 .5 1
 			backcolor 0 0 0 0
-			text "Please set your nick name:"
+			text "Please set your nickname:"
 			textscale .4
 			textalign 1
 			textalignx 290
