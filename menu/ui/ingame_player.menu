@@ -24,6 +24,24 @@
 			visible 1
 			decoration
 		}
+		
+		// INSTAGIB CATCHER
+		itemDef {
+			name gear
+			rect -2 -2 644 484
+			style WINDOW_STYLE_FILLED
+			type 1
+			forecolor 1 1 1 0
+			backcolor 0 0 0 0
+			border 0
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { hide gear; show gear_instagib }
+			OnFocus { hide gear; show gear_instagib }
+			cvarTest "g_instagib"
+			hideCvar { "0" }
+		}
+		
 
 		//  BUTTONS	//
 
@@ -43,7 +61,7 @@
 		}
 
 		itemDef {
-			name team
+			name gear
 			type 1
 			style 1
 			rect 10 56 128 20
@@ -58,9 +76,26 @@
 			cvarTest "g_gametype"
 			hideCvar { "11" }
 		}
+		
+		itemDef {
+			name gear_instagib
+			type 1
+			style 1
+			rect 10 56 128 20
+			forecolor  1 1 1 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 .7
+			visible 0
+			ownerdrawParam	GEAR_ITEM_1
+			action { uiScript gearSetActive; open ingame_ut_select_gear_instagib ; close ingame ; close ingame_player ; play "sound/misc/kcaction.wav" }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7}
+		}
+		
 
 		itemDef {
-			name team
+			name player
 			type 1
 			style 1
 			rect 10 86 128 20
@@ -75,7 +110,7 @@
 		}
 
 		itemDef {
-			name team
+			name matchmode
 			type 1
 			style 1
 			rect 10 116 128 20
@@ -110,7 +145,7 @@
 		}
 
 		itemDef {
-			name team
+			name gear
 			text "weapon / gear select"
 			type 0
 			style 1
@@ -128,9 +163,31 @@
 			cvarTest "g_gametype"
 			hideCvar { "11" }
 		}
+		
+		itemDef {
+			name gear_instagib
+			text "weapon / gear select"
+			type 0
+			style 1
+			rect 10 56 128 20
+			textalign 2
+			textalignx 124
+			textaligny 16
+			textscale .22
+			forecolor  1 1 1 1
+			border 1
+			bordercolor .5 .5 .5 1
+			backcolor 0 0 0 0
+			visible 0
+			cvarTest "g_instagib"
+			showCvar { "1" }
+			decoration
+		}
+
+		
 
 		itemDef {
-			name team
+			name player
 			text "player setup"
 			type 0
 			style 1
@@ -148,7 +205,7 @@
 		}
 
 		itemDef {
-			name team
+			name matchmode
 			text "matchmode"
 			type 0
 			style 1
