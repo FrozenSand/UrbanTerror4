@@ -288,7 +288,7 @@
 
 		itemDef {
 			name            headings
-			text            "assists"
+			text            "deaths"
 			textscale       .2
 			style           0
 			rect            386 70 45 15
@@ -305,10 +305,10 @@
 
 		itemDef {
 			name            teamheadings
-			text            "deaths"
+			text            "assists"
 			textscale       .2
 			style           0
-			rect            426 70 55 15
+			rect            423 70 55 15
 			textalign       0
 			textalignx      10      // x alignment point for text
 			// use it to offset left/right text from the edge
@@ -395,16 +395,6 @@
 		}
 
 		itemDef {
-			name            red_team_assists_list
-			rect            428 90 400 10
-			textscale       .2
-			ownerdraw       CG_SCOREBOARD_ASSISTS_LIST
-			ownerdrawParam  UI_TEAM_RED
-			visible         1
-			decoration
-		}
-
-		itemDef {
 			name            red_team_time_list
 			rect            494 90 400 10
 			textscale       .2
@@ -426,9 +416,19 @@
 
 		itemDef {
 			name            red_team_deaths_list
-			rect            466 90 400 10
+			rect            428 90 400 10
 			textscale       .2
 			ownerdraw       CG_SCOREBOARD_DEATH_LIST
+			ownerdrawParam  UI_TEAM_RED
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            red_team_assists_list
+			rect            466 90 400 10
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_ASSISTS_LIST
 			ownerdrawParam  UI_TEAM_RED
 			visible         1
 			decoration
@@ -589,27 +589,9 @@
 			visible         1
 		}
 
-		itemDef {
-			name            headings
-			text            "assists"
-			textscale       .2
-			style           0
-			rect            386 115 45 15
-			rectoffset      RECT_OFFSET_TEAM_BLUE
-			textalign       0
-			textalignx      10      // x alignment point for text
-			// use it to offset left/right text from the edge
-			// or to center the text on a different point
-			textaligny      13
-			backcolor       0 0 0 0
-			forecolor       1 1 1 .75
-			decoration
-			visible         1
-		}
-
 		//@Fenix
 		itemDef {
-			name            headings
+			name            teamheadings
 			text            "auth login"
 			textscale       .2
 			style           0
@@ -631,7 +613,25 @@
 			text            "deaths"
 			textscale       .2
 			style           0
-			rect            426 115 55 15
+			rect            386 115 45 15
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textalign       0
+			textalignx      10      // x alignment point for text
+			// use it to offset left/right text from the edge
+			// or to center the text on a different point
+			textaligny      13
+			backcolor       0 0 0 0
+			forecolor       1 1 1 .75
+			decoration
+			visible         1
+		}
+
+		itemDef {
+			name            teamheadings
+			text            "assists"
+			textscale       .2
+			style           0
+			rect            423 115 55 15
 			rectoffset      RECT_OFFSET_TEAM_BLUE
 			textalign       0
 			textalignx      10      // x alignment point for text
@@ -725,17 +725,6 @@
 		}
 
 		itemDef {
-			name            blue_team_assists_list
-			rect            428 135 400 10
-			rectoffset      RECT_OFFSET_TEAM_BLUE
-			textscale       .2
-			ownerdraw       CG_SCOREBOARD_ASSISTS_LIST
-			ownerdrawParam  UI_TEAM_BLUE
-			visible         1
-			decoration
-		}
-
-		itemDef {
 			name            blue_team_time_list
 			rect            494 135 400 10
 			rectoffset      RECT_OFFSET_TEAM_BLUE
@@ -759,10 +748,21 @@
 
 		itemDef {
 			name            blue_team_deaths_list
-			rect            466 135 400 10
+			rect            428 135 400 10
 			rectoffset      RECT_OFFSET_TEAM_BLUE
 			textscale       .2
 			ownerdraw       CG_SCOREBOARD_DEATH_LIST
+			ownerdrawParam  UI_TEAM_BLUE
+			visible         1
+			decoration
+		}
+
+		itemDef {
+			name            blue_team_assists_list
+			rect            466 135 400 10
+			rectoffset      RECT_OFFSET_TEAM_BLUE
+			textscale       .2
+			ownerdraw       CG_SCOREBOARD_ASSISTS_LIST
 			ownerdrawParam  UI_TEAM_BLUE
 			visible         1
 			decoration
