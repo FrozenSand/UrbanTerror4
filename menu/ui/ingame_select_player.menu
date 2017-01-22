@@ -69,25 +69,26 @@
 			mouseEnter { setcolor backcolor 0 0 .55 1 }
 			mouseExit { setcolor backcolor 0 0 0 .7 }
 		}
-
+		
 		itemDef {
-			name fixed_mod
+			name skindefault
 			rect 377 84 70 25
-			group "playersettinggroup"
-			type ITEM_TYPE_MULTI
-			text ""
-			cvar "cg_skinFixed"
-			cvarStrList { "^7RELATIVE", "0", "^7FIXED", "1" }
-			textalign 1
-			textalignx -4
-			textaligny 21
+			style WINDOW_STYLE_FILLED
+			type 1
+			text "Default"
 			textscale .25
-			visible 1
+			textalign 2
+			textalignx 54
+			textaligny 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .7
 			border 1
 			bordercolor .5 .5 .5 1
-			action { play "sound/misc/kcaction.wav" }
+			visible 1
+			action { exec "set cg_skinFixed 1; set cg_skinAlly 0; set cg_skinEnemy 0; set racered 2; set raceblue 2; set racefree 2;" ; play "sound/misc/kcaction.wav" }
+			mouseEnter { setcolor backcolor 0 0 .55 1 }
+			mouseExit { setcolor backcolor 0 0 0 .7 }
 		}
-
 
 		////////////////
 		// PLAYERMENU //
@@ -100,7 +101,7 @@
 			type ITEM_TYPE_EDITFIELD
 			text "Nickname:"
 			cvar "ui_Name"
-			maxchars 26
+			maxchars 20
 			textalign 0
 			textalignx 20
 			textaligny 12
@@ -112,12 +113,28 @@
 
 		itemDef {
 			name rgbchooser
-			rect 17 65 200 20
+			rect 17 60 200 20
 			group "playersettinggroup"
 			type ITEM_TYPE_MULTI
 			text "Armband color:"
 			cvar "cg_rgb"
 			cvarStrList { "^7White", "255 255 255", "^7Grey", "128 128 128", "^7Black", "0 0 0", "^1Red", "255 0 0", "^2Green", "0 255 0", "^4Blue", "0 0 255", "^3Yellow", "255 255 0", "^5Cyan", "0 255 255", "^6Magenta", "255 0 255" }
+			textalign 0
+			textalignx 19
+			textaligny 10
+			textscale .25
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+		
+		itemDef {
+			name skinchooser
+			rect 17 75 200 20
+			group "playersettinggroup"
+			type ITEM_TYPE_MULTI
+			text "Skin setting:"
+			cvar "cg_skinFixed"
+			cvarStrList { "Classic (team dependent)", "1", "Friend/foe (team independent)", "0" }
 			textalign 0
 			textalignx 19
 			textaligny 10
@@ -134,8 +151,27 @@
 			name instruction
 			rect 17 85 320 20
 			type ITEM_TYPE_MULTI
-			text "Choose the skin for the ally team:"
+			text "Choose the skin for the ^4blue^7 team:"
 			cvar "cg_skinAlly"
+			cvarTest "cg_skinFixed"
+			ShowCvar { "1" }
+			cvarStrList { "^3DEFAULT", "0", "^3GRIFFINS", "1", "^3RED DRAGONS", "2", "^3SWAT", "3", "^3PURPLE HAZE", "4", "^3FUGITIVES", "5", "^3OILERS", "6", "^3ICE DRAGONS", "7", "^3BLACK ICE", "8", "^3DESERT", "9", "^3COWBOY", "10", "^3CAVALRY", "11", "^3DROOGS", "12", "^3DrPINK", "13", "DrBLUE", "14" }
+			textalign 0
+			textalignx 20
+			textaligny 22
+			textscale 0.25
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+		
+		itemDef {
+			name instruction
+			rect 17 85 320 20
+			type ITEM_TYPE_MULTI
+			text "Choose the skin for ^3your ^7team:"
+			cvar "cg_skinAlly"
+			cvarTest "cg_skinFixed"
+			ShowCvar { "0" }
 			cvarStrList { "^3DEFAULT", "0", "^3GRIFFINS", "1", "^3RED DRAGONS", "2", "^3SWAT", "3", "^3PURPLE HAZE", "4", "^3FUGITIVES", "5", "^3OILERS", "6", "^3ICE DRAGONS", "7", "^3BLACK ICE", "8", "^3DESERT", "9", "^3COWBOY", "10", "^3CAVALRY", "11", "^3DROOGS", "12", "^3DrPINK", "13", "DrBLUE", "14" }
 			textalign 0
 			textalignx 20
@@ -145,6 +181,7 @@
 			action { play "sound/misc/kcaction.wav" }
 		}
 
+
 		/////////////////////////////////////
 		// SELECTION BOX FOR FEMALE 0 ALLY //
 		/////////////////////////////////////
@@ -152,11 +189,11 @@
 		itemDef {
 			name ally_female0
 			cvarTest "cg_skinAlly"
-			showCvar { "0", "2" }
+			showCvar { "2" }
 			rect 36 113 90 90
 			style 3
 			type 1
-			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/red_f_0.tga"
 			visible 1
 		}
@@ -168,7 +205,7 @@
 			rect 36 113 90 90
 			style 3
 			type 1
-			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/free_f_0.tga"
 			visible 1
 		}
@@ -176,11 +213,11 @@
 		itemDef {
 			name ally_female0
 			cvarTest "cg_skinAlly"
-			showCvar { "3" }
+			showCvar { "0" , "3" }
 			rect 36 113 90 90
 			style 3
 			type 1
-			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/blu_f_0.tga"
 			visible 1
 		}
@@ -192,7 +229,7 @@
 			rect 36 113 90 90
 			style 3
 			type 1
-			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/jump_f_0.tga"
 			visible 1
 		}
@@ -204,7 +241,7 @@
 			rect 36 113 90 90
 			style 3
 			type 1
-			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/orange_f_0.tga"
 			visible 1
 		}
@@ -216,7 +253,7 @@
 			rect 36 113 90 90
 			style 3
 			type 1
-			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/olive_f_0.tga"
 			visible 1
 		}
@@ -228,7 +265,7 @@
 			rect 36 113 90 90
 			style 3
 			type 1
-			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/white_f_0.tga"
 			visible 1
 		}
@@ -240,7 +277,7 @@
 			rect 36 113 90 90
 			style 3
 			type 1
-			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/black_f_0.tga"
 			visible 1
 		}
@@ -252,7 +289,7 @@
 			rect 36 113 90 90
 			style 3
 			type 1
-			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/desert_f_0.tga"
 			visible 1
 		}
@@ -264,7 +301,7 @@
 			rect 36 113 90 90
 			style 3
 			type 1
-			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/cowboy_f_0.tga"
 			visible 1
 		}
@@ -276,7 +313,7 @@
 			rect 36 113 90 90
 			style 3
 			type 1
-			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/cavalry_f_0.tga"
 			visible 1
 		}
@@ -288,7 +325,7 @@
 			rect 36 113 90 90
 			style 3
 			type 1
-			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/droogs_f_0.tga"
 			visible 1
 		}
@@ -300,7 +337,7 @@
 			rect 36 113 90 90
 			style 3
 			type 1
-			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/drpink_f_0.tga"
 			visible 1
 		}
@@ -312,7 +349,7 @@
 			rect 36 113 90 90
 			style 3
 			type 1
-			action { exec "racered 0" ; exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 0" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/drblue_f_0.tga"
 			visible 1
 		}
@@ -342,11 +379,11 @@
 		itemDef {
 			name ally_female1
 			cvarTest "cg_skinAlly"
-			showCvar { "0", "2" }
+			showCvar { "2" }
 			rect 144 113 90 90
 			style 3
 			type 1
-			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			action { exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/red_f_1.tga"
 			visible 1
 		}
@@ -358,7 +395,7 @@
 			rect 144 113 90 90
 			style 3
 			type 1
-			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			action { exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/free_f_1.tga"
 			visible 1
 		}
@@ -366,11 +403,11 @@
 		itemDef {
 			name ally_female1
 			cvarTest "cg_skinAlly"
-			showCvar { "3" }
+			showCvar { "0" , "3" }
 			rect 144 113 90 90
 			style 3
 			type 1
-			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			action { exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/blu_f_1.tga"
 			visible 1
 		}
@@ -382,7 +419,7 @@
 			rect 144 113 90 90
 			style 3
 			type 1
-			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			action { exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/jump_f_1.tga"
 			visible 1
 		}
@@ -394,7 +431,7 @@
 			rect 144 113 90 90
 			style 3
 			type 1
-			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			action { exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/orange_f_1.tga"
 			visible 1
 		}
@@ -406,7 +443,7 @@
 			rect 144 113 90 90
 			style 3
 			type 1
-			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			action { exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/olive_f_1.tga"
 			visible 1
 		}
@@ -418,7 +455,7 @@
 			rect 144 113 90 90
 			style 3
 			type 1
-			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			action { exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/white_f_1.tga"
 			visible 1
 		}
@@ -430,7 +467,7 @@
 			rect 144 113 90 90
 			style 3
 			type 1
-			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			action { exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/black_f_1.tga"
 			visible 1
 		}
@@ -442,7 +479,7 @@
 			rect 144 113 90 90
 			style 3
 			type 1
-			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			action { exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/desert_f_1.tga"
 			visible 1
 		}
@@ -454,7 +491,7 @@
 			rect 144 113 90 90
 			style 3
 			type 1
-			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			action { exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/cowboy_f_1.tga"
 			visible 1
 		}
@@ -466,7 +503,7 @@
 			rect 144 113 90 90
 			style 3
 			type 1
-			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			action { exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/cavalry_f_1.tga"
 			visible 1
 		}
@@ -478,7 +515,7 @@
 			rect 144 113 90 90
 			style 3
 			type 1
-			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			action { exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/droogs_f_1.tga"
 			visible 1
 		}
@@ -490,7 +527,7 @@
 			rect 144 113 90 90
 			style 3
 			type 1
-			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			action { exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/drpink_f_1.tga"
 			visible 1
 		}
@@ -502,7 +539,7 @@
 			rect 144 113 90 90
 			style 3
 			type 1
-			action { exec "racered 1" ; exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
+			action { exec "raceblue 1" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/drblue_f_1.tga"
 			visible 1
 		}
@@ -532,11 +569,11 @@
 		itemDef {
 			name ally_male2
 			cvarTest "cg_skinAlly"
-			showCvar { "0", "2" }
+			showCvar { "2" }
 			rect 252 113 90 90
 			style 3
 			type 1
-			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/red_m_2.tga"
 			visible 1
 		}
@@ -548,7 +585,7 @@
 			rect 252 113 90 90
 			style 3
 			type 1
-			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/free_m_2.tga"
 			visible 1
 		}
@@ -556,11 +593,11 @@
 		itemDef {
 			name ally_male2
 			cvarTest "cg_skinAlly"
-			showCvar { "3" }
+			showCvar { "0" , "3" }
 			rect 252 113 90 90
 			style 3
 			type 1
-			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/blu_m_2.tga"
 			visible 1
 		}
@@ -572,7 +609,7 @@
 			rect 252 113 90 90
 			style 3
 			type 1
-			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/jump_m_2.tga"
 			visible 1
 		}
@@ -584,7 +621,7 @@
 			rect 252 113 90 90
 			style 3
 			type 1
-			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/orange_m_2.tga"
 			visible 1
 		}
@@ -596,7 +633,7 @@
 			rect 252 113 90 90
 			style 3
 			type 1
-			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/olive_m_2.tga"
 			visible 1
 		}
@@ -608,7 +645,7 @@
 			rect 252 113 90 90
 			style 3
 			type 1
-			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/white_m_2.tga"
 			visible 1
 		}
@@ -620,7 +657,7 @@
 			rect 252 113 90 90
 			style 3
 			type 1
-			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/black_m_2.tga"
 			visible 1
 		}
@@ -632,7 +669,7 @@
 			rect 252 113 90 90
 			style 3
 			type 1
-			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/desert_m_2.tga"
 			visible 1
 		}
@@ -644,7 +681,7 @@
 			rect 252 113 90 90
 			style 3
 			type 1
-			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/cowboy_m_2.tga"
 			visible 1
 		}
@@ -656,7 +693,7 @@
 			rect 252 113 90 90
 			style 3
 			type 1
-			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/cavalry_m_2.tga"
 			visible 1
 		}
@@ -668,7 +705,7 @@
 			rect 252 113 90 90
 			style 3
 			type 1
-			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/droogs_m_2.tga"
 			visible 1
 		}
@@ -680,7 +717,7 @@
 			rect 252 113 90 90
 			style 3
 			type 1
-			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/drpink_m_2.tga"
 			visible 1
 		}
@@ -692,7 +729,7 @@
 			rect 252 113 90 90
 			style 3
 			type 1
-			action { exec "racered 2" ; exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 2" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/drblue_m_2.tga"
 			visible 1
 		}
@@ -722,11 +759,11 @@
 		itemDef {
 			name ally_male3
 			cvarTest "cg_skinAlly"
-			showCvar { "0", "2" }
+			showCvar { "2" }
 			rect 358 113 90 90
 			style 3
 			type 1
-			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/red_m_3.tga"
 			visible 1
 		}
@@ -738,7 +775,7 @@
 			rect 358 113 90 90
 			style 3
 			type 1
-			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/free_m_3.tga"
 			visible 1
 		}
@@ -746,11 +783,11 @@
 		itemDef {
 			name ally_male3
 			cvarTest "cg_skinAlly"
-			showCvar { "3" }
+			showCvar { "0" , "3" }
 			rect 358 113 90 90
 			style 3
 			type 1
-			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/blu_m_3.tga"
 			visible 1
 		}
@@ -762,7 +799,7 @@
 			rect 358 113 90 90
 			style 3
 			type 1
-			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/jump_m_3.tga"
 			visible 1
 		}
@@ -774,7 +811,7 @@
 			rect 358 113 90 90
 			style 3
 			type 1
-			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/orange_m_3.tga"
 			visible 1
 		}
@@ -786,7 +823,7 @@
 			rect 358 113 90 90
 			style 3
 			type 1
-			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/olive_m_3.tga"
 			visible 1
 		}
@@ -798,7 +835,7 @@
 			rect 358 113 90 90
 			style 3
 			type 1
-			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/white_m_3.tga"
 			visible 1
 		}
@@ -810,7 +847,7 @@
 			rect 358 113 90 90
 			style 3
 			type 1
-			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/black_m_3.tga"
 			visible 1
 		}
@@ -822,7 +859,7 @@
 			rect 358 113 90 90
 			style 3
 			type 1
-			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/desert_m_3.tga"
 			visible 1
 		}
@@ -834,7 +871,7 @@
 			rect 358 113 90 90
 			style 3
 			type 1
-			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/cowboy_m_3.tga"
 			visible 1
 		}
@@ -846,7 +883,7 @@
 			rect 358 113 90 90
 			style 3
 			type 1
-			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/cavalry_m_3.tga"
 			visible 1
 		}
@@ -858,7 +895,7 @@
 			rect 358 113 90 90
 			style 3
 			type 1
-			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/droogs_m_3.tga"
 			visible 1
 		}
@@ -870,7 +907,7 @@
 			rect 358 113 90 90
 			style 3
 			type 1
-			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/drpink_m_3.tga"
 			visible 1
 		}
@@ -882,7 +919,7 @@
 			rect 358 113 90 90
 			style 3
 			type 1
-			action { exec "racered 3" ; exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
+			action { exec "raceblue 3" ; play "sound/misc/kcaction.wav" ; setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/drblue_m_3.tga"
 			visible 1
 		}
@@ -905,16 +942,15 @@
 			decoration
 		}
 
-		// I don't have a clue what the followings are for
-		// but leave it like this or the menu will be fucked up
+		//below are catcher for the different races to ensure they are set correctly
 		itemDef {
 			name br_ally_female0
 			rect 0 0 640 480
 			type 1
-			cvartest "racered"
+			cvartest "raceblue"
 			showCvar { "0" }
 			visible 1
-			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 ; exec "racered 0" ; exec "raceblue 0" ; hide br_ally_female0 ; hide br_ally_male2_2 ; show br_ally_female1 ; show br_ally_male2 ; show br_ally_male3 ; show br_ally_male2_2 }
+			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 0 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 ; exec "raceblue 0" ; hide br_ally_female0 ; hide br_ally_male2_2 ; show br_ally_female1 ; show br_ally_male2 ; show br_ally_male3 ; show br_ally_male2_2 }
 			action { }
 		}
 
@@ -922,10 +958,10 @@
 			name br_ally_female1
 			rect 0 0 640 480
 			type 1
-			cvartest "racered"
+			cvartest "raceblue"
 			showCvar { "1" }
 			visible 1
-			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 ; exec "racered 1" ; exec "raceblue 1" ; hide br_ally_female1 ; hide br_ally_male2_2 ; show br_ally_female0 ; show br_ally_male2 ; show br_ally_male3 ; show br_ally_male2_2 }
+			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 0 ; exec "raceblue 1" ; hide br_ally_female1 ; hide br_ally_male2_2 ; show br_ally_female0 ; show br_ally_male2 ; show br_ally_male3 ; show br_ally_male2_2 }
 			action { }
 		}
 
@@ -933,10 +969,10 @@
 			name br_ally_male2
 			rect 0 0 640 480
 			type 1
-			cvartest "racered"
+			cvartest "raceblue"
 			showCvar { "2", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" }
 			visible 1
-			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 ; exec "racered 2" ; exec "raceblue 2" ; hide br_ally_male2 ; hide br_ally_male2_2 ; show br_ally_male3 ; show br_ally_female0 ; show br_ally_female1 ; show br_ally_male2_2 }
+			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 ; exec "raceblue 2" ; hide br_ally_male2 ; hide br_ally_male2_2 ; show br_ally_male3 ; show br_ally_female0 ; show br_ally_female1 ; show br_ally_male2_2 }
 			action { }
 		}
 
@@ -944,21 +980,22 @@
 			name br_ally_male3
 			rect 0 0 640 480
 			type 1
-			cvartest "racered"
+			cvartest "raceblue"
 			showCvar { "3" }
 			visible 1
-			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 ; exec "racered 3" ; exec "raceblue 3" ; hide br_ally_male3 ; hide br_ally_male2_2 ; show br_ally_female1 ; show br_ally_female0 ; show br_ally_male2 ; show br_ally_male2_2 }
+			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 .7 ; setitemcolor ally_male3_br backcolor 0 0 0 0 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 ; exec "raceblue 3" ; hide br_ally_male3 ; hide br_ally_male2_2 ; show br_ally_female1 ; show br_ally_female0 ; show br_ally_male2 ; show br_ally_male2_2 }
 			action { }
 		}
 
+		//fallback catcher in case something goes wrong. menu will basically default.
 		itemDef {
 			name br_ally_male2_2
 			rect 0 0 640 480
 			type 1
-			cvartest "racered"
+			cvartest "raceblue"
 			hideCvar { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" }
 			visible 1
-			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 ; exec "racered 2" ; exec "raceblue 2" ;}
+			onfocus { setitemcolor ally_male2_br backcolor 0 0 0 0 ; setitemcolor ally_male3_br backcolor 0 0 0 .7 ; setitemcolor ally_female0_br backcolor 0 0 0 .7 ; setitemcolor ally_female1_br backcolor 0 0 0 .7 ; exec "raceblue 2" ;}
 			action { }
 		}
 
@@ -970,7 +1007,26 @@
 			name instruction
 			rect 17 205 320 20
 			type ITEM_TYPE_MULTI
-			text "Choose the skin for the enemy team:"
+			text "Choose the skin for the ^1red ^7team and ^2FFA modes:"
+			cvar "cg_skinEnemy"
+			cvarTest "cg_skinFixed"
+			ShowCvar { "1" }
+			cvarStrList { "^3DEFAULT", "0", "^3GRIFFINS", "1", "^3RED DRAGONS", "2", "^3SWAT", "3", "^3PURPLE HAZE", "4", "^3FUGITIVES", "5", "^3OILERS", "6", "^3ICE DRAGONS", "7", "^3BLACK ICE", "8", "^3DESERT", "9", "^3COWBOY", "10", "^3CAVALRY", "11", "^3DROOGS", "12", "^3DrPINK", "13", "DrBLUE", "14" }
+			textalign 0
+			textalignx 20
+			textaligny 20
+			textscale 0.25
+			visible 1
+			action { play "sound/misc/kcaction.wav" }
+		}
+		
+		itemDef {
+			name instruction
+			rect 17 205 320 20
+			type ITEM_TYPE_MULTI
+			text "Choose the skin for ^1enemies^7 and ^2FFA ^7modes:"
+			cvarTest "cg_skinFixed"
+			ShowCvar { "0" }
 			cvar "cg_skinEnemy"
 			cvarStrList { "^3DEFAULT", "0", "^3GRIFFINS", "1", "^3RED DRAGONS", "2", "^3SWAT", "3", "^3PURPLE HAZE", "4", "^3FUGITIVES", "5", "^3OILERS", "6", "^3ICE DRAGONS", "7", "^3BLACK ICE", "8", "^3DESERT", "9", "^3COWBOY", "10", "^3CAVALRY", "11", "^3DROOGS", "12", "^3DrPINK", "13", "DrBLUE", "14" }
 			textalign 0
@@ -980,6 +1036,7 @@
 			visible 1
 			action { play "sound/misc/kcaction.wav" }
 		}
+		
 
 		//////////////////////////////////////
 		// SELECTION BOX FOR FEMALE 0 ENEMY //
@@ -988,11 +1045,11 @@
 		itemDef {
 			name enemy_female0
 			cvarTest "cg_skinEnemy"
-			showCvar { "0", "3" }
+			showCvar { "3" }
 			rect 36 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 0" ; exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/blu_f_0.tga"
 			visible 1
 		}
@@ -1004,7 +1061,7 @@
 			rect 36 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 0" ; exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/free_f_0.tga"
 			visible 1
 		}
@@ -1012,11 +1069,11 @@
 		itemDef {
 			name enemy_female0
 			cvarTest "cg_skinEnemy"
-			showCvar { "2" }
+			showCvar { "0" , "2" }
 			rect 36 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 0" ; exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/red_f_0.tga"
 			visible 1
 		}
@@ -1028,7 +1085,7 @@
 			rect 36 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 0" ; exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/jump_f_0.tga"
 			visible 1
 		}
@@ -1040,7 +1097,7 @@
 			rect 36 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 0" ; exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/orange_f_0.tga"
 			visible 1
 		}
@@ -1052,7 +1109,7 @@
 			rect 36 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 0" ; exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/olive_f_0.tga"
 			visible 1
 		}
@@ -1064,7 +1121,7 @@
 			rect 36 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 0" ; exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/white_f_0.tga"
 			visible 1
 		}
@@ -1076,7 +1133,7 @@
 			rect 36 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 0" ; exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/black_f_0.tga"
 			visible 1
 		}
@@ -1088,7 +1145,7 @@
 			rect 36 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 0" ; exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/desert_f_0.tga"
 			visible 1
 		}
@@ -1100,7 +1157,7 @@
 			rect 36 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 0" ; exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/cowboy_f_0.tga"
 			visible 1
 		}
@@ -1112,7 +1169,7 @@
 			rect 36 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 0" ; exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/cavalry_f_0.tga"
 			visible 1
 		}
@@ -1124,7 +1181,7 @@
 			rect 36 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 0" ; exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/droogs_f_0.tga"
 			visible 1
 		}
@@ -1136,7 +1193,7 @@
 			rect 36 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 0" ; exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/drpink_f_0.tga"
 			visible 1
 		}
@@ -1148,7 +1205,7 @@
 			rect 36 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 0" ; exec "racefree 0" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/drblue_f_0.tga"
 			visible 1
 		}
@@ -1178,11 +1235,11 @@
 		itemDef {
 			name enemy_female1
 			cvarTest "cg_skinEnemy"
-			showCvar { "0", "3" }
+			showCvar { "3" }
 			rect 144 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			action { exec "racered 1" ; exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/blu_f_1.tga"
 			visible 1
 		}
@@ -1194,7 +1251,7 @@
 			rect 144 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			action { exec "racered 1" ; exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/free_f_1.tga"
 			visible 1
 		}
@@ -1202,11 +1259,11 @@
 		itemDef {
 			name enemy_female1
 			cvarTest "cg_skinEnemy"
-			showCvar { "2" }
+			showCvar { "0" , "2" }
 			rect 144 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			action { exec "racered 1" ; exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/red_f_1.tga"
 			visible 1
 		}
@@ -1218,7 +1275,7 @@
 			rect 144 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			action { exec "racered 1" ; exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/jump_f_1.tga"
 			visible 1
 		}
@@ -1230,7 +1287,7 @@
 			rect 144 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			action { exec "racered 1" ; exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/orange_f_1.tga"
 			visible 1
 		}
@@ -1242,7 +1299,7 @@
 			rect 144 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			action { exec "racered 1" ; exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/olive_f_1.tga"
 			visible 1
 		}
@@ -1254,7 +1311,7 @@
 			rect 144 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			action { exec "racered 1" ; exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/white_f_1.tga"
 			visible 1
 		}
@@ -1266,7 +1323,7 @@
 			rect 144 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			action { exec "racered 1" ; exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/black_f_1.tga"
 			visible 1
 		}
@@ -1278,7 +1335,7 @@
 			rect 144 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			action { exec "racered 1" ; exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/desert_f_1.tga"
 			visible 1
 		}
@@ -1290,7 +1347,7 @@
 			rect 144 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			action { exec "racered 1" ; exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/cowboy_f_1.tga"
 			visible 1
 		}
@@ -1302,7 +1359,7 @@
 			rect 144 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			action { exec "racered 1" ; exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/cavalry_f_1.tga"
 			visible 1
 		}
@@ -1314,7 +1371,7 @@
 			rect 144 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			action { exec "racered 1" ; exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/droogs_f_1.tga"
 			visible 1
 		}
@@ -1326,7 +1383,7 @@
 			rect 144 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			action { exec "racered 1" ; exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/drpink_f_1.tga"
 			visible 1
 		}
@@ -1338,7 +1395,7 @@
 			rect 144 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
+			action { exec "racered 1" ; exec "racefree 1" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 }
 			background "ui/assets/drblue_f_1.tga"
 			visible 1
 		}
@@ -1368,11 +1425,11 @@
 		itemDef {
 			name enemy_male2
 			cvarTest "cg_skinEnemy"
-			showCvar { "0", "3" }
+			showCvar { "3" }
 			rect 252 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 2" ; exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/blu_m_2.tga"
 			visible 1
 		}
@@ -1384,7 +1441,7 @@
 			rect 252 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 2" ; exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/free_m_2.tga"
 			visible 1
 		}
@@ -1392,11 +1449,11 @@
 		itemDef {
 			name enemy_male2
 			cvarTest "cg_skinEnemy"
-			showCvar { "2" }
+			showCvar { "0" , "2" }
 			rect 252 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 2" ; exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/red_m_2.tga"
 			visible 1
 		}
@@ -1408,7 +1465,7 @@
 			rect 252 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 2" ; exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/jump_m_2.tga"
 			visible 1
 		}
@@ -1420,7 +1477,7 @@
 			rect 252 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 2" ; exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/orange_m_2.tga"
 			visible 1
 		}
@@ -1432,7 +1489,7 @@
 			rect 252 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 2" ; exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/olive_m_2.tga"
 			visible 1
 		}
@@ -1444,7 +1501,7 @@
 			rect 252 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 2" ; exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/white_m_2.tga"
 			visible 1
 		}
@@ -1456,7 +1513,7 @@
 			rect 252 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 2" ; exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/black_m_2.tga"
 			visible 1
 		}
@@ -1468,7 +1525,7 @@
 			rect 252 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 2" ; exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/desert_m_2.tga"
 			visible 1
 		}
@@ -1480,7 +1537,7 @@
 			rect 252 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 2" ; exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/cowboy_m_2.tga"
 			visible 1
 		}
@@ -1492,7 +1549,7 @@
 			rect 252 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 2" ; exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/cavalry_m_2.tga"
 			visible 1
 		}
@@ -1504,7 +1561,7 @@
 			rect 252 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 2" ; exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/droogs_m_2.tga"
 			visible 1
 		}
@@ -1516,7 +1573,7 @@
 			rect 252 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 2" ; exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/drpink_m_2.tga"
 			visible 1
 		}
@@ -1528,7 +1585,7 @@
 			rect 252 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 2" ; exec "racefree 2" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/drblue_m_2.tga"
 			visible 1
 		}
@@ -1558,11 +1615,11 @@
 		itemDef {
 			name enemy_male3
 			cvarTest "cg_skinEnemy"
-			showCvar { "0", "3" }
+			showCvar { "3" }
 			rect 358 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 3" ; exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/blu_m_3.tga"
 			visible 1
 		}
@@ -1574,7 +1631,7 @@
 			rect 358 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 3" ; exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/free_m_3.tga"
 			visible 1
 		}
@@ -1582,11 +1639,11 @@
 		itemDef {
 			name enemy_male3
 			cvarTest "cg_skinEnemy"
-			showCvar { "2" }
+			showCvar { "0" , "2" }
 			rect 358 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 3" ; exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/red_m_3.tga"
 			visible 1
 		}
@@ -1598,7 +1655,7 @@
 			rect 358 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 3" ; exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/jump_m_3.tga"
 			visible 1
 		}
@@ -1610,7 +1667,7 @@
 			rect 358 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 3" ; exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/orange_m_3.tga"
 			visible 1
 		}
@@ -1622,7 +1679,7 @@
 			rect 358 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 3" ; exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/olive_m_3.tga"
 			visible 1
 		}
@@ -1634,7 +1691,7 @@
 			rect 358 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 3" ; exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/white_m_3.tga"
 			visible 1
 		}
@@ -1646,7 +1703,7 @@
 			rect 358 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 3" ; exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/black_m_3.tga"
 			visible 1
 		}
@@ -1658,7 +1715,7 @@
 			rect 358 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 3" ; exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/desert_m_3.tga"
 			visible 1
 		}
@@ -1670,7 +1727,7 @@
 			rect 358 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 3" ; exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/cowboy_m_3.tga"
 			visible 1
 		}
@@ -1683,7 +1740,7 @@
 			rect 358 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 3" ; exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/cavalry_m_3.tga"
 			visible 1
 		}
@@ -1696,7 +1753,7 @@
 			rect 358 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 3" ; exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/droogs_m_3.tga"
 			visible 1
 		}
@@ -1709,7 +1766,7 @@
 			rect 358 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 3" ; exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/drpink_m_3.tga"
 			visible 1
 		}
@@ -1722,7 +1779,7 @@
 			rect 358 231 90 90
 			style 3
 			type 1
-			action { exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
+			action { exec "racered 3" ; exec "racefree 3" ; play "sound/misc/kcaction.wav" ; setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 }
 			background "ui/assets/drblue_m_3.tga"
 			visible 1
 		}
@@ -1745,16 +1802,15 @@
 			decoration
 		}
 
-		// I don't have a clue what the followings are for
-		// but leave it like this or the menu will be fucked up
+		//below are catcher for the different races to ensure they are set correctly
 		itemDef {
 			name br_enemy_female0
 			rect 0 0 640 480
 			type 1
-			cvartest "racefree"
+			cvartest "racered"
 			showCvar { "0" }
 			visible 1
-			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 ; exec "racefree 0" ; hide br_enemy_female0 ; hide br_enemy_male2_2 ; show br_enemy_female1 ; show br_enemy_male2 ; show br_enemy_male3 ; show br_enemy_male2_2 }
+			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 0 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 ; exec "racered 0" ; exec "racefree 0" ; hide br_enemy_female0 ; hide br_enemy_male2_2 ; show br_enemy_female1 ; show br_enemy_male2 ; show br_enemy_male3 ; show br_enemy_male2_2 }
 			action { }
 		}
 
@@ -1762,10 +1818,10 @@
 			name br_enemy_female1
 			rect 0 0 640 480
 			type 1
-			cvartest "racefree"
+			cvartest "racered"
 			showCvar { "1" }
 			visible 1
-			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 ; exec "racefree 1" ; hide br_enemy_female1 ; hide br_enemy_male2_2 ; show br_enemy_female0 ; show br_enemy_male2 ; show br_enemy_male3 ; show br_enemy_male2_2 }
+			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 0 ; exec "racered 1" ; exec "racefree 1" ; hide br_enemy_female1 ; hide br_enemy_male2_2 ; show br_enemy_female0 ; show br_enemy_male2 ; show br_enemy_male3 ; show br_enemy_male2_2 }
 			action { }
 		}
 
@@ -1773,10 +1829,10 @@
 			name br_enemy_male2
 			rect 0 0 640 480
 			type 1
-			cvartest "racefree"
+			cvartest "racered"
 			showCvar { "2", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" }
 			visible 1
-			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 ; exec "racefree 2" ; hide br_enemy_male2 ; hide br_enemy_male2_2 ; show br_enemy_male3 ; show br_enemy_female0 ; show br_enemy_female1 ; show br_enemy_male2_2 }
+			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 ; exec "racered 2" ; exec "racefree 2" ; hide br_enemy_male2 ; hide br_enemy_male2_2 ; show br_enemy_male3 ; show br_enemy_female0 ; show br_enemy_female1 ; show br_enemy_male2_2 }
 			action { }
 		}
 
@@ -1784,21 +1840,22 @@
 			name br_enemy_male3
 			rect 0 0 640 480
 			type 1
-			cvartest "racefree"
+			cvartest "racered"
 			showCvar { "3" }
 			visible 1
-			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 ; exec "racefree 3" ; hide br_enemy_male3 ; hide br_enemy_male2_2 ; show br_enemy_female1 ; show br_enemy_female0 ; show br_enemy_male2 ; show br_enemy_male2_2 }
+			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 .7 ; setitemcolor enemy_male3_br backcolor 0 0 0 0 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 ; exec "racered 3" ; exec "racefree 3" ; hide br_enemy_male3 ; hide br_enemy_male2_2 ; show br_enemy_female1 ; show br_enemy_female0 ; show br_enemy_male2 ; show br_enemy_male2_2 }
 			action { }
 		}
 
+		//fallback catcher in case something goes wrong. menu will basically default.
 		itemDef {
 			name br_enemy_male2_2
 			rect 0 0 640 480
 			type 1
-			cvartest "racefree"
+			cvartest "racered"
 			hideCvar { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" }
 			visible 1
-			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 ; exec "racefree 2" ;}
+			onfocus { setitemcolor enemy_male2_br backcolor 0 0 0 0 ; setitemcolor enemy_male3_br backcolor 0 0 0 .7 ; setitemcolor enemy_female0_br backcolor 0 0 0 .7 ; setitemcolor enemy_female1_br backcolor 0 0 0 .7 ; exec "racefree 2" ; exec "racered 2" }
 			action { }
 		}
 
