@@ -1,7 +1,6 @@
 #include "ui/menudef.h"
 
 // Team Score Menu
-// Last Revised: Fenix 4.2.011
 {
 	menuDef
 	{
@@ -589,7 +588,6 @@
 			visible         1
 		}
 
-		//@Fenix
 		itemDef {
 			name            teamheadings
 			text            "auth login"

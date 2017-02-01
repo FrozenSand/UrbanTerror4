@@ -124,7 +124,6 @@
 			decoration
 		}
 
-		//@Barbatos - 4.2.008 - added current modversion
 		itemDef {
 			name version2
 			rect 0 400 640 40
@@ -167,7 +166,7 @@
 			decoration
 		}
 
-		//@Barbatos: the blank bar to seperate the list
+		// the blank bar to seperate the list
 		itemDef {
 			name window
 			rect 324 80 1 320
