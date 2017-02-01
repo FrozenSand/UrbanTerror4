@@ -845,7 +845,6 @@
 			decoration
 		}
 
-		//@Fenix - NUKE
 		itemDef {
 			name player
 			type 1
@@ -881,7 +880,6 @@
 			decoration
 		}
 
-		//@Fenix - smite
 		itemDef {
 			name player
 			type 1

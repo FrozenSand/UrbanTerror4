@@ -1186,7 +1186,6 @@
 			visible 1
 		}
 
-		//@Fenix - added for cg_drawKillLog
 		itemDef {
 			name showkillsinfo
 			group gun

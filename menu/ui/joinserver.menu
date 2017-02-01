@@ -844,7 +844,7 @@
 			mouseExit { setitemcolor backcolor 0 0 0 0 }
 		}
 
-		//@Barbatos: removed PB - added Urban Terror Accounts filter
+		// Removed PB - added Urban Terror Accounts filter
 		itemDef {
 			name viewAccounts
 			type ITEM_TYPE_MULTI
@@ -868,7 +868,7 @@
 			mouseExit { setitemcolor backcolor 0 0 0 0 }
 		}
 
-		//@Barbatos: view private servers list (servers protected with a password)
+		// View private servers list (servers protected with a password)
 		itemDef {
 			name viewBE
 			type ITEM_TYPE_MULTI

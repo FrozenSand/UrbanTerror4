@@ -123,7 +123,6 @@
 			decoration
 		}
 
-		//@Barbatos - 4.2.008 - added current modversion
 		itemDef {
 			name version2
 			rect 0 400 640 40

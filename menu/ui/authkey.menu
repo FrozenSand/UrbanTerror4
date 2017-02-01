@@ -1,7 +1,7 @@
 #include "ui/menudef.h"
 
 {
-	/* @Barbatos 07/28/2012 for 4.2
+	/* 
 	* Auth system - page to enter the auth key
 	*/
 
@@ -127,7 +127,6 @@
 			decoration
 		}
 
-		//@Barbatos - 4.2.008 - added current modversion
 		itemDef {
 			name version2
 			rect 0 400 640 40

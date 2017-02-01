@@ -115,7 +115,7 @@
 			decoration
 		}
 
-		//@Barbatos: removed for now
+		// removed for now
 		/*itemDef {
 			name ctr_bumpy
 			type 1
@@ -493,7 +493,7 @@
 			}
 
 
-			//27's BUMPY STUFF - Added by Null @Barbatos: removed for now
+			//27's BUMPY STUFF - Added by Null -- removed for now
 			/*
 			itemDef {
 				name bumpy
