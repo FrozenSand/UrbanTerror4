@@ -230,20 +230,18 @@
 			"Biddle\r"
 			"BladeKiller\r"
 			"Blapecool\r"
-			"Clearskies\r"
+			"Chump\r"
 			"Decoy\r"
 			"evilelf\r"
 			"Frankie V\r"
 			"Gost0r\r"
-			"H0i\r"
 			"HappyDay\r"
 			"Kalish\r"
 			"Kr0m\r"
-			"Levant\r"
 			"Nounou\r"
 			textscale .22
 			textalignx 0
-			textaligny 18
+			textaligny 23
 			rect 35 130 160 25
 			style 1
 			forecolor 1 1 1 1
@@ -256,24 +254,22 @@
 			name credits
 			wrapped
 			text
-			"Lead Developer / Public Relations Manager\r"
-			"QA Manager\r"
-			"Team Manager / Senior Artist / Modeler\r"
-			"Website Developer\r"
-			"Codebase Developer\r"
-			"Media Manager / Editor\r"
-			"Hosting Platform Manager / Administrator\r"
-			"Lead Animator / Assets Manager\r"
-			"Codebase Developer\r"
-			"Modeler / Texture Artist\r"
+			"Company Director & COO\r"
+			"Public Relations\r"
+			"Team Manager & Senior Artist & Modeler\r"
+			"System Admin & Website Developer\r"
+			"Public Relations & Audio Engineer\r"
+			"Community Support\r"
+			"Hosting Consultant\r"
+			"Lead Animator & Assets Manager\r"
+			"Codebase Developer & Bugs Reviser\r"
 			"Level Designer\r"
-			"Engine Developer / Webmaster / 2D Artist\r"
+			"Engine Developer & Webmaster & 2D Artist\r"
 			"Forum Administrator\r"
-			"Level Designer\r"
-			"Concept Artist / Level Designer\r"
+			"Concept Artist & Level Designer\r"
 			textscale .22
 			textalignx 0
-			textaligny 18
+			textaligny 23
 			rect 96 130 185 25
 			style 1
 			forecolor .5 .5 .5 1
@@ -291,14 +287,10 @@
 			name credits
 			wrapped
 			text
-			"NulL\r"
-			"p5yc0runn3r\r"
 			"RabidCow\r"
 			"RaideR\r"
 			"SevenofNine\r"
 			"UnifiedTone\r"
-			"Urbant\r"
-			"Vladocs\r"
 			"Zenity\r"
 			textscale .22
 			textalignx 0
@@ -315,15 +307,11 @@
 			name credits
 			wrapped
 			text
-			"Level Designer\r"
-			"Engine & Codebase Developer\r"
-			"CEO / Modeler / Texture Artist\r"
-			"Head Administrator / Website Developer\r"
-			"Coverage Coordinator\r"
-			"Composer / Audio Engineer\r"
-			"Modeler\r"
-			"Modeler\r"
-			"Codebase Developer / Gameplay Designer\r"
+			"Lead Environments Creator\r"
+			"Company Director & CEO\r"
+			"Public Relations\r"
+			"Composer & Audio Engineer\r"
+			"Codebase Developer & Gameplay Designer\r"
 			textscale .22
 			textalignx 0
 			textaligny 18
