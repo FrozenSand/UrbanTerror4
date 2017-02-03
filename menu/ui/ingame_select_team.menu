@@ -77,7 +77,7 @@
 			visible 1
 			action { hide geartab }
 			mouseEnter { hide geartab }
-			cvarTest "g_instagib"
+			cvarTest "cg_instagib"
 			hideCvar { "0" }
 		}
 
@@ -535,7 +535,7 @@
 			visible 1
 			mouseEnter { show instagibinfo}
 			mouseExit { hide instagibinfo }
-			cvarTest "g_instagib"
+			cvarTest "cg_instagib"
 			showCvar { "1" } 
 		}
 		
@@ -558,7 +558,7 @@
 			bordercolor 1 1 1 1
 			visible 1
 			decoration
-			cvarTest "g_instagib"
+			cvarTest "cg_instagib"
 			showCvar { "1" }
 		}
 		

@@ -38,7 +38,7 @@
 			visible 1
 			action { hide gear }
 			mouseEnter { hide gear }
-			cvarTest "g_instagib"
+			cvarTest "cg_instagib"
 			hideCvar { "0" }
 		}
 
