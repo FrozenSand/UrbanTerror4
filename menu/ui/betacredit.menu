@@ -259,9 +259,9 @@
 			"Gerbil!\r"
 			"GottaBeKD\r"
 			"Gsigms\r"
+			"H0i\r"
 			"HavoK\r"
 			"HighSea\r"
-			"Hobbes\r"
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -280,9 +280,11 @@
 			textaligny 0
 			wrapped
 			text
+			"Hobbes\r"
 			"Holblin\r"
 			"Iain\r"
 			"Jaker\r"
+			"Levant\r"
 			"MajkiFajki\r"
 			"Meaty\r"
 			"Miles\r"
@@ -292,8 +294,6 @@
 			"NrGizer\r"
 			"Odd\r"
 			"Oswald\r"
-			"PapyRuny\r"
-			"Preacher\r"
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -312,6 +312,9 @@
 			textaligny 0
 			wrapped
 			text
+			"p5yc0runn3r\r"
+			"PapyRuny\r"
+			"Preacher\r"
 			"Raedwulf\r"
 			"Riche\r"
 			"r00t\r"
@@ -324,9 +327,6 @@
 			"Smachine\r"
 			"SweetNutz\r"
 			"Thaddeus\r"
-			"Timbeaux\r"
-			"TTimo\r"
-			"Tub\r"
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -345,6 +345,9 @@
 			textaligny 0
 			wrapped
 			text
+			"Timbeaux\r"
+			"TTimo\r"
+			"Tub\r"
 			"TwentySeven\r"
 			"WetWired\r"
 			"Woekele\r"
