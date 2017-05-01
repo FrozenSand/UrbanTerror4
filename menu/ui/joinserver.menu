@@ -848,9 +848,9 @@
 		itemDef {
 			name viewAccounts
 			type ITEM_TYPE_MULTI
-			text "Accounts:"
+			text "Auth:"
 			cvar "ui_browserShowAccounts"
-			cvarfloatlist { "All" 0 "Yes" 1 "No" 2 }
+			cvarfloatlist { "All" 0 "Enabled" 1 "Disabled" 2 }
 			textscale .25
 			rect 403 344 117 24
 			//textalign 1
@@ -874,7 +874,7 @@
 			type ITEM_TYPE_MULTI
 			text "Private:"
 			cvar "ui_browserShowPrivate"
-			cvarfloatlist { "Any" 0 "No" 1 "Yes" 2 }
+			cvarfloatlist { "Any" 0 "No" 1 "Only" 2 }
 			textscale .25
 			rect 403 368 100 24
 			//textalign 1
