@@ -1,4 +1,4 @@
-<p align="center"><a href="http://www.urbanterror.info" title="Urban Terror official website" target="_blank"><img src="https://raw.githubusercontent.com/FrozenSand/UrbanTerror4/master/github_frozensand.jpg" alt="Urban Terror 4" title="Urban Terror 4" /></a></p>
+<p align="center"><a href="http://www.urbanterror.info" title="FrozenSand's Urban Terror website" target="_blank"><img src="https://raw.githubusercontent.com/FrozenSand/UrbanTerror4/master/github_frozensand.jpg" alt="Urban Terror 4" title="Urban Terror 4" /></a></p>
 
 Urban Terror 4
 ================
@@ -11,7 +11,7 @@ If you encounter a bug while using the **UrTUpdater**, please report it [here](h
 
 If you want to **play** the game, it's absolute **fun** and completely **free**, just download it [here](http://www.urbanterror.info/downloads/).
 
-If you want to discuss about the future version of the game called **Urban Terror Resurgence**, go [here](http://www.urbanterror.info/forums/forum/73-ue4-urban-terror-discussion/).
+If you want to discuss about the future version of the game called **Resurgence**, go [here](http://www.urbanterror.info/forums/forum/73-ue4-urban-terror-discussion/).
 
 
 Guidelines
@@ -20,17 +20,16 @@ Guidelines
 Please follow these basic rules in order to keep this place nice:
 
 - Do not insult, troll or harass anyone
-- Do a [small research](https://github.com/FrozenSand/UrbanTerror4/issues?q=is%3Aissue+) before posting a new issue to avoid duplication
+- Do a [small research](https://github.com/FrozenSand/UrbanTerror4/issues?q=is%3Aissue+) before posting a new issue to avoid duplicates
 - Do not "UP" the issues yourself, it won't make us process them faster
-- Do not use ALL CAPS - we are not blind (yet)
 
 
 Reporting Issues
 ----------------
 
-If you encounter a bug while using Urban Terror 4, please first check that [a similar issue hasn't been opened yet](https://github.com/FrozenSand/UrbanTerror4/issues).
+If you encounter a bug while using Urban Terror, please first check that [a similar issue hasn't yet been opened](https://github.com/FrozenSand/UrbanTerror4/issues).
 
-If your bug has not been reported, please provide us at least the following information:
+If your bug is not reported, please provide us the following information:
 
 - What platform you were using when facing the bug (Windows, Linux, Mac OSX)
 - The version of your platform (Windows 7, OSX 10.9...)
@@ -44,7 +43,7 @@ Please place huge logs using tools like [Gist](https://gist.github.com) or [Past
 Feature Requests
 ----------------
 
-While we always appreciate new feature requests, please note that we are heavily working on **Urban Terror: Resurgence** and we are probably not going to implement *huge* changes to Urban Terror 4 anymore.
+While we always appreciate new feature requests, please note that we concentrate our work on **Resurgence** and we are probably not going to implement *huge* changes to Urban Terror anymore.
 Nevertheless, a section of our forums is dedicated to suggestions, feel free to post [there](http://www.urbanterror.info/forums/forum/57-4x-suggestions/).
 
 You can find us on 
