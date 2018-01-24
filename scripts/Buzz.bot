@@ -1,0 +1,6 @@
+{
+name	        Buzz
+model		athena/swat_b
+aifile	        bots/ut_buzz_c.c
+gear	   gIAAWRV    //colt1911,mpk5,kevlar,helmet,laser     
+}

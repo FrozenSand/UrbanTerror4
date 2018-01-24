@@ -1,0 +1,156 @@
+// Copyright (C) 1999-2000 Id Software, Inc.
+
+#ifndef _INV_H_
+#define _INV_H_
+
+#define INVENTORY_NONE				 0
+
+//powerups
+
+#define INVENTORY_HEALTH			 2
+#define INVENTORY_REDFLAG			 3
+#define INVENTORY_BLUEFLAG			 4
+#define INVENTORY_NEUTRALFLAG		 5
+
+//weapons
+
+#define INVENTORY_KNIFE 			 6
+#define INVENTORY_BERETTA			 7
+#define INVENTORY_DEAGLE			 8
+#define INVENTORY_SPAS12			 9
+#define INVENTORY_MP5K				 10
+#define INVENTORY_UMP45 			 11
+#define INVENTORY_HK69				 12
+#define INVENTORY_LR				 13
+#define INVENTORY_G36				 14
+#define INVENTORY_PSG1				 15
+#define INVENTORY_GRENADE_HE		 16
+#define INVENTORY_GRENADE_FLASH 	 17
+#define INVENTORY_GRENADE_SMOKE 	 18
+#define INVENTORY_SR8				 19
+#define INVENTORY_AK103 			 20
+#define INVENTORY_BOMB				 21
+#define INVENTORY_NEGEV 			 22
+#define INVENTORY_GRENADE_FRAG		 23
+#define INVENTORY_M4				 24
+#define INVENTORY_GLOCK 			 25
+#define INVENTORY_COLT1911           26
+#define INVENTORY_MAC11              27
+#define INVENTORY_FRF1               28
+#define INVENTORY_BENELLI            29
+#define INVENTORY_P90                30
+#define INVENTORY_MAGNUM             31
+#define INVENTORY_TOD50              32
+
+//ammo
+
+#define INVENTORY_KNIFE_AMMO		 30 		//19
+#define INVENTORY_BERETTA_AMMO		 31 		//20
+#define INVENTORY_DEAGLE_AMMO		 32 		//21
+#define INVENTORY_SPAS12_AMMO		 33 		//22
+#define INVENTORY_MP5K_AMMO 		 34 		//23
+#define INVENTORY_UMP45_AMMO		 35 		//24
+#define INVENTORY_HK69_AMMO 		 36 		//25
+#define INVENTORY_LR_AMMO			 37 		//26
+#define INVENTORY_G36_AMMO			 38 		//27
+#define INVENTORY_PSG1_AMMO 		 39 		//28
+#define INVENTORY_GRENADE_HE_AMMO	 40 		//29
+#define INVENTORY_GRENADE_FLASH_AMMO 41 		//30
+#define INVENTORY_GRENADE_SMOKE_AMMO 42 		//31
+#define INVENTORY_SR8_AMMO			 43 		//32
+#define INVENTORY_AK103_AMMO		 44
+#define INVENTORY_BOMB_AMMO 		 45
+#define INVENTORY_NEGEV_AMMO		 46
+#define INVENTORY_GRENADE_FRAG_AMMO  47
+#define INVENTORY_M4_AMMO			 48
+#define INVENTORY_GLOCK_AMMO		 49
+#define INVENTORY_COLT1911_AMMO      50
+#define INVENTORY_MAC11_AMMO         51
+#define INVENTORY_FRF1_AMMO          52
+#define INVENTORY_BENELLI_AMMO       53
+#define INVENTORY_P90_AMMO           54
+#define INVENTORY_MAGNUM_AMMO        55
+#define INVENTORY_TOD50_AMMO         56
+
+
+//enemy stuff
+
+#define ENEMY_HORIZONTAL_DIST		 200
+#define ENEMY_HEIGHT				 201
+#define NUM_VISIBLE_ENEMIES 		 202
+#define NUM_VISIBLE_TEAMMATES		 203
+
+/* MODELINDEX_* and WEAPONINDEX_* are only used in botfiles/..*
+   but please put them in there, too, for completeness	*/
+// ITEMS
+
+#define MODELINDEX_REDFLAG			 1
+#define MODELINDEX_BLUEFLAG 		 2
+#define MODELINDEX_NEUTRALFLAG		 3
+
+// WEAPONS
+
+#define MODELINDEX_KNIFE			 4
+#define MODELINDEX_BERETTA			 5
+#define MODELINDEX_DEAGLE			 6
+#define MODELINDEX_SPAS12			 7
+#define MODELINDEX_MP5K 			 8
+#define MODELINDEX_UMP45			 9
+#define MODELINDEX_HK69 			 10
+#define MODELINDEX_LR				 11
+#define MODELINDEX_G36				 12
+#define MODELINDEX_PSG1 			 13
+#define MODELINDEX_GRENADE_HE		 14
+#define MODELINDEX_GRENADE_FLASH	 15
+#define MODELINDEX_GRENADE_SMOKE	 16
+#define MODELINDEX_VEST 			 17
+#define MODELINDEX_NVG				 18
+#define MODELINDEX_MEDKIT			 19
+#define MODELINDEX_SILENCER 		 20
+#define MODELINDEX_LASER			 21
+#define MODELINDEX_HELMET			 22
+#define MODELINDEX_AMMO 			 23
+#define MODELINDEX_APR				 24
+#define MODELINDEX_SR8				 25
+#define MODELINDEX_AK103			 26
+#define MODELINDEX_NEGEV			 27
+#define MODELINDEX_GRENADE_FRAG 	 28
+#define MODELINDEX_M4				 29
+#define MODELINDEX_GLOCK			 30
+#define MODELINDEX_COLT1911          31
+#define MODELINDEX_MAC11             32
+#define MODELINDEX_FRF1              33
+#define MODELINDEX_BENELLI           34
+#define MODELINDEX_P90               35
+#define MODELINDEX_MAGNUM            36
+#define MODELINDEX_TOD50             37
+
+#define WEAPONINDEX_KNIFE			 1
+#define WEAPONINDEX_BERETTA 		 2
+#define WEAPONINDEX_DEAGLE			 3
+#define WEAPONINDEX_SPAS12			 4
+#define WEAPONINDEX_MP5K			 5
+#define WEAPONINDEX_UMP45			 6
+#define WEAPONINDEX_HK69			 7
+#define WEAPONINDEX_LR				 8
+#define WEAPONINDEX_G36 			 9
+#define WEAPONINDEX_PSG1			 10
+#define WEAPONINDEX_GRENADE_HE		 11
+#define WEAPONINDEX_GRENADE_FLASH	 12
+#define WEAPONINDEX_GRENADE_SMOKE	 13
+#define WEAPONINDEX_SR8 			 14
+#define WEAPONINDEX_AK103			 15
+#define WEAPONINDEX_BOMB			 16
+#define WEAPONINDEX_NEGEV			 17
+#define WEAPONINDEX_GRENADE_FRAG	 18
+#define WEAPONINDEX_M4				 19
+#define WEAPONINDEX_GLOCK			 20
+#define WEAPONINDEX_COLT1911         21
+#define WEAPONINDEX_MAC11            22
+#define WEAPONINDEX_FRF1             23
+#define WEAPONINDEX_BENELLI          24
+#define WEAPONINDEX_P90              25
+#define WEAPONINDEX_MAGNUM           26
+#define WEAPONINDEX_TOD50            27
+
+#endif

@@ -1,0 +1,8 @@
+{
+name		Lollipop
+model		athena/urban_w
+aifile	bots/ut_lollipop_c.c
+gear		gLAAUWV
+}
+
+// gear          // colt,lr,helmet,silencer,laser

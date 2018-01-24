@@ -1,0 +1,6 @@
+{
+name	        Robin
+model		athena/swat_b
+aifile	        bots/ut_robin_c.c
+gear	   GiHAWRA    //  FR-F1 spazz DE Helmet Kevlar vest
+}

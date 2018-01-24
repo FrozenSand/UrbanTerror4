@@ -1,0 +1,8 @@
+{
+name		Drop
+model		athena/urban_w
+aifile	bots/ut_drop_c.c
+gear		ljAAXRT 
+}
+
+// gear          // Magnum, Benelli, xammo, Kevlar Vest, Medkit

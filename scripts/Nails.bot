@@ -1,0 +1,6 @@
+{
+name	        Nails
+model		orion/desert_b
+aifile	        bots/ut_nails_c.c
+gear	   fcAAUVX    //Glock, Negev, silencer, laser, Xammo     
+}
