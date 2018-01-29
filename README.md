@@ -7,7 +7,7 @@ This is the official repository of the Urban Terror game.
 
 If you want to **play** the game, it's absolute **fun** and completely **free**, just download it [here](http://www.urbanterror.info/downloads/).
 
-If you want to contribute and improve the game, head over [here](https://github.com/FrozenSand/UrbanTerror4/tree/master/menu) for the menu and [here](https://github.com/FrozenSand/UrbanTerror4/tree/master/botfiles) for the bots.
+If you want to contribute and improve the game, head over [here](https://github.com/FrozenSand/UrbanTerror4/tree/master/menu) for the **menu** and [here](https://github.com/FrozenSand/UrbanTerror4/tree/master/botfiles) for the **bots**.
 
 If you encounter a bug while using the official **UrTUpdater**, please report it [here](https://github.com/Barbatos/UrTUpdater) instead.
 
