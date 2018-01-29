@@ -1,0 +1,6 @@
+{
+name	        Staple
+model		orion/desert_b
+aifile	        bots/ut_staple_c.c
+gear	   FhAAWVX    //Beretta, Mac11, Helmet, laser, Xammo     
+}

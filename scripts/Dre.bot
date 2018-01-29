@@ -1,0 +1,8 @@
+{
+name		Dre
+model		athena/swat_b
+aifile	        bots/ut_dre_c.c
+gear		fkAAXRT 
+}
+
+// gear          // p90, glock, xammo, Kevlar Vest, Medkit
