@@ -3,7 +3,7 @@
 Urban Terror 4
 =====================
 
-This is the official repository of the game Urban Terror.
+This is the official repository of the Urban Terror game.
 
 If you want to contribute to the games' **menu files**, head over [here](https://github.com/FrozenSand/UrbanTerror4/tree/master/menu).
 
@@ -51,6 +51,6 @@ Want to get in touch?
 
 - Reach us on [Twitter](https://twitter.com/UrbanTerrorInfo)
 - Message us on [Facebook](https://www.facebook.com/urbanterror)
-- Find us on [Discord](http://discord.me/urt)
+- Highlight us on [Discord](http://discord.me/urt)
 
 **Thanks for your help!**
