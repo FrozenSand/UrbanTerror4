@@ -52,5 +52,6 @@ Want to get in touch?
 - Reach us on [Twitter](https://twitter.com/UrbanTerrorInfo)
 - Message us on [Facebook](https://www.facebook.com/urbanterror)
 - Highlight us on [Discord](http://discord.me/urt)
+- Follow us on [YouTube](https://www.youtube.com/user/urbanterrorofficial)
 
 **Thanks for your help!**
