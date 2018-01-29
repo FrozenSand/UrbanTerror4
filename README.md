@@ -14,7 +14,7 @@ If you want to **play** the game, it's absolute **fun** and completely **free**,
 If you want to discuss about the future version of the game called **Urban Terror Resurgence**, go [here](http://www.urbanterror.info/forums/forum/73-ue4-urban-terror-discussion/).
 
 
-Guidelines
+Rules
 ---------------------
 
 Please follow these basic rules in order to keep this place nice:
