@@ -43,7 +43,7 @@ Please place huge logs using tools like [Gist](https://gist.github.com) or [Past
 Feature Requests
 ---------------------
 
-While we always appreciate new feature requests, please note that we concentrate our work on **Resurgence** and we are probably not going to implement *huge* changes to Urban Terror anymore.
+While we always appreciate new feature requests, please note that we are heavily working on **Resurgence** and we are probably not going to implement *huge* changes to Urban Terror anymore.
 Nevertheless, a section of our forums is dedicated to suggestions, feel free to post [there](http://www.urbanterror.info/forums/forum/57-4x-suggestions/).
 
 Want to get in touch?
