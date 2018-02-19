@@ -88,7 +88,7 @@
 
 		itemDef {
 			name copyright
-			text "Urban Terror (r) (c) 2000-2017 Frozensand Games Ltd,"
+			text "Urban Terror (r) (c) 2000-2018 Frozensand Games Ltd,"
 			style 0
 			textscale .2
 			rect 0 400 640 40
@@ -167,21 +167,9 @@
 			decoration
 		}
 
-		// the blank bar to seperate the list
-		itemDef {
-			name window
-			rect 324 80 1 320
-			style 1
-			border 0
-			backcolor .5 .5 .5 1
-			visible 1
-			decoration
-		}
-
-
 		itemDef {
 			name credits
-			text "Frozen Sand is:"
+			text "FrozenSand is:"
 			textscale .28
 			textalignx 10
 			textaligny 38
@@ -228,7 +216,6 @@
 			wrapped
 			text
 			"Barbatos\r"
-			"Biddle\r"
 			"BladeKiller\r"
 			"Blapecool\r"
 			"Chump\r"
@@ -238,12 +225,15 @@
 			"Gost0r\r"
 			"HappyDay\r"
 			"Kalish\r"
-			"Kr0m\r"
-			"Nounou\r"
-			textscale .22
+			"RabidCow\r"
+			"RaideR\r"
+			"SevenofNine\r"
+			"UnifiedTone\r"
+			"Zenity\r"
+			textscale .23
 			textalignx 0
 			textaligny 23
-			rect 35 130 160 25
+			rect 165 130 160 25
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -255,74 +245,32 @@
 			name credits
 			wrapped
 			text
-			"Company Director & COO\r"
-			"Public Relations\r"
+			"Company Director & Lead Developer\r"
 			"Team Manager & Senior Artist & Modeler\r"
 			"System Admin & Website Developer\r"
 			"Public Relations & Audio Engineer\r"
 			"Community Support\r"
 			"Hosting Consultant\r"
 			"Lead Animator & Assets Manager\r"
-			"Codebase Developer & Bugs Reviser\r"
-			"Level Designer\r"
+			"Lead Programmer\r"
+			"Codebase Developer & Level Designer\r"
 			"Engine Developer & Webmaster & 2D Artist\r"
-			"Forum Administrator\r"
-			"Concept Artist & Level Designer\r"
-			textscale .22
-			textalignx 0
-			textaligny 23
-			rect 96 130 185 25
-			style 1
-			forecolor .5 .5 .5 1
-			backcolor 0 0 0 0
-			visible 1
-			decoration
-		}
-
-
-
-		//  RIGHT ROW		//
-
-
-		itemDef {
-			name credits
-			wrapped
-			text
-			"RabidCow\r"
-			"RaideR\r"
-			"SevenofNine\r"
-			"UnifiedTone\r"
-			"Zenity\r"
-			textscale .22
-			textalignx 0
-			textaligny 18
-			rect 335 130 185 25
-			style 1
-			forecolor 1 1 1 1
-			backcolor 0 0 0 0
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name credits
-			wrapped
-			text
 			"Lead Environments Creator\r"
 			"Company Director & CEO\r"
 			"Public Relations\r"
 			"Composer & Audio Engineer\r"
 			"Codebase Developer & Gameplay Designer\r"
-			textscale .22
+			textscale .23
 			textalignx 0
-			textaligny 18
-			rect 412 130 185 25
+			textaligny 23
+			rect 275 130 185 25
 			style 1
 			forecolor .5 .5 .5 1
 			backcolor 0 0 0 0
 			visible 1
 			decoration
 		}
+
 
 		itemdef {
 			name next

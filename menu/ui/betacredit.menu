@@ -88,7 +88,7 @@
 
 		itemDef {
 			name copyright
-			text "Urban Terror (r) (c) 2000-2017 Frozensand Games Ltd,"
+			text "Urban Terror (r) (c) 2000-2018 Frozensand Games Ltd,"
 			style 0
 			textscale .2
 			rect 0 400 640 40
@@ -171,7 +171,7 @@
 
 		itemDef {
 			name credits
-			text "Former/Inactive FrozenSand and SID Members:"
+			text "Former FrozenSand and SID Members:"
 			textscale .33
 			textalignx 10
 			textaligny 38
@@ -219,6 +219,7 @@
 			"Bar-B-Q\r"
 			"Basilisk\r"
 			"BattleCow\r"
+			"Biddle\r"
 			"Bittar\r"
 			"BlackRayne\r"
 			"BotKiller\r"
@@ -228,7 +229,6 @@
 			"CrystalMesh\r"
 			"Density\r"
 			"DickDastardly\r"
-			"Dokta8\r"
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -247,6 +247,7 @@
 			textaligny 0
 			wrapped
 			text
+			"Dokta8\r"
 			"Dracostian\r"
 			"Dragonne\r"
 			"EarthQuake\r"
@@ -261,7 +262,6 @@
 			"Gsigms\r"
 			"H0i\r"
 			"HavoK\r"
-			"HighSea\r"
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -280,10 +280,12 @@
 			textaligny 0
 			wrapped
 			text
+			"HighSea\r"
 			"Hobbes\r"
 			"Holblin\r"
 			"Iain\r"
 			"Jaker\r"
+			"Kr0m\r"
 			"Levant\r"
 			"MajkiFajki\r"
 			"Meaty\r"
@@ -291,9 +293,7 @@
 			"Mr\r"
 			"MrBean\r"
 			"Nitro\r"
-			"NrGizer\r"
-			"Odd\r"
-			"Oswald\r"
+			"Nounou\r"
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -312,6 +312,9 @@
 			textaligny 0
 			wrapped
 			text
+			"NrGizer\r"
+			"Odd\r"
+			"Oswald\r"
 			"p5yc0runn3r\r"
 			"PapyRuny\r"
 			"Preacher\r"
@@ -324,9 +327,6 @@
 			"Sinni\r"
 			"Sir Chumps\r"
 			"skaz\r"
-			"Smachine\r"
-			"SweetNutz\r"
-			"Thaddeus\r"
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -345,6 +345,9 @@
 			textaligny 0
 			wrapped
 			text
+			"Smachine\r"
+			"SweetNutz\r"
+			"Thaddeus\r"
 			"Timbeaux\r"
 			"TTimo\r"
 			"Tub\r"
