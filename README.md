@@ -5,13 +5,13 @@ Urban Terror 4
 
 This is the official GitHub repository for the game Urban Terror.
 
-If you want to **play** the game, it's absolute **fun** and completely **free**, just download it [here](http://www.urbanterror.info/downloads/).
+If you want to **play** the game, it's absolutely **fun** and completely **free**, just download it [here](http://www.urbanterror.info/downloads/).
 
 If you want to contribute to the games' **menu files** and **bot files**, head over [here](https://github.com/FrozenSand/UrbanTerror4/tree/master/menu) and [here](https://github.com/FrozenSand/UrbanTerror4/tree/master/botfiles).
 
 If you encounter a bug while using the official **UrTUpdater**, please report it [here](https://github.com/Barbatos/UrTUpdater) instead.
 
-If you want to discuss about the future version of the game called **Urban Terror Resurgence**, go [here](http://www.urbanterror.info/forums/forum/73-ue4-urban-terror-discussion/).
+If you want to discuss the future version of the game called **Urban Terror Resurgence**, go [here](http://www.urbanterror.info/forums/forum/73-ue4-urban-terror-discussion/).
 
 
 Rules
@@ -20,7 +20,7 @@ Rules
 Please follow these basic rules in order to keep this place nice:
 
 - Do not insult, troll or harass anyone
-- Do a [small research](https://github.com/FrozenSand/UrbanTerror4/issues?q=is%3Aissue+) before posting a new issue to avoid duplicates
+- Do some [small research](https://github.com/FrozenSand/UrbanTerror4/issues?q=is%3Aissue+) before posting a new issue to avoid duplicates
 - Do not "UP" the issues yourself, it won't make us process them faster
 - Do not use ALL CAPS - we are not blind (yet)
 
@@ -36,7 +36,7 @@ If your bug hasn't already been reported, please provide us at least the followi
 - The version of your platform (Windows 7, OSX 10.9...)
 - A short and descriptive title of your bug
 - A detailed description of your bug and **steps needed to reproduce it**
-- A few screenshots if possible - they can easily be drag&drop'ed in your issue description
+- A few screenshots if possible - they can easily be drag&drop'ed into your issue description
 - A **complete** output of your game console
 
 Please place huge logs using tools like [Gist](https://gist.github.com) or [Pastebin](http://pastebin.com).
@@ -47,7 +47,7 @@ Feature Requests
 While we always appreciate new feature requests, please note that we are heavily working on Urban Terror Resurgence and we are probably not going to implement *huge* changes to Urban Terror 4 anymore.
 Nevertheless, a section of our forums is dedicated to suggestions, feel free to post [there](http://www.urbanterror.info/forums/forum/57-4x-suggestions/).
 
-Get in touch
+Get In Touch
 ---------------------
 
 - Reach us on [Twitter](https://twitter.com/UrbanTerrorInfo)
