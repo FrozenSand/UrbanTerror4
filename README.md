@@ -1,17 +1,17 @@
-<p align="center"><a href="http://www.urbanterror.info" title="Urban Terror official website" target="_blank"><img src="github_frozensand.jpg" alt="Urban Terror 4" title="Urban Terror 4" /></a></p>
+<p align="center"><a href="https://www.urbanterror.info" title="Urban Terror official website" target="_blank"><img src="github_frozensand.jpg" alt="Urban Terror 4" title="Urban Terror 4" /></a></p>
 
 Urban Terror 4
 =====================
 
 This is the official GitHub repository for the game Urban Terror.
 
-If you want to **play** the game, it's absolutely **fun** and completely **free**, just download it [here](http://www.urbanterror.info/downloads/).
+If you want to **play** the game, it's absolutely **fun** and completely **free**, just download it [here](https://www.urbanterror.info/downloads/).
 
 If you want to contribute to the games' **menu files** and **bot files**, head over [here](https://github.com/FrozenSand/UrbanTerror4/tree/master/menu) and [here](https://github.com/FrozenSand/UrbanTerror4/tree/master/botfiles).
 
 If you encounter a bug while using the official **UrTUpdater**, please report it [here](https://github.com/Barbatos/UrTUpdater) instead.
 
-If you want to discuss the future version of the game called **Urban Terror Resurgence**, go [here](http://www.urbanterror.info/forums/forum/73-ue4-urban-terror-discussion/).
+If you want to discuss the future version of the game called **Urban Terror Resurgence**, go [here](https://www.urbanterror.info/forums/forum/73-ue4-urban-terror-discussion/).
 
 
 Rules
@@ -45,7 +45,7 @@ Feature Requests
 ---------------------
 
 While we always appreciate new feature requests, please note that we are heavily working on Urban Terror Resurgence and we are probably not going to implement *huge* changes to Urban Terror 4 anymore.
-Nevertheless, a section of our forums is dedicated to suggestions, feel free to post [there](http://www.urbanterror.info/forums/forum/57-4x-suggestions/).
+Nevertheless, a section of our forums is dedicated to suggestions, feel free to post [there](https://www.urbanterror.info/forums/forum/57-4x-suggestions/).
 
 Get In Touch
 ---------------------

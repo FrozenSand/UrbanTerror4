@@ -118,7 +118,7 @@
 			rect 20 247 323 326
 			wrapped
 			text 	"^1character: you can only choose the preset used to display their skins^7).\r\r"
-			"Manual: ^5http://manual.urbanterror.info"
+			"Manual: ^5https://manual.urbanterror.info"
 			style 1
 			textscale .22
 			textalignx 0
