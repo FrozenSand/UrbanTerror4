@@ -222,11 +222,11 @@
 			"BlackRayne\r"
 			"BotKiller\r"
 			"CGmonkey\r"
+			"chump\r"
 			"CrazyButcher\r"
 			"Cricel\r"
 			"CrystalMesh\r"
-			"Density\r"
-			"DickDastardly\r"
+			"Decoy\r"
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -245,6 +245,8 @@
 			textaligny 0
 			wrapped
 			text
+			"Density\r"
+			"DickDastardly\r"
 			"Dokta8\r"
 			"Dracostian\r"
 			"Dragonne\r"
@@ -258,8 +260,6 @@
 			"Gerbil!\r"
 			"GottaBeKD\r"
 			"Gsigms\r"
-			"H0i\r"
-			"HavoK\r"
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -278,6 +278,8 @@
 			textaligny 0
 			wrapped
 			text
+			"H0i\r"
+			"HavoK\r"
 			"HighSea\r"
 			"Hobbes\r"
 			"Holblin\r"
@@ -290,8 +292,6 @@
 			"Miles\r"
 			"Mr\r"
 			"MrBean\r"
-			"Nitro\r"
-			"Nounou\r"
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -310,6 +310,8 @@
 			textaligny 0
 			wrapped
 			text
+			"Nitro\r"
+			"Nounou\r"
 			"NrGizer\r"
 			"Odd\r"
 			"Oswald\r"
@@ -321,10 +323,8 @@
 			"r00t\r"
 			"RobDistorted\r"
 			"seti\r"
+			"SevenofNine\r"
 			"Shminkyboy\r"
-			"Sinni\r"
-			"Sir Chumps\r"
-			"skaz\r"
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -343,6 +343,9 @@
 			textaligny 0
 			wrapped
 			text
+			"Sinni\r"
+			"Sir Chumps\r"
+			"skaz\r"
 			"Smachine\r"
 			"SweetNutz\r"
 			"Thaddeus\r"
