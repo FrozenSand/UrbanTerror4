@@ -65,16 +65,16 @@
 			wrapped
 			text 	"This features allows a player to configure its client to render player models in colours\r"
 			"other than the game defaults. By using the previous panel it's possible to choose the\r"
-			"skin preset to be used to render both ^3ally ^7and ^3enemy ^7team.\r\r"
-			"^3Ally ^7controls the skin preset used to display yourself and your allies in team based\r"
+			"skin preset to be used to render both ^4ally ^7and ^1enemy ^7team.\r\r"
+			"^4Ally ^7controls the skin preset used to display yourself and your allies in team based\r"
 			"gametypes (TDM, TS, FTL, CAH, CTF, BOMB). You are allowed to select both the skin\r"
 			"preset and the gender to be used for your own character among the available ones.\r\r"
-			"^3Enemy ^7controls the skin preset used to display the enemy team in team based\r"
+			"^1Enemy ^7controls the skin preset used to display the enemy team in team based\r"
 			"gametypes (TDM, TS, FTL, CAH, CTF, BOMB) and everyone in non-team based\r"
 			"gametypes (FFA, LMS, JUMP). However, the gender selection, among the enemy skin\r"
 			"preset, kicks in just when you are playing non-team based gametypes and it's used\r"
 			"to display yourself. For all the other game modes just the skin preset selection will\r"
-			"be considered (^1you can't force other players to be displayed using a specific\r"
+			"be considered (^5you can't force other players to be displayed using a specific\r"
 			style 1
 			textscale .22
 			textalignx 0
@@ -89,8 +89,9 @@
 			name readme2
 			rect 36 267 323 326
 			wrapped
-			text 	"^1character: you can only choose the preset used to display their skins^7).\r\r"
-			"Manual: ^5https://manual.urbanterror.info"
+			text 	"^5character: you can only choose the preset used to display their skins^7).\r\r"
+			"Manual: ^3https://manual.urbanterror.info"
+
 			style 1
 			textscale .22
 			textalignx 0
