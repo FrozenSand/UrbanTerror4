@@ -1,0 +1,6 @@
+{
+name	        Adrastos
+model		athena/swat_b
+aifile	        bots/ut_adrastos_c.c
+gear	   GLAARWV    //DE,lr300,kevlar,helmet,laser     
+}

@@ -1,0 +1,6 @@
+{
+name	        Rock
+model		orion/desert_b
+aifile	        bots/ut_rock_c.c
+gear	   FMAARUX    //Beretta, G36, Kevlar Vest, silencer, Xammo     
+}

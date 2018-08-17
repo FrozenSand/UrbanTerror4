@@ -1,0 +1,8 @@
+{
+name		Oscar
+model		athena/urban_w
+aifile	bots/ut_oscar_c.c
+gear		leAARXW  //mag,M4,kevlar,helmet,xammo
+}
+
+

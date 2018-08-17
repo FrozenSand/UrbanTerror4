@@ -19,10 +19,12 @@ ut4_prominence
 ut4_ramelle
 ut4_raiders
 ut4_riyadh
+ut4_mykonos_a17
 ut4_eagle
 ut4_suburbs
 ut4_subway
 ut4_thingley
+ut4_tombs
 ut4_docks
 ut4_ricochet
 ut4_herring

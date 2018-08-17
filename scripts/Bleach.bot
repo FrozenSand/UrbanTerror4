@@ -1,0 +1,6 @@
+{
+name		Bleach
+model		athena/urban_w
+aifile	bots/ut_bleach_c.c
+gear		fLAAUWV  // glock,lr,helmet,silencer,laser
+}

@@ -188,7 +188,7 @@
 
 		itemDef {
 			name copyright
-			text "Urban Terror (r) (c) 2000-2017 Frozensand Games Ltd,"
+			text "Urban Terror (r) (c) 2000-2018 Frozensand Games Ltd,"
 			style 0
 			textscale .2
 			rect 0 400 640 40
@@ -225,7 +225,6 @@
 			decoration
 		}
 
-		//@Barbatos - 4.2.008 - added current modversion
 		itemDef {
 			name version2
 			rect 0 400 640 40
@@ -283,7 +282,7 @@
 
 		//	BUTTONS	//
 
-		//@Barbatos: auth system - 4.2
+		// auth system - 4.2
 		itemDef {
 			name loginoption
 			cvartest "name"
@@ -302,7 +301,7 @@
 			mouseExit { setcolor backcolor 0 0 0 0 }
 		}
 
-		//@Barbatos: same for the logout but no need to open a menu
+		// same for the logout but no need to open a menu
 		itemDef {
 			name loginoption
 			cvartest "name"
@@ -412,7 +411,7 @@
 
 		//	TEXT FOR BUTTONS	//
 
-		//@Barbatos: auth system - 4.2
+		// auth system - 4.2
 		itemDef {
 			name loginoption
 			text "log in"
@@ -556,7 +555,7 @@
 			decoration
 		}
 
-		//@Barbatos: no tutorial for 4.2
+		// no tutorial for 4.2
 		/*
 		itemDef {
 			name namewindow3
@@ -639,7 +638,6 @@
 			bordercolor 1 1 1 1
 		}
 
-		//@Barbatos: added a message to inform the new players that they can register an account for free
 		itemDef {
 			name namewindow44
 			rect 266 234 580 25

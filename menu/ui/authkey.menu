@@ -1,7 +1,7 @@
 #include "ui/menudef.h"
 
 {
-	/* @Barbatos 07/28/2012 for 4.2
+	/* 
 	* Auth system - page to enter the auth key
 	*/
 
@@ -90,7 +90,7 @@
 
 		itemDef {
 			name copyright
-			text "Urban Terror (r) (c) 2000-2017 Frozensand Games Ltd,"
+			text "Urban Terror (r) (c) 2000-2018 Frozensand Games Ltd,"
 			style 0
 			textscale .2
 			rect 0 400 640 40
@@ -127,7 +127,6 @@
 			decoration
 		}
 
-		//@Barbatos - 4.2.008 - added current modversion
 		itemDef {
 			name version2
 			rect 0 400 640 40

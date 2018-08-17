@@ -2,7 +2,7 @@
  * Filename: $(filename)
  *
  * Copyright (C) 1999-2005 Id Software, Inc.
- * Copyright (C) 2000-2017 Frozensand Games Ltd.
+ * Copyright (C) 2000-2018 Frozensand Games Ltd.
  *
  * This file is part of the Urban Terror source code.
  *

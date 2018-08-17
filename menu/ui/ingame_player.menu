@@ -25,6 +25,23 @@
 			decoration
 		}
 
+		// INSTAGIB CATCHER
+		itemDef {
+			name gear
+			rect -2 -2 644 484
+			style WINDOW_STYLE_FILLED
+			type 1
+			forecolor 1 1 1 0
+			backcolor 0 0 0 0
+			border 0
+			bordercolor .5 .5 .5 1
+			visible 1
+			action { hide gear }
+			mouseEnter { hide gear }
+			cvarTest "cg_instagib"
+			hideCvar { "0" }
+		}
+
 		//  BUTTONS	//
 
 		itemDef {

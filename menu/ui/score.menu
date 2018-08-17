@@ -1,7 +1,6 @@
 #include "ui/menudef.h"
 
 // Score Menu
-// Last Revised: Barbatos 4.3.0
 
 {
 
@@ -206,7 +205,6 @@
 			visible         1
 		}
 
-		//@Fenix
 		itemDef {
 			name            headings
 			text            "auth login"
@@ -227,7 +225,7 @@
 		itemDef  {
 			name            headings
 			cvarTest        "g_gametype"
-			hideCvar        { "1" ; "9" ; "11" } //@Barbatos LMS //@Fenix JUMP
+			hideCvar        { "1" ; "9" ; "11" } // LMS, JUMP, Gun Game
 			text            "kills"
 			textscale       .2
 			style           0
@@ -246,7 +244,7 @@
 		itemDef {
 			name            headings
 			cvarTest        "g_gametype"
-			showCvar        { "1" } //@Barbatos LMS
+			showCvar        { "1" } // LMS
 			text            "points"
 			textscale       .2
 			style           0
@@ -305,7 +303,7 @@
 		itemDef {
 			name            headings
 			cvarTest        "g_gametype"
-			showCvar        { "9" } //@Fenix JUMP
+			showCvar        { "9" } // JUMP
 			text            "best time"
 			textscale       .2
 			style           0
@@ -325,7 +323,7 @@
 			name            headings
 			text            "deaths"
 			cvarTest        "g_gametype"
-			hideCvar        { "9" } //@Fenix JUMP
+			hideCvar        { "9" } // JUMP
 			textscale       .2
 			style           0
 			rect            426 70 55 15
@@ -464,7 +462,7 @@
 		itemDef {
 			name            red_team_besttime_list
 			cvarTest        "g_gametype"
-			showCvar        { "9" } //@Fenix JUMP
+			showCvar        { "9" } // JUMP
 			rect            464 90 400 10
 			textscale       .2
 			ownerdraw       CG_SCOREBOARD_BESTTIME_LIST
@@ -476,7 +474,7 @@
 		itemDef {
 			name            red_team_deaths_list
 			cvarTest        "g_gametype"
-			hideCvar        { "9" } //@Fenix JUMP
+			hideCvar        { "9" } // JUMP
 			rect            466 90 400 10
 			textscale       .2
 			ownerdraw       CG_SCOREBOARD_DEATH_LIST

@@ -2,7 +2,6 @@
 
 {
 	\\ Server Information Popup Menu \\
-	//@Barbatos 4.2.002 - increased the size of the box
 
 	menuDef {
 		name "serverinfo_popmenu"

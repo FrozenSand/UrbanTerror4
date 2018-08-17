@@ -1,0 +1,6 @@
+{
+name	        Twist
+model		athena/swat_b
+aifile	        bots/ut_twist_c.c
+gear	   GZJAWRA //  DE, sr8, ump, kevlar vest, helmet     
+}

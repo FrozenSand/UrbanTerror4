@@ -94,7 +94,7 @@
 			border 1
 			bordercolor .5 .5 .5 1
 			visible 1
-			action { play "sound/misc/kcaction.wav" ; hide grpCallVote ; show map }
+			action { play "sound/misc/kcaction.wav" ; hide grpCallVote ; show map ; uiScript loadArenas }
 			mouseEnter { setcolor backcolor 0 0 .55 1 }
 			mouseExit { setcolor backcolor 0 0 0 .7 }
 		}
@@ -110,7 +110,7 @@
 			border 1
 			bordercolor .5 .5 .5 1
 			visible 1
-			action { play "sound/misc/kcaction.wav" ; hide grpCallVote ; show nextmap }
+			action { play "sound/misc/kcaction.wav" ; hide grpCallVote ; show nextmap ; uiScript loadArenas }
 			mouseEnter { setcolor backcolor 0 0 .55 1 }
 			mouseExit { setcolor backcolor 0 0 0 .7 }
 		}

@@ -105,7 +105,7 @@
 		}
 
 
-		//@Barbatos: removed for now
+		// Removed for now
 		/*
 		itemDef {
 			name bumpy_button
@@ -414,7 +414,7 @@
 			action { play "sound/misc/kcaction.wav" }
 		}
 
-		//27's BUMPY STUFF - Added By NulL @Barbatos: removed for now
+		//27's BUMPY STUFF - Added By NulL -- removed for now
 
 		/*
 		itemDef {

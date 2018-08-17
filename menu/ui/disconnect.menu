@@ -1,7 +1,7 @@
 #include "ui/menudef.h"
 
 {
-	/* @Barbatos 08/01/2012 for 4.2
+	/* 
 	* Auth system - disconnect confirmation popup menu
 	*/
 

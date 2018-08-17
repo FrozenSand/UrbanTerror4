@@ -88,7 +88,7 @@
 
 		itemDef {
 			name copyright
-			text "Urban Terror (r) (c) 2000-2017 Frozensand Games Ltd,"
+			text "Urban Terror (r) (c) 2000-2018 Frozensand Games Ltd,"
 			style 0
 			textscale .2
 			rect 0 400 640 40
@@ -125,7 +125,6 @@
 			decoration
 		}
 
-		//@Barbatos - 4.2.008 - added current modversion
 		itemDef {
 			name version2
 			rect 0 400 640 40
@@ -168,21 +167,9 @@
 			decoration
 		}
 
-		//@Barbatos: the blank bar to seperate the list
-		itemDef {
-			name window
-			rect 324 80 1 320
-			style 1
-			border 0
-			backcolor .5 .5 .5 1
-			visible 1
-			decoration
-		}
-
-
 		itemDef {
 			name credits
-			text "Frozen Sand is:"
+			text "FrozenSand is:"
 			textscale .28
 			textalignx 10
 			textaligny 38
@@ -227,85 +214,25 @@
 		itemDef {
 			name credits
 			wrapped
-			text 
+			text
 			"Barbatos\r"
-			"Biddle\r"
 			"BladeKiller\r"
 			"Blapecool\r"
-			"Clearskies\r"
-			"Decoy\r"
 			"evilelf\r"
 			"Frankie V\r"
 			"Gost0r\r"
-			"H0i\r"
 			"HappyDay\r"
 			"Kalish\r"
-			"Kr0m\r"
-			"Levant\r"
-			"Nounou\r"
-			textscale .22
-			textalignx 0
-			textaligny 18
-			rect 35 130 160 25
-			style 1
-			forecolor 1 1 1 1
-			backcolor 0 0 0 0
-			visible 1
-			decoration
-		}
-
-		itemDef {
-			name credits
-			wrapped
-			text 
-			"Lead Developer / Public Relations Manager\r"
-			"QA Manager\r"
-			"Team Manager / Senior Artist / Modeler\r"
-			"Website Developer\r"
-			"Codebase Developer\r"
-			"Media Manager / Editor\r"
-			"Hosting Platform Manager / Administrator\r"
-			"Lead Animator / Assets Manager\r"
-			"Codebase Developer\r"
-			"Modeler / Texture Artist\r"
-			"Level Designer\r"
-			"Engine Developer / Webmaster / 2D Artist\r"
-			"Forum Administrator\r"
-			"Level Designer\r"
-			"Concept Artist / Level Designer\r"
-			textscale .22
-			textalignx 0
-			textaligny 18
-			rect 96 130 185 25
-			style 1
-			forecolor .5 .5 .5 1
-			backcolor 0 0 0 0
-			visible 1
-			decoration
-		}
-
-
-
-		//  RIGHT ROW		//
-
-
-		itemDef {
-			name credits
-			wrapped
-			text
-			"NulL\r"
-			"p5yc0runn3r\r"
+			"Lizart\r"
 			"RabidCow\r"
 			"RaideR\r"
-			"SevenofNine\r"
 			"UnifiedTone\r"
-			"Urbant\r"
-			"Vladocs\r"
+			"v3nd3tta\r"
 			"Zenity\r"
-			textscale .22
+			textscale .23
 			textalignx 0
-			textaligny 18
-			rect 335 130 185 25
+			textaligny 23
+			rect 165 130 160 25
 			style 1
 			forecolor 1 1 1 1
 			backcolor 0 0 0 0
@@ -317,25 +244,31 @@
 			name credits
 			wrapped
 			text
+			"Company Director & Lead Developer\r"
+			"Team Manager & Senior Artist & Modeler\r"
+			"System Admin & Website Developer\r"
+			"Hosting Consultant\r"
+			"Lead Animator & Assets Manager\r"
+			"Lead Programmer\r"
+			"Codebase Developer & Level Designer\r"
+			"Engine Developer & Webmaster & 2D Artist\r"
+			"Level Designer & Modeler\r"
+			"Lead Environments Creator\r"
+			"Company Director & CEO\r"
+			"Composer & Audio Engineer\r"
 			"Level Designer\r"
-			"Engine & Codebase Developer\r"
-			"CEO / Modeler / Texture Artist\r"
-			"Head Administrator / Website Developer\r"
-			"Coverage Coordinator\r"
-			"Composer / Audio Engineer\r"
-			"Modeler\r"
-			"Modeler\r"
-			"Codebase Developer / Gameplay Designer\r"
-			textscale .22
+			"Codebase Developer & Gameplay Designer\r"
+			textscale .23
 			textalignx 0
-			textaligny 18
-			rect 412 130 185 25
+			textaligny 23
+			rect 275 130 185 25
 			style 1
 			forecolor .5 .5 .5 1
 			backcolor 0 0 0 0
 			visible 1
 			decoration
 		}
+
 
 		itemdef {
 			name next
